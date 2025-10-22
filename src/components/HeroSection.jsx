@@ -52,7 +52,7 @@ export default function HeroSection() {
         >
           <span className="w-2 h-2 bg-brand-neon rounded-full animate-pulse" />
           <span className="text-brand-neon font-mono text-xs tracking-widest uppercase">
-            System Operacyjny Polskiego Sportu — v2.0
+            Narodowy OS Sportu &mdash; LiDAR + AI + PostGIS &bull; v2.0
           </span>
         </motion.div>
 

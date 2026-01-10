@@ -285,7 +285,7 @@ export default function ArchitectureSection() {
             {/* Flow arrows between layers */}
             <div className="mt-6 flex items-center justify-center gap-2 text-gray-600">
               <div className="flex-1 h-px bg-brand-border" />
-              <span className="text-xs font-mono tracking-widest">DANE PRZEPŁYWAJĄ OD DK WARSTWY 1 → 4</span>
+              <span className="text-xs font-mono tracking-widest">DANE PRZEPŁYWAJĄ OD WARSTWY 1 → 4</span>
               <div className="flex-1 h-px bg-brand-border" />
             </div>
           </div>

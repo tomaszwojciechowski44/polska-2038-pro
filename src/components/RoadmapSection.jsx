@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
-import { Flag } from 'lucide-react';
+import { Flag, Clock } from 'lucide-react';
 import { ROADMAP } from '../data/systemData';
 
 const STATUS_STYLES = {
@@ -9,6 +9,97 @@ const STATUS_STYLES = {
   planned: { dot: 'bg-gray-600', border: 'border-brand-border', badge: 'text-gray-500 bg-gray-800', label: 'PLANOWANE' },
   vision: { dot: 'bg-brand-gold animate-pulse', border: 'border-brand-gold/40', badge: 'text-brand-gold bg-brand-gold/10', label: 'WIZJA' },
 };
+
+// Urgency milestones
+const MILESTONES = [
+  { label: 'Pilotaz #Polska2038', date: 'Q4 2025', done: true },
+  { label: 'JESTESMY TUTAJ', date: 'Maj 2026', active: true },
+  { label: 'Wdrozenie 500 Orlikow', date: 'Q2 2027', done: false },
+  { label: 'Euro 2028 — selekcja kadry', date: '2028', done: false, urgent: true },
+  { label: 'MŚ 2030 — deadline systemu', date: '2030', done: false, urgent: true },
+  { label: '#Polska2038 — FINAL', date: '2038', done: false, vision: true },
+];
+
+function UrgencyBanner() {
+  // Days to Euro 2028 (June 14, 2028)
+  const euro2028 = new Date('2028-06-14');
+  const now = new Date();
+  const daysLeft = Math.ceil((euro2028 - now) / (1000 * 60 * 60 * 24));
+  const monthsLeft = Math.floor(daysLeft / 30);
+
+  return (
+    <div className="mb-14 p-6 border-2 border-brand-red/60 bg-brand-red/5 relative overflow-hidden">
+      <div className="absolute top-0 right-0 left-0 h-0.5 bg-gradient-to-r from-transparent via-brand-red to-transparent" />
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <Clock size={20} className="text-brand-red flex-shrink-0" />
+          <div>
+            <div className="text-brand-red font-display font-bold text-lg uppercase tracking-wide">
+              Okno wdrozeniowe zamyka sie
+            </div>
+            <div className="text-gray-400 text-sm font-mono">
+              Aby zdazyc z pilotazem przed Euro 2028 — dzialamy teraz.
+            </div>
+          </div>
+        </div>
+        <div className="flex gap-4">
+          {[
+            { val: daysLeft.toLocaleString('pl-PL'), label: 'dni do Euro 2028', color: 'text-brand-red' },
+            { val: monthsLeft, label: 'miesiecy na pilotaz', color: 'text-brand-gold' },
+            { val: '6', label: 'mies. wdrozenie', color: 'text-brand-neon' },
+          ].map((c) => (
+            <div key={c.label} className="text-center">
+              <div className={`text-2xl font-display font-bold ${c.color}`}>{c.val}</div>
+              <div className="text-gray-600 text-[10px] font-mono whitespace-nowrap">{c.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TimelineStrip({ inView }) {
+  return (
+    <div className="mb-16 overflow-x-auto">
+      <div className="min-w-[600px] flex items-center gap-0 relative py-6">
+        <div className="absolute top-1/2 left-0 right-0 h-px bg-brand-border" />
+        {MILESTONES.map((m, i) => (
+          <div key={m.label} className="flex-1 flex flex-col items-center relative">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={inView ? { scale: 1 } : {}}
+              transition={{ delay: 0.1 + i * 0.1, type: 'spring', stiffness: 300 }}
+              className={`w-4 h-4 rounded-full border-2 border-brand-dark relative z-10 ${
+                m.active ? 'bg-brand-cyan w-6 h-6 ring-4 ring-brand-cyan/30' :
+                m.done ? 'bg-brand-neon' :
+                m.vision ? 'bg-brand-gold' :
+                m.urgent ? 'bg-brand-red/60' :
+                'bg-brand-border'
+              }`}
+            >
+              {m.active && (
+                <span className="absolute inset-0 rounded-full bg-brand-cyan animate-ping opacity-50" />
+              )}
+            </motion.div>
+            <div className="mt-2 text-center px-1">
+              <div className={`text-[10px] font-mono font-bold ${
+                m.active ? 'text-brand-cyan' :
+                m.done ? 'text-brand-neon' :
+                m.vision ? 'text-brand-gold' :
+                m.urgent ? 'text-brand-red' :
+                'text-gray-600'
+              }`}>{m.date}</div>
+              <div className={`text-[9px] font-mono leading-tight mt-0.5 max-w-[80px] ${
+                m.active ? 'text-white font-bold' : 'text-gray-600'
+              }`}>{m.label}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function RoadmapSection() {
   const [ref, inView] = useInView(0.1);
@@ -34,7 +125,8 @@ export default function RoadmapSection() {
           </h2>
         </motion.div>
 
-        {/* Timeline */}
+        <UrgencyBanner />
+        <TimelineStrip inView={inView} />
         <div className="relative">
           {/* Vertical line */}
           <div className="absolute left-6 sm:left-1/2 top-0 bottom-0 w-px bg-brand-border" />

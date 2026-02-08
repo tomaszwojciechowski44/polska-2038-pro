@@ -6,7 +6,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 URL strony zawiera Twoje dane:
-❌ https://projekt-polska-2038.github.io/polska-2038-pro/
+❌ https://projek-polska-2038.github.io/polska-2038-pro/
              ^^^^^^^^^^^^^^^^^^^^ - UJAWNIA TWOJĄ TOŻSAMOŚĆ!
 
 ═══════════════════════════════════════════════════════════════
@@ -43,7 +43,7 @@ KROK 3: Sprawdź czy działa
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Otwórz stary link - powinien przekierować na nowy:
-https://projekt-polska-2038.github.io/polska-2038-pro/
+https://projek-polska-2038.github.io/polska-2038-pro/
    ↓ przekierowanie
 https://TWOJ-NOWY-USERNAME.github.io/polska-2038-pro/
 

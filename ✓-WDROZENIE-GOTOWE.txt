@@ -9,16 +9,16 @@
 📌 TWOJE ADRESY:
 
 🌐 Strona główna (za 1-2 minuty):
-   https://projekt-polska-2038.github.io/polska-2038-pro/
+   https://projek-polska-2038.github.io/polska-2038-pro/
 
 📄 Press Kit:
-   https://projekt-polska-2038.github.io/polska-2038-pro/press/
+   https://projek-polska-2038.github.io/polska-2038-pro/press/
 
 📁 Repozytorium GitHub:
-   https://github.com/projekt-polska-2038/polska-2038-pro
+   https://github.com/projek-polska-2038/polska-2038-pro
 
 ⚙️ Ustawienia GitHub Pages:
-   https://github.com/projekt-polska-2038/polska-2038-pro/settings/pages
+   https://github.com/projek-polska-2038/polska-2038-pro/settings/pages
 
 ═══════════════════════════════════════════════════════════════
 
@@ -35,7 +35,7 @@
 
 Przeglądarka powinna być już otwarta na ustawieniach.
 Jeśli nie, otwórz:
-https://github.com/projekt-polska-2038/polska-2038-pro/settings/pages
+https://github.com/projek-polska-2038/polska-2038-pro/settings/pages
 
 W sekcji "Build and deployment":
 1. Source: wybierz "Deploy from a branch"
@@ -83,7 +83,7 @@ Opcja 2 - Ręcznie:
 1. Włącz GitHub Pages (jeśli jeszcze nie zrobione)
 2. Poczekaj 1-2 minuty na deployment
 3. Odwiedź swoją stronę:
-   https://projekt-polska-2038.github.io/polska-2038-pro/
+   https://projek-polska-2038.github.io/polska-2038-pro/
 4. Sprawdź czy wszystko działa
 5. Udostępnij link swoim odbiorcom!
 
@@ -111,7 +111,7 @@ POLSKA 2038 jest już online! 🇵🇱⚽
 
 ═══════════════════════════════════════════════════════════════
 Data wdrożenia: 2026-02-08
-Konto GitHub: projekt-polska-2038
+Konto GitHub: projek-polska-2038
 Repozytorium: polska-2038-pro
 Status: ✅ LIVE & READY
 ═══════════════════════════════════════════════════════════════

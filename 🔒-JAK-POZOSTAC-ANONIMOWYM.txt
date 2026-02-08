@@ -40,7 +40,7 @@ Oto jak zachować anonimowość:
    □ Location
    □ Website
 
-   💡 Username "projekt-polska-2038" można zmienić na:
+   💡 Username "projek-polska-2038" można zmienić na:
       https://github.com/settings/admin
       Nowa nazwa: polska2038 lub projekpolska2038
 
@@ -92,7 +92,7 @@ MINISTERSTWO/PZPN/MEDIA ZOBACZĄ:
 
 ✅ Treść projektu na stronie
 ✅ Kod źródłowy na GitHub
-✅ Username GitHub: projekt-polska-2038
+✅ Username GitHub: projek-polska-2038
 ✅ Email: polska2038.projekt@gmail.com
 ✅ Podpis: "Zespół POLSKA 2038"
 
@@ -108,7 +108,7 @@ MINISTERSTWO/PZPN/MEDIA ZOBACZĄ:
 ⚠️ OSTRZEŻENIE O USERNAME GITHUB
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Username: "projekt-polska-2038"
+Username: "projek-polska-2038"
 
 ⚠️ Może sugerować Twoje imię!
 
@@ -208,7 +208,7 @@ POWODZENIA! 🇵🇱⚽
 📞 KONTAKT W PROJEKCIE (po utworzeniu):
 
 Email: polska2038.projekt@gmail.com
-GitHub Issues: https://github.com/projekt-polska-2038/polska-2038-pro/issues
+GitHub Issues: https://github.com/projek-polska-2038/polska-2038-pro/issues
 Nazwa: Zespół POLSKA 2038
 Status: Inicjatywa obywatelska
 

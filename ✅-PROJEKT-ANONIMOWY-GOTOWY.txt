@@ -28,7 +28,7 @@
 ⚠️ Stare commity: Pokazują "Tomasz Wojciechowski"
    • To NIE JEST problem - to tylko username GitHub
    • Nikt nie zobaczy Twojego prawdziwego emaila
-   • Ministerstwo zobaczy tylko username: projekt-polska-2038
+   • Ministerstwo zobaczy tylko username: projek-polska-2038
 
 ═══════════════════════════════════════════════════════════════
 
@@ -56,7 +56,7 @@ KROK 2: UKRYJ PROFIL GITHUB 👤 (5 min)
 
 OPCJONALNIE - zmień username:
 □ Wejdź: https://github.com/settings/admin
-□ Zmień "projekt-polska-2038" na "polska2038"
+□ Zmień "projek-polska-2038" na "polska2038"
   (GitHub przekieruje stare linki automatycznie!)
 
 KROK 3: SPRAWDŹ PLIKI 🔍 (10 min)
@@ -70,8 +70,8 @@ KROK 4: TESTUJ W INCOGNITO 🌐 (2 min)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 □ Otwórz przeglądarkę w trybie incognito (Ctrl+Shift+N)
-□ Sprawdź: https://projekt-polska-2038.github.io/polska-2038-pro/
-□ Sprawdź: https://github.com/projekt-polska-2038/polska-2038-pro
+□ Sprawdź: https://projek-polska-2038.github.io/polska-2038-pro/
+□ Sprawdź: https://github.com/projek-polska-2038/polska-2038-pro
 □ Upewnij się że NIE widzisz swoich prawdziwych danych
 
 KROK 5: WYŚLIJ! 📧
@@ -99,13 +99,13 @@ KROK 5: WYŚLIJ! 📧
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 DO MINISTERSTWA & PZPN:
-• Główna strona: https://projekt-polska-2038.github.io/polska-2038-pro/
-• GitHub: https://github.com/projekt-polska-2038/polska-2038-pro
+• Główna strona: https://projek-polska-2038.github.io/polska-2038-pro/
+• GitHub: https://github.com/projek-polska-2038/polska-2038-pro
 
 DO MEDIÓW:
-• Press Kit: https://projekt-polska-2038.github.io/polska-2038-pro/press/
-• Główna strona: https://projekt-polska-2038.github.io/polska-2038-pro/
-• GitHub: https://github.com/projekt-polska-2038/polska-2038-pro
+• Press Kit: https://projek-polska-2038.github.io/polska-2038-pro/press/
+• Główna strona: https://projek-polska-2038.github.io/polska-2038-pro/
+• GitHub: https://github.com/projek-polska-2038/polska-2038-pro
 
 ═══════════════════════════════════════════════════════════════
 
@@ -137,7 +137,7 @@ MINISTERSTWO/PZPN/MEDIA ZOBACZĄ:
 
 ✅ Treść projektu (profesjonalna strona)
 ✅ Kod źródłowy na GitHub (transparentność)
-✅ Username: projekt-polska-2038 (to NIE jest Twoje prawdziwe imię!)
+✅ Username: projek-polska-2038 (to NIE jest Twoje prawdziwe imię!)
 ✅ Email: polska2038.projekt@gmail.com
 ✅ Podpis: "Zespół POLSKA 2038 - inicjatywa obywatelska"
 
@@ -225,8 +225,8 @@ POWODZENIA Z PROJEKTEM POLSKA 2038! 🇵🇱⚽
 📞 KONTAKT (po utworzeniu):
 
 Email: polska2038.projekt@gmail.com
-GitHub: https://github.com/projekt-polska-2038/polska-2038-pro
-Issues: https://github.com/projekt-polska-2038/polska-2038-pro/issues
+GitHub: https://github.com/projek-polska-2038/polska-2038-pro
+Issues: https://github.com/projek-polska-2038/polska-2038-pro/issues
 
 Podpis: Zespół POLSKA 2038 - Inicjatywa Obywatelska
 

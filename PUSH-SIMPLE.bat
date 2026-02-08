@@ -10,7 +10,7 @@ echo ========================================================
 echo.
 
 echo [1/3] Sprawdzam repozytorium...
-git ls-remote https://github.com/tomaszwojciechowski44/polska-2038-pro.git >nul 2>&1
+git ls-remote https://github.com/projekt-polska-2038/polska-2038-pro.git >nul 2>&1
 if errorlevel 1 (
     echo.
     echo Repozytorium NIE istnieje!
@@ -27,7 +27,7 @@ if errorlevel 1 (
     echo.
     pause
 
-    git ls-remote https://github.com/tomaszwojciechowski44/polska-2038-pro.git >nul 2>&1
+    git ls-remote https://github.com/projekt-polska-2038/polska-2038-pro.git >nul 2>&1
     if errorlevel 1 (
         echo.
         echo Repozytorium nadal nie istnieje!
@@ -71,20 +71,20 @@ echo    PUSH ZAKONCZONY SUKCESEM!
 echo ========================================================
 echo.
 echo Twoja strona (za 1-2 minuty):
-echo https://tomaszwojciechowski44.github.io/polska-2038-pro/
+echo https://projekt-polska-2038.github.io/polska-2038-pro/
 echo.
 echo Press Kit:
-echo https://tomaszwojciechowski44.github.io/polska-2038-pro/press/
+echo https://projekt-polska-2038.github.io/polska-2038-pro/press/
 echo.
 echo Repozytorium:
-echo https://github.com/tomaszwojciechowski44/polska-2038-pro
+echo https://github.com/projekt-polska-2038/polska-2038-pro
 echo.
 echo.
 
 echo [3/3] Konfiguracja GitHub Pages...
 echo.
 echo Otwieram ustawienia...
-start "" "https://github.com/tomaszwojciechowski44/polska-2038-pro/settings/pages"
+start "" "https://github.com/projekt-polska-2038/polska-2038-pro/settings/pages"
 echo.
 echo W przegladarce:
 echo 1. Source: "Deploy from a branch"
@@ -99,7 +99,7 @@ if errorlevel 2 goto end
 if errorlevel 1 (
     echo Czekam na deployment...
     timeout /t 60 /nobreak >nul
-    start "" "https://tomaszwojciechowski44.github.io/polska-2038-pro/"
+    start "" "https://projekt-polska-2038.github.io/polska-2038-pro/"
 )
 
 :end

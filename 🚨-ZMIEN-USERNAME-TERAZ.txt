@@ -1,0 +1,117 @@
+╔════════════════════════════════════════════════════════════════╗
+║   🚨 PILNE - ZMIEŃ USERNAME GITHUB NA ANONIMOWY! 🚨           ║
+╚════════════════════════════════════════════════════════════════╝
+
+⚠️ PROBLEM:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+URL strony zawiera Twoje dane:
+❌ https://projekt-polska-2038.github.io/polska-2038-pro/
+             ^^^^^^^^^^^^^^^^^^^^ - UJAWNIA TWOJĄ TOŻSAMOŚĆ!
+
+═══════════════════════════════════════════════════════════════
+
+✅ ROZWIĄZANIE - ZMIEŃ USERNAME (5 MINUT):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+KROK 1: W otwartym oknie przeglądarki:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Jesteś na: https://github.com/settings/admin
+2. Przewiń do sekcji "Change username"
+3. W polu wpisz NOWĄ nazwę (wybierz jedną):
+
+   ZALECANE NAZWY (anonimowe):
+   ✅ polska2038
+   ✅ projekpolska2038
+   ✅ polska-futbol-2038
+   ✅ reforma-futbolu-polska
+   ✅ pl-football-2038
+
+4. Kliknij "Change username"
+5. Potwierdź zmianę (wpisz username jeszcze raz)
+
+KROK 2: Poczekaj 10 sekund
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+GitHub automatycznie:
+• Przekieruje stare linki na nowe!
+• Zachowa całą historię projektu!
+• Zaktualizuje wszystkie odnośniki!
+
+KROK 3: Sprawdź czy działa
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Otwórz stary link - powinien przekierować na nowy:
+https://projekt-polska-2038.github.io/polska-2038-pro/
+   ↓ przekierowanie
+https://TWOJ-NOWY-USERNAME.github.io/polska-2038-pro/
+
+═══════════════════════════════════════════════════════════════
+
+🎯 ZALECANA NAZWA: polska2038
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DLACZEGO?
+• Krótka i łatwa do zapamiętania
+• Odzwierciedla projekt
+• Całkowicie anonimowa
+• Profesjonalna
+
+NOWE LINKI (po zmianie na polska2038):
+✅ https://polska2038.github.io/polska-2038-pro/
+✅ https://polska2038.github.io/polska-2038-pro/press/
+✅ https://github.com/polska2038/polska-2038-pro
+
+═══════════════════════════════════════════════════════════════
+
+⚠️ CO JEŚLI NAZWA JEST ZAJĘTA?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Jeśli "polska2038" jest zajęta, spróbuj:
+• projekpolska2038
+• polska-2038-pro
+• pl-football-2038
+• polskafutbol2038
+• reform-pl-2038
+
+GitHub powie czy nazwa jest dostępna!
+
+═══════════════════════════════════════════════════════════════
+
+📝 CO ZROBIĆ PO ZMIANIE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Wróć tutaj i napisz: "zmienione" + NOWA NAZWA
+2. Zaktualizuję wszystkie pliki z nowymi linkami
+3. Wyślę zmiany na GitHub
+4. Gotowe - projekt w pełni anonimowy! ✅
+
+═══════════════════════════════════════════════════════════════
+
+🔒 BEZPIECZEŃSTWO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ GitHub zachowa wszystkie pliki
+✅ Stare linki będą przekierowywać (przez chwilę)
+✅ Historia commitów pozostanie
+✅ Nic nie zginie!
+
+⚠️ TYLKO zaktualizuj remote w git (zrobię to za Ciebie!)
+
+═══════════════════════════════════════════════════════════════
+
+🚀 ZRÓB TO TERAZ - ZAJMIE 2 MINUTY!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Przeglądarka jest już otwarta na właściwej stronie!
+Przewiń w dół i zmień username na: polska2038
+
+CZEKAM NA POTWIERDZENIE... ⏳
+
+═══════════════════════════════════════════════════════════════
+Utworzono: 2026-02-08
+Priorytet: KRYTYCZNY 🚨
+Action: ZMIEŃ USERNAME TERAZ!
+═══════════════════════════════════════════════════════════════
+

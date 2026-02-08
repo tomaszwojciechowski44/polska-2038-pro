@@ -12,10 +12,10 @@
 ✅ WYSYŁAMY:
 
 1️⃣ Strona główna (PRIORYTET):
-   https://tomaszwojciechowski44.github.io/polska-2038-pro/
+   https://projekt-polska-2038.github.io/polska-2038-pro/
 
 2️⃣ Repozytorium GitHub (do wglądu):
-   https://github.com/tomaszwojciechowski44/polska-2038-pro
+   https://github.com/projekt-polska-2038/polska-2038-pro
 
 ❌ NIE WYSYŁAMY:
    - Press Kit (to dla mediów)
@@ -30,7 +30,7 @@ Jako grupa pasjonatów polskiego futbolu, przedstawiamy kompleksowy
 projekt obywatelski "POLSKA 2038" - wizję rozwoju na lata 2026-2038.
 
 🌐 Strona projektu:
-https://tomaszwojciechowski44.github.io/polska-2038-pro/
+https://projekt-polska-2038.github.io/polska-2038-pro/
 
 📊 Kluczowe elementy:
 • 5 filarów reformy (rozszerzone z 3)
@@ -40,7 +40,7 @@ https://tomaszwojciechowski44.github.io/polska-2038-pro/
 • Plan wdrożenia krok po kroku
 
 📁 Pełna dokumentacja i kod źródłowy (open source):
-https://github.com/tomaszwojciechowski44/polska-2038-pro
+https://github.com/projekt-polska-2038/polska-2038-pro
 
 Projekt jest całkowicie transparentny i dostępny publicznie jako
 inicjatywa obywatelska. Wszystkie materiały są udostępnione na
@@ -64,10 +64,10 @@ lub przez Issues na GitHubie
 ✅ WYSYŁAMY:
 
 1️⃣ Strona główna (PRIORYTET):
-   https://tomaszwojciechowski44.github.io/polska-2038-pro/
+   https://projekt-polska-2038.github.io/polska-2038-pro/
 
 2️⃣ Repozytorium GitHub (opcjonalnie):
-   https://github.com/tomaszwojciechowski44/polska-2038-pro
+   https://github.com/projekt-polska-2038/polska-2038-pro
 
 ❌ NIE WYSYŁAMY:
    - Press Kit (chyba że sami chcą go do mediów)
@@ -83,7 +83,7 @@ ekspertów i pasjonatów przygotowała projekt obywatelski "POLSKA 2038"
 - systemową reformę obejmującą lata 2026-2038.
 
 🌐 Pełen projekt dostępny publicznie:
-https://tomaszwojciechowski44.github.io/polska-2038-pro/
+https://projekt-polska-2038.github.io/polska-2038-pro/
 
 🎯 5 Filarów Reformy:
 1. Polska Akademia Futbolu 2038 (infrastruktura i szkolenie)
@@ -97,7 +97,7 @@ https://tomaszwojciechowski44.github.io/polska-2038-pro/
 🎓 Efekt: 500+ certyfikowanych trenerów rocznie
 
 📁 Open source - cała dokumentacja dostępna:
-https://github.com/tomaszwojciechowski44/polska-2038-pro
+https://github.com/projekt-polska-2038/polska-2038-pro
 
 Projekt jest inicjatywą społeczną, całkowicie transparentną i dostępną
 do wykorzystania przez PZPN. Możliwe dostosowanie do potrzeb związku.
@@ -120,13 +120,13 @@ lub przez Issues na GitHubie
 ✅ WYSYŁAMY WSZYSTKIE TRZY:
 
 1️⃣ Press Kit (PRIORYTET - dla dziennikarzy):
-   https://tomaszwojciechowski44.github.io/polska-2038-pro/press/
+   https://projekt-polska-2038.github.io/polska-2038-pro/press/
 
 2️⃣ Strona główna (kontekst):
-   https://tomaszwojciechowski44.github.io/polska-2038-pro/
+   https://projekt-polska-2038.github.io/polska-2038-pro/
 
 3️⃣ Repozytorium (dla technicznych):
-   https://github.com/tomaszwojciechowski44/polska-2038-pro
+   https://github.com/projekt-polska-2038/polska-2038-pro
 
 📝 TREŚĆ EMAILA DO MEDIÓW (ANONIMOWA):
 
@@ -138,7 +138,7 @@ Przesyłamy materiały prasowe dotyczące projektu obywatelskiego
 "POLSKA 2038" - kompleksowej reformy polskiego futbolu na lata 2026-2038.
 
 📄 PRESS KIT (gotowe materiały dla dziennikarzy):
-https://tomaszwojciechowski44.github.io/polska-2038-pro/press/
+https://projekt-polska-2038.github.io/polska-2038-pro/press/
 
 Press Kit zawiera:
 • Briefing dla mediów (gotowy do publikacji)
@@ -148,7 +148,7 @@ Press Kit zawiera:
 • Timeline wdrożenia
 
 🌐 Pełen projekt (dla szczegółów):
-https://tomaszwojciechowski44.github.io/polska-2038-pro/
+https://projekt-polska-2038.github.io/polska-2038-pro/
 
 🔢 Najważniejsze liczby:
 • Budżet: 1,67 mld PLN (2026-2035)
@@ -157,7 +157,7 @@ https://tomaszwojciechowski44.github.io/polska-2038-pro/
 • Przygotowanie do MŚ 2030 i Euro 2028
 
 📊 Dokumentacja open source:
-https://github.com/tomaszwojciechowski44/polska-2038-pro
+https://github.com/projekt-polska-2038/polska-2038-pro
 
 To inicjatywa obywatelska - projekt społeczny bez interesów komercyjnych.
 Wszystkie materiały są gotowe do natychmiastowej publikacji.
@@ -329,7 +329,7 @@ DLACZEGO?
 
    Opcja A: Zmień nazwę użytkownika GitHub
    • Wejdź: https://github.com/settings/admin
-   • Zmień "tomaszwojciechowski44" na coś anonimowego:
+   • Zmień "projekt-polska-2038" na coś anonimowego:
      - polska2038
      - projekpolska2038
      - futbol2038polska
@@ -435,9 +435,9 @@ DLACZEGO?
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✅ ZOBACZĄ:
-   • Treść strony: https://tomaszwojciechowski44.github.io/polska-2038-pro/
-   • Kod na GitHub: https://github.com/tomaszwojciechowski44/polska-2038-pro
-   • Username GitHub: "tomaszwojciechowski44"
+   • Treść strony: https://projekt-polska-2038.github.io/polska-2038-pro/
+   • Kod na GitHub: https://github.com/projekt-polska-2038/polska-2038-pro
+   • Username GitHub: "projekt-polska-2038"
    • Email kontaktowy: polska2038.projekt@gmail.com (jeśli utworzysz)
 
 ❌ NIE ZOBACZĄ (jeśli zrobisz powyższe kroki):
@@ -448,7 +448,7 @@ DLACZEGO?
    • Żadnych danych osobowych
 
 ⚠️ UWAGA NA USERNAME GITHUB!
-   "tomaszwojciechowski44" - może sugerować Twoje imię!
+   "projekt-polska-2038" - może sugerować Twoje imię!
 
    ROZWIĄZANIE:
    • Zmień username na: polska2038 (w ustawieniach GitHub)

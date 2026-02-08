@@ -39,17 +39,17 @@ Ten skrypt:
 
 🌐 **Strona główna:**
 ```
-https://tomaszwojciechowski44.github.io/polska-2038-pro/
+https://projekt-polska-2038.github.io/polska-2038-pro/
 ```
 
 📄 **Press Kit:**
 ```
-https://tomaszwojciechowski44.github.io/polska-2038-pro/press/
+https://projekt-polska-2038.github.io/polska-2038-pro/press/
 ```
 
 📁 **Repozytorium:**
 ```
-https://github.com/tomaszwojciechowski44/polska-2038-pro
+https://github.com/projekt-polska-2038/polska-2038-pro
 ```
 
 ---
@@ -65,7 +65,7 @@ https://github.com/tomaszwojciechowski44/polska-2038-pro
 1. Wygeneruj token: https://github.com/settings/tokens/new?scopes=repo
 2. Skopiuj token
 3. Przy pushu użyj:
-   - Username: `tomaszwojciechowski44`
+   - Username: `projekt-polska-2038`
    - Password: `wklej_token_tutaj`
 
 ### Opcja 3: GitHub CLI
@@ -91,14 +91,14 @@ Lub użyj skryptu: **AKTUALIZUJ-SZYBKO.bat**
 
 ## GitHub Pages - włączenie strony:
 
-1. Wejdź na: https://github.com/tomaszwojciechowski44/polska-2038-pro/settings/pages
+1. Wejdź na: https://github.com/projekt-polska-2038/polska-2038-pro/settings/pages
 2. W sekcji "Build and deployment":
    - **Source:** Deploy from a branch
    - **Branch:** main
    - **Folder:** / (root)
 3. Kliknij **Save**
 4. Czekaj 1-2 minuty
-5. Strona będzie dostępna pod: https://tomaszwojciechowski44.github.io/polska-2038-pro/
+5. Strona będzie dostępna pod: https://projekt-polska-2038.github.io/polska-2038-pro/
 
 ---
 

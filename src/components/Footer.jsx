@@ -17,10 +17,28 @@ export default function Footer() {
                 <div className="text-brand-neon text-xs font-mono tracking-widest">NATIONAL OS v2.0</div>
               </div>
             </div>
-            <p className="text-gray-600 text-sm font-mono leading-relaxed">
+            <p className="text-gray-600 text-sm font-mono leading-relaxed mb-4">
               Narodowy System Operacyjny Polskiego Sportu.<br />
-              LiDAR + AI + PostGIS.
+              LiDAR + AI + PostGIS. Zaden talent nie umknie.
             </p>
+            <div className="flex gap-3">
+              <a
+                href="https://github.com/projek-polska-2038/polska-2038-pro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 border border-brand-border text-gray-500 hover:border-brand-neon hover:text-brand-neon text-xs font-mono transition-colors"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://x.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 border border-brand-border text-gray-500 hover:border-brand-cyan hover:text-brand-cyan text-xs font-mono transition-colors"
+              >
+                X / Twitter
+              </a>
+            </div>
           </div>
 
           {/* Tech Stack */}
@@ -41,16 +59,19 @@ export default function Footer() {
             <div className="space-y-2">
               {[
                 { label: 'GitHub Repository', href: 'https://github.com/projek-polska-2038/polska-2038-pro' },
-                { label: 'Demo v1', href: 'https://projek-polska-2038.github.io/polska-2038-pro/' },
+                { label: 'Demo v1 — Live', href: 'https://projek-polska-2038.github.io/polska-2038-pro/' },
+                { label: 'Scout Demo — karta talentu', href: '#scout-demo' },
+                { label: 'Kalkulator ROI', href: '#roi' },
+                { label: 'Partnerstwo strategiczne', href: '#partnerzy' },
+                { label: 'Media Kit / Press', href: '#media' },
                 { label: 'Kontakt z Architektem', href: '#kontakt' },
-                { label: 'Zgłoś klub do testów', href: '#kontakt' },
               ].map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   className="block text-gray-500 hover:text-brand-neon text-sm font-mono transition-colors"
                 >
-                  → {link.label}
+                  &rarr; {link.label}
                 </a>
               ))}
             </div>
@@ -59,18 +80,17 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-brand-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-gray-700 text-xs font-mono">
-            © 2025–2038 #Polska2038 v2.0. Wszelkie prawa zastrzeżone.
+            &copy; 2025&ndash;2038 #Polska2038 v2.0. Wszelkie prawa zastrzezone.
           </div>
           <div className="flex items-center gap-2 text-gray-700 text-xs font-mono">
             <span className="w-1.5 h-1.5 bg-brand-neon rounded-full animate-pulse" />
-            System aktywny — dane demo
+            System aktywny &mdash; dane demo
           </div>
           <div className="text-gray-700 text-xs font-mono">
-            Zbudowany z ❤️ dla polskiego sportu
+            Zbudowany z &hearts; dla polskiego sportu
           </div>
         </div>
       </div>
     </footer>
   );
 }
-

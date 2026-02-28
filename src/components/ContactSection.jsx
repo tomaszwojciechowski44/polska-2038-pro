@@ -1,37 +1,16 @@
-                    <option value="">Wybierz...</option>
-                    {ROLES.map((r) => <option key={r} value={r}>{r}</option>)}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Wiadomość</label>
-                  <textarea
-                    rows={4}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full bg-brand-dark border border-brand-border text-white px-3 py-2.5 text-sm font-mono focus:border-brand-neon focus:outline-none transition-colors resize-none"
-                    placeholder="Opisz swoje potrzeby lub obszar współpracy..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-3 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest hover:bg-red-700 transition-colors border-glow-red"
-                >
-                  Wyślij Zgłoszenie →
-                </button>
-              </form>
-            )}
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
 import { Mail, Building2, Globe, CheckCircle } from 'lucide-react';
+
+const ROLES = [
+  'Ministerstwo Sportu',
+  'PZPN / Federacja',
+  'Akademia / Klub',
+  'Samorząd',
+  'Inwestor',
+  'Media / Dziennikarz',
+];
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -43,14 +22,10 @@ export default function ContactSection() {
     setSubmitted(true);
   };
 
-  const ROLES = ['Ministerstwo Sportu', 'PZPN / Federacja', 'Akademia / Klub', 'Samorząd', 'Inwestor', 'Media / Dziennikarz'];
-
   return (
     <section id="kontakt" className="py-24 bg-brand-dark relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 bg-grid-pattern opacity-20" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-red to-transparent" />
-
-      {/* Background gradient */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-red/5 rounded-full blur-3xl" />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,6 +33,7 @@ export default function ContactSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-12"
+          ref={ref}
         >
           <span className="inline-flex items-center gap-2 text-brand-red font-mono text-sm tracking-widest uppercase mb-3">
             <Mail size={14} />
@@ -107,7 +83,6 @@ export default function ContactSection() {
               </div>
             ))}
 
-            {/* Social / links */}
             <div className="pt-4 border-t border-brand-border">
               <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-3">Dokumentacja Techniczna</div>
               <div className="flex flex-wrap gap-3">
@@ -156,7 +131,9 @@ export default function ContactSection() {
               >
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Imię i Nazwisko</label>
+                    <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
+                      Imię i Nazwisko
+                    </label>
                     <input
                       required
                       value={form.name}
@@ -166,7 +143,9 @@ export default function ContactSection() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Organizacja</label>
+                    <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
+                      Organizacja
+                    </label>
                     <input
                       required
                       value={form.org}
@@ -178,7 +157,9 @@ export default function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Email</label>
+                  <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
+                    Email
+                  </label>
                   <input
                     required
                     type="email"
@@ -190,10 +171,48 @@ export default function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">Rola / Instytucja</label>
+                  <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
+                    Rola / Instytucja
+                  </label>
                   <select
                     value={form.role}
                     onChange={(e) => setForm({ ...form, role: e.target.value })}
                     className="w-full bg-brand-dark border border-brand-border text-white px-3 py-2.5 text-sm font-mono focus:border-brand-neon focus:outline-none transition-colors"
                   >
+                    <option value="">Wybierz...</option>
+                    {ROLES.map((r) => (
+                      <option key={r} value={r}>
+                        {r}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
+                    Wiadomość
+                  </label>
+                  <textarea
+                    rows={4}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    className="w-full bg-brand-dark border border-brand-border text-white px-3 py-2.5 text-sm font-mono focus:border-brand-neon focus:outline-none transition-colors resize-none"
+                    placeholder="Opisz swoje potrzeby lub obszar współpracy..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-3 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest hover:bg-red-700 transition-colors"
+                >
+                  Wyślij Zgłoszenie →
+                </button>
+              </form>
+            )}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
 

@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #050810;
+    color: #E2E8F0;
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #050810; }
+  ::-webkit-scrollbar-thumb { background: #DC143C; border-radius: 2px; }
+}
+
+@layer utilities {
+  .text-glow-neon { text-shadow: 0 0 20px #00FF88, 0 0 40px #00FF88; }
+  .text-glow-red { text-shadow: 0 0 20px #DC143C, 0 0 40px #DC143C; }
+  .text-glow-cyan { text-shadow: 0 0 15px #00E5FF, 0 0 30px #00E5FF; }
+  .text-glow-gold { text-shadow: 0 0 15px #FFD700, 0 0 30px #FFD700; }
+  .border-glow-red { box-shadow: 0 0 15px rgba(220,20,60,0.5), inset 0 0 15px rgba(220,20,60,0.05); }
+  .border-glow-neon { box-shadow: 0 0 15px rgba(0,255,136,0.4), inset 0 0 15px rgba(0,255,136,0.05); }
+  .border-glow-cyan { box-shadow: 0 0 15px rgba(0,229,255,0.4), inset 0 0 15px rgba(0,229,255,0.05); }
+  .border-glow-gold { box-shadow: 0 0 20px rgba(255,215,0,0.5), inset 0 0 20px rgba(255,215,0,0.05); }
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+  .lidar-dot {
+    animation: lidar-pulse 2s ease-out infinite;
+  }
+  @keyframes lidar-pulse {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(4); opacity: 0; }
+  }
+  .scan-line {
+    position: absolute;
+    left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, #00FF88, transparent);
+    animation: scan-anim 3s linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes scan-anim {
+    0% { top: 0%; }
+    100% { top: 100%; }
+  }
+  .counter-up { transition: all 0.3s ease; }
+}
+

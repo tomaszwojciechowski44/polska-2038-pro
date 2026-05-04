@@ -19,7 +19,7 @@ export default function Footer() {
             </div>
             <p className="text-gray-600 text-sm font-mono leading-relaxed mb-4">
               Narodowy System Operacyjny Polskiego Sportu.<br />
-              LiDAR + AI + PostGIS. Zaden talent nie umknie.
+              LiDAR + AI + PostGIS. Żaden talent nie umknie.
             </p>
             <div className="flex flex-wrap gap-2">
               <a
@@ -73,7 +73,7 @@ export default function Footer() {
                 { label: 'Partnerstwo strategiczne', href: '#partnerzy' },
                 { label: 'Endorsementy — kto popiera', href: '#endorsements' },
                 { label: 'Media Buzz & Cytaty', href: '#media-buzz' },
-                { label: 'Media Kit / Press', href: '#prasa' },
+                { label: 'Media Kit / Press', href: '#media' },
                 { label: 'Kontakt z Architektem', href: '#kontakt' },
               ].map((link) => (
                 <a

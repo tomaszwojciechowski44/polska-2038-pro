@@ -1,30 +1,30 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-const NAV_LINKS = [
-  { href: '#executive',    label: 'O systemie' },
-  { href: '#dla-kogo',     label: 'Dla kogo' },
-  { href: '#lidar',        label: 'LiDAR + AI' },
-  { href: '#tech-stack',   label: 'Tech Stack' },
-  { href: '#scout-demo',   label: 'Demo' },
-  { href: '#roi',          label: 'ROI' },
-  { href: '#endorsements', label: 'Partnerzy' },
-  { href: '#kontakt',      label: 'Kontakt' },
+const NAV_HREFS = [
+  { href: '#executive',    key: 'about' },
+  { href: '#dla-kogo',     key: 'forWho' },
+  { href: '#lidar',        key: 'lidar' },
+  { href: '#tech-stack',   key: 'techStack' },
+  { href: '#scout-demo',   key: 'demo' },
+  { href: '#roi',          key: 'roi' },
+  { href: '#endorsements', key: 'partners' },
+  { href: '#kontakt',      key: 'contact' },
 ];
 
-// Sections to track for active highlight
-const SECTION_IDS = NAV_LINKS.map((l) => l.href.replace('#', ''));
+const SECTION_IDS = NAV_HREFS.map(l => l.href.replace('#', ''));
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled]         = useState(false);
+  const [open, setOpen]                 = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const { lang, toggle, t } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-      // Find which section is in view
       let current = '';
       for (const id of SECTION_IDS) {
         const el = document.getElementById(id);
@@ -39,6 +39,8 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const navLinks = NAV_HREFS.map(l => ({ href: l.href, label: t.nav[l.key] }));
+
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
@@ -50,6 +52,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group flex-shrink-0">
             <div className="relative w-10 h-10">
@@ -66,8 +69,8 @@ export default function Navbar() {
           </a>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-5 xl:gap-7">
-            {NAV_LINKS.map((link) => {
+          <div className="hidden lg:flex items-center gap-5 xl:gap-6">
+            {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace('#', '');
               return (
                 <a
@@ -87,22 +90,42 @@ export default function Navbar() {
                 </a>
               );
             })}
+
+            {/* Language toggle */}
+            <button
+              onClick={toggle}
+              className="flex items-center gap-1.5 px-3 py-1.5 border border-brand-border text-gray-400 hover:border-brand-cyan/50 hover:text-brand-cyan font-mono text-xs uppercase tracking-widest transition-all duration-200"
+              title="Switch language / Zmień język"
+            >
+              <span>{lang === 'pl' ? '🇬🇧' : '🇵🇱'}</span>
+              <span>{lang === 'pl' ? 'EN' : 'PL'}</span>
+            </button>
+
             <a
               href="#kontakt"
               className="px-4 py-2 border border-brand-red text-brand-red hover:bg-brand-red hover:text-white font-display font-bold text-xs uppercase tracking-widest transition-all duration-200 whitespace-nowrap"
             >
-              Dolacz
+              {t.nav.join}
             </a>
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="lg:hidden text-white p-2"
-            aria-label="Menu"
-          >
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile: lang toggle + hamburger */}
+          <div className="lg:hidden flex items-center gap-2">
+            <button
+              onClick={toggle}
+              className="flex items-center gap-1 px-2 py-1 border border-brand-border text-gray-400 hover:text-brand-cyan font-mono text-xs transition-colors"
+            >
+              <span>{lang === 'pl' ? '🇬🇧' : '🇵🇱'}</span>
+              <span>{lang === 'pl' ? 'EN' : 'PL'}</span>
+            </button>
+            <button
+              onClick={() => setOpen(!open)}
+              className="text-white p-2"
+              aria-label="Menu"
+            >
+              {open ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -116,7 +139,7 @@ export default function Navbar() {
             className="lg:hidden bg-brand-card border-t border-brand-border"
           >
             <div className="px-4 py-4 grid grid-cols-2 gap-3">
-              {NAV_LINKS.map((link) => {
+              {navLinks.map((link) => {
                 const isActive = activeSection === link.href.replace('#', '');
                 return (
                   <a
@@ -133,9 +156,12 @@ export default function Navbar() {
                   </a>
                 );
               })}
-              <a href="#kontakt" onClick={() => setOpen(false)}
-                className="col-span-2 p-3 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest text-center hover:bg-red-700 transition-colors">
-                Dolacz do projektu &rarr;
+              <a
+                href="#kontakt"
+                onClick={() => setOpen(false)}
+                className="col-span-2 p-3 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest text-center hover:bg-red-700 transition-colors"
+              >
+                {t.nav.join} &rarr;
               </a>
             </div>
           </motion.div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUp, Mail, ChevronUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Mail, ChevronUp, LogIn } from 'lucide-react';
 
 // Scroll progress bar at top of page
 export function ScrollProgressBar() {
@@ -54,16 +55,16 @@ export function FloatingCTA() {
           exit={{ opacity: 0, y: 20 }}
           className="fixed bottom-6 right-6 z-50 flex flex-col gap-3"
         >
-          {/* Contact CTA */}
-          <motion.a
-            href="#kontakt"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-4 py-3 bg-brand-red text-white font-display font-bold text-xs uppercase tracking-widest shadow-lg shadow-brand-red/30 hover:bg-red-700 transition-colors"
-          >
-            <Mail size={14} />
-            <span className="hidden sm:inline">Dolacz</span>
-          </motion.a>
+          {/* Panel CTA */}
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/login"
+              className="flex items-center gap-2 px-4 py-3 bg-brand-cyan text-brand-dark font-display font-bold text-xs uppercase tracking-widest shadow-lg shadow-brand-cyan/20 hover:bg-cyan-300 transition-colors"
+            >
+              <LogIn size={14} />
+              <span className="hidden sm:inline">Panel</span>
+            </Link>
+          </motion.div>
 
           {/* Back to top */}
           <motion.button

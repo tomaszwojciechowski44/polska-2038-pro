@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Zap, Shield, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowDown, Zap, Shield, Globe, LogIn } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 // Animated particle dot
@@ -163,6 +164,13 @@ export default function HeroSection() {
           >
             {h.cta2}
           </a>
+          <Link
+            to="/login"
+            className="flex items-center gap-2 px-8 py-4 border-2 border-brand-cyan text-brand-cyan font-display font-bold text-lg uppercase tracking-widest hover:bg-brand-cyan hover:text-brand-dark transition-all duration-200"
+          >
+            <LogIn size={20} />
+            Panel Skautingowy
+          </Link>
         </motion.div>
 
         {/* Hero visual — LiDAR field visualization */}

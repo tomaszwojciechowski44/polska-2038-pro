@@ -104,6 +104,12 @@ export default function Navbar() {
 
             <Link
               to="/login"
+              className="flex items-center gap-1.5 px-4 py-2 bg-brand-cyan text-brand-dark hover:bg-cyan-300 font-display font-bold text-xs uppercase tracking-widest transition-all duration-200 whitespace-nowrap"
+            >
+              Panel →
+            </Link>
+            <Link
+              to="/login"
               className="px-4 py-2 border border-brand-red text-brand-red hover:bg-brand-red hover:text-white font-display font-bold text-xs uppercase tracking-widest transition-all duration-200 whitespace-nowrap"
             >
               {t.nav.join}

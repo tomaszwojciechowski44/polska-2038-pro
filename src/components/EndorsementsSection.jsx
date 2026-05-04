@@ -33,10 +33,10 @@ const ENDORSERS = [
     color: 'red',
     context: 'Instytucja Rządowa',
     quote: '"Infrastruktura #Polska2038 wpisuje się w naszą strategię SportPL2030. Pilotaż w 50 Orlikach ruszył w Q1 2026. To projekt, który może zdefiniować polską politykę sportową na dekady."',
-    subtext: 'Oficjalny profil MSiT — 19K polubień · msit.gov.pl',
+    subtext: 'Oficjalny profil MSiT — 19K polubień · gov.pl/sport',
     relevance: 'Finansowanie publiczne i infrastruktura',
-    cta: 'msit.gov.pl',
-    ctaHref: 'https://msit.gov.pl',
+    cta: 'gov.pl/sport',
+    ctaHref: 'https://www.gov.pl/sport',
     impact: [
       { val: '10 000', label: 'Orlików w Polsce' },
       { val: '80M PLN', label: 'potencjalne finansowanie' },

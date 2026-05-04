@@ -159,6 +159,11 @@ function EndorserCard({ e, index, inView }) {
     e.color === 'gold' ? 'border-brand-gold/20 bg-brand-gold/5' :
     'border-brand-red/20 bg-brand-red/5';
 
+  const colorBorderSolid = e.color === 'neon' ? 'border-brand-neon' :
+    e.color === 'cyan' ? 'border-brand-cyan' :
+    e.color === 'gold' ? 'border-brand-gold' :
+    'border-brand-red';
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -188,7 +193,7 @@ function EndorserCard({ e, index, inView }) {
         </div>
 
         {/* Quote */}
-        <blockquote className={`text-white font-display italic text-sm leading-relaxed mb-2 pl-3 border-l-2 ${colorAccent}`}>
+        <blockquote className={`text-gray-300 font-display italic text-sm leading-relaxed mb-2 pl-3 border-l-2 bg-brand-dark/40 py-2 pr-3 ${colorBorderSolid}`}>
           {e.quote}
         </blockquote>
         <div className="text-gray-600 font-mono text-[10px] mb-4">{e.subtext}</div>

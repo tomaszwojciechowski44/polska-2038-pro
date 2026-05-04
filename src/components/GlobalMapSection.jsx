@@ -86,7 +86,7 @@ function dotRadius(talents) {
 }
 
 // ─── SVG Map component ────────────────────────────────────────────────────────
-function PolandSVGMap({ selectedVoiv, onSelect }) {
+function PolandSVGMap({ selectedVoiv, onSelect, voivodeships }) {
   return (
     <svg
       viewBox="0 0 500 430"
@@ -95,7 +95,7 @@ function PolandSVGMap({ selectedVoiv, onSelect }) {
       aria-label="Interaktywna mapa Polski — sieć węzłów LiDAR Polska2038"
     >
       <defs>
-        {VOIVODESHIPS.map((_, i) => (
+        {voivodeships.map((_, i) => (
           <filter key={i} id={`glow${i}`} x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="4" result="blur" />
             <feMerge>
@@ -139,7 +139,7 @@ function PolandSVGMap({ selectedVoiv, onSelect }) {
       <path d={POLAND_PATH} fill="none" stroke="rgba(0,229,255,0.55)" strokeWidth="1.2" />
 
       {/* Voivodeship dots */}
-      {VOIVODESHIPS.map((v, i) => {
+      {voivodeships.map((v, i) => {
         const { cx, cy } = voivSVG(v);
         const isSelected = selectedVoiv === i;
         const color = isSelected ? "#00FF88" : dotColor(v.talents);
@@ -302,7 +302,7 @@ export default function GlobalMapSection() {
 
               {/* Map SVG fills remaining space */}
               <div className="flex-1 min-h-0 p-2">
-                <PolandSVGMap selectedVoiv={selectedVoiv} onSelect={setSelectedVoiv} />
+                <PolandSVGMap selectedVoiv={selectedVoiv} onSelect={setSelectedVoiv} voivodeships={VOIVODESHIPS} />
               </div>
 
               {/* Legend bar */}

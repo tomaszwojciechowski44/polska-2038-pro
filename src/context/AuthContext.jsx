@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { login as apiLogin } from '../api/client';
 
 const AuthContext = createContext(null);
@@ -53,12 +53,8 @@ export function useAuth() {
 
 export function PrivateRoute({ children }) {
   const { isAuthenticated } = useAuth();
-  const navigate = useNavigate();
-
   if (!isAuthenticated) {
-    navigate('/login', { replace: true });
-    return null;
+    return <Navigate to="/login" replace />;
   }
-
   return children;
 }

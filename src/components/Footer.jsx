@@ -1,4 +1,6 @@
-﻿export default function Footer() {
+﻿import { Link } from 'react-router-dom';
+
+export default function Footer() {
   return (
     <footer className="bg-black border-t border-brand-border py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,26 +65,26 @@
 
           {/* Links */}
           <div>
-            <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-4">Linki</div>
+            <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-4">Nawigacja</div>
             <div className="space-y-2">
               {[
-                { label: 'GitHub Repository', href: 'https://github.com/Polska-2038/projekt-polska-2038-pro' },
-                { label: 'Demo v1 — Live', href: 'https://polska-2038.github.io/projekt-polska-2038-pro' },
-                { label: 'Scout Demo — karta talentu', href: '#scout-demo' },
-                { label: 'Kalkulator ROI', href: '#roi' },
-                { label: 'Partnerstwo strategiczne', href: '#partnerzy' },
-                { label: 'Endorsementy — kto popiera', href: '#endorsements' },
-                { label: 'Media Buzz & Cytaty', href: '#media-buzz' },
-                { label: 'Media Kit / Press', href: '#media' },
-                { label: 'Kontakt z Architektem', href: '#kontakt' },
+                { label: 'Technologia', to: '/technologia' },
+                { label: 'Mapa Talentów', to: '/mapa-talentow' },
+                { label: 'Dla kogo', to: '/dla-kogo' },
+                { label: 'Wyniki i Roadmapa', to: '/wyniki' },
+                { label: 'Partnerzy', to: '/partnerzy' },
+                { label: 'O programie', to: '/o-programie' },
+                { label: 'Rejestracja zawodnika', to: '/rejestracja' },
+                { label: 'Rejestracja skauta', to: '/rejestracja/skaut' },
+                { label: 'Kontakt', to: '/kontakt' },
               ].map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.to}
                   className="block text-gray-500 hover:text-brand-neon text-sm font-mono transition-colors"
                 >
                   &rarr; {link.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -93,8 +95,8 @@
             &copy; 2025&ndash;2026 #Polska2038 v2.0. Wszelkie prawa zastrzeżone.
           </div>
           <div className="flex items-center gap-4">
-            <a href="#o-projekcie" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">Polityka prywatności</a>
-            <a href="#o-projekcie" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">MIT License</a>
+            <Link to="/o-programie" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">Polityka prywatności</Link>
+            <a href="https://github.com/Polska-2038/projekt-polska-2038-pro" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">MIT License</a>
           </div>
           <div className="flex items-center gap-2 text-gray-700 text-xs font-mono">
             <span className="w-1.5 h-1.5 bg-brand-neon rounded-full animate-pulse" />

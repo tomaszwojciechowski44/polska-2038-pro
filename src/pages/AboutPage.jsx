@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Users, Brain, MapPin, Shield, Trophy, Zap } from 'lucide-react';
+import PublicLayout from '../components/PublicLayout';
 
 const MILESTONES = [
   { year: '2024', label: 'Faza koncepcyjna', desc: 'Opracowanie metodologii identyfikacji talentów przez interdyscyplinarny zespół naukowców i trenerów kadry narodowej.' },
@@ -31,27 +32,9 @@ const fade = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#080d1a] text-white">
-      {/* Navbar */}
-      <nav className="border-b border-[#1e2d4a] bg-[#080d1a]/90 backdrop-blur sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-1">
-            <span className="text-red-500 font-display font-bold tracking-widest text-xl">#POLSKA</span>
-            <span className="text-yellow-400 font-display font-bold tracking-widest text-xl">2038</span>
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link to="/o-programie" className="text-cyan-400 font-mono text-xs uppercase tracking-widest hidden sm:block">O programie</Link>
-            <Link to="/rejestracja" className="hidden sm:block text-gray-400 hover:text-white font-mono text-xs transition-colors">Zawodnicy</Link>
-            <Link to="/rejestracja/skaut" className="hidden sm:block text-gray-400 hover:text-white font-mono text-xs transition-colors">Skauci</Link>
-            <Link to="/login" className="px-4 py-2 border border-cyan-400/40 text-cyan-400 font-mono text-xs rounded hover:bg-cyan-400/10 transition-colors">
-              Panel →
-            </Link>
-          </div>
-        </div>
-      </nav>
-
+    <PublicLayout>
       {/* Hero */}
-      <section className="relative py-20 sm:py-28 overflow-hidden">
+      <section className="relative pt-32 pb-20 sm:pt-36 sm:pb-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-400/5 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-yellow-400/5 rounded-full blur-3xl" />
@@ -246,21 +229,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-[#1e2d4a] bg-[#0d1325] py-8">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-red-500 font-display font-bold tracking-widest">#POLSKA</span>
-            <span className="text-yellow-400 font-display font-bold tracking-widest">2038</span>
-            <span className="text-gray-700 font-mono text-xs ml-2">Ministerstwo Sportu RP</span>
-          </div>
-          <div className="flex gap-4 text-gray-600 font-mono text-xs">
-            <Link to="/" className="hover:text-gray-400 transition-colors">Strona główna</Link>
-            <Link to="/rejestracja" className="hover:text-gray-400 transition-colors">Rejestracja</Link>
-            <Link to="/login" className="hover:text-gray-400 transition-colors">Logowanie</Link>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </PublicLayout>
   );
 }

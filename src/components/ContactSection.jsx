@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
 import { Mail, Building2, Globe, CheckCircle } from 'lucide-react';
@@ -89,7 +89,7 @@ export default function ContactSection() {
                 {[
                   { label: 'E-mail', val: 'kontakt@polska2038.pl', href: 'mailto:kontakt@polska2038.pl', color: 'text-brand-neon' },
                   { label: 'LinkedIn', val: 'linkedin.com/company/polska2038', href: 'https://linkedin.com/company/polska2038', color: 'text-blue-400' },
-                  { label: 'GitHub', val: 'github.com/projek-polska-2038', href: 'https://github.com/projek-polska-2038', color: 'text-gray-300' },
+                  { label: 'GitHub', val: 'github.com/Polska-2038', href: 'https://github.com/Polska-2038', color: 'text-gray-300' },
                   { label: 'X / Twitter', val: '@Polska2038', href: 'https://x.com/polska2038', color: 'text-brand-cyan' },
                 ].map(c => (
                   <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer"
@@ -102,7 +102,7 @@ export default function ContactSection() {
               <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-3 mt-4">Dokumentacja Techniczna</div>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://github.com/projek-polska-2038/polska-2038-pro"
+                  href="https://github.com/Polska-2038/projekt-polska-2038-pro"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2 border border-brand-border text-gray-300 hover:border-brand-neon hover:text-brand-neon transition-colors text-sm font-mono"
@@ -110,7 +110,7 @@ export default function ContactSection() {
                   GitHub →
                 </a>
                 <a
-                  href="https://projek-polska-2038.github.io/polska-2038-pro/"
+                  href="https://github.com/Polska-2038/projekt-polska-2038-pro"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2 border border-brand-border text-gray-300 hover:border-brand-cyan hover:text-brand-cyan transition-colors text-sm font-mono"

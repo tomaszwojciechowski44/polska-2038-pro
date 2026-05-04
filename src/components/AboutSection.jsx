@@ -182,7 +182,7 @@ export default function AboutSection() {
 						</blockquote>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
 							<a
-								href="https://github.com/projek-polska-2038/polska-2038-pro"
+								href="https://github.com/Polska-2038/projekt-polska-2038-pro"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="inline-flex items-center gap-2 px-6 py-3 border border-brand-neon text-brand-neon hover:bg-brand-neon hover:text-brand-dark font-display font-bold text-sm uppercase tracking-widest transition-all"

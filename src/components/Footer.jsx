@@ -1,4 +1,4 @@
-export default function Footer() {
+﻿export default function Footer() {
   return (
     <footer className="bg-black border-t border-brand-border py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,7 +23,7 @@ export default function Footer() {
             </p>
             <div className="flex flex-wrap gap-2">
               <a
-                href="https://github.com/projek-polska-2038/polska-2038-pro"
+                href="https://github.com/Polska-2038/projekt-polska-2038-pro"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-1.5 border border-brand-border text-gray-500 hover:border-brand-neon hover:text-brand-neon text-xs font-mono transition-colors"
@@ -66,8 +66,8 @@ export default function Footer() {
             <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-4">Linki</div>
             <div className="space-y-2">
               {[
-                { label: 'GitHub Repository', href: 'https://github.com/projek-polska-2038/polska-2038-pro' },
-                { label: 'Demo v1 — Live', href: 'https://projek-polska-2038.github.io/polska-2038-pro/' },
+                { label: 'GitHub Repository', href: 'https://github.com/Polska-2038/projekt-polska-2038-pro' },
+                { label: 'Demo v1 — Live', href: 'https://github.com/Polska-2038/projekt-polska-2038-pro' },
                 { label: 'Scout Demo — karta talentu', href: '#scout-demo' },
                 { label: 'Kalkulator ROI', href: '#roi' },
                 { label: 'Partnerstwo strategiczne', href: '#partnerzy' },

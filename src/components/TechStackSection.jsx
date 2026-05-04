@@ -121,7 +121,7 @@ export default function TechStackSection() {
             <div className="text-gray-400 font-mono text-sm">Core platform dostepny publicznie na GitHub. Transparentnosc buduje zaufanie federacji i inwestorow.</div>
           </div>
           <div className="flex gap-3 flex-wrap">
-            <a href="https://github.com/projek-polska-2038/polska-2038-pro" target="_blank" rel="noopener noreferrer"
+            <a href="https://github.com/Polska-2038/projekt-polska-2038-pro" target="_blank" rel="noopener noreferrer"
               className="px-5 py-2 bg-brand-neon text-black font-mono font-bold text-sm hover:bg-green-400 transition-colors whitespace-nowrap">
               GitHub Repository
             </a>

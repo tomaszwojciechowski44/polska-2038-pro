@@ -1,8 +1,10 @@
-﻿import { useState } from "react";
+﻿import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
 import { MapPin, Star, TrendingUp, ChevronRight, Zap } from "lucide-react";
-const TALENTS = [
+import { getTalents } from "../api/client";
+
+const TALENTS_FALLBACK = [
   { id:1, initials:"D.M.", age:14, location:"Orlik Rzeszów-Południe", region:"Podkarpacie", sport:"Piłka nożna",
     score:96, tier:"ELITE", tierColor:"neon",
     metrics:[{l:"Start 0-10m",v:98},{l:"Czas reakcji",v:94},{l:"Eksplozywność",v:97},{l:"Balans osi",v:91},{l:"Długość kroku",v:95}],
@@ -22,6 +24,31 @@ const TALENTS = [
     tags:["Bramkarz","Refleks","Zasięg ramion"],
     note:"Czas reakcji w top 3% dla rocznika 2013. Rekomendacja: natychmiastowy kontakt ze skautem Akademii." },
 ];
+
+function apiTalentToCard(t) {
+  const tierColor = t.ai_tier === "ELITE" ? "neon" : t.ai_tier === "PROSPECT" ? "cyan" : "gold";
+  return {
+    id: t.id,
+    initials: `${t.first_name?.[0] || "?"}${t.last_name_initial || ""}`,
+    age: t.age,
+    location: t.lidar_node || t.voivodeship_code,
+    region: t.voivodeship_code,
+    sport: t.sport,
+    score: t.ai_score,
+    tier: t.ai_tier,
+    tierColor,
+    metrics: [
+      { l: "Start 0-10m",   v: Math.round((t.sprint_0_10m || 7) * 10) },
+      { l: "Czas reakcji",  v: Math.round((t.reaction_time || 7) * 10) },
+      { l: "Eksplozywność", v: Math.round((t.explosiveness || 7) * 10) },
+      { l: "Balans osi",    v: Math.round((t.balance_score || 7) * 10) },
+      { l: "Technika",      v: Math.round((t.technique_score || 7) * 10) },
+    ],
+    history: t.score_history?.map((h) => h.score) || [t.ai_score],
+    tags: [t.sport, t.ai_tier, `${t.age} lat`],
+    note: t.ai_note || "Profil wygenerowany przez system Polska2038.",
+  };
+}
 function Sparkline({ data, color }) {
   const max = Math.max(...data); const min = Math.min(...data);
   const range = max - min || 1;
@@ -116,8 +143,24 @@ function TalentCard({ talent, active, onClick }) {
   );
 }
 export default function ScoutDemoSection() {
-  const [activeId, setActiveId] = useState(1);
+  const [activeId, setActiveId] = useState(null);
   const [ref, inView] = useInView(0.05);
+  const [TALENTS, setTALENTS] = useState(TALENTS_FALLBACK);
+
+  useEffect(() => {
+    getTalents({ demo: true, limit: 3 })
+      .then((res) => {
+        if (res.data && res.data.length > 0) {
+          const cards = res.data.map(apiTalentToCard);
+          setTALENTS(cards);
+          setActiveId(cards[0]?.id ?? null);
+        }
+      })
+      .catch(() => {
+        setActiveId(TALENTS_FALLBACK[0].id);
+      });
+  }, []);
+
   return (
     <section id="scout-demo" className="py-24 bg-brand-dark relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 bg-grid-pattern opacity-15" />
@@ -138,7 +181,7 @@ export default function ScoutDemoSection() {
         <div className="grid lg:grid-cols-3 gap-5">
           <div className="lg:col-span-2 space-y-4">
             <motion.div initial={{opacity:0,y:10}} animate={inView?{opacity:1,y:0}:{}}
-              className="flex items-center gap-3 p-3 border border-brand-border bg-brand-card">
+              className="flex flex-wrap items-center gap-2 p-3 border border-brand-border bg-brand-card">
               <span className="text-gray-600 text-xs font-mono">FILTR:</span>
               {["Wszyscy","ELITE (85+)","PROSPECT (70-85)"].map((f,i) => (
                 <button key={f} className={"px-3 py-1 text-xs font-mono border transition-colors "+(i===0?"border-brand-neon/50 text-brand-neon bg-brand-neon/10":"border-brand-border text-gray-500 hover:border-gray-600")}>

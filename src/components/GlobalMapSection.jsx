@@ -1,15 +1,11 @@
-﻿import { useState } from "react";
+﻿import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
 import { Globe, MapPin, TrendingUp } from "lucide-react";
+import { getVoivodeships } from "../api/client";
 
-// ─── Geographic data ──────────────────────────────────────────────────────────
-// SVG viewBox 0 0 500 430
-// Poland bounds: lon 14.0–24.2 °E, lat 49.0–54.8 °N
-// x = 28 + (lon - 14.0) * 42.35
-// y = 10 + (54.8 - lat) * 69.8
-
-const VOIVODESHIPS = [
+// ─── Static fallback data (used when API is unavailable) ──────────────────────
+const VOIVODESHIPS_FALLBACK = [
   { name: "Mazowieckie",       x: 0.574, y: 0.382, talents: 842, clubs: 124 },
   { name: "Małopolskie",       x: 0.547, y: 0.718, talents: 634, clubs:  89 },
   { name: "Śląskie",           x: 0.452, y: 0.682, talents: 721, clubs: 105 },
@@ -219,6 +215,24 @@ const WORLD_INTEREST = [
 export default function GlobalMapSection() {
   const [ref, inView] = useInView(0.08);
   const [selectedVoiv, setSelectedVoiv] = useState(0);
+  const [VOIVODESHIPS, setVOIVODESHIPS] = useState(VOIVODESHIPS_FALLBACK);
+
+  useEffect(() => {
+    getVoivodeships()
+      .then((res) => {
+        const apiData = res.data.map((v) => ({
+          name: v.name,
+          x: v.x,
+          y: v.y,
+          talents: v.talent_count,
+          clubs: Math.round(v.talent_count / 7),
+        }));
+        if (apiData.length > 0) setVOIVODESHIPS(apiData);
+      })
+      .catch(() => {
+        // Silently use fallback data when API unavailable
+      });
+  }, []);
 
   const v = VOIVODESHIPS[selectedVoiv] ?? VOIVODESHIPS[0];
   const totalTalents = VOIVODESHIPS.reduce((s, x) => s + x.talents, 0);
@@ -267,7 +281,7 @@ export default function GlobalMapSection() {
           >
             <div
               className="relative border border-brand-cyan/25 bg-[#030d0f] rounded-sm overflow-hidden flex flex-col"
-              style={{ height: "500px" }}
+              style={{ minHeight: "320px", height: "clamp(320px, 50vw, 500px)" }}
             >
               {/* Map header bar */}
               <div className="flex items-center justify-between px-4 py-2.5 border-b border-brand-cyan/15 bg-brand-cyan/5 flex-shrink-0">

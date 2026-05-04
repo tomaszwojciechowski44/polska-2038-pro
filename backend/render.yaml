@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: polska2038-api
+    env: python
+    region: frankfurt
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: polska2038-db
+          property: connectionString
+      - key: ALLOWED_ORIGINS
+        value: https://polska2038.vercel.app
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "480"
+
+databases:
+  - name: polska2038-db
+    databaseName: polska2038
+    user: polska2038
+    region: frankfurt
+    plan: free

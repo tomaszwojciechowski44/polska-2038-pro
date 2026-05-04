@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
 import { TrendingUp, Calculator, DollarSign, Users } from "lucide-react";
 const SLIDER_CONFIG = [
-  { id:"nodes", label:"Liczba wĘzłów LiDAR", min:50, max:10000, step:50, default:500, unit:"w${e}z${l}${o}w", color:"neon", icon:"📡" },
-  { id:"players", label:"Zawodników w systemie", min:1000, max:1000000, step:1000, default:50000, unit:"zawodnik${o}w", color:"cyan", icon:"👥" },
+  { id:"nodes", label:"Liczba węzłów LiDAR", min:50, max:10000, step:50, default:500, unit:"węzłów", color:"neon", icon:"📡" },
+  { id:"players", label:"Zawodników w systemie", min:1000, max:1000000, step:1000, default:50000, unit:"zawodników", color:"cyan", icon:"👥" },
   { id:"years", label:"Horyzont czasowy", min:1, max:12, step:1, default:4, unit:"lat", color:"gold", icon:"📅" },
 ];
 const COST_PER_NODE = 8000;

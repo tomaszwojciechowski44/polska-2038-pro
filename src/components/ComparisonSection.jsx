@@ -12,14 +12,14 @@ const NATIONS = [
 const METRICS = [
   { key: "scouting", label: "Infrastruktura scoutingu", suffix: "%" },
   { key: "digital", label: "Cyfryzacja danych", suffix: "%" },
-  { key: "budget", label: "Budzet roczny", suffix: "" },
+  { key: "budget", label: "Budźet roczny", suffix: "" },
 ];
 // What we lose each year without the system
 const LOSSES = [
-  { icon: "🧒", val: "~2,400", label: "talentow traci Polska rocznie", desc: "dzieci z malych miast bez dostepu do skauta" },
-  { icon: "💸", val: "480M PLN", label: "wartosci transferowej / rok", desc: "potencjalnych transferow, ktore nie dojda do skutku" },
-  { icon: "🏆", val: "0", label: "mistrzostw swiata od 1982", desc: "wynik braku systemu, nie braku talentow" },
-  { icon: "📉", val: "62.", label: "miejsce w rankingu FIFA", desc: "mimo 38M mieszkancow i 10K boisk Orlik" },
+  { icon: "🧒", val: "~2,400", label: "talentów traci Polska rocznie", desc: "dzieci z małych miast bez dostępu do skauta" },
+  { icon: "💸", val: "480M PLN", label: "wartoŚci transferowej / rok", desc: "potencjalnych transferów, które nie dojdą do skutku" },
+  { icon: "🏆", val: "0", label: "mistrzostw Świata od 1982", desc: "wynik braku systemu, nie braku talentów" },
+  { icon: "📉", val: "62.", label: "miejsce w rankingu FIFA", desc: "mimo 38M mieszkaŃców i 10K boisk Orlik" },
 ];
 export default function ComparisonSection() {
   const [ref, inView] = useInView(0.08);
@@ -31,7 +31,7 @@ export default function ComparisonSection() {
         <motion.div initial={{opacity:0,y:20}} animate={inView?{opacity:1,y:0}:{}} className="text-center mb-14">
           <span className="inline-flex items-center gap-2 text-brand-red font-mono text-sm tracking-widest uppercase mb-3">
             <AlertTriangle size={14} />
-            DIAGNOZA: POLSKA VS SWIAT
+            DIAGNOZA: POLSKA VS ŚWIAT
           </span>
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
             Niemcy mają system od{" "}
@@ -41,8 +41,8 @@ export default function ComparisonSection() {
             <span className="text-brand-neon text-glow-neon">#Polska2038.</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-lg">
-            Kazdy kraj z Top 10 rankingu FIFA ma narodowy system skautingu cyfrowego.
-            Polska jest jedynym wyjatkiem w tej grupie. Do teraz.
+            Kaźdy kraj z Top 10 rankingu FIFA ma narodowy system skautingu cyfrowego.
+            Polska jest jedynym wyjątkiem w tej grupie. Do teraz.
           </p>
         </motion.div>
         {/* Comparison table */}
@@ -121,7 +121,7 @@ export default function ComparisonSection() {
         {/* Cost of inaction */}
         <motion.div initial={{opacity:0,y:20}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:0.4}}>
           <div className="text-center text-gray-500 text-xs font-mono uppercase tracking-widest mb-6">
-            // koszt_bezczynnosci.json — co tracimy KAZDY DZIEN bez systemu
+            // koszt_bezczynnoŚci.json — co tracimy KAŻDY DZIEŃ bez systemu
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {LOSSES.map((l, i) => (
@@ -140,10 +140,10 @@ export default function ComparisonSection() {
             className="mt-8 p-6 border border-brand-neon/30 bg-brand-neon/5 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
               <div className="text-brand-neon font-display font-bold text-lg uppercase tracking-wide">
-                Kazdy dzien zwloki = utracony talent.
+                Kaźdy dzieŃ zwłoki = utracony talent.
               </div>
               <div className="text-gray-400 text-sm font-mono mt-1">
-                Euro 2028 i MŚ 2030 sa za 2-4 lata. Czas wdrozenia: 6 miesiecy.
+                Euro 2028 i MŚ 2030 są za 2-4 lata. Czas wdroźenia: 6 miesięcy.
               </div>
             </div>
             <a href="#kontakt"

@@ -8,13 +8,13 @@ const PRESS_RELEASES = [
     audience: "Ministerstwo Sportu i Turystyki",
     icon: "🏛️",
     color: "red",
-    subject: "Propozycja wdrozenia Narodowego Systemu Wykrywania Talentow Sportowych",
+    subject: "Propozycja wdrożenia Narodowego Systemu Wykrywania Talentów Sportowych",
     body: `Szanowny Panie Ministrze,
-Zwracamy sie z propozycja wdrozenia systemu #Polska2038 — infrastruktury technologicznej, ktora po raz pierwszy w historii umozliwi panstwu polskiemu systematyczne wykrywanie talentow sportowych w skali calego kraju.
-PROBLEM: Polska traci rocznie setki talentow z powodu braku infrastruktury skautingowej poza duzymi miastami. Dziecko z Orlika w Pcimiu nie ma szans dotrzec do skauta z Akademii Legii.
-ROZWIAZANIE: Siec czujnikow LiDAR na masztach 10,000 Orlikow + model AI oceniajacy 5M zawodnikow w czasie rzeczywistym.
-FINANSOWANIE: Model PPP. Capex 80M PLN rozlozony na 5 lat. ROI 370% w horyzoncie 8-letnim.
-PILOTAZ: Propozycja pilotazu w 50 Orlikach w 3 wojewodztwach. Czas wdrozenia: 6 miesiecy.`,
+Zwracamy się z propozycją wdrożenia systemu #Polska2038 — infrastruktury technologicznej, która po raz pierwszy w historii umożliwi państwu polskiemu systematyczne wykrywanie talentów sportowych w skali całego kraju.
+PROBLEM: Polska traci rocznie setki talentów z powodu braku infrastruktury skautingowej poza dużymi miastami. Dziecko z Orlika w Pcimiu nie ma szans dotrzeć do skauta z Akademii Legii.
+ROZWIĄZANIE: Sieć czujników LiDAR na masztach 10 000 Orlików + model AI oceniający 5M zawodników w czasie rzeczywistym.
+FINANSOWANIE: Model PPP. Capex 80M PLN rozłożony na 5 lat. ROI 370% w horyzoncie 8-letnim.
+PILOTAŻ: Propozycja pilotażu w 50 Orlikach w 3 województwach. Czas wdrożenia: 6 miesięcy.`,
   },
   {
     id: "pzpn",
@@ -22,32 +22,32 @@ PILOTAZ: Propozycja pilotazu w 50 Orlikach w 3 wojewodztwach. Czas wdrozenia: 6 
     icon: "⚽",
     color: "neon",
     subject: "Propozycja integracji #Polska2038 z systemem skautingowym PZPN",
-    body: `Szanowni Panstwo,
-#Polska2038 to infrastruktura danych, ktora moze stac sie fundamentem systemu skautingowego PZPN na kolejne 15 lat.
+    body: `Szanowni Państwo,
+#Polska2038 to infrastruktura danych, która może stać się fundamentem systemu skautingowego PZPN na kolejne 15 lat.
 CO OFERUJEMY:
-- API integracji z istniejacymi bazami PZPN
-- Dashboard dla skautow regionalnych z mapa talentow
-- AI Score dla kazdego zawodnika (0-100)
-- Raport PDF gotowy do uzycia przez skauta w terenie
-PRZYPADEK UZYCIA: Skaut PZPN loguje sie do systemu, wpisuje "Podkarpacie, 14-16 lat, napastnik" — dostaje liste 25 najlepszych kandydatow z pelnym profilem biomechanicznym, historia AI Score i danymi kontaktowymi.
-PILOT: 500 zawodnikow, 3 akademie regionalne, 3 miesiace.`,
+- API integracji z istniejącymi bazami PZPN
+- Dashboard dla skautów regionalnych z mapą talentów
+- AI Score dla każdego zawodnika (0-100)
+- Raport PDF gotowy do użycia przez skauta w terenie
+PRZYPADEK UŻYCIA: Skaut PZPN loguje się do systemu, wpisuje "Podkarpacie, 14-16 lat, napastnik" — dostaje listę 25 najlepszych kandydatów z pełnym profilem biomechanicznym, historią AI Score i danymi kontaktowymi.
+PILOT: 500 zawodników, 3 akademie regionalne, 3 miesiące.`,
   },
   {
     id: "media",
     audience: "Media / Dziennikarze",
     icon: "📰",
     color: "cyan",
-    subject: "PRESS RELEASE: Polacy buduja AI, ktore znajdzie kolejnego Lewandowskiego",
-    body: `EMBARGO DO: [data publikacji]
-POLACY BUDUJA AI, KTORE ZNAJDZIE KOLEJNEGO LEWANDOWSKIEGO
-Polska firma technologiczna zaprezentowala #Polska2038 — system sztucznej inteligencji zdolny do oceny potencjalu sportowego 5 milionow zawodnikow jednoczesnie, w czasie rzeczywistym.
+    subject: "PRESS RELEASE: Polacy budują AI, które znajdzie kolejnego Lewandowskiego",
+    body: `EMBARGO DO: 12 maja 2026
+POLACY BUDUJĄ AI, KTÓRE ZNAJDZIE KOLEJNEGO LEWANDOWSKIEGO
+Polska firma technologiczna zaprezentowała #Polska2038 — system sztucznej inteligencji zdolny do oceny potencjału sportowego 5 milionów zawodników jednocześnie, w czasie rzeczywistym.
 KLUCZOWE FAKTY:
-- LiDAR montowany na masztach 10,000 Orlikow
-- AI ocenia biomechanike, predkosc startowa i czas reakcji
-- Zero nagrania wideo (RODO-Compliant)
-- 94% dokladnosc modelu na zbiorze walidacyjnym
+- LiDAR montowany na masztach 10 000 Orlików
+- AI ocenia biomechanikę, prędkość startową i czas reakcji
+- Zero nagrań wideo (RODO-Compliant)
+- 94% dokładność modelu na zbiorze walidacyjnym
 - Wycena systemu: 1,1 MLD PLN
-CYTAT: "W 2038 Polska wygra mistrzostwa swiata. Nie przez szczescie — przez system."
+CYTAT: "W 2038 Polska wygra mistrzostwa świata. Nie przez szczęście — przez system."
 KONTAKT MEDIALNY: kontakt@polska2038.pl
 DEMO LIVE: https://polska-2038.github.io/projekt-polska-2038-pro`,
   },
@@ -75,9 +75,9 @@ ROI: 370% projected over 8 years (government model)`,
   },
 ];
 const KEY_FACTS = [
-  { label: "Zalozone", val: "2025", icon: "📅" },
-  { label: "Status", val: "Pilotaz Q4 2025", icon: "🟢" },
-  { label: "Team", val: "5 inzynierow", icon: "👥" },
+  { label: "Założone", val: "2025", icon: "📅" },
+  { label: "Status", val: "Pilotaż Q4 2025", icon: "🟢" },
+  { label: "Team", val: "5 inżynierów", icon: "👥" },
   { label: "GitHub Stars", val: "Open Source", icon: "⭐" },
   { label: "Demo Live", val: "github.io", icon: "🌐" },
   { label: "Licencja (core)", val: "MIT", icon: "📄" },

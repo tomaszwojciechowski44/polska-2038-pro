@@ -13,9 +13,9 @@ const TECH_LAYERS = [
 const TECH_SUMMARY = [
   { icon: "CPU", val:"6", label:"unikalnych warstw tech", color:"cyan" },
   { icon: "ZAP", val:"<50ms", label:"end-to-end latencja", color:"neon" },
-  { icon: "DB", val:"5M+", label:"profili zawodnikow", color:"gold" },
+  { icon: "DB", val:"5M+", label:"profili zawodników", color:"gold" },
   { icon: "SH", val:"ISO 27001", label:"certyfikacja bezp.", color:"red" },
-  { icon: "GL", val:"10 000", label:"wezlow edge AI", color:"cyan" },
+  { icon: "GL", val:"10 000", label:"węzłów edge AI", color:"cyan" },
   { icon: "LK", val:"GDPR Art.25", label:"privacy by design", color:"neon" },
 ];
 function TechCard({ t, index, inView }) {
@@ -118,7 +118,7 @@ export default function TechStackSection() {
           className="p-6 border border-brand-neon/30 bg-brand-neon/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <div className="text-brand-neon font-display font-bold text-lg mb-1">Open Source Core (MIT)</div>
-            <div className="text-gray-400 font-mono text-sm">Core platform dostepny publicznie na GitHub. Transparentnosc buduje zaufanie federacji i inwestorow.</div>
+            <div className="text-gray-400 font-mono text-sm">Core platform dostępny publicznie na GitHub. Transparentność buduje zaufanie federacji i inwestorów.</div>
           </div>
           <div className="flex gap-3 flex-wrap">
             <a href="https://github.com/Polska-2038/projekt-polska-2038-pro" target="_blank" rel="noopener noreferrer"

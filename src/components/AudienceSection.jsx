@@ -71,9 +71,9 @@ const AUDIENCES = [
 			'Embargo i premiera medialna — pierwsze media dostają exclusivity',
 		],
 		cta: 'Press Kit i materiały',
-		ctaHref: '#prasa',
+		ctaHref: '#media',
 		sectionLabels: ['Media Buzz', 'Press Releases', 'Demo live'],
-		sections: ['#media-buzz', '#prasa', '#scout-demo'],
+		sections: ['#media-buzz', '#media', '#scout-demo'],
 	},
 ];
 

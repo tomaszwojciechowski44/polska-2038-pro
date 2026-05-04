@@ -16,17 +16,17 @@ const TIERS = [
     benefits: [
       "Nazwa sponsora w logotypie #Polska2038",
       "Ekskluzywne prawa do nazewnictwa systemu",
-      "Logo na wszystkich materialach medialnych",
+      "Logo na wszystkich materiałach medialnych",
       "Dedykowany dashboard danych dla sponsora",
-      "Prezentacja na ceremonii inauguracji ogolnopolskiej",
-      "Pierwsze prawo do przedluzenia umowy",
-      "Bezposredni dostep do danych agregowanych",
+      "Prezentacja na ceremonii inauguracji ogólnopolskiej",
+      "Pierwsze prawo do przedłużenia umowy",
+      "Bezpośredni dostęp do danych agregowanych",
     ],
   },
   {
     id: "gold",
     name: "GOLD PARTNER",
-    subtitle: "Wspoltworzysz przyszlosc polskiego sportu.",
+    subtitle: "Współtworzysz przyszłość polskiego sportu.",
     price: "1 MLN PLN / rok",
     color: "neon",
     borderClass: "border-brand-neon",
@@ -36,17 +36,17 @@ const TIERS = [
     slots: 4,
     benefits: [
       "Logo na platformie i materiałach prasowych",
-      "Dostep do API danych (anonimizowanych)",
-      "Uczestnictwo w pilotazu regionalnym",
-      "Raport kwartalny z wynikow systemu",
-      "Mozliwosc wspol-brandingu akcji skautingowych",
+      "Dostęp do API danych (anonimizowanych)",
+      "Uczestnictwo w pilotażu regionalnym",
+      "Raport kwartalny z wyników systemu",
+      "Możliwość współ-brandingu akcji skautingowych",
       "2 miejsca na dorocznym gali talentow",
     ],
   },
   {
     id: "tech",
     name: "TECH PARTNER",
-    subtitle: "Twoja technologia napedza system.",
+    subtitle: "Twoja technologia napędza system.",
     price: "Barter technologiczny",
     color: "cyan",
     borderClass: "border-brand-cyan",
@@ -58,15 +58,15 @@ const TIERS = [
       "Logo w sekcji Tech Stack na platformie",
       "Case study i wzmianka w dokumentacji",
       "Priorytet w przetargach technologicznych",
-      "Wspolpraca R&D przy skalowaniu systemu",
+      "Współpraca R&D przy skalowaniu systemu",
       "Dostep do team developerskiego",
     ],
   },
   {
     id: "institutional",
     name: "PARTNER INSTYTUCJONALNY",
-    subtitle: "Ministerstwo, Federacja, Samorzad.",
-    price: "Program pilotazowy",
+    subtitle: "Ministerstwo, Federacja, Samorząd.",
+    price: "Program pilotażowy",
     color: "red",
     borderClass: "border-brand-red",
     bgClass: "bg-brand-red/5",
@@ -74,9 +74,9 @@ const TIERS = [
     glowClass: "border-glow-red",
     slots: 16,
     benefits: [
-      "Wdrozenie pilotazu w 5 Orlikach",
-      "500 zawodnikow w systemie przez 6 miesiecy",
-      "Pelna dokumentacja techniczna i SIWZ",
+      "Wdrożenie pilotażu w 5 Orlikach",
+      "500 zawodników w systemie przez 6 miesięcy",
+      "Pełna dokumentacja techniczna i SIWZ",
       "Raportowanie danych do instytucji",
       "Wsparcie wdrozeniowe i szkolenia",
     ],
@@ -105,11 +105,11 @@ export default function SponsorsSection() {
             PARTNERSTWO STRATEGICZNE
           </span>
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
-            Zostań Czescią{" "}
+            Zostań Częścią{" "}
             <span className="text-brand-gold text-glow-gold">Historii.</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-lg">
-            W 2038 Polska bedzie mistrzem swiata. Twoja marka moze byc przy tym od samego poczatku.
+            W 2038 Polska będzie mistrzem świata. Twoja marka może być przy tym od samego początku.
             Wybierz poziom partnerstwa.
           </p>
         </motion.div>
@@ -127,7 +127,7 @@ export default function SponsorsSection() {
                 <div className={"text-xs font-mono tracking-widest uppercase mb-2 "+tier.textClass}>{tier.name}</div>
                 <p className="text-white font-display font-bold text-sm leading-snug mb-3">{tier.subtitle}</p>
                 <div className={"text-xl font-display font-bold "+tier.textClass+" mb-1"}>{tier.price}</div>
-                <div className="text-gray-600 text-[10px] font-mono mb-5">Dostepnych miejsc: {tier.slots}</div>
+                <div className="text-gray-600 text-[10px] font-mono mb-5">Dostępnych miejsc: {tier.slots}</div>
                 <ul className="space-y-2">
                   {tier.benefits.map((b) => (
                     <li key={b} className="flex gap-2 text-xs font-mono text-gray-400">
@@ -140,7 +140,7 @@ export default function SponsorsSection() {
               <div className="p-5 pt-0">
                 <a href="#kontakt"
                   className={"block text-center py-2.5 border font-display font-bold text-xs uppercase tracking-widest transition-all "+tier.borderClass+" "+tier.textClass+" hover:bg-brand-gold/10"}>
-                  Skontaktuj sie &rarr;
+                  Skontaktuj się &rarr;
                 </a>
               </div>
             </motion.div>
@@ -161,7 +161,7 @@ export default function SponsorsSection() {
             ))}
           </div>
           <p className="text-center text-gray-700 text-[10px] font-mono mt-4">
-            * Logotypy sa przykladowe. Wspolpraca w fazie rozmow i negocjacji.
+            * Logotypy są przykładowe. Współpraca w fazie rozmów i negocjacji.
           </p>
         </motion.div>
       </div>

@@ -136,11 +136,11 @@ function NeuralCanvas() {
   );
 }
 const AI_FEATURES = [
-  { icon: "🧬", label: "EnsembleScorer v3", desc: "RandomForest + XGBoost + MLP Neural Net. Glosowanie wiekszosciowe eliminuje bias pojedynczego modelu. 94% accuracy.", color: "text-brand-neon" },
+  { icon: "🧬", label: "EnsembleScorer v3", desc: "RandomForest + XGBoost + MLP Neural Net. Głosowanie większościowe eliminuje bias pojedynczego modelu. 94% accuracy.", color: "text-brand-neon" },
   { icon: "🗺️", label: "TalentRadar PostGIS", desc: "ST_DWithin geospatial query. Skaut wpisuje lokalizacje — system zwraca TOP talenty w promieniu 50km w <200ms.", color: "text-brand-cyan" },
-  { icon: "🔍", label: "AnomalyDetector", desc: "IsolationForest flaguje dane niemozliwe (12-latek, sprint Usaina Bolta). Zero false positives w bazie produkcyjnej.", color: "text-brand-gold" },
+  { icon: "🔍", label: "AnomalyDetector", desc: "IsolationForest flaguje dane niemożliwe (12-latek, sprint Usaina Bolta). Zero false positives w bazie produkcyjnej.", color: "text-brand-gold" },
   { icon: "📝", label: "LLM NarrativeEngine", desc: "GPT-4o generuje czytelny raport: 'Jan K., 14 lat — najszybszy start w regionie. Rekomendacja: kontakt z akademia.'", color: "text-brand-red" },
-  { icon: "🔄", label: "Federated Learning", desc: "Model trenuje sie na danych bez ich centralizacji. Kazdy klub zachowuje privacy — innowacja bez precedensu w sporcie.", color: "text-brand-neon" },
+  { icon: "🔄", label: "Federated Learning", desc: "Model trenuje się na danych bez ich centralizacji. Każdy klub zachowuje privacy — innowacja bez precedensu w sporcie.", color: "text-brand-neon" },
   { icon: "⚡", label: "Real-Time Scoring", desc: "Celery worker oblicza AI Score w tle — wynik dostarczany skautowi przez WebSocket w <2 sekundy od skanu.", color: "text-brand-cyan" },
 ];
 export default function AIEngineSection() {
@@ -157,12 +157,12 @@ export default function AIEngineSection() {
             AI INTELLIGENCE ENGINE — LIVE
           </span>
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
-            Siec Neuronowa{" "}
-            <span className="text-brand-gold text-glow-gold">Ktora Nie Spi.</span>
+            Sieć Neuronowa{" "}
+            <span className="text-brand-gold text-glow-gold">Która Nie Śpi.</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-lg">
-            Podglad na zywo propagacji sygnalu przez model EnsembleScorer v3.
-            Kazda kulka to dane biomechaniczne zawodnika przemieszczajace sie przez warstwy AI.
+            Podgląd na żywo propagacji sygnału przez model EnsembleScorer v3.
+            Każda kulka to dane biomechaniczne zawodnika przemieszczające się przez warstwy AI.
           </p>
         </motion.div>
         <div className="grid lg:grid-cols-5 gap-6">

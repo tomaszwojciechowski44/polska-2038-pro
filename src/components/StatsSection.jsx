@@ -37,7 +37,12 @@ function StatCard({ stat, index }) {
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`relative bg-brand-card border ${colors.border} p-6 text-center group hover:${colors.glow} transition-all duration-300 cursor-default`}
+      className={`relative bg-brand-card border ${colors.border} p-6 text-center group transition-all duration-300 cursor-default ${
+        stat.color === 'neon' ? 'hover:border-glow-neon' :
+        stat.color === 'cyan' ? 'hover:border-glow-cyan' :
+        stat.color === 'gold' ? 'hover:border-glow-gold' :
+        'hover:border-glow-red'
+      }`}
     >
       {/* Animated corner bar */}
       <motion.div

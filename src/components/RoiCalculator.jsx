@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
 import { TrendingUp, Calculator, DollarSign, Users } from "lucide-react";
 const SLIDER_CONFIG = [
-  { id:"nodes", label:"Liczba wezlow LiDAR", min:50, max:10000, step:50, default:500, unit:"wezlow", color:"neon", icon:"📡" },
-  { id:"players", label:"Zawodnikow w systemie", min:1000, max:1000000, step:1000, default:50000, unit:"zawodnikow", color:"cyan", icon:"👥" },
+  { id:"nodes", label:"Liczba wĘzłów LiDAR", min:50, max:10000, step:50, default:500, unit:"w${e}z${l}${o}w", color:"neon", icon:"📡" },
+  { id:"players", label:"Zawodników w systemie", min:1000, max:1000000, step:1000, default:50000, unit:"zawodnik${o}w", color:"cyan", icon:"👥" },
   { id:"years", label:"Horyzont czasowy", min:1, max:12, step:1, default:4, unit:"lat", color:"gold", icon:"📅" },
 ];
 const COST_PER_NODE = 8000;
@@ -92,7 +92,7 @@ export default function RoiCalculator() {
                 <span className="text-white">{formatPLN(results.capex)}</span>
               </div>
               <div className="flex justify-between text-sm font-mono">
-                <span className="text-gray-400">OPEX ({values.years} lata)</span>
+                <span className="text-gray-400">OPEX ({values.years} lat{values.years === 1 ? "" : values.years < 5 ? "a" : ""})</span>
                 <span className="text-white">{formatPLN(results.opex)}</span>
               </div>
               <div className="pt-2 border-t border-brand-border flex justify-between text-sm font-mono">

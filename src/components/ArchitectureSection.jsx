@@ -110,7 +110,12 @@ function SidePanel({ layer, onClose }) {
               className="space-y-3"
             >
               {layer.technologies.map((tech, i) => (
-                <div key={i} className={`p-4 border ${c.border}/30 bg-brand-dark/50 hover:${c.bg} transition-colors`}>
+                <div key={i} className={`p-4 border ${c.border}/30 bg-brand-dark/50 transition-colors ${
+                  layer.color === 'neon' ? 'hover:bg-brand-neon/10' :
+                  layer.color === 'cyan' ? 'hover:bg-brand-cyan/10' :
+                  layer.color === 'gold' ? 'hover:bg-brand-gold/10' :
+                  'hover:bg-brand-red/10'
+                }`}>
                   <div className={`font-display font-bold text-sm ${c.text} uppercase tracking-wide mb-1`}>
                     {tech.name}
                   </div>

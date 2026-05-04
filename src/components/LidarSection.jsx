@@ -47,14 +47,14 @@ function LidarRadar() {
         );
       })}
       <div className="absolute top-1 left-1/2 -translate-x-1/2 text-brand-neon/50 text-[9px] font-mono">LIVE</div>
-      <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-brand-cyan/50 text-[9px] font-mono">22 zawodnikow</div>
+      <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-brand-cyan/50 text-[9px] font-mono">22 zawodników</div>
     </div>
   );
 }
 function BiomechanicsPanel({ inView }) {
   const metrics = [
     {label:"Start 0-10m",val:94},{label:"Czas reakcji",val:87},
-    {label:"Eksplozywnosc",val:96},{label:"Balans osi",val:78},{label:"Dlugosc kroku",val:91},
+    {label:"Eksplozywność",val:96},{label:"Balans osi",val:78},{label:"Długość kroku",val:91},
   ];
   return (
     <div className="p-5 border border-brand-cyan/30 bg-brand-cyan/5 space-y-3">
@@ -80,7 +80,7 @@ function BiomechanicsPanel({ inView }) {
         </div>
       ))}
       <div className="pt-2 border-t border-brand-border text-gray-600 text-[10px] font-mono">
-        Dokladnosc: 1mm | latencja: &lt;50ms | zero wideo
+        Dokładność: 1mm | latencja: &lt;50ms | zero wideo
       </div>
     </div>
   );
@@ -123,9 +123,9 @@ export default function LidarSection() {
     { num:"01", title:"Zbieranie Danych", colorClass:"text-brand-neon", borderClass:"border-brand-neon/30 bg-brand-neon/5",
       desc:"Smartfon rodzica lub wezel na maszcie Orlika. Biomechanika w milisekundach. Zero wideo.", delay:0.2 },
     { num:"02", title:"Algorytmiczny Filtr", colorClass:"text-brand-gold", borderClass:"border-brand-gold/30 bg-brand-gold/5",
-      desc:"AI odcina blad ludzki. Trener dostaje obiektywny profil - nie da sie sfalsowac na oko.", delay:0.3 },
+      desc:"AI odcina błąd ludzki. Trener dostaje obiektywny profil — nie da się sfałszować na oko.", delay:0.3 },
     { num:"03", title:"Skalowanie i ROI", colorClass:"text-brand-cyan", borderClass:"border-brand-cyan/30 bg-brand-cyan/5",
-      desc:"5M talentow w RT. Realizacja wyceny 1,1 MLD PLN przez eliminacje pustych przebiegow skautow.", delay:0.4 },
+      desc:"5M talentów w RT. Realizacja wyceny 1,1 MLD PLN przez eliminację pustych przebiegów skautów.", delay:0.4 },
   ];
   return (
     <section id="lidar" className="py-24 bg-brand-card relative overflow-hidden" ref={ref}>
@@ -135,14 +135,14 @@ export default function LidarSection() {
         <motion.div initial={{opacity:0,y:20}} animate={inView ? {opacity:1,y:0} : {}} className="text-center mb-14">
           <span className="inline-flex items-center gap-2 text-brand-neon font-mono text-sm tracking-widest uppercase mb-3">
             <Shield size={14} />
-            CASE STUDY: INFRASTRUKTURA W KAZDEJ KIESZENI
+            CASE STUDY: INFRASTRUKTURA W KAŻDEJ KIESZENI
           </span>
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
             LiDAR: <span className="text-brand-neon text-glow-neon">Dane, nie opinia.</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-lg">
-            Tradycyjny scouting opiera sie na subiektywnym oku trenera i drogich, stacjonarnych systemach.
-            Zbudowalismy rozproszona siec czujnikow LiDAR - narodowa mape talentow.
+            Tradycyjny scouting opiera się na subiektywnym oku trenera i drogich, stacjonarnych systemach.
+            Zbudowaliśmy rozproszoną sieć czujników LiDAR — narodową mapę talentów.
           </p>
         </motion.div>
         <div className="mb-14">
@@ -166,14 +166,14 @@ export default function LidarSection() {
             transition={{delay:0.25,duration:0.7}} className="space-y-5">
             <div className="relative p-6 border border-brand-neon/20 bg-brand-dark/60">
               <div className="flex items-center justify-between mb-4 text-xs font-mono">
-                <span className="text-brand-neon/70">LIDAR SCAN | Orlik Rzeszow-Poludnie</span>
+                <span className="text-brand-neon/70">LIDAR SCAN | Orlik Rzeszów-Południe</span>
                 <span className="flex items-center gap-1 text-brand-neon">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-neon animate-pulse" />LIVE
                 </span>
               </div>
               <LidarRadar />
               <div className="grid grid-cols-3 gap-2 mt-5">
-                {[{val:"<50ms",label:"Latencja"},{val:"1mm",label:"Dokladnosc"},{val:"0%",label:"Wideo"}].map((s) => (
+                {[{val:"<50ms",label:"Latencja"},{val:"1mm",label:"Dokładność"},{val:"0%",label:"Wideo"}].map((s) => (
                   <div key={s.label} className="p-2 border border-brand-border bg-brand-dark/40 text-center">
                     <div className="text-brand-neon font-mono font-bold text-sm">{s.val}</div>
                     <div className="text-gray-600 text-[10px] font-mono mt-0.5">{s.label}</div>
@@ -206,10 +206,10 @@ export default function LidarSection() {
                 </div>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed font-mono">
-                Dane z obu poziomow trafiaja do chmury #Polska2038, gdzie{" "}
-                <strong className="text-white">AI odcina blad ludzki</strong>.
-                Trener dostaje obiektywny profil zawodnika, ktorego{" "}
-                <span className="text-brand-gold">nie da sie sfalsowac na oko</span>.
+                Dane z obu poziomów trafiają do chmury #Polska2038, gdzie{" "}
+                <strong className="text-white">AI odcina błąd ludzki</strong>.
+                Trener dostaje obiektywny profil zawodnika, którego{" "}
+                <span className="text-brand-gold">nie da się sfałszować na oko</span>.
               </p>
               <div className="mt-4 grid grid-cols-2 gap-2">
                 {[

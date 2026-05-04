@@ -5,20 +5,20 @@ import { Globe, MapPin, Zap } from "lucide-react";
 // Poland voivodeships approximate centers
 const VOIVODESHIPS = [
   { name: "Mazowieckie",    x: 0.57, y: 0.38, talents: 842, clubs: 1240 },
-  { name: "Malopolskie",    x: 0.55, y: 0.72, talents: 634, clubs: 890 },
-  { name: "Slaskie",        x: 0.45, y: 0.68, talents: 721, clubs: 1050 },
+  { name: "Małopolskie",    x: 0.55, y: 0.72, talents: 634, clubs: 890 },
+  { name: "Śląskie",        x: 0.45, y: 0.68, talents: 721, clubs: 1050 },
   { name: "Wielkopolskie",  x: 0.34, y: 0.38, talents: 510, clubs: 780 },
-  { name: "Dolnoslaskie",   x: 0.22, y: 0.56, talents: 488, clubs: 710 },
-  { name: "Lodzkie",        x: 0.48, y: 0.48, talents: 396, clubs: 620 },
+  { name: "Dolnośląskie",   x: 0.22, y: 0.56, talents: 488, clubs: 710 },
+  { name: "Łódzkie",        x: 0.48, y: 0.48, talents: 396, clubs: 620 },
   { name: "Lubelskie",      x: 0.70, y: 0.55, talents: 312, clubs: 490 },
   { name: "Podkarpackie",   x: 0.68, y: 0.76, talents: 298, clubs: 440 },
   { name: "Pomorskie",      x: 0.38, y: 0.12, talents: 445, clubs: 680 },
   { name: "Kujawsko-Pom",   x: 0.40, y: 0.25, talents: 287, clubs: 430 },
-  { name: "Zachodniopom",   x: 0.18, y: 0.15, talents: 231, clubs: 380 },
+  { name: "Zachodniopom.",  x: 0.18, y: 0.15, talents: 231, clubs: 380 },
   { name: "Lubuskie",       x: 0.18, y: 0.38, talents: 178, clubs: 290 },
   { name: "Warminsko-Maz",  x: 0.62, y: 0.16, talents: 194, clubs: 320 },
   { name: "Podlaskie",      x: 0.75, y: 0.22, talents: 168, clubs: 270 },
-  { name: "Swietokrzyskie", x: 0.58, y: 0.60, talents: 201, clubs: 340 },
+  { name: "Świętokrzyskie", x: 0.58, y: 0.60, talents: 201, clubs: 340 },
   { name: "Opolskie",       x: 0.34, y: 0.60, talents: 156, clubs: 250 },
 ];
 function PolandCanvas({ selectedVoiv, onSelect }) {
@@ -99,7 +99,7 @@ function PolandCanvas({ selectedVoiv, onSelect }) {
           ctx.fillText(v.name, x, y - r - 8);
           ctx.fillStyle = "#00FF88";
           ctx.font = `${Math.max(9,W*0.012)}px JetBrains Mono, monospace`;
-          ctx.fillText(v.talents + " talentow", x, y + r + 14);
+                  ctx.fillText(v.talents + " talentów", x, y + r + 14);
         }
       });
       // Center point — "HQ"
@@ -141,9 +141,9 @@ function PolandCanvas({ selectedVoiv, onSelect }) {
   );
 }
 const WORLD_INTEREST = [
-  { country: "Niemcy", flag: "🇩🇪", status: "Obserwuje", note: "DFB zainteresowany wspolpraca tech" },
+  { country: "Niemcy", flag: "🇩🇪", status: "Obserwuje", note: "DFB zainteresowany współpracą tech" },
   { country: "Francja", flag: "🇫🇷", status: "Obserwuje", note: "FFF analizuje model LiDAR" },
-  { country: "Japonia", flag: "🇯🇵", status: "Kontakt", note: "JFA prosilo o demo systemu" },
+  { country: "Japonia", flag: "🇯🇵", status: "Kontakt", note: "JFA prosiło o demo systemu" },
   { country: "USA", flag: "🇺🇸", status: "Kontakt", note: "US Soccer Foundation — rozmowy" },
   { country: "Brazylia", flag: "🇧🇷", status: "Zainteresowany", note: "CBF — baza 120K boisk" },
   { country: "Korea Pd.", flag: "🇰🇷", status: "Demo", note: "KFA wysyla delegacje Q3 2026" },
@@ -161,15 +161,15 @@ export default function GlobalMapSection() {
         <motion.div initial={{opacity:0,y:20}} animate={inView?{opacity:1,y:0}:{}} className="text-center mb-14">
           <span className="inline-flex items-center gap-2 text-brand-cyan font-mono text-sm tracking-widest uppercase mb-3">
             <Globe size={14} />
-            TALENTRADA LIVE — POLSKA I SWIAT
+            TALENTRADA LIVE — POLSKA I ŚWIAT
           </span>
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
-            {totalTalents.toLocaleString("pl-PL")} Talentow.{" "}
-            <span className="text-brand-cyan text-glow-cyan">Zaden Nie Umknie.</span>
+            {totalTalents.toLocaleString("pl-PL")} Talentów.{" "}
+            <span className="text-brand-cyan text-glow-cyan">Żaden Nie Umknie.</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-lg">
-            Interaktywna mapa sieci LiDAR. Kliknij wojewodztwo aby zobaczyc dane.
-            System dziala na calej Polsce — 24/7.
+            Interaktywna mapa sieci LiDAR. Kliknij województwo, aby zobaczyć dane.
+            System działa na całej Polsce — 24/7.
           </p>
         </motion.div>
         <div className="grid lg:grid-cols-3 gap-6">
@@ -184,11 +184,11 @@ export default function GlobalMapSection() {
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-neon animate-pulse"/>LIVE
                 </span>
               </div>
-              <div className="absolute top-3 right-3 text-gray-600 text-[9px] font-mono">kliknij wojewodztwo</div>
+              <div className="absolute top-3 right-3 text-gray-600 text-[9px] font-mono">kliknij województwo</div>
               <PolandCanvas selectedVoiv={selectedVoiv} onSelect={setSelectedVoiv} />
               {/* Legend */}
               <div className="absolute bottom-3 left-3 flex items-center gap-4">
-                {[{c:"#00FF88",l:"800+ talentow"},{c:"#00E5FF",l:"300-800"},{c:"#FFD700",l:"<300"}].map((lg)=>(
+                {[{c:"#00FF88",l:"800+ talentów"},{c:"#00E5FF",l:"300-800"},{c:"#FFD700",l:"<300"}].map((lg)=>(
                   <div key={lg.l} className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full" style={{backgroundColor:lg.c,boxShadow:`0 0 4px ${lg.c}`}} />
                     <span className="text-[9px] font-mono text-gray-600">{lg.l}</span>
@@ -204,15 +204,15 @@ export default function GlobalMapSection() {
             <div className="p-5 border border-brand-cyan/40 bg-brand-cyan/5">
               <div className="flex items-center gap-2 mb-3">
                 <MapPin size={12} className="text-brand-cyan" />
-                <span className="text-brand-cyan text-[10px] font-mono uppercase tracking-widest">Wybrane Wojewodztwo</span>
+                <span className="text-brand-cyan text-[10px] font-mono uppercase tracking-widest">Wybrane Województwo</span>
               </div>
               <div className="text-white font-display font-bold text-xl mb-3">{v.name}</div>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  {l:"Talentow",val:v.talents,c:"text-brand-neon"},
-                  {l:"Klubow",val:v.clubs,c:"text-brand-cyan"},
+                  {l:"Talentów",val:v.talents,c:"text-brand-neon"},
+                  {l:"Klubów",val:v.clubs,c:"text-brand-cyan"},
                   {l:"AI Score avg",val:"78.4",c:"text-brand-gold"},
-                  {l:"Wezlow LiDAR",val:Math.round(v.clubs/3),c:"text-brand-red"},
+                  {l:"Węzłów LiDAR",val:Math.round(v.clubs/3),c:"text-brand-red"},
                 ].map((s)=>(
                   <div key={s.l} className="p-2 border border-brand-border bg-brand-dark/40 text-center">
                     <div className={`font-mono font-bold text-sm ${s.c}`}>{typeof s.val === "number" ? s.val.toLocaleString("pl-PL") : s.val}</div>
@@ -223,7 +223,7 @@ export default function GlobalMapSection() {
             </div>
             {/* Voivodeships list */}
             <div className="p-4 border border-brand-border bg-brand-card">
-              <div className="text-gray-600 text-[10px] font-mono uppercase tracking-widest mb-3">Top 5 Regionow</div>
+              <div className="text-gray-600 text-[10px] font-mono uppercase tracking-widest mb-3">Top 5 Regionów</div>
               <div className="space-y-1.5">
                 {[...VOIVODESHIPS].sort((a,b)=>b.talents-a.talents).slice(0,5).map((vo,i)=>(
                   <button key={vo.name} onClick={()=>setSelectedVoiv(VOIVODESHIPS.indexOf(vo))}
@@ -236,7 +236,7 @@ export default function GlobalMapSection() {
             </div>
             {/* World interest */}
             <div className="p-4 border border-brand-border bg-brand-card">
-              <div className="text-gray-600 text-[10px] font-mono uppercase tracking-widest mb-3">Zainteresowanie Swiatowe</div>
+              <div className="text-gray-600 text-[10px] font-mono uppercase tracking-widest mb-3">Zainteresowanie Światowe</div>
               <div className="space-y-2">
                 {WORLD_INTEREST.slice(0,4).map((w)=>(
                   <div key={w.country} className="flex items-center gap-2">

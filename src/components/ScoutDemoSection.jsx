@@ -3,23 +3,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
 import { MapPin, Star, TrendingUp, ChevronRight, Zap } from "lucide-react";
 const TALENTS = [
-  { id:1, initials:"D.M.", age:14, location:"Orlik Rzeszow-Poludnie", region:"Podkarpacie", sport:"Pilka nozna",
+  { id:1, initials:"D.M.", age:14, location:"Orlik Rzeszów-Południe", region:"Podkarpacie", sport:"Piłka nożna",
     score:96, tier:"ELITE", tierColor:"neon",
-    metrics:[{l:"Start 0-10m",v:98},{l:"Czas reakcji",v:94},{l:"Eksplozywnosc",v:97},{l:"Balans osi",v:91},{l:"Dlugosc kroku",v:95}],
+    metrics:[{l:"Start 0-10m",v:98},{l:"Czas reakcji",v:94},{l:"Eksplozywność",v:97},{l:"Balans osi",v:91},{l:"Długość kroku",v:95}],
     history:[72,75,78,80,84,87,91,94,96],
-    tags:["Napastnik","Leworeczny","Szybki start"],
-    note:"Najszybszy start 0-10m w regionie. Top 2% w Polsce dla rocznika 2011 sposrod 100K profili." },
-  { id:2, initials:"J.K.", age:16, location:"Orlik Tarnow-Polnoc", region:"Malopolska", sport:"Pilka nozna",
+    tags:["Napastnik","Lewonożny","Szybki start"],
+    note:"Najszybszy start 0-10m w regionie. Top 2% w Polsce dla rocznika 2011 spośród 100K profili." },
+  { id:2, initials:"J.K.", age:16, location:"Orlik Tarnów-Północ", region:"Małopolska", sport:"Piłka nożna",
     score:87, tier:"PROSPECT", tierColor:"cyan",
-    metrics:[{l:"Start 0-10m",v:85},{l:"Czas reakcji",v:88},{l:"Eksplozywnosc",v:84},{l:"Balans osi",v:90},{l:"Dlugosc kroku",v:87}],
+    metrics:[{l:"Start 0-10m",v:85},{l:"Czas reakcji",v:88},{l:"Eksplozywność",v:84},{l:"Balans osi",v:90},{l:"Długość kroku",v:87}],
     history:[65,68,71,74,77,80,83,85,87],
-    tags:["Pomocnik","Dwunozny","Wysokie IQ"],
-    note:"Staly wzrost +3 pkt/kwartl. Progresja szybsza niz 89% profili w tej grupie wiekowej." },
-  { id:3, initials:"M.W.", age:12, location:"Orlik Krakow-Nowa Huta", region:"Malopolska", sport:"Pilka nozna",
+    tags:["Pomocnik","Dwunożny","Wysokie IQ"],
+    note:"Stały wzrost +3 pkt/kwartał. Progresja szybsza niż 89% profili w tej grupie wiekowej." },
+  { id:3, initials:"M.W.", age:12, location:"Orlik Kraków-Nowa Huta", region:"Małopolska", sport:"Piłka nożna",
     score:91, tier:"ELITE", tierColor:"neon",
-    metrics:[{l:"Start 0-10m",v:92},{l:"Czas reakcji",v:89},{l:"Eksplozywnosc",v:93},{l:"Balans osi",v:88},{l:"Dlugosc kroku",v:91}],
+    metrics:[{l:"Start 0-10m",v:92},{l:"Czas reakcji",v:89},{l:"Eksplozywność",v:93},{l:"Balans osi",v:88},{l:"Długość kroku",v:91}],
     history:[70,73,76,80,83,86,88,90,91],
-    tags:["Bramkarz","Refleks","Zasiag ramion"],
+    tags:["Bramkarz","Refleks","Zasięg ramion"],
     note:"Czas reakcji w top 3% dla rocznika 2013. Rekomendacja: natychmiastowy kontakt ze skautem Akademii." },
 ];
 function Sparkline({ data, color }) {
@@ -128,11 +128,11 @@ export default function ScoutDemoSection() {
             <Zap size={14} />LIVE DEMO — TALENT DASHBOARD
           </span>
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
-            To Wlasnie <span className="text-brand-neon text-glow-neon">Widzi Skaut.</span>
+            To Właśnie <span className="text-brand-neon text-glow-neon">Widzi Skaut.</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-lg">
-            Obiektywne profile zawodnikow generowane przez AI w czasie rzeczywistym.
-            Kliknij karte aby zobaczyc pelny raport skautingowy.
+            Obiektywne profile zawodników generowane przez AI w czasie rzeczywistym.
+            Kliknij kartę, aby zobaczyć pełny raport skautingowy.
           </p>
         </motion.div>
         <div className="grid lg:grid-cols-3 gap-5">
@@ -169,7 +169,7 @@ export default function ScoutDemoSection() {
                 <motion.div className="absolute rounded-full border border-brand-neon/40"
                   style={{left:"50%",top:"50%",width:80,height:80,marginLeft:-40,marginTop:-40}}
                   animate={{scale:[1,1.5,1],opacity:[0.6,0,0.6]}} transition={{duration:3,repeat:Infinity}} />
-                <div className="absolute top-1 left-2 text-brand-neon/60 text-[9px] font-mono">MAPA TALENTOW</div>
+                <div className="absolute top-1 left-2 text-brand-neon/60 text-[9px] font-mono">MAPA TALENTÓW</div>
                 <div className="absolute bottom-1 right-2 text-gray-600 text-[9px] font-mono">50km radius</div>
               </div>
               <div className="text-gray-400 text-xs font-mono leading-relaxed">
@@ -182,8 +182,8 @@ export default function ScoutDemoSection() {
               {[
                 {label:"Aktywnych skanerow",val:"2,847",color:"text-brand-neon"},
                 {label:"Profili wygenerowanych",val:"1.2M",color:"text-brand-cyan"},
-                {label:"Raportow AI dzis",val:"48,291",color:"text-brand-gold"},
-                {label:"Skautow online",val:"341",color:"text-brand-red"},
+                {label:"Raportów AI dziś",val:"48,291",color:"text-brand-gold"},
+                {label:"Skautów online",val:"341",color:"text-brand-red"},
               ].map((s)=>(
                 <div key={s.label} className="flex justify-between items-center">
                   <span className="text-gray-500 text-xs font-mono">{s.label}</span>
@@ -193,10 +193,10 @@ export default function ScoutDemoSection() {
             </div>
             <div className="p-5 border border-brand-red/30 bg-brand-red/5 text-center">
               <TrendingUp size={24} className="text-brand-red mx-auto mb-3" />
-              <div className="text-white font-display font-bold text-sm uppercase tracking-wide mb-2">Twoj klub nastepny?</div>
-              <p className="text-gray-400 text-xs font-mono mb-4 leading-relaxed">Program pilotazowy: 5 Orlikow, 500 zawodnikow, 6 miesiecy.</p>
+              <div className="text-white font-display font-bold text-sm uppercase tracking-wide mb-2">Twój klub następny?</div>
+              <p className="text-gray-400 text-xs font-mono mb-4 leading-relaxed">Program pilotażowy: 5 Orlików, 500 zawodników, 6 miesięcy.</p>
               <a href="#kontakt" className="block py-2.5 bg-brand-red text-white font-display font-bold text-xs uppercase tracking-widest hover:bg-red-700 transition-colors">
-                Zglos klub &rarr;
+                Zgłoś klub &rarr;
               </a>
             </div>
           </motion.div>

@@ -8,7 +8,7 @@ const MEDIA_LOGOS = [
   { name: "Przegląd Sportowy", emoji: "📰", country: "PL" },
   { name: "ESPN", emoji: "🎙️", country: "US" },
   { name: "BBC Sport", emoji: "📻", country: "UK" },
-  { name: "L Equipe", emoji: "📰", country: "FR" },
+  { name: "L'Ęquipe", emoji: "📰", country: "FR" },
   { name: "TechCrunch", emoji: "💻", country: "US" },
   { name: "Wired", emoji: "💻", country: "US" },
   { name: "Forbes", emoji: "💼", country: "US" },
@@ -221,7 +221,7 @@ export default function MediaBuzzSection() {
           </div>
           <div className="flex gap-3 flex-wrap">
             <a href="#kontakt" className="px-5 py-2 bg-brand-cyan text-black font-mono font-bold text-sm hover:bg-cyan-400 transition-colors">Press Kit</a>
-            <a href="#prasa" className="px-5 py-2 border border-brand-cyan text-brand-cyan font-mono text-sm hover:bg-brand-cyan/10 transition-colors flex items-center gap-2">
+            <a href="#media" className="px-5 py-2 border border-brand-cyan text-brand-cyan font-mono text-sm hover:bg-brand-cyan/10 transition-colors flex items-center gap-2">
               Press Releases <ExternalLink size={12} />
             </a>
           </div>

@@ -12,9 +12,9 @@ const STATUS_STYLES = {
 
 // Urgency milestones
 const MILESTONES = [
-  { label: 'Pilotaz #Polska2038', date: 'Q4 2025', done: true },
-  { label: 'JESTESMY TUTAJ', date: 'Maj 2026', active: true },
-  { label: 'Wdrozenie 500 Orlikow', date: 'Q2 2027', done: false },
+  { label: 'Pilotaż #Polska2038', date: 'Q4 2025', done: true },
+  { label: 'JESTEŚMY TUTAJ', date: 'Maj 2026', active: true },
+  { label: 'Wdrożenie 500 Orlików', date: 'Q2 2027', done: false },
   { label: 'Euro 2028 — selekcja kadry', date: '2028', done: false, urgent: true },
   { label: 'MŚ 2030 — deadline systemu', date: '2030', done: false, urgent: true },
   { label: '#Polska2038 — FINAL', date: '2038', done: false, vision: true },
@@ -35,17 +35,17 @@ function UrgencyBanner() {
           <Clock size={20} className="text-brand-red flex-shrink-0" />
           <div>
             <div className="text-brand-red font-display font-bold text-lg uppercase tracking-wide">
-              Okno wdrozeniowe zamyka sie
+              Okno wdrożeniowe zamyka się
             </div>
             <div className="text-gray-400 text-sm font-mono">
-              Aby zdazyc z pilotazem przed Euro 2028 — dzialamy teraz.
+              Aby zdążyć z pilotażem przed Euro 2028 — działamy teraz.
             </div>
           </div>
         </div>
         <div className="flex gap-4">
           {[
             { val: daysLeft.toLocaleString('pl-PL'), label: 'dni do Euro 2028', color: 'text-brand-red' },
-            { val: monthsLeft, label: 'miesiecy na pilotaz', color: 'text-brand-gold' },
+            { val: monthsLeft, label: 'miesięcy na pilotaż', color: 'text-brand-gold' },
             { val: '6', label: 'mies. wdrozenie', color: 'text-brand-neon' },
           ].map((c) => (
             <div key={c.label} className="text-center">

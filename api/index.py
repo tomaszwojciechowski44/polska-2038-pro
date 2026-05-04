@@ -12,12 +12,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from jose import jwt, JWTError
-from passlib.context import CryptContext
-
 SECRET_KEY = os.getenv("SECRET_KEY", "polska2038-vercel-demo-secret-2026-xK9mP")
 ALGORITHM = "HS256"
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 security = HTTPBearer(auto_error=False)
 
 app = FastAPI(title="Polska2038 API", version="1.0.0")
@@ -137,10 +134,8 @@ def health():
 @app.post("/api/auth/login")
 def login(data: LoginReq):
     user = _USERS.get(data.email)
-    if not user or not pwd_context.verify(data.password, pwd_context.hash(user["pw"])):
-        # fast path without real hash to avoid timeout
-        if not user or data.password != user["pw"]:
-            raise HTTPException(status_code=401, detail="Nieprawidłowy e-mail lub hasło.")
+    if not user or data.password != user["pw"]:
+        raise HTTPException(status_code=401, detail="Nieprawidłowy e-mail lub hasło.")
     token = _create_token(data.email, user["role"], user["id"])
     return {"access_token": token, "token_type": "bearer"}
 

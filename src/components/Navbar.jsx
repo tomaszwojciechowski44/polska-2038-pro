@@ -3,17 +3,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
-  { href: '#problem',    label: 'Problem' },
-  { href: '#porownanie', label: 'PL vs Świat' },
-  { href: '#lidar',      label: 'LiDAR' },
-  { href: '#ai-engine',  label: 'AI Engine' },
-  { href: '#mapa',       label: 'Mapa' },
-  { href: '#scout-demo', label: 'Demo' },
-  { href: '#roi',        label: 'ROI' },
-  { href: '#roadmap',    label: 'Roadmap' },
-  { href: '#partnerzy',  label: 'Partnerzy' },
-  { href: '#media',      label: 'Media' },
-  { href: '#kontakt',    label: 'Kontakt' },
+  { href: '#problem',      label: 'Problem' },
+  { href: '#porownanie',   label: 'PL vs Świat' },
+  { href: '#lidar',        label: 'LiDAR' },
+  { href: '#ai-engine',    label: 'AI Engine' },
+  { href: '#mapa',         label: 'Mapa' },
+  { href: '#scout-demo',   label: 'Demo' },
+  { href: '#architektura',   label: 'Architektura' },
+  { href: '#tech-stack',     label: 'Tech Stack' },
+  { href: '#roi',            label: 'ROI' },
+  { href: '#roadmap',      label: 'Roadmap' },
+  { href: '#partnerzy',    label: 'Partnerzy' },
+  { href: '#endorsements', label: 'Endorsementy' },
+  { href: '#media-buzz',   label: 'Media' },
+  { href: '#kontakt',      label: 'Kontakt' },
 ];
 
 // Sections to track for active highlight

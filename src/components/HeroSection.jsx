@@ -120,6 +120,28 @@ export default function HeroSection() {
           ))}
         </motion.div>
 
+        {/* Social proof bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.95 }}
+          className="mb-8 flex flex-wrap justify-center gap-3"
+        >
+          {[
+            { emoji: '⚽', name: 'PZPN', detail: 'rozmowy o pilotażu', color: 'text-brand-neon' },
+            { emoji: '🏛️', name: 'MSiT', detail: 'pilotaż 50 Orlików', color: 'text-brand-red' },
+            { emoji: '🏆', name: 'UEFA', detail: 'obserwuje projekt', color: 'text-brand-gold' },
+            { emoji: '🌍', name: 'FIFA', detail: 'kontakt Q1 2026', color: 'text-brand-cyan' },
+            { emoji: '⭐', name: 'Lewandowski', detail: 'ambasador projektu', color: 'text-brand-gold' },
+          ].map(p => (
+            <div key={p.name} className="flex items-center gap-1.5 px-3 py-1.5 border border-brand-border/60 bg-brand-card/40 backdrop-blur-sm">
+              <span className="text-sm">{p.emoji}</span>
+              <span className={`font-mono font-bold text-xs ${p.color}`}>{p.name}</span>
+              <span className="text-gray-600 font-mono text-[10px]">— {p.detail}</span>
+            </div>
+          ))}
+        </motion.div>
+
         {/* CTA buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

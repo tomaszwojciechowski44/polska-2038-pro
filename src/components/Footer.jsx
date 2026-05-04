@@ -21,7 +21,7 @@ export default function Footer() {
               Narodowy System Operacyjny Polskiego Sportu.<br />
               LiDAR + AI + PostGIS. Zaden talent nie umknie.
             </p>
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-2">
               <a
                 href="https://github.com/projek-polska-2038/polska-2038-pro"
                 target="_blank"
@@ -31,12 +31,20 @@ export default function Footer() {
                 GitHub
               </a>
               <a
-                href="https://x.com"
+                href="https://x.com/polska2038"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-1.5 border border-brand-border text-gray-500 hover:border-brand-cyan hover:text-brand-cyan text-xs font-mono transition-colors"
               >
                 X / Twitter
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 border border-brand-border text-gray-500 hover:border-blue-500 hover:text-blue-400 text-xs font-mono transition-colors"
+              >
+                LinkedIn
               </a>
             </div>
           </div>
@@ -63,7 +71,9 @@ export default function Footer() {
                 { label: 'Scout Demo — karta talentu', href: '#scout-demo' },
                 { label: 'Kalkulator ROI', href: '#roi' },
                 { label: 'Partnerstwo strategiczne', href: '#partnerzy' },
-                { label: 'Media Kit / Press', href: '#media' },
+                { label: 'Endorsementy — kto popiera', href: '#endorsements' },
+                { label: 'Media Buzz & Cytaty', href: '#media-buzz' },
+                { label: 'Media Kit / Press', href: '#prasa' },
                 { label: 'Kontakt z Architektem', href: '#kontakt' },
               ].map((link) => (
                 <a

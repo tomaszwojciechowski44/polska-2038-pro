@@ -9,10 +9,13 @@ import AIEngineSection from './components/AIEngineSection';
 import GlobalMapSection from './components/GlobalMapSection';
 import ScoutDemoSection from './components/ScoutDemoSection';
 import ArchitectureSection from './components/ArchitectureSection';
+import TechStackSection from './components/TechStackSection';
 import RoiCalculator from './components/RoiCalculator';
 import RoadmapSection from './components/RoadmapSection';
 import SponsorsSection from './components/SponsorsSection';
 import PressSection from './components/PressSection';
+import EndorsementsSection from './components/EndorsementsSection';
+import MediaBuzzSection from './components/MediaBuzzSection';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
@@ -32,9 +35,12 @@ export default function App() {
       <GlobalMapSection />
       <ScoutDemoSection />
       <ArchitectureSection />
+      <TechStackSection />
       <RoiCalculator />
       <RoadmapSection />
       <SponsorsSection />
+      <EndorsementsSection />
+      <MediaBuzzSection />
       <PressSection />
       <AboutSection />
       <ContactSection />

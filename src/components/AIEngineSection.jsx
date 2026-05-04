@@ -11,15 +11,17 @@ function NeuralCanvas() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
+    // Layers shifted right (x: 0.25..0.92) to leave room for input labels on the left
     const LAYERS = [
-      { n: 6,  label: "INPUT",   color: "#00FF88", x: 0.10 },
-      { n: 8,  label: "HIDDEN1", color: "#00E5FF", x: 0.30 },
-      { n: 8,  label: "HIDDEN2", color: "#00E5FF", x: 0.50 },
-      { n: 6,  label: "HIDDEN3", color: "#FFD700", x: 0.70 },
-      { n: 3,  label: "OUTPUT",  color: "#DC143C", x: 0.90 },
+      { n: 6, label: "INPUT",   color: "#00FF88", x: 0.25 },
+      { n: 8, label: "HIDN 1", color: "#00E5FF", x: 0.42 },
+      { n: 8, label: "HIDN 2", color: "#00E5FF", x: 0.58 },
+      { n: 6, label: "HIDN 3", color: "#FFD700", x: 0.74 },
+      { n: 3, label: "OUTPUT", color: "#DC143C", x: 0.90 },
     ];
-    const INPUT_LABELS  = ["Sprint 0-10m","Reakcja","Balans","Eksplozyw.","Technika","Historia"];
-    const OUTPUT_LABELS = ["ELITE","PROSPECT","MONITOR"];
+    const INPUT_LABELS  = ["Sprint 0-10m", "Reakcja", "Balans", "Eksplozywn.", "Technika", "Historia"];
+    const OUTPUT_LABELS = ["ELITE", "PROSPECT", "MONITOR"];
+
     function getNodes(W, H) {
       return LAYERS.map((l) => {
         const gap = H / (l.n + 1);
@@ -29,28 +31,36 @@ function NeuralCanvas() {
         }));
       });
     }
+
     function draw() {
-      const W = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      const H = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-      ctx.scale(1, 1);
+      // Proper HiDPI scaling — coordinates in CSS pixels
+      const dpr = window.devicePixelRatio || 1;
+      const W = canvas.offsetWidth;
+      const H = canvas.offsetHeight;
+      canvas.width  = W * dpr;
+      canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
       ctx.clearRect(0, 0, W, H);
       const nodes = getNodes(W, H);
       const { t, pulses } = stateRef.current;
-      // Draw connections
+
+      // Connections
       for (let li = 0; li < nodes.length - 1; li++) {
         for (const a of nodes[li]) {
           for (const b of nodes[li + 1]) {
-            const alpha = 0.04 + 0.04 * Math.sin(t * 0.7 + a.nodeIdx + b.nodeIdx);
+            const alpha = 0.05 + 0.05 * Math.sin(t * 0.7 + a.nodeIdx + b.nodeIdx);
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
             ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-            ctx.lineWidth = 0.6;
+            ctx.lineWidth = 0.7;
             ctx.stroke();
           }
         }
       }
-      // Draw pulses (traveling dots on connections)
+
+      // Pulses
       const alivePulses = [];
       for (const p of pulses) {
         p.progress += 0.018;
@@ -64,23 +74,22 @@ function NeuralCanvas() {
         ctx.arc(px, py, 3, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
         ctx.shadowColor = p.color;
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 10;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
       stateRef.current.pulses = alivePulses;
-      // Spawn new pulses
       if (Math.random() < 0.12) {
         const li = Math.floor(Math.random() * (nodes.length - 1));
-        const fn = Math.floor(Math.random() * nodes[li].length);
-        const tn = Math.floor(Math.random() * nodes[li + 1].length);
         stateRef.current.pulses.push({
           fromLayer: li, toLayer: li + 1,
-          fromNode: fn, toNode: tn,
+          fromNode: Math.floor(Math.random() * nodes[li].length),
+          toNode: Math.floor(Math.random() * nodes[li + 1].length),
           progress: 0, color: LAYERS[li].color,
         });
       }
-      // Draw nodes
+
+      // Nodes
       for (const layer of nodes) {
         for (const n of layer) {
           const pulse = 1 + 0.15 * Math.sin(t * 1.5 + n.nodeIdx * 0.8 + n.layerIdx);
@@ -91,36 +100,40 @@ function NeuralCanvas() {
           ctx.lineWidth = 1.5;
           ctx.fill();
           ctx.stroke();
-          // glow
           ctx.beginPath();
           ctx.arc(n.x, n.y, 12 * pulse, 0, Math.PI * 2);
           ctx.fillStyle = n.color + "11";
           ctx.fill();
         }
       }
-      // Input labels
-      const fs = Math.max(9, W * 0.012);
-      ctx.font = `${fs}px JetBrains Mono, monospace`;
-      ctx.fillStyle = "#00FF8899";
+
+      // Input labels — drawn with enough left margin (first layer at x=0.25*W)
+      const fs = Math.max(11, W * 0.018);
+      ctx.font = `bold ${fs}px JetBrains Mono, monospace`;
+      ctx.fillStyle = "rgba(0,255,136,0.85)";
       ctx.textAlign = "right";
       nodes[0].forEach((n, i) => {
-        ctx.fillText(INPUT_LABELS[i] || "", n.x - 14, n.y + 4);
+        ctx.fillText(INPUT_LABELS[i] || "", n.x - 16, n.y + 4);
       });
+
       // Output labels
+      ctx.font = `bold ${fs}px JetBrains Mono, monospace`;
       ctx.textAlign = "left";
       nodes[nodes.length - 1].forEach((n, i) => {
-        const colors = ["#00FF88","#00E5FF","#FFD700"];
+        const colors = ["#00FF88", "#00E5FF", "#FFD700"];
         ctx.fillStyle = colors[i] || "#fff";
+        ctx.shadowColor = colors[i] || "#fff";
+        ctx.shadowBlur = 6;
         ctx.fillText(OUTPUT_LABELS[i] || "", n.x + 14, n.y + 4);
+        ctx.shadowBlur = 0;
       });
-      // Layer labels
+
+      // Layer labels at bottom
       ctx.textAlign = "center";
-      ctx.fillStyle = "#ffffff22";
-      const labelFs = Math.max(8, W * 0.009);
-      ctx.font = `${labelFs}px JetBrains Mono, monospace`;
-      LAYERS.forEach((l) => {
-        ctx.fillText(l.label, l.x * W, H - 8);
-      });
+      ctx.fillStyle = "rgba(255,255,255,0.25)";
+      ctx.font = `${Math.max(9, W * 0.013)}px JetBrains Mono, monospace`;
+      LAYERS.forEach((l) => ctx.fillText(l.label, l.x * W, H - 10));
+
       stateRef.current.t += 0.025;
       animRef.current = requestAnimationFrame(draw);
     }
@@ -131,6 +144,7 @@ function NeuralCanvas() {
     <canvas
       ref={canvasRef}
       className="w-full h-full"
+      aria-label="Wizualizacja sieci neuronowej EnsembleScorer v3 — propagacja sygnału w czasie rzeczywistym"
       style={{ display: "block" }}
     />
   );
@@ -139,7 +153,7 @@ const AI_FEATURES = [
   { icon: "🧬", label: "EnsembleScorer v3", desc: "RandomForest + XGBoost + MLP Neural Net. Głosowanie większościowe eliminuje bias pojedynczego modelu. 94% accuracy.", color: "text-brand-neon" },
   { icon: "🗺️", label: "TalentRadar PostGIS", desc: "ST_DWithin geospatial query. Skaut wpisuje lokalizacje — system zwraca TOP talenty w promieniu 50km w <200ms.", color: "text-brand-cyan" },
   { icon: "🔍", label: "AnomalyDetector", desc: "IsolationForest flaguje dane niemożliwe (12-latek, sprint Usaina Bolta). Zero false positives w bazie produkcyjnej.", color: "text-brand-gold" },
-  { icon: "📝", label: "LLM NarrativeEngine", desc: "GPT-4o generuje czytelny raport: 'Jan K., 14 lat — najszybszy start w regionie. Rekomendacja: kontakt z akademia.'", color: "text-brand-red" },
+  { icon: "📝", label: "LLM NarrativeEngine", desc: "GPT-4o generuje czytelny raport: 'Jan K., 14 lat — najszybszy start w regionie. Rekomendacja: kontakt z akademią.'", color: "text-brand-red" },
   { icon: "🔄", label: "Federated Learning", desc: "Model trenuje się na danych bez ich centralizacji. Każdy klub zachowuje privacy — innowacja bez precedensu w sporcie.", color: "text-brand-neon" },
   { icon: "⚡", label: "Real-Time Scoring", desc: "Celery worker oblicza AI Score w tle — wynik dostarczany skautowi przez WebSocket w <2 sekundy od skanu.", color: "text-brand-cyan" },
 ];

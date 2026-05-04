@@ -139,8 +139,8 @@ export const STATS = [
   { value: '10K', label: 'Zintegrowanych klubów', icon: '🏟️', color: 'cyan' },
   { value: '22', label: 'Zawodników/węzeł/sekundy', icon: '⚡', color: 'gold' },
   { value: '94%', label: 'Accuracy modelu AI', icon: '🎯', color: 'red' },
-  { value: '1.1B', label: 'PLN – realizowana wartość', icon: '💰', color: 'neon' },
-  { value: '370%', label: 'Projected ROI', icon: '📈', color: 'gold' },
+  { value: '1.1 MLD', label: 'PLN – realizowana wartość', icon: '💰', color: 'neon' },
+  { value: '370%', label: 'ROI (model rządowy, 8 lat)', icon: '📈', color: 'gold' },
 ];
 
 export const LIDAR_LEVELS = [
@@ -168,8 +168,8 @@ export const LIDAR_LEVELS = [
 ];
 
 export const ROADMAP = [
-  { phase: 'Q4 2025', title: 'Foundation', items: ['Architektura systemu', 'Pilotaż 50 Orlików', 'Walidacja modelu AI'], status: 'done' },
-  { phase: 'Q2 2026', title: 'Scale', items: ['500 węzłów LiDAR', 'Integracja PZPN', 'Dashboard dla federacji'], status: 'active' },
+  { phase: 'Q4 2025', title: 'Foundation', items: ['Architektura systemu', 'Walidacja modelu AI', 'Uruchomienie pilotażu'], status: 'done' },
+  { phase: 'Q2 2026', title: 'Scale', items: ['Pilotaż 50 Orlików', '500 węzłów LiDAR', 'Integracja PZPN', 'Dashboard dla federacji'], status: 'active' },
   { phase: 'Q4 2026', title: 'National', items: ['10,000 węzłów', '1M zawodników', 'Federated Learning'], status: 'planned' },
   { phase: 'Q2 2028', title: 'Europa', items: ['Eksport modelu do UEFA', '5M+ profili', 'LLM Scouting Reports'], status: 'planned' },
   { phase: '2038', title: 'Cel Strategiczny', items: ['MŚ 2038 z polskim kapitałem talentów', 'Suwerenność sportowa PL'], status: 'vision' },

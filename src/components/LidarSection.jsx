@@ -47,7 +47,7 @@ function LidarRadar() {
         );
       })}
       <div className="absolute top-1 left-1/2 -translate-x-1/2 text-brand-neon/50 text-[9px] font-mono">LIVE</div>
-      <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-brand-cyan/50 text-[9px] font-mono">22 zawodników</div>
+      <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-brand-cyan/50 text-[9px] font-mono">8 zawodników</div>
     </div>
   );
 }

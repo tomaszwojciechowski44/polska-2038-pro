@@ -217,7 +217,7 @@ export default function HeroSection() {
             LIDAR SCAN • LIVE
           </div>
           <div className="absolute top-3 right-3 font-mono text-xs text-brand-neon/70">
-            18 ZAWODNIKÓW AKTYWNYCH
+            8 ZAWODNIKÓW AKTYWNYCH
           </div>
           <div className="absolute bottom-3 left-3 font-mono text-xs text-brand-cyan/70">
             Orlik Rzeszów-Południe • 50.0°N 22.0°E

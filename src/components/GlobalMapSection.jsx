@@ -146,7 +146,7 @@ const WORLD_INTEREST = [
   { country: "Japonia", flag: "🇯🇵", status: "Kontakt", note: "JFA prosiło o demo systemu" },
   { country: "USA", flag: "🇺🇸", status: "Kontakt", note: "US Soccer Foundation — rozmowy" },
   { country: "Brazylia", flag: "🇧🇷", status: "Zainteresowany", note: "CBF — baza 120K boisk" },
-  { country: "Korea Pd.", flag: "🇰🇷", status: "Demo", note: "KFA wysyla delegacje Q3 2026" },
+  { country: "Korea Pd.", flag: "🇰🇷", status: "Demo", note: "KFA wysyła delegację Q3 2026" },
 ];
 export default function GlobalMapSection() {
   const [ref, inView] = useInView(0.08);
@@ -164,13 +164,17 @@ export default function GlobalMapSection() {
             TALENTRADA LIVE — POLSKA I ŚWIAT
           </span>
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
-            {totalTalents.toLocaleString("pl-PL")} Talentów.{" "}
-            <span className="text-brand-cyan text-glow-cyan">Żaden Nie Umknie.</span>
+            {totalTalents.toLocaleString("pl-PL")} Talentów{" "}
+            <span className="text-brand-cyan text-glow-cyan">w pilotażu.</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-lg">
-            Interaktywna mapa sieci LiDAR. Kliknij województwo, aby zobaczyć dane.
-            System działa na całej Polsce — 24/7.
+            Interaktywna mapa sieci LiDAR — dane pilotażowe (docelowo 5 mln zawodników).
+            Kliknij województwo, aby zobaczyć szczegóły.
           </p>
+          <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 border border-brand-cyan/30 bg-brand-cyan/5 text-brand-cyan/70 text-xs font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse" />
+            DANE PILOTAŻOWE — faza Q2 2026 — docelowa skala: 5 000 000 zawodników
+          </div>
         </motion.div>
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Map */}

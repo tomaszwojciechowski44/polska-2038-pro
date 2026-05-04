@@ -12,9 +12,9 @@ const STATUS_STYLES = {
 
 // Urgency milestones
 const MILESTONES = [
-  { label: 'Pilotaż #Polska2038', date: 'Q4 2025', done: true },
+  { label: 'Architektura systemu', date: 'Q4 2025', done: true },
   { label: 'JESTEŚMY TUTAJ', date: 'Maj 2026', active: true },
-  { label: 'Wdrożenie 500 Orlików', date: 'Q2 2027', done: false },
+  { label: '500 węzłów LiDAR', date: 'Q2 2026', done: false },
   { label: 'Euro 2028 — selekcja kadry', date: '2028', done: false, urgent: true },
   { label: 'MŚ 2030 — deadline systemu', date: '2030', done: false, urgent: true },
   { label: '#Polska2038 — FINAL', date: '2038', done: false, vision: true },

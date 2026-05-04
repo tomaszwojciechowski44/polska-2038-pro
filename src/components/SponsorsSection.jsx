@@ -40,7 +40,7 @@ const TIERS = [
       "Uczestnictwo w pilotażu regionalnym",
       "Raport kwartalny z wyników systemu",
       "Możliwość współ-brandingu akcji skautingowych",
-      "2 miejsca na dorocznym gali talentow",
+      "2 miejsca na dorocznej gali talentów",
     ],
   },
   {
@@ -59,7 +59,7 @@ const TIERS = [
       "Case study i wzmianka w dokumentacji",
       "Priorytet w przetargach technologicznych",
       "Współpraca R&D przy skalowaniu systemu",
-      "Dostep do team developerskiego",
+      "Dostęp do team developerskiego",
     ],
   },
   {

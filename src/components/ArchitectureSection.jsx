@@ -182,27 +182,41 @@ function LayerBar({ layer, isActive, onClick, index }) {
       {/* Left accent bar */}
       <div className={`absolute left-0 top-0 bottom-0 w-1 ${c.line}`} />
 
-      <div className="flex items-center gap-4 p-5 pl-6">
-        {/* Icon */}
-        <div className={`w-12 h-12 flex items-center justify-center text-2xl flex-shrink-0 border ${
-          isActive ? `${c.border} ${c.bg}` : 'border-brand-border'
-        }`}>
-          {layer.icon}
+      <div className="p-4 pl-6 sm:p-5 sm:pl-6">
+        {/* Main row */}
+        <div className="flex items-center gap-3 sm:gap-4">
+          {/* Icon */}
+          <div className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-xl sm:text-2xl flex-shrink-0 border ${
+            isActive ? `${c.border} ${c.bg}` : 'border-brand-border'
+          }`}>
+            {layer.icon}
+          </div>
+
+          {/* Content — flex-1 min-w-0 ensures text truncates instead of overflowing */}
+          <div className="flex-1 min-w-0 overflow-hidden">
+            <div className={`text-xs font-mono tracking-widest uppercase mb-0.5 ${c.text}`}>
+              {layer.label}
+            </div>
+            <div className={`text-base sm:text-lg font-display font-bold truncate ${isActive ? c.text : 'text-white'} leading-tight`}>
+              {layer.title}
+            </div>
+            <div className="text-gray-500 text-xs font-mono mt-0.5 truncate">{layer.subtitle}</div>
+          </div>
+
+          {/* KPI */}
+          <div className="text-right flex-shrink-0">
+            <div className={`text-lg sm:text-xl font-display font-bold ${c.text}`}>{layer.kpi}</div>
+          </div>
+
+          {/* Arrow */}
+          <ChevronRight
+            size={18}
+            className={`flex-shrink-0 transition-transform ${isActive ? `rotate-90 ${c.text}` : 'text-gray-600'}`}
+          />
         </div>
 
-        {/* Content */}
-        <div className="flex-1 min-w-0">
-          <div className={`text-xs font-mono tracking-widest uppercase mb-0.5 ${c.text}`}>
-            {layer.label}
-          </div>
-          <div className={`text-lg font-display font-bold ${isActive ? c.text : 'text-white'} leading-tight`}>
-            {layer.title}
-          </div>
-          <div className="text-gray-500 text-xs font-mono mt-0.5">{layer.subtitle}</div>
-        </div>
-
-        {/* Tech tags - hidden on mobile */}
-        <div className="hidden lg:flex flex-wrap gap-1 max-w-xs">
+        {/* Tech tags — own row below the main row, never overlaps */}
+        <div className="hidden sm:flex flex-wrap gap-1 mt-2 ml-13 sm:ml-16">
           {layer.technologies.slice(0, 3).map((tech) => (
             <span
               key={tech.name}
@@ -212,17 +226,6 @@ function LayerBar({ layer, isActive, onClick, index }) {
             </span>
           ))}
         </div>
-
-        {/* KPI */}
-        <div className="text-right flex-shrink-0">
-          <div className={`text-xl font-display font-bold ${c.text}`}>{layer.kpi}</div>
-        </div>
-
-        {/* Arrow */}
-        <ChevronRight
-          size={18}
-          className={`flex-shrink-0 transition-transform ${isActive ? `rotate-90 ${c.text}` : 'text-gray-600'}`}
-        />
       </div>
     </motion.div>
   );

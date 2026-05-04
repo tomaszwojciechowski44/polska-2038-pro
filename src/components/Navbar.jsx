@@ -3,19 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
-  { href: '#problem',      label: 'Problem' },
-  { href: '#porownanie',   label: 'PL vs Świat' },
-  { href: '#lidar',        label: 'LiDAR' },
-  { href: '#ai-engine',    label: 'AI Engine' },
-  { href: '#mapa',         label: 'Mapa' },
+  { href: '#executive',    label: 'O systemie' },
+  { href: '#dla-kogo',     label: 'Dla kogo' },
+  { href: '#lidar',        label: 'LiDAR + AI' },
+  { href: '#tech-stack',   label: 'Tech Stack' },
   { href: '#scout-demo',   label: 'Demo' },
-  { href: '#architektura',   label: 'Architektura' },
-  { href: '#tech-stack',     label: 'Tech Stack' },
-  { href: '#roi',            label: 'ROI' },
-  { href: '#roadmap',      label: 'Roadmap' },
-  { href: '#partnerzy',    label: 'Partnerzy' },
-  { href: '#endorsements', label: 'Endorsementy' },
-  { href: '#media-buzz',   label: 'Media' },
+  { href: '#roi',          label: 'ROI' },
+  { href: '#endorsements', label: 'Partnerzy' },
   { href: '#kontakt',      label: 'Kontakt' },
 ];
 

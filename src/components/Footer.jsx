@@ -90,7 +90,11 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-brand-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-gray-700 text-xs font-mono">
-            &copy; 2025&ndash;2038 #Polska2038 v2.0. Wszelkie prawa zastrzezone.
+            &copy; 2025&ndash;2026 #Polska2038 v2.0. Wszelkie prawa zastrzeżone.
+          </div>
+          <div className="flex items-center gap-4">
+            <a href="#o-projekcie" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">Polityka prywatności</a>
+            <a href="#o-projekcie" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">MIT License</a>
           </div>
           <div className="flex items-center gap-2 text-gray-700 text-xs font-mono">
             <span className="w-1.5 h-1.5 bg-brand-neon rounded-full animate-pulse" />

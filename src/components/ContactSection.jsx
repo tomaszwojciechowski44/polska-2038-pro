@@ -84,7 +84,22 @@ export default function ContactSection() {
             ))}
 
             <div className="pt-4 border-t border-brand-border">
-              <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-3">Dokumentacja Techniczna</div>
+              <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-3">Dane Kontaktowe</div>
+              <div className="space-y-2 mb-4">
+                {[
+                  { label: 'E-mail', val: 'kontakt@polska2038.pl', href: 'mailto:kontakt@polska2038.pl', color: 'text-brand-neon' },
+                  { label: 'LinkedIn', val: 'linkedin.com/company/polska2038', href: 'https://linkedin.com/company/polska2038', color: 'text-blue-400' },
+                  { label: 'GitHub', val: 'github.com/projek-polska-2038', href: 'https://github.com/projek-polska-2038', color: 'text-gray-300' },
+                  { label: 'X / Twitter', val: '@Polska2038', href: 'https://x.com/polska2038', color: 'text-brand-cyan' },
+                ].map(c => (
+                  <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-3 group">
+                    <span className="text-gray-600 font-mono text-[10px] w-16 flex-shrink-0">{c.label}:</span>
+                    <span className={`font-mono text-xs group-hover:underline ${c.color}`}>{c.val}</span>
+                  </a>
+                ))}
+              </div>
+              <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-3 mt-4">Dokumentacja Techniczna</div>
               <div className="flex flex-wrap gap-3">
                 <a
                   href="https://github.com/projek-polska-2038/polska-2038-pro"

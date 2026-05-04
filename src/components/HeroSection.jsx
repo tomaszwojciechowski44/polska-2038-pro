@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, Zap, Shield, Globe } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 // Animated particle dot
 function Particle({ x, y, delay, color }) {
@@ -23,6 +24,8 @@ const PARTICLES = [
 ];
 
 export default function HeroSection() {
+  const { t } = useLanguage();
+  const h = t.hero;
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-brand-dark">
       {/* Grid background */}
@@ -52,7 +55,7 @@ export default function HeroSection() {
         >
           <span className="w-2 h-2 bg-brand-neon rounded-full animate-pulse" />
           <span className="text-brand-neon font-mono text-xs tracking-widest uppercase">
-            Narodowy OS Sportu &mdash; LiDAR + AI + PostGIS &bull; v2.0
+            {h.badge}
           </span>
         </motion.div>
 
@@ -64,10 +67,10 @@ export default function HeroSection() {
           className="font-display font-bold leading-none mb-4"
         >
           <span className="block text-5xl sm:text-7xl lg:text-9xl text-white">
-            #POLSKA
+            {h.h1a}
           </span>
           <span className="block text-5xl sm:text-7xl lg:text-9xl text-brand-red text-glow-red">
-            2038
+            {h.h1b}
           </span>
         </motion.h1>
 
@@ -78,9 +81,9 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-xl sm:text-2xl lg:text-3xl font-display font-medium text-gray-300 mb-6 tracking-wide"
         >
-          Dane.{' '}
-          <span className="text-brand-neon text-glow-neon">Sztuczna Inteligencja.</span>{' '}
-          Równe Szanse.
+          {h.tagline1}{' '}
+          <span className="text-brand-neon text-glow-neon">{h.tagline2}</span>{' '}
+          {h.tagline3}
         </motion.p>
 
         {/* Sub description */}
@@ -90,8 +93,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-mono"
         >
-          Narodowy system wykrywania talentów — od 6-latka na Orliku po kadrę narodową.
-          LiDAR + AI = żaden talent z małej wsi nie umknie systemowi.
+          {h.sub}
         </motion.p>
 
         {/* Pill stats */}
@@ -131,7 +133,7 @@ export default function HeroSection() {
             { emoji: '⚽', name: 'PZPN', detail: 'rozmowy o pilotażu', color: 'text-brand-neon' },
             { emoji: '🏛️', name: 'MSiT', detail: 'pilotaż 50 Orlików', color: 'text-brand-red' },
             { emoji: '🏆', name: 'UEFA', detail: 'obserwuje projekt', color: 'text-brand-gold' },
-            { emoji: '🌍', name: 'FIFA', detail: 'kontakt Q1 2026', color: 'text-brand-cyan' },
+            { emoji: '🌍', name: 'FIFA', detail: 'kontakt nawiązany', color: 'text-brand-cyan' },
             { emoji: '⭐', name: 'Lewandowski', detail: 'ambasador projektu', color: 'text-brand-gold' },
           ].map(p => (
             <div key={p.name} className="flex items-center gap-1.5 px-3 py-1.5 border border-brand-border/60 bg-brand-card/40 backdrop-blur-sm">
@@ -153,13 +155,13 @@ export default function HeroSection() {
             href="#architektura"
             className="px-8 py-4 bg-brand-red text-white font-display font-bold text-lg uppercase tracking-widest hover:bg-red-700 transition-all duration-200 border-glow-red"
           >
-            Zobacz Architekturę
+            {h.cta1}
           </a>
           <a
             href="#lidar"
             className="px-8 py-4 border-2 border-brand-neon text-brand-neon font-display font-bold text-lg uppercase tracking-widest hover:bg-brand-neon hover:text-brand-dark transition-all duration-200"
           >
-            LiDAR Case Study
+            {h.cta2}
           </a>
         </motion.div>
 

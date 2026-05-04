@@ -166,7 +166,7 @@ export default function LidarSection() {
             transition={{delay:0.25,duration:0.7}} className="space-y-5">
             <div className="relative p-6 border border-brand-neon/20 bg-brand-dark/60">
               <div className="flex items-center justify-between mb-4 text-xs font-mono">
-                <span className="text-brand-neon/70">LIDAR SCAN | Orlik Rzeszów-Południe</span>
+                <span className="text-brand-neon/70">LIDAR SCAN | Orlik Rzeszów-Południe • 50.0°N 22.0°E</span>
                 <span className="flex items-center gap-1 text-brand-neon">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-neon animate-pulse" />LIVE
                 </span>

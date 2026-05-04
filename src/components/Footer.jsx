@@ -67,7 +67,7 @@
             <div className="space-y-2">
               {[
                 { label: 'GitHub Repository', href: 'https://github.com/Polska-2038/projekt-polska-2038-pro' },
-                { label: 'Demo v1 — Live', href: 'https://github.com/Polska-2038/projekt-polska-2038-pro' },
+                { label: 'Demo v1 — Live', href: 'https://polska-2038.github.io/projekt-polska-2038-pro' },
                 { label: 'Scout Demo — karta talentu', href: '#scout-demo' },
                 { label: 'Kalkulator ROI', href: '#roi' },
                 { label: 'Partnerstwo strategiczne', href: '#partnerzy' },

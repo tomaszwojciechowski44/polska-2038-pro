@@ -49,7 +49,7 @@ KLUCZOWE FAKTY:
 - Wycena systemu: 1,1 MLD PLN
 CYTAT: "W 2038 Polska wygra mistrzostwa swiata. Nie przez szczescie — przez system."
 KONTAKT MEDIALNY: kontakt@polska2038.pl
-DEMO LIVE: https://github.com/Polska-2038/projekt-polska-2038-pro`,
+DEMO LIVE: https://polska-2038.github.io/projekt-polska-2038-pro`,
   },
   {
     id: "investor",

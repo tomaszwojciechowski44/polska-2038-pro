@@ -33,6 +33,23 @@ export const login = (email, password) =>
 export const register = (data) =>
   apiClient.post('/api/auth/register', data);
 
+// Public registrations
+export const registerUser = (data) =>
+  apiClient.post('/api/register/user', data);
+
+export const registerScout = (data) =>
+  apiClient.post('/api/register/scout', data);
+
+// Admin
+export const getAdminStats = () =>
+  apiClient.get('/api/admin/stats');
+
+export const getAdminRegUsers = () =>
+  apiClient.get('/api/admin/registrations/users');
+
+export const getAdminRegScouts = () =>
+  apiClient.get('/api/admin/registrations/scouts');
+
 // Talents
 export const getTalents = (params) =>
   apiClient.get('/api/talents', { params });

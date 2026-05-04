@@ -5,7 +5,7 @@ Self-contained: no database, demo data hardcoded, JWT auth with test credentials
 import os
 import random
 from datetime import datetime, timedelta
-from typing import Optional
+from typing import Optional, List
 
 from fastapi import FastAPI, HTTPException, Depends, status
 from fastapi.middleware.cors import CORSMiddleware
@@ -121,10 +121,41 @@ def _require_user(creds: HTTPAuthorizationCredentials = Depends(security)):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token nieprawidłowy.")
     return payload
 
+# ── In-memory registrations (demo) ──────────────────────────────────────────
+_REG_USERS: List[dict] = []
+_REG_SCOUTS: List[dict] = []
+
 # ── Schemas ──────────────────────────────────────────────────────────────────
 class LoginReq(BaseModel):
     email: str
     password: str
+
+class UserRegisterReq(BaseModel):
+    first_name: str
+    last_name: str
+    email: str
+    phone: str
+    birth_year: int
+    sport: str
+    position: Optional[str] = None
+    club: Optional[str] = None
+    voivodeship: str
+    city: str
+    achievements: Optional[str] = None
+    consent: bool = True
+
+class ScoutRegisterReq(BaseModel):
+    first_name: str
+    last_name: str
+    email: str
+    phone: str
+    organization: str
+    role_title: str
+    experience_years: int
+    sports_specialty: str
+    voivodeships: List[str]
+    motivation: Optional[str] = None
+    consent: bool = True
 
 # ── Routes ──────────────────────────────────────────────────────────────────
 @app.get("/api/health")
@@ -142,6 +173,62 @@ def login(data: LoginReq):
 @app.post("/api/auth/register")
 def register(data: LoginReq):
     raise HTTPException(status_code=400, detail="Rejestracja wyłączona w trybie demo.")
+
+@app.post("/api/register/user", status_code=201)
+def register_user(data: UserRegisterReq):
+    if any(r["email"] == data.email for r in _REG_USERS):
+        raise HTTPException(status_code=409, detail="Ten adres e-mail jest już zarejestrowany w systemie.")
+    entry = data.model_dump()
+    entry["id"] = len(_REG_USERS) + 1
+    entry["registered_at"] = datetime.utcnow().isoformat() + "Z"
+    entry["status"] = "pending"
+    _REG_USERS.append(entry)
+    return {
+        "message": "Rejestracja przyjęta pomyślnie. Skautingowy koordynator regionalny skontaktuje się z Tobą w ciągu 5 dni roboczych.",
+        "id": entry["id"],
+        "reference": f"P2038-U-{entry['id']:04d}"
+    }
+
+@app.post("/api/register/scout", status_code=201)
+def register_scout(data: ScoutRegisterReq):
+    if any(r["email"] == data.email for r in _REG_SCOUTS):
+        raise HTTPException(status_code=409, detail="Ten adres e-mail jest już zarejestrowany w systemie.")
+    entry = data.model_dump()
+    entry["id"] = len(_REG_SCOUTS) + 1
+    entry["registered_at"] = datetime.utcnow().isoformat() + "Z"
+    entry["status"] = "pending_approval"
+    _REG_SCOUTS.append(entry)
+    return {
+        "message": "Wniosek o akredytację skauty przyjęty. Dział weryfikacji skontaktuje się z Tobą w ciągu 3 dni roboczych.",
+        "id": entry["id"],
+        "reference": f"P2038-S-{entry['id']:04d}"
+    }
+
+@app.get("/api/admin/stats")
+def admin_stats(user=Depends(_require_user)):
+    if user.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Brak uprawnień administratora.")
+    total = len(_TALENTS)
+    elite = sum(1 for t in _TALENTS if t["ai_tier"] == "ELITE")
+    avg = round(sum(t["ai_score"] for t in _TALENTS) / total, 1) if total else 0
+    return {
+        "total_talents": total, "elite_count": elite, "avg_score": avg,
+        "voivodeships": 16, "registered_users": len(_REG_USERS),
+        "registered_scouts": len(_REG_SCOUTS),
+        "pending_approvals": sum(1 for s in _REG_SCOUTS if s["status"] == "pending_approval"),
+    }
+
+@app.get("/api/admin/registrations/users")
+def admin_reg_users(user=Depends(_require_user)):
+    if user.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Brak uprawnień administratora.")
+    return _REG_USERS
+
+@app.get("/api/admin/registrations/scouts")
+def admin_reg_scouts(user=Depends(_require_user)):
+    if user.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Brak uprawnień administratora.")
+    return _REG_SCOUTS
 
 @app.get("/api/voivodeships")
 def voivodeships():

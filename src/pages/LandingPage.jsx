@@ -1,7 +1,6 @@
 import { LanguageProvider } from '../context/LanguageContext';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
-import ScoutPortalSection from '../components/ScoutPortalSection';
 import ExecutiveSummarySection from '../components/ExecutiveSummarySection';
 import AudienceSection from '../components/AudienceSection';
 import StatsSection from '../components/StatsSection';
@@ -33,7 +32,6 @@ export default function LandingPage() {
         <ScrollProgressBar />
         <Navbar />
         <HeroSection />
-        <ScoutPortalSection />
         <ExecutiveSummarySection />
         <AudienceSection />
         <StatsSection />

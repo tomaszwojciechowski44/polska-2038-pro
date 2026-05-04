@@ -138,27 +138,22 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Demo credentials */}
-          <div className="mt-6 p-4 border border-brand-border bg-brand-dark/60 rounded-sm">
-            <div className="text-gray-600 font-mono text-[10px] uppercase tracking-widest mb-2">
-              Konta testowe
-            </div>
-            <div className="space-y-1 text-xs font-mono">
-              <div className="flex items-center gap-2">
-                <span className="text-brand-neon/60 text-[10px]">SKAUT</span>
-                <span className="text-gray-400">skaut@polska2038.pl</span>
-                <span className="text-gray-600 ml-auto">haslo123</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-brand-gold/60 text-[10px]">ADMIN</span>
-                <span className="text-gray-400">admin@polska2038.pl</span>
-                <span className="text-gray-600 ml-auto">admin123</span>
-              </div>
-            </div>
+          {/* Registration links */}
+          <div className="mt-6 border-t border-brand-border pt-5 space-y-2 text-center">
+            <p className="text-gray-600 font-mono text-xs">
+              Nie masz konta?{' '}
+              <Link to="/rejestracja" className="text-brand-cyan hover:text-cyan-300 transition-colors">
+                Zarejestruj zawodnika
+              </Link>
+              {' '}lub{' '}
+              <Link to="/rejestracja/skaut" className="text-brand-gold hover:text-yellow-300 transition-colors">
+                zostań skautem
+              </Link>
+            </p>
           </div>
 
           {/* Back to landing */}
-          <div className="mt-5 text-center">
+          <div className="mt-3 text-center">
             <Link
               to="/"
               className="text-gray-600 hover:text-brand-cyan font-mono text-xs transition-colors"

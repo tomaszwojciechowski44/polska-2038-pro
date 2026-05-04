@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const NAV_HREFS = [
@@ -17,9 +17,16 @@ const NAV_HREFS = [
 
 const SECTION_IDS = NAV_HREFS.map(l => l.href.replace('#', ''));
 
+const PAGES_DROPDOWN = [
+  { to: '/o-programie', label: 'O programie' },
+  { to: '/rejestracja', label: 'Rejestracja zawodnika' },
+  { to: '/rejestracja/skaut', label: 'Rejestracja skauta' },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled]         = useState(false);
   const [open, setOpen]                 = useState(false);
+  const [pagesOpen, setPagesOpen]        = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const { lang, toggle, t } = useLanguage();
 
@@ -70,14 +77,46 @@ export default function Navbar() {
           </a>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-5 xl:gap-6">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-5">
+            {/* Pages dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setPagesOpen((v) => !v)}
+                onBlur={() => setTimeout(() => setPagesOpen(false), 150)}
+                className="flex items-center gap-1 font-display font-medium tracking-wide transition-colors text-xs uppercase text-gray-400 hover:text-brand-neon"
+              >
+                Strony <ChevronDown size={12} className={`transition-transform ${pagesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              <AnimatePresence>
+                {pagesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    className="absolute top-full left-0 mt-2 w-52 bg-brand-card border border-brand-border rounded shadow-xl z-50"
+                  >
+                    {PAGES_DROPDOWN.map((p) => (
+                      <Link
+                        key={p.to}
+                        to={p.to}
+                        onClick={() => setPagesOpen(false)}
+                        className="block px-4 py-2.5 text-gray-400 hover:text-white hover:bg-brand-dark font-mono text-xs transition-colors"
+                      >
+                        {p.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace('#', '');
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative font-display font-medium tracking-wide transition-colors text-xs xl:text-sm uppercase pb-0.5 ${
+                  className={`relative font-display font-medium tracking-wide transition-colors text-xs uppercase pb-0.5 ${
                     isActive ? 'text-brand-neon' : 'text-gray-400 hover:text-brand-neon'
                   }`}
                 >
@@ -109,7 +148,7 @@ export default function Navbar() {
               Panel →
             </Link>
             <Link
-              to="/login"
+              to="/rejestracja"
               className="px-4 py-2 border border-brand-red text-brand-red hover:bg-brand-red hover:text-white font-display font-bold text-xs uppercase tracking-widest transition-all duration-200 whitespace-nowrap"
             >
               {t.nav.join}
@@ -163,8 +202,24 @@ export default function Navbar() {
                   </a>
                 );
               })}
+              <div className="col-span-2 border-t border-brand-border pt-3 mt-1 space-y-2">
+                <p className="text-gray-600 font-mono text-[10px] uppercase tracking-widest">Podstrony</p>
+                {PAGES_DROPDOWN.map((p) => (
+                  <Link key={p.to} to={p.to} onClick={() => setOpen(false)}
+                    className="block p-2 border border-brand-border text-gray-300 hover:text-brand-cyan hover:border-brand-cyan/40 font-mono text-xs transition-colors">
+                    {p.label}
+                  </Link>
+                ))}
+              </div>
               <Link
                 to="/login"
+                onClick={() => setOpen(false)}
+                className="col-span-2 p-3 bg-brand-cyan text-brand-dark font-display font-bold text-sm uppercase tracking-widest text-center hover:bg-cyan-300 transition-colors"
+              >
+                Panel →
+              </Link>
+              <Link
+                to="/rejestracja"
                 onClick={() => setOpen(false)}
                 className="col-span-2 p-3 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest text-center hover:bg-red-700 transition-colors"
               >

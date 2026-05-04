@@ -58,3 +58,14 @@ export function PrivateRoute({ children }) {
   }
   return children;
 }
+
+export function AdminRoute({ children }) {
+  const { isAuthenticated, user } = useAuth();
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  if (user?.role !== 'admin') {
+    return <Navigate to="/panel" replace />;
+  }
+  return children;
+}

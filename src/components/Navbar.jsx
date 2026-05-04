@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -101,12 +102,12 @@ export default function Navbar() {
               <span>{lang === 'pl' ? 'EN' : 'PL'}</span>
             </button>
 
-            <a
-              href="#kontakt"
+            <Link
+              to="/login"
               className="px-4 py-2 border border-brand-red text-brand-red hover:bg-brand-red hover:text-white font-display font-bold text-xs uppercase tracking-widest transition-all duration-200 whitespace-nowrap"
             >
               {t.nav.join}
-            </a>
+            </Link>
           </div>
 
           {/* Mobile: lang toggle + hamburger */}
@@ -156,13 +157,13 @@ export default function Navbar() {
                   </a>
                 );
               })}
-              <a
-                href="#kontakt"
+              <Link
+                to="/login"
                 onClick={() => setOpen(false)}
                 className="col-span-2 p-3 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest text-center hover:bg-red-700 transition-colors"
               >
                 {t.nav.join} &rarr;
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

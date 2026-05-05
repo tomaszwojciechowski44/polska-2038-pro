@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Users, Brain, MapPin, Shield, Trophy, Zap } from 'lucide-react';
 import PublicLayout from '../components/PublicLayout';
+import FaqSection from '../components/FaqSection';
 
 const MILESTONES = [
   { year: '2024', label: 'Faza koncepcyjna', desc: 'Opracowanie metodologii identyfikacji talentów przez interdyscyplinarny zespół naukowców i trenerów kadry narodowej.' },
@@ -13,12 +14,12 @@ const MILESTONES = [
 ];
 
 const TEAM = [
-  { name: 'dr hab. Anna Wiśniewska', role: 'Dyrektor Programu', dept: 'Ministerstwo Sportu RP', avatar: 'AW' },
-  { name: 'prof. Marek Jankowski', role: 'Główny Naukowiec', dept: 'AWF Warszawa', avatar: 'MJ' },
-  { name: 'Tomasz Krawczyk', role: 'Architekt Systemu', dept: 'Dział Technologiczny', avatar: 'TK' },
-  { name: 'dr Karolina Zając', role: 'Kierownik ds. Danych', dept: 'GUS · Sekcja Sportu', avatar: 'KZ' },
-  { name: 'Michał Adamski', role: 'Koordynator Krajowy', dept: 'Sieć Skautów', avatar: 'MA' },
-  { name: 'Barbara Nowak', role: 'Kierownik Prawny', dept: 'Departament Prawny', avatar: 'BN' },
+  { name: 'Inicjatywa Obywatelska', role: 'Koncepcja i Architektura', dept: 'Projekt społeczny · Polska', avatar: '🇵🇱' },
+  { name: 'Otwarty Kod', role: 'Platforma technologiczna', dept: 'Open-source · GitHub', avatar: '💻' },
+  { name: 'Sieć Wolontariuszy', role: 'Metodologia AI & Sport', dept: 'Interdyscyplinarny zespół', avatar: '🧠' },
+  { name: 'Eksperci PZPN', role: 'Doradztwo merytoryczne', dept: 'Zaproszeni konsultanci', avatar: '⚽' },
+  { name: 'Rodzice & Trenerzy', role: 'Testy pilotażowe', dept: 'Wolontariusze 4 województw', avatar: '🏃' },
+  { name: 'Ty możesz dołączyć', role: 'Twoja rola TBD', dept: 'Aplikuj przez /kontakt', avatar: '✉️' },
 ];
 
 const PRINCIPLES = [
@@ -52,9 +53,9 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-gray-400 text-lg font-mono leading-relaxed max-w-2xl">
-              #Polska2038 to pierwszy w Europie ogólnopolski system identyfikacji talentów sportowych
+              #Polska2038 to pierwszy w Europie projekt systemu identyfikacji talentów sportowych
               oparty na skanowaniu LiDAR, analizie biomechanicznej i uczeniu maszynowym.
-              Inicjatywa Ministerstwa Sportu Rzeczypospolitej Polskiej.
+              Inicjatywa obywatelska — prezentowana Ministerstwu Sportu RP i PZPN.
             </p>
           </motion.div>
         </div>
@@ -181,9 +182,16 @@ export default function AboutPage() {
       {/* Team */}
       <section className="py-16 sm:py-20 bg-[#0d1325]">
         <div className="max-w-6xl mx-auto px-4">
-          <motion.div {...fade} className="mb-10">
+          <motion.div {...fade} className="mb-4">
             <span className="text-cyan-400 font-mono text-xs uppercase tracking-widest">Zespół</span>
-            <h2 className="text-3xl font-display font-bold text-white mt-2">Kierownictwo programu</h2>
+            <h2 className="text-3xl font-display font-bold text-white mt-2">Kto za tym stoi?</h2>
+          </motion.div>
+          <motion.div {...fade} className="mb-10">
+            <p className="text-gray-400 font-mono text-sm leading-relaxed max-w-3xl">
+              #Polska2038 to inicjatywa obywatelska — projekt przygotowany przez pasjonatów sportu,
+              technologii i danych. Nie jesteśmy urzędnikami. Chcemy, żeby Polska wygrała Mistrzostwa Świata
+              w 2038. Cały kod jest open-source. Szukamy partnerów: Ministerstwa Sportu, PZPN, UEFA i inwestorów.
+            </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {TEAM.map(({ name, role, dept, avatar }, i) => (
@@ -203,6 +211,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <FaqSection />
 
       {/* CTA */}
       <section className="py-16 sm:py-20">

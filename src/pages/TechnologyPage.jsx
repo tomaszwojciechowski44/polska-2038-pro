@@ -4,6 +4,7 @@ import AIEngineSection from '../components/AIEngineSection';
 import TechStackSection from '../components/TechStackSection';
 import ArchitectureSection from '../components/ArchitectureSection';
 import LiveSystemSection from '../components/LiveSystemSection';
+import GitHubDocsEmbed from '../components/GitHubDocsEmbed';
 
 export default function TechnologyPage() {
   return (
@@ -16,6 +17,7 @@ export default function TechnologyPage() {
       <TechStackSection />
       <ArchitectureSection />
       <LiveSystemSection />
+      <GitHubDocsEmbed />
     </PublicLayout>
   );
 }

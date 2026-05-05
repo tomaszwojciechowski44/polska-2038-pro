@@ -1,4 +1,5 @@
-﻿import { motion } from 'framer-motion';
+﻿import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
 import { GitBranch, ExternalLink, Heart } from 'lucide-react';
 
@@ -190,13 +191,13 @@ export default function AboutSection() {
 								<GitBranch size={16} />
 								GitHub Repository
 							</a>
-							<a
-								href="#kontakt"
+							<Link
+								to="/kontakt"
 								className="inline-flex items-center gap-2 px-6 py-3 bg-brand-red text-white hover:bg-red-700 font-display font-bold text-sm uppercase tracking-widest transition-all"
 							>
 								<ExternalLink size={16} />
 								Dołącz do Projektu
-							</a>
+							</Link>
 						</div>
 					</div>
 				</motion.div>

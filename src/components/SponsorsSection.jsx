@@ -1,4 +1,5 @@
-﻿import { motion } from "framer-motion";
+﻿import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
 import { Star, Building2, Globe, Zap } from "lucide-react";
 const TIERS = [
@@ -138,10 +139,10 @@ export default function SponsorsSection() {
                 </ul>
               </div>
               <div className="p-5 pt-0">
-                <a href="#kontakt"
+                <Link to="/kontakt"
                   className={"block text-center py-2.5 border font-display font-bold text-xs uppercase tracking-widest transition-all "+tier.borderClass+" "+tier.textClass+" hover:bg-brand-gold/10"}>
                   Skontaktuj się &rarr;
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}

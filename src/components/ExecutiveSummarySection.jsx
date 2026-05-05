@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
 import { Target, TrendingUp, Globe2, Award, Cpu, Users } from 'lucide-react';
@@ -131,12 +132,12 @@ export default function ExecutiveSummarySection() {
             Koszt zaniechania: utrata kolejnego pokolenia talentów z małych miast.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <a href="#partnerzy" className="px-8 py-3 bg-brand-gold text-black font-display font-bold text-sm uppercase tracking-widest hover:brightness-110 transition-all">
+            <Link to="/partnerzy" className="px-8 py-3 bg-brand-gold text-black font-display font-bold text-sm uppercase tracking-widest hover:brightness-110 transition-all">
               Zostań Partnerem
-            </a>
-            <a href="#kontakt" className="px-8 py-3 border-2 border-brand-gold text-brand-gold font-display font-bold text-sm uppercase tracking-widest hover:bg-brand-gold/10 transition-all">
+            </Link>
+            <Link to="/kontakt" className="px-8 py-3 border-2 border-brand-gold text-brand-gold font-display font-bold text-sm uppercase tracking-widest hover:bg-brand-gold/10 transition-all">
               Umów Demo
-            </a>
+            </Link>
           </div>
         </motion.div>
 

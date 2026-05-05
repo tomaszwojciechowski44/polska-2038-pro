@@ -1,4 +1,5 @@
-﻿import { motion } from "framer-motion";
+﻿import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
 import { AlertTriangle, TrendingUp } from "lucide-react";
 // Comparison data: Poland vs top nations
@@ -146,10 +147,10 @@ export default function ComparisonSection() {
                 Euro 2028 i MŚ 2030 są za 2-4 lata. Czas wdroźenia: 6 miesięcy.
               </div>
             </div>
-            <a href="#kontakt"
+            <Link to="/kontakt"
               className="flex-shrink-0 px-6 py-3 bg-brand-neon text-brand-dark font-display font-bold text-sm uppercase tracking-widest hover:bg-green-400 transition-colors">
               Zaczynamy teraz &rarr;
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

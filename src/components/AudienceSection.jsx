@@ -1,4 +1,5 @@
-﻿import { motion } from 'framer-motion';
+﻿import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
 import { Building2, Shield, ChevronRight } from 'lucide-react';
 
@@ -261,12 +262,12 @@ export default function AudienceSection() {
 							Partnerstwa i wdrożenia na zapytanie.
 						</p>
 					</div>
-					<a
-						href="#kontakt"
+					<Link
+						to="/kontakt"
 						className="px-5 py-2 border border-brand-gold text-brand-gold font-mono text-sm hover:bg-brand-gold/10 transition-colors whitespace-nowrap"
 					>
 						Zaplanuj demo &rarr;
-					</a>
+					</Link>
 				</motion.div>
 			</div>
 		</section>

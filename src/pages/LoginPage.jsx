@@ -168,14 +168,7 @@ export default function LoginPage() {
           {/* Registration links */}
           <div className="mt-6 border-t border-brand-border pt-5 space-y-2 text-center">
             <p className="text-gray-600 font-mono text-xs">
-              Nie masz konta?{' '}
-              <Link to="/rejestracja" className="text-brand-cyan hover:text-cyan-300 transition-colors">
-                Zarejestruj zawodnika
-              </Link>
-              {' '}lub{' '}
-              <Link to="/rejestracja/skaut" className="text-brand-gold hover:text-yellow-300 transition-colors">
-                zostań skautem
-              </Link>
+              Nie masz konta? Skontaktuj się z administratorem systemu.
             </p>
           </div>
 

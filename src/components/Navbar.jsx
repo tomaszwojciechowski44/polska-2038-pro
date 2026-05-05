@@ -98,12 +98,6 @@ export default function Navbar() {
               <span>{lang === 'pl' ? 'EN' : 'PL'}</span>
             </button>
             <Link
-              to="/rejestracja"
-              className="px-4 py-2 border border-brand-border text-gray-300 hover:border-brand-neon/50 hover:text-brand-neon font-mono text-xs uppercase tracking-widest transition-all"
-            >
-              Rejestracja
-            </Link>
-            <Link
               to="/login"
               className="px-4 py-2 bg-brand-cyan text-brand-dark font-display font-bold text-xs uppercase tracking-widest hover:bg-cyan-300 transition-all whitespace-nowrap"
             >
@@ -154,12 +148,6 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="pt-3 mt-3 border-t border-brand-border flex gap-2">
-                <Link
-                  to="/rejestracja"
-                  className="flex-1 text-center py-3 border border-brand-border text-gray-300 font-mono text-xs uppercase tracking-widest hover:border-brand-neon/40 hover:text-brand-neon transition-all rounded"
-                >
-                  Rejestracja
-                </Link>
                 <Link
                   to="/login"
                   className="flex-1 text-center py-3 bg-brand-cyan text-brand-dark font-display font-bold text-xs uppercase tracking-widest hover:bg-cyan-300 transition-all rounded"

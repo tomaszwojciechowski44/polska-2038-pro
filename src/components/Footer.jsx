@@ -74,8 +74,6 @@ export default function Footer() {
                 { label: 'Wyniki i Roadmapa', to: '/wyniki' },
                 { label: 'Partnerzy', to: '/partnerzy' },
                 { label: 'O programie', to: '/o-programie' },
-                { label: 'Rejestracja zawodnika', to: '/rejestracja' },
-                { label: 'Rejestracja skauta', to: '/rejestracja/skaut' },
                 { label: 'Kontakt', to: '/kontakt' },
               ].map((link) => (
                 <Link

@@ -16,8 +16,6 @@ import ResultsPage        from './pages/ResultsPage';
 import PartnersPage       from './pages/PartnersPage';
 import ContactPage        from './pages/ContactPage';
 import AboutPage          from './pages/AboutPage';
-import RegisterPage       from './pages/RegisterPage';
-import RegisterScoutPage  from './pages/RegisterScoutPage';
 import LoginPage          from './pages/LoginPage';
 import NotFoundPage       from './pages/NotFoundPage';
 
@@ -43,8 +41,6 @@ export default function App() {
         <Route path="/partnerzy"      element={<PartnersPage />} />
         <Route path="/kontakt"        element={<ContactPage />} />
         <Route path="/o-programie"    element={<AboutPage />} />
-        <Route path="/rejestracja"        element={<RegisterPage />} />
-        <Route path="/rejestracja/skaut"  element={<RegisterScoutPage />} />
         <Route path="/login"          element={<LoginPage />} />
 
         {/* ── Protected — scouts ───────────────────── */}

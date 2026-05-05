@@ -159,7 +159,7 @@ export default function AdminPanel() {
                       <Users size={14} className="text-cyan-400" /> Ostatnie rejestracje zawodników
                     </h3>
                     {regUsers.length === 0 ? (
-                      <p className="text-gray-600 font-mono text-xs">Brak rejestracji · Formularz: /rejestracja</p>
+                      <p className="text-gray-600 font-mono text-xs">Brak rejestracji</p>
                     ) : (
                       <div className="space-y-2">
                         {regUsers.slice(-5).reverse().map((u) => (
@@ -179,7 +179,7 @@ export default function AdminPanel() {
                       <Shield size={14} className="text-yellow-400" /> Ostatnie wnioski skautów
                     </h3>
                     {regScouts.length === 0 ? (
-                      <p className="text-gray-600 font-mono text-xs">Brak wniosków · Formularz: /rejestracja/skaut</p>
+                      <p className="text-gray-600 font-mono text-xs">Brak wniosków</p>
                     ) : (
                       <div className="space-y-2">
                         {regScouts.slice(-5).reverse().map((s) => (
@@ -207,7 +207,6 @@ export default function AdminPanel() {
               <div className="text-center py-16">
                 <Users size={40} className="text-gray-700 mx-auto mb-4" />
                 <p className="text-gray-500 font-mono text-sm">Brak zarejestrowanych zawodników</p>
-                <p className="text-gray-700 font-mono text-xs mt-1">Formularz dostępny pod adresem /rejestracja</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
@@ -250,7 +249,6 @@ export default function AdminPanel() {
               <div className="text-center py-16">
                 <Shield size={40} className="text-gray-700 mx-auto mb-4" />
                 <p className="text-gray-500 font-mono text-sm">Brak wniosków o akredytację</p>
-                <p className="text-gray-700 font-mono text-xs mt-1">Formularz dostępny pod adresem /rejestracja/skaut</p>
               </div>
             ) : (
               <div className="overflow-x-auto">

@@ -98,8 +98,8 @@ export default function AboutPage() {
                 pomiarów sportowców olimpijskich z 48 krajów. Wynik to obiektywna, powtarzalna ocena potencjału,
                 niedostępna wcześniej dla żadnego systemu narodowego.
               </p>
-              <Link to="/rejestracja" className="inline-flex items-center gap-2 px-5 py-2.5 bg-cyan-400 text-[#080d1a] font-display font-bold text-xs uppercase tracking-widest rounded hover:bg-cyan-300 transition-colors">
-                Zarejestruj zawodnika <ArrowRight size={14} />
+              <Link to="/kontakt" className="inline-flex items-center gap-2 px-5 py-2.5 bg-cyan-400 text-[#080d1a] font-display font-bold text-xs uppercase tracking-widest rounded hover:bg-cyan-300 transition-colors">
+                Skontaktuj się z nami <ArrowRight size={14} />
               </Link>
             </motion.div>
             <motion.div {...fade} transition={{ delay: 0.1 }}>
@@ -222,17 +222,13 @@ export default function AboutPage() {
               Dołącz do programu
             </h2>
             <p className="text-gray-400 font-mono text-sm mb-8 leading-relaxed">
-              Zarejestruj zawodnika lub złóż wniosek o akredytację skautingową.
+              Skontaktuj się z nami w sprawie partnerstwa, pilotażu lub dołączenia do zespołu.
               Razem budujemy przyszłość polskiego sportu.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link to="/rejestracja" className="flex items-center justify-center gap-2 px-6 py-3 bg-cyan-400 text-[#080d1a]
+              <Link to="/kontakt" className="flex items-center justify-center gap-2 px-6 py-3 bg-cyan-400 text-[#080d1a]
                 font-display font-bold text-xs uppercase tracking-widest rounded hover:bg-cyan-300 transition-colors">
-                Rejestracja zawodnika <ArrowRight size={14} />
-              </Link>
-              <Link to="/rejestracja/skaut" className="flex items-center justify-center gap-2 px-6 py-3 border border-yellow-400/40 text-yellow-400
-                font-display font-bold text-xs uppercase tracking-widest rounded hover:bg-yellow-400/10 transition-colors">
-                Zostań skautem <ArrowRight size={14} />
+                Kontakt <ArrowRight size={14} />
               </Link>
             </div>
           </motion.div>

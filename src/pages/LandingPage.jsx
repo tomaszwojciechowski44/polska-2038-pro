@@ -365,21 +365,12 @@ export default function LandingPage() {
                 Razem budujemy<br />przyszłość polskiego sportu
               </h2>
               <p className="mt-4 text-gray-400 font-mono text-sm leading-relaxed mb-8">
-                Zarejestruj zawodnika, zostań skautem lub skontaktuj się z zespołem programu
-                w sprawie partnerstwa i pilotażu.
+                Skontaktuj się z zespołem programu w sprawie partnerstwa i pilotażu.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link to="/rejestracja"
-                  className="flex items-center justify-center gap-2 px-8 py-4 bg-brand-neon text-brand-dark font-display font-bold text-sm uppercase tracking-widest hover:bg-green-300 transition-all">
-                  Rejestracja zawodnika <ArrowRight size={16} />
-                </Link>
-                <Link to="/rejestracja/skaut"
-                  className="flex items-center justify-center gap-2 px-8 py-4 border-2 border-brand-gold text-brand-gold font-display font-bold text-sm uppercase tracking-widest hover:bg-brand-gold hover:text-brand-dark transition-all">
-                  Zostań skautem <Shield size={16} />
-                </Link>
                 <Link to="/kontakt"
-                  className="flex items-center justify-center gap-2 px-8 py-4 border border-brand-border text-gray-400 font-mono text-xs uppercase tracking-widest hover:border-gray-500 hover:text-white transition-all">
-                  Kontakt <Mail size={14} />
+                  className="flex items-center justify-center gap-2 px-8 py-4 bg-brand-neon text-brand-dark font-display font-bold text-sm uppercase tracking-widest hover:bg-green-300 transition-all">
+                  Kontakt z zespołem <ArrowRight size={16} />
                 </Link>
               </div>
             </motion.div>

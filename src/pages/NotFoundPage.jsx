@@ -51,8 +51,6 @@ export default function NotFoundPage() {
 
         <div className="mt-10 flex flex-wrap justify-center gap-4 text-xs font-mono text-gray-700">
           <Link to="/o-programie" className="hover:text-gray-400 transition-colors">O programie</Link>
-          <Link to="/rejestracja" className="hover:text-gray-400 transition-colors">Rejestracja zawodnika</Link>
-          <Link to="/rejestracja/skaut" className="hover:text-gray-400 transition-colors">Rejestracja skauta</Link>
           <Link to="/login" className="hover:text-gray-400 transition-colors">Logowanie</Link>
         </div>
       </motion.div>

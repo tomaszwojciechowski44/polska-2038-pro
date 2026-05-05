@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const NAV_LINKS = [
+  { to: '/reforma',       label: '🏆 Reforma', highlight: true },
   { to: '/technologia',   label: 'Technologia' },
   { to: '/mapa-talentow', label: 'Mapa Talentów' },
   { to: '/dla-kogo',      label: 'Dla kogo' },
@@ -68,7 +69,9 @@ export default function Navbar() {
                 className={`relative px-3 py-2 font-mono text-xs uppercase tracking-widest transition-colors rounded ${
                   isActive(link.to)
                     ? 'text-brand-neon'
-                    : 'text-gray-400 hover:text-white'
+                    : link.highlight
+                      ? 'text-red-400 hover:text-red-300 border border-red-500/30 hover:border-red-400/60'
+                      : 'text-gray-400 hover:text-white'
                 }`}
               >
                 {link.label}

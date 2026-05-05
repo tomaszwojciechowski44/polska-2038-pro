@@ -185,71 +185,76 @@ export default function LandingPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-dark/80 pointer-events-none" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-            <div className="max-w-4xl">
-              {/* Badge */}
-              <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 border border-brand-neon/30 bg-brand-neon/5 rounded-full">
-                <span className="w-1.5 h-1.5 bg-brand-neon rounded-full animate-pulse" />
-                <span className="text-brand-neon font-mono text-xs tracking-widest uppercase">
-                  Projekt Obywatelski · Dla Ministerstwa Sportu · 2026–2038
-                </span>
+            <div className="flex flex-col lg:flex-row lg:items-center lg:gap-16">
+
+              {/* ── Left: text ── */}
+              <div className="flex-1 min-w-0">
+                {/* Badge */}
+                <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+                  className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 border border-brand-neon/30 bg-brand-neon/5 rounded-full">
+                  <span className="w-1.5 h-1.5 bg-brand-neon rounded-full animate-pulse" />
+                  <span className="text-brand-neon font-mono text-xs tracking-widest uppercase">
+                    Projekt Obywatelski · Dla Ministerstwa Sportu · 2026–2038
+                  </span>
+                </motion.div>
+
+                {/* Headline */}
+                <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
+                  className="font-display font-bold leading-none mb-6">
+                  <span className="block text-6xl sm:text-8xl lg:text-[100px] text-white tracking-tight">#POLSKA</span>
+                  <span className="block text-6xl sm:text-8xl lg:text-[100px] text-brand-red leading-none" style={{ textShadow: '0 0 60px rgba(220,20,60,0.35)' }}>2038</span>
+                </motion.h1>
+
+                {/* Tagline */}
+                <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25 }}
+                  className="text-xl sm:text-2xl font-display font-medium text-gray-300 mb-4 max-w-lg leading-snug">
+                  Dane.{' '}
+                  <span className="text-brand-neon" style={{ textShadow: '0 0 20px rgba(0,255,136,0.4)' }}>Sztuczna Inteligencja.</span>{' '}
+                  Równe Szanse.
+                </motion.p>
+
+                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.4 }}
+                  className="text-gray-400 font-mono text-sm max-w-md leading-relaxed mb-10">
+                  Narodowy system wykrywania talentów — od 6-latka na Orliku po kadrę narodową.
+                  Żaden talent z małej wsi nie umknie systemowi.
+                </motion.p>
+
+                {/* CTA row */}
+                <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
+                  className="flex flex-wrap gap-3 mb-10">
+                  <Link to="/reforma"
+                    className="flex items-center gap-2 px-6 py-3.5 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest hover:bg-red-700 transition-all">
+                    <Trophy size={16} /> Plan Reformy
+                  </Link>
+                  <Link to="/reforma/dokumenty"
+                    className="flex items-center gap-2 px-6 py-3.5 border-2 border-brand-neon text-brand-neon font-display font-bold text-sm uppercase tracking-widest hover:bg-brand-neon hover:text-brand-dark transition-all">
+                    Dokumentacja <ArrowRight size={16} />
+                  </Link>
+                  <Link to="/login"
+                    className="flex items-center gap-2 px-6 py-3.5 border border-brand-border text-gray-400 font-mono text-xs uppercase tracking-widest hover:border-brand-cyan hover:text-brand-cyan transition-all">
+                    <LogIn size={14} /> Panel
+                  </Link>
+                </motion.div>
+
+                {/* Social proof */}
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.65 }}
+                  className="flex flex-wrap gap-2">
+                  {SOCIAL_PROOF.map((p) => (
+                    <div key={p.badge} className="flex items-center gap-1.5 px-3 py-1.5 border border-brand-border/50 bg-brand-card/30 backdrop-blur-sm">
+                      <span className={`font-mono font-bold text-xs ${p.color}`}>{p.badge}</span>
+                      <span className="text-gray-600 font-mono text-[10px]">— {p.label}</span>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* ── Right: dashboard card ── */}
+              <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, delay: 0.5 }}
+                className="mt-12 lg:mt-0 lg:w-[400px] xl:w-[440px] flex-shrink-0">
+                <HeroDashboard />
               </motion.div>
 
-              {/* Headline */}
-              <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
-                className="font-display font-bold leading-none mb-6">
-                <span className="block text-6xl sm:text-8xl lg:text-[110px] text-white tracking-tight">#POLSKA</span>
-                <span className="block text-6xl sm:text-8xl lg:text-[110px] text-brand-red leading-none" style={{ textShadow: '0 0 60px rgba(220,20,60,0.35)' }}>2038</span>
-              </motion.h1>
-
-              {/* Tagline */}
-              <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25 }}
-                className="text-xl sm:text-2xl font-display font-medium text-gray-300 mb-4 max-w-2xl leading-snug">
-                Dane.{' '}
-                <span className="text-brand-neon" style={{ textShadow: '0 0 20px rgba(0,255,136,0.4)' }}>Sztuczna Inteligencja.</span>{' '}
-                Równe Szanse.
-              </motion.p>
-
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.4 }}
-                className="text-gray-400 font-mono text-sm sm:text-base max-w-xl leading-relaxed mb-10">
-                Narodowy system wykrywania talentów — od 6-latka na Orliku po kadrę narodową.
-                LiDAR + AI = żaden talent z małej wsi nie umknie systemowi.
-              </motion.p>
-
-              {/* CTA row */}
-              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
-                className="flex flex-wrap gap-3 mb-12">
-                <Link to="/technologia"
-                  className="flex items-center gap-2 px-6 py-3.5 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest hover:bg-red-700 transition-all">
-                  Zobacz Architekturę <ArrowRight size={16} />
-                </Link>
-                <Link to="/mapa-talentow"
-                  className="flex items-center gap-2 px-6 py-3.5 border-2 border-brand-neon text-brand-neon font-display font-bold text-sm uppercase tracking-widest hover:bg-brand-neon hover:text-brand-dark transition-all">
-                  Mapa Talentów <MapPin size={16} />
-                </Link>
-                <Link to="/login"
-                  className="flex items-center gap-2 px-6 py-3.5 border-2 border-brand-cyan text-brand-cyan font-display font-bold text-sm uppercase tracking-widest hover:bg-brand-cyan hover:text-brand-dark transition-all">
-                  <LogIn size={16} /> Panel Skautingowy
-                </Link>
-              </motion.div>
-
-              {/* Social proof */}
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.65 }}
-                className="flex flex-wrap gap-2">
-                {SOCIAL_PROOF.map((p) => (
-                  <div key={p.badge} className="flex items-center gap-1.5 px-3 py-1.5 border border-brand-border/50 bg-brand-card/30 backdrop-blur-sm">
-                    <span className={`font-mono font-bold text-xs ${p.color}`}>{p.badge}</span>
-                    <span className="text-gray-600 font-mono text-[10px]">— {p.label}</span>
-                  </div>
-                ))}
-              </motion.div>
             </div>
-
-            {/* Dashboard card — floats right on large screens */}
-            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, delay: 0.5 }}
-              className="mt-12 lg:mt-0 lg:absolute lg:right-8 lg:top-1/2 lg:-translate-y-1/2 lg:w-[42%]">
-              <HeroDashboard />
-            </motion.div>
           </div>
         </section>
 

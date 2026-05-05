@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  Cpu, MapPin, Users, TrendingUp, ArrowRight,
+  Cpu, MapPin, Users, ArrowRight,
   Trophy, Shield, Zap, BarChart2, Mail, LogIn
 } from 'lucide-react';
 import { LanguageProvider } from '../context/LanguageContext';

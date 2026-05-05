@@ -95,7 +95,7 @@ export default function Footer() {
             &copy; 2025&ndash;2026 #Polska2038 v2.0. Wszelkie prawa zastrzeżone.
           </div>
           <div className="flex items-center gap-4">
-            <Link to="/o-programie" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">Polityka prywatności</Link>
+            <Link to="/kontakt" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">Kontakt z zespołem</Link>
             <a href="https://github.com/Polska-2038/projekt-polska-2038-pro" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">MIT License</a>
           </div>
           <div className="flex items-center gap-2 text-gray-700 text-xs font-mono">

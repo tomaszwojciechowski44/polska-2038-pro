@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
-  Trophy, Shield, GraduationCap, TrendingUp, Clock,
+  Trophy, Shield, GraduationCap, TrendingUp,
   Users, Target, AlertTriangle, CheckCircle, Download,
-  BarChart3, Globe, ChevronDown, ChevronUp, ExternalLink, FileText,
+  BarChart3, Globe, ChevronDown, ChevronUp, FileText,
 } from 'lucide-react';
 import PublicLayout from '../components/PublicLayout';
 

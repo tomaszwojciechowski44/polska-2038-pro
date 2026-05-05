@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Mail, ChevronUp, LogIn } from 'lucide-react';
+import { ChevronUp, LogIn } from 'lucide-react';
 
 // Scroll progress bar at top of page
 export function ScrollProgressBar() {

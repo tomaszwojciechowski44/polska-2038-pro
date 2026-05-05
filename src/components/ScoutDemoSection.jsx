@@ -26,7 +26,7 @@ const TALENTS_FALLBACK = [
 ];
 
 function apiTalentToCard(t) {
-  const tierColor = t.ai_tier === "ELITE" ? "neon" : t.ai_tier === "PROSPECT" ? "cyan" : "gold";
+  const tierColor = t.ai_tier === "ELITE" ? "neon" : "cyan";
   return {
     id: t.id,
     initials: `${t.first_name?.[0] || "?"}${t.last_name_initial || ""}`,
@@ -53,6 +53,7 @@ function Sparkline({ data, color }) {
   const max = Math.max(...data); const min = Math.min(...data);
   const range = max - min || 1;
   const w = 120; const h = 32;
+  if (data.length < 2) return null;
   const pts = data.map((v,i) => {
     const x = (i/(data.length-1))*w;
     const y = h - ((v-min)/range)*(h-4) - 2;

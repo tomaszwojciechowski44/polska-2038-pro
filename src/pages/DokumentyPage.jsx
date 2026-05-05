@@ -142,12 +142,12 @@ export default function DokumentyPage() {
           <div className="grid md:grid-cols-3 gap-5 mb-6">
             {FILARY.map((f, i) => (
               <motion.div key={f.id} {...fadeUp(i * 0.1)}>
-                <Link
+                  <Link
                   to={`/reforma/filar/${f.slug}`}
                   className={`block bg-gray-900 border ${f.color.border} rounded-2xl p-6 hover:bg-gray-800 transition-all group`}
                 >
                   <div className="text-3xl mb-3">{f.icon}</div>
-                  <h3 className={`font-black text-white mb-1 group-hover:${f.color.text} transition-colors`}>
+                  <h3 className={`font-black mb-1 transition-colors ${f.color.text}`}>
                     Filar {f.id}: {f.title}
                   </h3>
                   <p className="text-gray-400 text-sm mb-3">{f.subtitle}</p>

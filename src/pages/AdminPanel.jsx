@@ -141,7 +141,7 @@ export default function AdminPanel() {
               <>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                   <StatCard label="Profili talentów" value={stats.total_talents} color="text-cyan-400" icon={Users} sub="Wszystkie województwa" />
-                  <StatCard label="ELITE" value={stats.elite_count} color="text-green-400" icon={TrendingUp} sub={`${Math.round(stats.elite_count / stats.total_talents * 100)}% bazy talentów`} />
+                  <StatCard label="ELITE" value={stats.elite_count} color="text-green-400" icon={TrendingUp} sub={`${stats.total_talents > 0 ? Math.round(stats.elite_count / stats.total_talents * 100) : 0}% bazy talentów`} />
                   <StatCard label="Avg AI Score" value={stats.avg_score} color="text-yellow-400" icon={Activity} sub="Średnia systemowa" />
                   <StatCard label="Województwa" value={stats.voivodeships} color="text-gray-300" icon={MapPin} sub="Aktywnych regionów" />
                 </div>

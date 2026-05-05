@@ -120,41 +120,50 @@ const SOCIAL_PROOF = [
   { badge: 'Lewandowski', label: 'ambasador projektu', color: 'text-brand-gold' },
 ];
 
-// Animated LiDAR field — hero visual
-function LidarField() {
-  const dots = [
-    { cx: '20%', cy: '42%', color: '#00FF88', score: 94 },
-    { cx: '35%', cy: '68%', color: '#00E5FF', score: 87 },
-    { cx: '50%', cy: '28%', color: '#FFD700', score: 91 },
-    { cx: '65%', cy: '55%', color: '#00FF88', score: 78 },
-    { cx: '80%', cy: '38%', color: '#DC143C', score: 72 },
-    { cx: '45%', cy: '72%', color: '#00E5FF', score: 83 },
-    { cx: '25%', cy: '78%', color: '#FFD700', score: 89 },
-    { cx: '73%', cy: '22%', color: '#00FF88', score: 95 },
+// Professional hero dashboard card
+function HeroDashboard() {
+  const metrics = [
+    { label: 'Budżet programu', value: '1,08 mld zł', sub: 'rocznie', color: 'text-brand-red' },
+    { label: 'ROI zwrot', value: '370%', sub: 'z inwestycji', color: 'text-yellow-400' },
+    { label: 'Na Polaka / rok', value: '28,50 zł', sub: 'mniej niż 3 bilety', color: 'text-brand-neon' },
+    { label: 'Cel finałowy', value: '2038', sub: 'Finał MŚ', color: 'text-brand-cyan' },
+  ];
+  const pillars = [
+    { icon: '⚽', name: 'Polska 2038', budget: '1 mld zł', color: 'border-red-500/40 text-red-400' },
+    { icon: '🛡️', name: 'Bezpieczny Stadion', budget: '50 mln zł', color: 'border-blue-500/40 text-blue-400' },
+    { icon: '🎓', name: 'Ocena Trenerów', budget: '30 mln zł', color: 'border-green-500/40 text-green-400' },
   ];
   return (
-    <div className="relative w-full h-full border border-brand-neon/20 rounded-lg overflow-hidden bg-brand-card/30 backdrop-blur-sm">
-      <svg className="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 800 260" preserveAspectRatio="none">
-        <rect x="40" y="15" width="720" height="230" fill="none" stroke="#00FF88" strokeWidth="1.5" />
-        <line x1="400" y1="15" x2="400" y2="245" stroke="#00FF88" strokeWidth="0.8" />
-        <circle cx="400" cy="130" r="55" fill="none" stroke="#00FF88" strokeWidth="0.8" />
-        <rect x="40" y="90" width="75" height="90" fill="none" stroke="#00FF88" strokeWidth="0.8" />
-        <rect x="685" y="90" width="75" height="90" fill="none" stroke="#00FF88" strokeWidth="0.8" />
-      </svg>
-      {dots.map((d, i) => (
-        <motion.div key={i} className="absolute" style={{ left: d.cx, top: d.cy }}
-          animate={{ scale: [1, 1.25, 1] }} transition={{ duration: 2, delay: i * 0.28, repeat: Infinity }}>
-          <div className="w-5 h-5 rounded-full -translate-x-2.5 -translate-y-2.5 flex items-center justify-center text-[8px] font-bold font-mono text-black"
-            style={{ backgroundColor: d.color, boxShadow: `0 0 10px ${d.color}80` }}>
-            {d.score}
+    <div className="w-full h-full flex flex-col gap-3">
+      {/* Metrics grid */}
+      <div className="grid grid-cols-2 gap-2.5">
+        {metrics.map((m) => (
+          <div key={m.label} className="bg-black/60 border border-white/8 rounded-xl p-3 backdrop-blur-sm">
+            <div className={`text-xl font-black ${m.color} leading-none`}>{m.value}</div>
+            <div className="text-gray-500 text-[10px] font-mono mt-1 uppercase tracking-wide leading-tight">{m.label}</div>
+            <div className="text-gray-600 text-[10px] font-mono">{m.sub}</div>
           </div>
-        </motion.div>
-      ))}
-      <div className="absolute top-2 left-3 font-mono text-[10px] text-brand-neon/70">LIDAR SCAN · LIVE</div>
-      <div className="absolute top-2 right-3 font-mono text-[10px] text-brand-neon/70">8 ZAWODNIKÓW</div>
-      <div className="absolute bottom-2 left-3 font-mono text-[10px] text-brand-cyan/60">Orlik Rzeszów-Południe · 50.0°N 22.0°E</div>
-      <div className="absolute bottom-2 right-3">
-        <span className="px-2 py-0.5 bg-brand-neon/10 border border-brand-neon/30 text-brand-neon text-[10px] font-mono rounded">● LIVE</span>
+        ))}
+      </div>
+      {/* Pillars */}
+      <div className="flex flex-col gap-2">
+        {pillars.map((p) => (
+          <div key={p.name} className={`flex items-center justify-between bg-black/40 border ${p.color.split(' ')[0]} rounded-lg px-3 py-2 backdrop-blur-sm`}>
+            <div className="flex items-center gap-2">
+              <span className="text-sm">{p.icon}</span>
+              <span className={`text-xs font-bold ${p.color.split(' ')[1]}`}>{p.name}</span>
+            </div>
+            <span className="text-gray-400 text-[10px] font-mono">{p.budget}/rok</span>
+          </div>
+        ))}
+      </div>
+      {/* Status bar */}
+      <div className="flex items-center justify-between bg-black/40 border border-white/6 rounded-lg px-3 py-2">
+        <div className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 bg-brand-neon rounded-full animate-pulse" />
+          <span className="text-brand-neon font-mono text-[10px] uppercase tracking-widest">System aktywny</span>
+        </div>
+        <span className="text-gray-600 font-mono text-[10px]">Projekt Obywatelski · Pro bono</span>
       </div>
     </div>
   );
@@ -182,7 +191,7 @@ export default function LandingPage() {
                 className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 border border-brand-neon/30 bg-brand-neon/5 rounded-full">
                 <span className="w-1.5 h-1.5 bg-brand-neon rounded-full animate-pulse" />
                 <span className="text-brand-neon font-mono text-xs tracking-widest uppercase">
-                  Narodowy OS Sportu · LiDAR + AI + PostGIS · v2.0
+                  Projekt Obywatelski · Dla Ministerstwa Sportu · 2026–2038
                 </span>
               </motion.div>
 
@@ -236,10 +245,10 @@ export default function LandingPage() {
               </motion.div>
             </div>
 
-            {/* LiDAR visual — floats right on large screens */}
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.4 }}
-              className="mt-12 lg:mt-0 lg:absolute lg:right-8 lg:top-1/2 lg:-translate-y-1/2 lg:w-[45%] h-52 sm:h-64 lg:h-72 xl:h-80">
-              <LidarField />
+            {/* Dashboard card — floats right on large screens */}
+            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, delay: 0.5 }}
+              className="mt-12 lg:mt-0 lg:absolute lg:right-8 lg:top-1/2 lg:-translate-y-1/2 lg:w-[42%]">
+              <HeroDashboard />
             </motion.div>
           </div>
         </section>

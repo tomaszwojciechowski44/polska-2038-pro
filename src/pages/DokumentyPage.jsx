@@ -17,7 +17,7 @@ const DOCS = [
     title: 'Executive Summary',
     desc: 'Krótkie 2-stronicowe podsumowanie całego projektu z kluczowymi faktami, budżetem i celami.',
     meta: '2 strony · 5 min czytania',
-    href: 'https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/01-EXECUTIVE-SUMMARY.html',
+    to: '/reforma/materialy/executive-summary',
     color: 'text-brand-neon border-brand-neon/30 hover:border-brand-neon/60',
   },
   {
@@ -25,7 +25,7 @@ const DOCS = [
     title: 'Briefing dla Mediów',
     desc: 'Gotowy briefing z key points, cytatami i propozycjami nagłówków dla dziennikarzy.',
     meta: '10 stron · materiał prasowy',
-    href: 'https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/02-BRIEFING-DLA-MEDIOW.html',
+    to: '/reforma/materialy/briefing-media',
     color: 'text-blue-400 border-blue-500/30 hover:border-blue-500/60',
   },
   {
@@ -33,7 +33,7 @@ const DOCS = [
     title: 'Mapa Drogowa 2026–2038',
     desc: 'Szczegółowy harmonogram wdrożenia z kamieniami milowymi i etapami realizacji.',
     meta: '15 stron · harmonogram',
-    href: 'https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/PELNE/01-MAPA-DROGOWA-PELNA-SUPER-WYGLAD.html',
+    to: '/reforma/materialy/roadmap-2026-2038',
     color: 'text-orange-400 border-orange-500/30 hover:border-orange-500/60',
   },
   {
@@ -41,7 +41,7 @@ const DOCS = [
     title: 'Budżet Szczegółowy 2026–2035',
     desc: 'Pełny breakdown budżetu z ROI, źródłami finansowania i analizą kosztów.',
     meta: '20 stron · finanse',
-    href: 'https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/PELNE/02-BUDZET-PELNY-SUPER-WYGLAD.html',
+    to: '/reforma/materialy/budget-2026-2035',
     color: 'text-yellow-400 border-yellow-500/30 hover:border-yellow-500/60',
   },
   {
@@ -49,7 +49,7 @@ const DOCS = [
     title: 'Struktura Organizacyjna',
     desc: 'Schemat zarządzania projektem, podział odpowiedzialności i struktura instytucjonalna.',
     meta: '12 stron · organizacja',
-    href: 'https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/PELNE/03-STRUKTURA-PELNA-SUPER-WYGLAD.html',
+    to: '/reforma/materialy/org-structure',
     color: 'text-purple-400 border-purple-500/30 hover:border-purple-500/60',
   },
   {
@@ -57,7 +57,7 @@ const DOCS = [
     title: 'Plan Wdrożenia — Instrukcja',
     desc: 'Operacyjny plan wdrożenia krok po kroku dla Ministerstwa, PZPN i samorządów.',
     meta: '18 stron · operacyjny',
-    href: 'https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/PELNE/04-PLAN-WDROZENIA-PELNY-SUPER-WYGLAD.html',
+    to: '/reforma/materialy/implementation-playbook',
     color: 'text-cyan-400 border-cyan-500/30 hover:border-cyan-500/60',
   },
   {
@@ -65,7 +65,7 @@ const DOCS = [
     title: 'Instrukcja Wysyłki Email',
     desc: 'Gotowa treść emaila do Ministerstwa Sportu, PZPN i mediów.',
     meta: '1 strona · gotowy email',
-    href: 'https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/03-INSTRUKCJA-EMAIL.html',
+    to: '/reforma/materialy/email-template',
     color: 'text-red-400 border-red-500/30 hover:border-red-500/60',
   },
 ];
@@ -173,24 +173,26 @@ export default function DokumentyPage() {
             {DOCS.map((doc, i) => {
               const Icon = doc.icon;
               return (
-                <motion.a
+                <motion.div
                   key={doc.title}
-                  href={doc.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   {...fadeUp(i * 0.08)}
-                  className={`flex items-start gap-4 bg-gray-900 border ${doc.color} rounded-2xl p-5 transition-all group`}
+                  className="group"
                 >
-                  <Icon className={`w-6 h-6 flex-shrink-0 mt-0.5 ${doc.color.split(' ')[0]}`} />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-2">
-                      <h3 className="text-white font-bold text-sm">{doc.title}</h3>
-                      <ExternalLink className="w-4 h-4 text-gray-600 group-hover:text-gray-400 flex-shrink-0 transition-colors" />
+                  <Link
+                    to={doc.to}
+                    className={`flex items-start gap-4 bg-gray-900 border ${doc.color} rounded-2xl p-5 transition-all`}
+                  >
+                    <Icon className={`w-6 h-6 flex-shrink-0 mt-0.5 ${doc.color.split(' ')[0]}`} />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-2">
+                        <h3 className="text-white font-bold text-sm">{doc.title}</h3>
+                        <ExternalLink className="w-4 h-4 text-gray-600 group-hover:text-gray-400 flex-shrink-0 transition-colors" />
+                      </div>
+                      <p className="text-gray-400 text-xs mt-1 mb-2">{doc.desc}</p>
+                      <span className="text-gray-600 text-xs font-mono">{doc.meta}</span>
                     </div>
-                    <p className="text-gray-400 text-xs mt-1 mb-2">{doc.desc}</p>
-                    <span className="text-gray-600 text-xs font-mono">{doc.meta}</span>
-                  </div>
-                </motion.a>
+                  </Link>
+                </motion.div>
               );
             })}
           </div>

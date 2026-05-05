@@ -329,15 +329,15 @@ export default function ForFederationsPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               {[
-                { label: 'Executive Summary (HTML→PDF)', href: 'https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/01-EXECUTIVE-SUMMARY.html' },
-                { label: 'Media Briefing', href: 'https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/02-BRIEFING-DLA-MEDIOW.html' },
-                { label: 'Detailed Roadmap', href: 'https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/PELNE/01-MAPA-DROGOWA-PELNA-SUPER-WYGLAD.html' },
-                { label: 'Full Budget 2026–2035', href: 'https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/PELNE/02-BUDZET-PELNY-SUPER-WYGLAD.html' },
+                { label: 'Executive Summary', to: '/reforma/materialy/executive-summary' },
+                { label: 'Media Briefing', to: '/reforma/materialy/briefing-media' },
+                { label: 'Detailed Roadmap', to: '/reforma/materialy/roadmap-2026-2038' },
+                { label: 'Full Budget 2026–2035', to: '/reforma/materialy/budget-2026-2035' },
               ].map(d => (
-                <a key={d.label} href={d.href} target="_blank" rel="noopener noreferrer"
+                <Link key={d.label} to={d.to}
                   className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 border border-gray-600 text-gray-200 hover:text-white font-mono text-sm px-5 py-3 rounded-xl transition-all">
                   <Download className="w-4 h-4 text-brand-neon" /> {d.label}
-                </a>
+                </Link>
               ))}
             </div>
             <div className="flex flex-wrap justify-center gap-4">

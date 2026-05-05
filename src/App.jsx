@@ -16,6 +16,7 @@ import ResultsPage        from './pages/ResultsPage';
 import PartnersPage       from './pages/PartnersPage';
 import ContactPage        from './pages/ContactPage';
 import AboutPage          from './pages/AboutPage';
+import MaterialDetailPage from './pages/MaterialDetailPage';
 import LoginPage          from './pages/LoginPage';
 import NotFoundPage       from './pages/NotFoundPage';
 
@@ -41,6 +42,7 @@ export default function App() {
         <Route path="/partnerzy"      element={<PartnersPage />} />
         <Route path="/kontakt"        element={<ContactPage />} />
         <Route path="/o-programie"    element={<AboutPage />} />
+        <Route path="/reforma/materialy/:slug" element={<MaterialDetailPage />} />
         <Route path="/login"          element={<LoginPage />} />
 
         {/* ── Protected — scouts ───────────────────── */}

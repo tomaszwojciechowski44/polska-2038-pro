@@ -61,11 +61,12 @@ export default function ReformaEnPage() {
               ))}
             </div>
             <div className="flex flex-wrap justify-center gap-3">
-              <a href="https://polska-2038.github.io/projekt-polska-2038-pro/PDF-GOTOWE/01-EXECUTIVE-SUMMARY.html"
-                target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-brand-red text-white font-bold px-7 py-3.5 rounded-xl hover:bg-red-700 transition-all shadow-lg shadow-red-600/20">
+              <Link
+                to="/reforma/materialy/executive-summary"
+                className="flex items-center gap-2 bg-brand-red text-white font-bold px-7 py-3.5 rounded-xl hover:bg-red-700 transition-all shadow-lg shadow-red-600/20"
+              >
                 <Download className="w-4 h-4" /> Executive Summary
-              </a>
+              </Link>
               <Link to="/dla-federacji"
                 className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-7 py-3.5 rounded-xl border border-white/20 transition-all">
                 For Federations →

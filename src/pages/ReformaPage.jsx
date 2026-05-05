@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import {
   Trophy, Shield, GraduationCap, TrendingUp, Clock,
   Users, Target, AlertTriangle, CheckCircle, Download,
-  BarChart3, Globe, ChevronDown, ChevronUp, ExternalLink,
+  BarChart3, Globe, ChevronDown, ChevronUp, ExternalLink, FileText,
 } from 'lucide-react';
 import PublicLayout from '../components/PublicLayout';
 
@@ -226,9 +227,15 @@ function TrzyFilarySection() {
                     </li>
                   ))}
                 </ul>
-                <div className={`text-xs font-mono ${p.iconColor} bg-white/5 rounded-lg px-3 py-2 border border-current/20`}>
+                <div className={`text-xs font-mono ${p.iconColor} bg-white/5 rounded-lg px-3 py-2 border border-current/20 mb-4`}>
                   🎯 Cel: {p.goal}
                 </div>
+                <Link
+                  to={`/reforma/filar/${p.number.replace('0', '')}`}
+                  className={`inline-flex items-center gap-1.5 text-xs font-mono font-bold ${p.iconColor} hover:opacity-80 transition-opacity`}
+                >
+                  Pełna dokumentacja →
+                </Link>
               </motion.div>
             );
           })}
@@ -515,6 +522,29 @@ function TeamSection() {
   );
 }
 
+/* ─── Section: Dokumenty CTA ───────────────────────── */
+function DokumentyCTA() {
+  return (
+    <section className="py-14 bg-gradient-to-r from-gray-900 via-gray-950 to-gray-900 border-y border-gray-800">
+      <div className="max-w-4xl mx-auto px-4 text-center">
+        <motion.div {...fadeUp(0)}>
+          <FileText className="w-10 h-10 text-brand-neon mx-auto mb-4" />
+          <h2 className="text-2xl font-black text-white mb-3">Pełna Dokumentacja do Pobrania</h2>
+          <p className="text-gray-400 mb-6">
+            Executive Summary, Briefing dla Mediów, Mapa Drogowa, Budżet Szczegółowy i więcej.
+          </p>
+          <Link
+            to="/reforma/dokumenty"
+            className="inline-flex items-center gap-2 bg-brand-neon hover:bg-cyan-300 text-brand-dark font-black px-8 py-4 rounded-xl transition-all shadow-lg shadow-brand-neon/20"
+          >
+            <FileText className="w-5 h-5" /> Wszystkie Dokumenty →
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Page ─────────────────────────────────────────── */
 export default function ReformaPage() {
   return (
@@ -528,6 +558,7 @@ export default function ReformaPage() {
       <KomunikatSection />
       <TimelineSection />
       <SciadaSection />
+      <DokumentyCTA />
       <TeamSection />
     </PublicLayout>
   );

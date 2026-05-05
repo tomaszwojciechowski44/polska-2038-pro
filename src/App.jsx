@@ -6,6 +6,8 @@ import { AuthProvider, PrivateRoute, AdminRoute } from './context/AuthContext';
 import LandingPage        from './pages/LandingPage';
 import TechnologyPage     from './pages/TechnologyPage';
 import ReformaPage        from './pages/ReformaPage';
+import FilarDetailPage    from './pages/FilarDetailPage';
+import DokumentyPage      from './pages/DokumentyPage';
 import MapPage            from './pages/MapPage';
 import ForWhoPage         from './pages/ForWhoPage';
 import ResultsPage        from './pages/ResultsPage';
@@ -28,7 +30,9 @@ export default function App() {
         {/* ── Public ───────────────────────────────── */}
         <Route path="/"               element={<LandingPage />} />
         <Route path="/technologia"    element={<TechnologyPage />} />
-        <Route path="/reforma"        element={<ReformaPage />} />
+        <Route path="/reforma"              element={<ReformaPage />} />
+        <Route path="/reforma/filar/:id"    element={<FilarDetailPage />} />
+        <Route path="/reforma/dokumenty"    element={<DokumentyPage />} />
         <Route path="/mapa-talentow"  element={<MapPage />} />
         <Route path="/dla-kogo"       element={<ForWhoPage />} />
         <Route path="/wyniki"         element={<ResultsPage />} />

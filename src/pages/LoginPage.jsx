@@ -138,6 +138,33 @@ export default function LoginPage() {
             </button>
           </form>
 
+          {/* Demo credentials */}
+          <div className="mt-5 bg-brand-neon/5 border border-brand-neon/20 rounded-sm p-4">
+            <p className="text-brand-neon font-mono text-xs uppercase tracking-widest mb-2 text-center">🎮 Demo — bez rejestracji</p>
+            <div className="space-y-1 text-xs font-mono text-gray-400">
+              <div className="flex justify-between">
+                <span className="text-gray-600">Skaut:</span>
+                <button
+                  type="button"
+                  onClick={() => { setEmail('demo@polska2038.pl'); setPassword('demo2038'); }}
+                  className="text-brand-cyan hover:text-cyan-300 transition-colors underline"
+                >
+                  demo@polska2038.pl / demo2038
+                </button>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Admin:</span>
+                <button
+                  type="button"
+                  onClick={() => { setEmail('admin@polska2038.pl'); setPassword('admin2038'); }}
+                  className="text-brand-gold hover:text-yellow-300 transition-colors underline"
+                >
+                  admin@polska2038.pl / admin2038
+                </button>
+              </div>
+            </div>
+          </div>
+
           {/* Registration links */}
           <div className="mt-6 border-t border-brand-border pt-5 space-y-2 text-center">
             <p className="text-gray-600 font-mono text-xs">

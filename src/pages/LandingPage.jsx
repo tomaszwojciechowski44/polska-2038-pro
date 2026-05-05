@@ -9,6 +9,8 @@ import { LanguageProvider } from '../context/LanguageContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { ScrollProgressBar } from '../components/UIUtils';
+import CountdownSection from '../components/CountdownSection';
+import EndorsementsSection from '../components/EndorsementsSection';
 
 // Animated counter hook
 function useCounter(end, duration = 2000, start = false) {
@@ -258,6 +260,9 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* ─── COUNTDOWN ─────────────────────────────────────────────────── */}
+        <CountdownSection />
+
         {/* ─── STATS BAR ─────────────────────────────────────────────────── */}
         <section className="border-y border-brand-border bg-brand-card/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
@@ -345,6 +350,9 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+
+        {/* ─── ENDORSEMENTS ──────────────────────────────────────────────── */}
+        <EndorsementsSection />
 
         {/* ─── FINAL CTA ─────────────────────────────────────────────────── */}
         <section className="py-16 sm:py-24 relative overflow-hidden">

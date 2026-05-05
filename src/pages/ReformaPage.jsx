@@ -7,6 +7,8 @@ import {
   BarChart3, Globe, ChevronDown, ChevronUp, FileText,
 } from 'lucide-react';
 import PublicLayout from '../components/PublicLayout';
+import RoiCalculatorSection from '../components/RoiCalculatorSection';
+import EndorsementsSection from '../components/EndorsementsSection';
 
 /* ─── helpers ─────────────────────────────────────── */
 const fadeUp = (delay = 0) => ({
@@ -558,6 +560,8 @@ export default function ReformaPage() {
       <KomunikatSection />
       <TimelineSection />
       <SciadaSection />
+      <RoiCalculatorSection />
+      <EndorsementsSection />
       <DokumentyCTA />
       <TeamSection />
     </PublicLayout>

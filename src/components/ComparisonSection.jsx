@@ -1,7 +1,7 @@
 ﻿import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
-import { AlertTriangle, TrendingUp } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
 // Comparison data: Poland vs top nations
 const NATIONS = [
   { flag: "🇩🇪", name: "Niemcy", scouting: 95, digital: 88, orlik: "74K boisk", ai: true,  budget: "280M EUR", rank: 1 },

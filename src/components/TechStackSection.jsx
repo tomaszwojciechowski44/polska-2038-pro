@@ -69,7 +69,7 @@ export default function TechStackSection() {
   const PIPELINE = ["Edge LiDAR","BiomechAI","PostGIS","RODO-Zero","Federated","Digital Twin"];
   const COLORS = ["border-brand-cyan/40 text-brand-cyan bg-brand-cyan/5","border-brand-neon/40 text-brand-neon bg-brand-neon/5","border-brand-gold/40 text-brand-gold bg-brand-gold/5","border-brand-red/40 text-brand-red bg-brand-red/5","border-brand-cyan/40 text-brand-cyan bg-brand-cyan/5","border-brand-neon/40 text-brand-neon bg-brand-neon/5"];
   const SUMMARY_COLORS = ["cyan","neon","gold","red","cyan","neon"];
-  const SUMMARY_ICONS = [<Cpu size={18}/>,<Zap size={18}/>,<Database size={18}/>,<Shield size={18}/>,<Globe2 size={18}/>,<Lock size={18}/>];
+  const SUMMARY_ICON_COMPONENTS = [Cpu, Zap, Database, Shield, Globe2, Lock];
   return (
     <section id="tech-stack" className="py-24 bg-brand-card relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 bg-grid-pattern opacity-20" />
@@ -93,7 +93,12 @@ export default function TechStackSection() {
             {TECH_SUMMARY.map((s,i) => (
               <motion.div key={s.label} initial={{opacity:0,scale:0.9}} animate={inView?{opacity:1,scale:1}:{}} transition={{delay:i*0.07}}
                 className={`p-3 border text-center ${SUMMARY_COLORS[i]==="cyan"?"border-brand-cyan/30 bg-brand-cyan/5":SUMMARY_COLORS[i]==="neon"?"border-brand-neon/30 bg-brand-neon/5":SUMMARY_COLORS[i]==="gold"?"border-brand-gold/30 bg-brand-gold/5":"border-brand-red/30 bg-brand-red/5"}`}>
-                <div className={`flex justify-center mb-1 ${SUMMARY_COLORS[i]==="cyan"?"text-brand-cyan":SUMMARY_COLORS[i]==="neon"?"text-brand-neon":SUMMARY_COLORS[i]==="gold"?"text-brand-gold":"text-brand-red"}`}>{SUMMARY_ICONS[i]}</div>
+                <div className={`flex justify-center mb-1 ${SUMMARY_COLORS[i]==="cyan"?"text-brand-cyan":SUMMARY_COLORS[i]==="neon"?"text-brand-neon":SUMMARY_COLORS[i]==="gold"?"text-brand-gold":"text-brand-red"}`}>
+                  {(() => {
+                    const Icon = SUMMARY_ICON_COMPONENTS[i];
+                    return <Icon size={18} />;
+                  })()}
+                </div>
                 <div className={`font-display font-bold text-sm ${SUMMARY_COLORS[i]==="cyan"?"text-brand-cyan":SUMMARY_COLORS[i]==="neon"?"text-brand-neon":SUMMARY_COLORS[i]==="gold"?"text-brand-gold":"text-brand-red"}`}>{s.val}</div>
                 <div className="text-gray-600 font-mono text-[9px] mt-0.5 leading-tight">{s.label}</div>
               </motion.div>

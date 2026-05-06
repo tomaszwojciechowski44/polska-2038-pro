@@ -1,7 +1,7 @@
 ﻿import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
-import { Star, Building2, Globe, Zap } from "lucide-react";
+import { Star } from "lucide-react";
 const TIERS = [
   {
     id: "title",

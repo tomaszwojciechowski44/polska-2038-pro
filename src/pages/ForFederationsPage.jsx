@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
-  Trophy, Shield, GraduationCap, TrendingUp, Download,
-  Globe, Users, Target, CheckCircle, Mail, ArrowRight, ExternalLink,
+  Trophy, Shield, GraduationCap, Download,
+  Globe, CheckCircle, Mail, ArrowRight, ExternalLink,
 } from 'lucide-react';
 import PublicLayout from '../components/PublicLayout';
 

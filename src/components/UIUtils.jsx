@@ -31,14 +31,11 @@ export function ScrollProgressBar() {
 // Floating action button (Contact + Back to top)
 export function FloatingCTA() {
   const [show, setShow] = useState(false);
-  const [atBottom, setAtBottom] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
       const scrolled = window.scrollY;
-      const total = document.documentElement.scrollHeight - window.innerHeight;
       setShow(scrolled > 600);
-      setAtBottom(scrolled > total * 0.85);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);

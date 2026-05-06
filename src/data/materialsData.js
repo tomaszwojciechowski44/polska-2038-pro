@@ -55,7 +55,7 @@ export const MATERIALS = [
       { h: 'Cytaty', p: ['(wstawimy cytaty po pierwszym pilotażu Q3 2026 — miejsce przygotowane).'] },
       { h: 'Kontakt dla mediów', p: ['Wszystkie materiały dostępne w zakładce Dokumentacja.'] },
     ],
-    txt: `BRIEFING DLA MEDIÓW — #Polska2038\n\nOne-liner:\n\"W 2038 Polska wygra MŚ. Nie przez szczęście — przez system.\"\n\n3 liczby:\n- 1,08 mld PLN/rok\n- 28,50 PLN na Polaka/rok\n- 2038\n\nKontakt: https://polska2038.pl/kontakt\n`,
+    txt: `BRIEFING DLA MEDIÓW — #Polska2038\n\nOne-liner:\n"W 2038 Polska wygra MŚ. Nie przez szczęście — przez system."\n\n3 liczby:\n- 1,08 mld PLN/rok\n- 28,50 PLN na Polaka/rok\n- 2038\n\nKontakt: https://polska2038.pl/kontakt\n`,
   },
   {
     slug: 'roadmap-2026-2038',

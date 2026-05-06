@@ -20,7 +20,7 @@ function parseStatValue(raw) {
   return { num: parseFloat(s) || 0, suffix: '', prefix: '' };
 }
 
-function AnimatedValue({ raw, color, inView }) {
+function AnimatedValue({ raw, inView }) {
   const { num, suffix } = parseStatValue(raw);
   const count = useCountUp(num, 2000, inView);
   const display = Number.isInteger(num) ? Math.round(count) : count.toFixed(1);
@@ -55,7 +55,7 @@ function StatCard({ stat, index }) {
 
       <div className="text-3xl mb-2">{stat.icon}</div>
       <div className={`text-3xl sm:text-4xl font-display font-bold ${colors.text} mb-1`}>
-        {inView ? <AnimatedValue raw={stat.value} color={colors} inView={inView} /> : <span>0</span>}
+        {inView ? <AnimatedValue raw={stat.value} inView={inView} /> : <span>0</span>}
       </div>
       <div className="text-gray-400 text-sm font-mono leading-tight">{stat.label}</div>
 

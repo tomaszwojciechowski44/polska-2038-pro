@@ -1,7 +1,7 @@
 ﻿import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
-import { FileText, Download, Copy, CheckCircle, Newspaper } from "lucide-react";
+import { Download, Copy, CheckCircle, Newspaper } from "lucide-react";
 const PRESS_RELEASES = [
   {
     id: "minister",

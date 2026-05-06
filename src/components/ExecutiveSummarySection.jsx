@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
-import { Target, TrendingUp, Globe2, Award, Cpu, Users } from 'lucide-react';
+import { Target } from 'lucide-react';
 
 const EXEC_METRICS = [
   { icon: '🌍', val: '5 000 000', unit: 'zawodników', sub: 'monitorowanych w czasie rzeczywistym', color: 'neon' },

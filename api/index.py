@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from jose import jwt, JWTError
-SECRET_KEY = os.getenv("SECRET_KEY", "polska2038-vercel-demo-secret-2026-xK9mP")
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-only-change-me")
 ALGORITHM = "HS256"
 
 security = HTTPBearer(auto_error=False)

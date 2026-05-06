@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Trophy, CheckCircle, Download, ArrowLeft, Globe } from 'lucide-react';
+import { CheckCircle, Download, ArrowLeft, Globe } from 'lucide-react';
 import PublicLayout from '../components/PublicLayout';
 import RoiCalculatorSection from '../components/RoiCalculatorSection';
 

@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-00E5FF?style=flat-square)](LICENSE)
 [![Tech Stack](https://img.shields.io/badge/stack-React%20%7C%20FastAPI%20%7C%20PostGIS%20%7C%20LiDAR-DC143C?style=flat-square)](docs/ARCHITECTURE.md)
 [![GDPR Compliant](https://img.shields.io/badge/GDPR-Art.25%20Compliant-FFD700?style=flat-square)](docs/PRIVACY.md)
-[![Demo Live](https://img.shields.io/badge/demo-live-00FF88?style=flat-square)](https://projek-polska-2038.github.io/polska-2038-pro/)
+[![Demo Live](https://img.shields.io/badge/demo-live-00FF88?style=flat-square)](https://www.polska2038.pl)
 
 ---
 
@@ -144,7 +144,7 @@ npm run build
 ```
 
 ### Wymagania
-- Node.js 18+
+- Node.js 20+
 - npm 9+
 - (Backend) Python 3.11+, PostgreSQL 16+, PostGIS 3.4
 

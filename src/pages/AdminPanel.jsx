@@ -21,7 +21,6 @@ function StatCard({ label, value, color, icon: Icon, sub }) {
   );
 }
 
-const TIER_COLORS = { ELITE: 'text-green-400', PROSPECT: 'text-cyan-400', MONITOR: 'text-gray-400' };
 const STATUS_COLORS = { pending: 'text-yellow-400', pending_approval: 'text-orange-400', approved: 'text-green-400', rejected: 'text-red-400' };
 const STATUS_LABELS = { pending: 'Oczekuje', pending_approval: 'Do weryfikacji', approved: 'Zaakceptowany', rejected: 'Odrzucony' };
 

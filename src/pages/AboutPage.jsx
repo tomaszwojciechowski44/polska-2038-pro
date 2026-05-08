@@ -98,9 +98,6 @@ export default function AboutPage() {
                 pomiarów sportowców olimpijskich z 48 krajów. Wynik to obiektywna, powtarzalna ocena potencjału,
                 niedostępna wcześniej dla żadnego systemu narodowego.
               </p>
-              <Link to="/kontakt" className="inline-flex items-center gap-2 px-5 py-2.5 bg-cyan-400 text-[#080d1a] font-display font-bold text-xs uppercase tracking-widest rounded hover:bg-cyan-300 transition-colors">
-                Skontaktuj się z nami <ArrowRight size={14} />
-              </Link>
             </motion.div>
             <motion.div {...fade} transition={{ delay: 0.1 }}>
               <div className="grid grid-cols-2 gap-4">

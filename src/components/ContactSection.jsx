@@ -129,14 +129,6 @@ export default function ContactSection() {
                 >
                   GitHub →
                 </a>
-                <a
-                  href="https://github.com/Polska-2038/projekt-polska-2038-pro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 border border-brand-border text-gray-300 hover:border-brand-cyan hover:text-brand-cyan transition-colors text-sm font-mono"
-                >
-                  {lang === 'en' ? 'Demo v1 →' : 'Demo v1 →'}
-                </a>
               </div>
             </div>
           </motion.div>

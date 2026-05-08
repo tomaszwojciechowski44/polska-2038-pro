@@ -517,12 +517,6 @@ function DokumentyCTA() {
           <p className="text-gray-400 mb-6">
             Executive Summary, Briefing dla Mediów, Mapa Drogowa, Budżet Szczegółowy i więcej.
           </p>
-          <Link
-            to="/reforma/dokumenty"
-            className="inline-flex items-center gap-2 bg-brand-neon hover:bg-cyan-300 text-brand-dark font-black px-8 py-4 rounded-xl transition-all shadow-lg shadow-brand-neon/20"
-          >
-            <FileText className="w-5 h-5" /> Wszystkie Dokumenty →
-          </Link>
         </motion.div>
       </div>
     </section>

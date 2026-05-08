@@ -18,20 +18,33 @@ _BACKEND = os.path.join(_ROOT, "backend")
 if _BACKEND not in sys.path:
     sys.path.insert(0, _BACKEND)
 
-# Import the real app (fallback to an error-reporting app on import failures)
-try:
-    from main import app  # type: ignore  # noqa: E402
-except Exception as e:  # pragma: no cover
-    _err = "".join(traceback.format_exception(type(e), e, e.__traceback__))
-    _err_short = _err[-8000:]  # keep response reasonably small
+def _load_app():
+    """
+    Vercel Python runtime requires a top-level `app`/`application`/`handler`.
+    We return a FastAPI app here, and assign it to `app` at module top-level.
+    """
+    try:
+        from main import app as real_app  # type: ignore  # noqa: E402
+        return real_app
+    except Exception as e:  # pragma: no cover
+        _err = "".join(traceback.format_exception(type(e), e, e.__traceback__))
+        _err_short = _err[-8000:]  # keep response reasonably small
 
-    app = FastAPI(title="Polska2038 API (boot error)", version="1.0.0")
+        err_app = FastAPI(title="Polska2038 API (boot error)", version="1.0.0")
 
-    @app.get("/api/health")
-    def health_error():
-        return {
-            "status": "error",
-            "service": "polska2038-api",
-            "error": str(e),
-            "trace": _err_short,
-        }
+        @err_app.get("/api/health")
+        def health_error():
+            return {
+                "status": "error",
+                "service": "polska2038-api",
+                "error": str(e),
+                "trace": _err_short,
+            }
+
+        return err_app
+
+
+# Top-level entrypoint for Vercel Python runtime
+app = _load_app()
+application = app
+handler = app

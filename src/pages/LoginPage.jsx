@@ -146,20 +146,20 @@ export default function LoginPage() {
                 <span className="text-gray-600">Skaut:</span>
                 <button
                   type="button"
-                  onClick={() => { setEmail('demo@polska2038.pl'); setPassword('demo2038'); }}
+                  onClick={() => { setEmail('skaut@polska2038.pl'); setPassword('haslo123'); }}
                   className="text-brand-cyan hover:text-cyan-300 transition-colors underline"
                 >
-                  demo@polska2038.pl / demo2038
+                  skaut@polska2038.pl / haslo123
                 </button>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Admin:</span>
                 <button
                   type="button"
-                  onClick={() => { setEmail('admin@polska2038.pl'); setPassword('admin2038'); }}
+                  onClick={() => { setEmail('admin@polska2038.pl'); setPassword('admin123'); }}
                   className="text-brand-gold hover:text-yellow-300 transition-colors underline"
                 >
-                  admin@polska2038.pl / admin2038
+                  admin@polska2038.pl / admin123
                 </button>
               </div>
             </div>

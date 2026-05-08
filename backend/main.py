@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from database import init_db, AsyncSessionLocal
-from routers import auth, talents, voivodeships, scouts
+from routers import auth, talents, voivodeships, scouts, contact
 
 
 async def _auto_seed():
@@ -119,6 +119,7 @@ app.include_router(auth.router,         prefix="/api/auth",         tags=["auth"
 app.include_router(talents.router,      prefix="/api/talents",      tags=["talents"])
 app.include_router(voivodeships.router, prefix="/api/voivodeships", tags=["voivodeships"])
 app.include_router(scouts.router,       prefix="/api/scouts",       tags=["scouts"])
+app.include_router(contact.router,      prefix="/api",              tags=["contact"])
 
 
 @app.get("/api/health")

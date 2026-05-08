@@ -62,4 +62,8 @@ export const getScoutMe = () =>
 export const getScoutStats = () =>
   apiClient.get('/api/scouts/stats');
 
+// Public contact (manifesto delivery)
+export const submitContact = (data) =>
+  apiClient.post('/api/contact', data);
+
 export default apiClient;

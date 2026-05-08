@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
 import { Mail, Building2, Globe, CheckCircle } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { submitContact } from '../api/client';
 
 const ROLES_PL = [
   'Ministerstwo Sportu',
@@ -25,12 +26,42 @@ export default function ContactSection() {
   const { lang } = useLanguage();
   const ROLES = lang === 'en' ? ROLES_EN : ROLES_PL;
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: '', org: '', email: '', role: '', message: '' });
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const [form, setForm] = useState({ name: '', org: '', email: '', role: '', subject: '', message: '', company: '' }); // company = honeypot
   const [ref, inView] = useInView(0.1);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError('');
+
+    // Basic bot trap (hidden field)
+    if ((form.company || '').trim()) return;
+
+    setBusy(true);
+    try {
+      const page = typeof window !== 'undefined' ? window.location.pathname : undefined;
+      await submitContact({
+        name: form.name,
+        org: form.org,
+        email: form.email,
+        role: form.role,
+        subject: form.subject,
+        message: form.message,
+        lang,
+        page,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      const msg =
+        err?.response?.data?.detail ||
+        (lang === 'en'
+          ? 'Failed to send message. Please try again in a moment.'
+          : 'Nie udało się wysłać wiadomości. Spróbuj ponownie za chwilę.');
+      setError(String(msg));
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
@@ -159,36 +190,46 @@ export default function ContactSection() {
                 onSubmit={handleSubmit}
                 className="space-y-4 p-6 border border-brand-border bg-brand-card"
               >
+                {/* Honeypot */}
+                <input
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={form.company}
+                  onChange={(e) => setForm({ ...form, company: e.target.value })}
+                  className="hidden"
+                  aria-hidden="true"
+                />
+
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
-                      Imię i Nazwisko
+                      {lang === 'en' ? 'Full name' : 'Imię i Nazwisko'}
                     </label>
                     <input
                       required
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       className="w-full bg-brand-dark border border-brand-border text-white px-3 py-2.5 text-sm font-mono focus:border-brand-neon focus:outline-none transition-colors"
-                      placeholder="Jan Kowalski"
+                      placeholder={lang === 'en' ? 'Jan Kowalski' : 'Jan Kowalski'}
                     />
                   </div>
                   <div>
                     <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
-                      Organizacja
+                      {lang === 'en' ? 'Organization' : 'Organizacja'}
                     </label>
                     <input
                       required
                       value={form.org}
                       onChange={(e) => setForm({ ...form, org: e.target.value })}
                       className="w-full bg-brand-dark border border-brand-border text-white px-3 py-2.5 text-sm font-mono focus:border-brand-neon focus:outline-none transition-colors"
-                      placeholder="PZPN / Ministerstwo"
+                      placeholder={lang === 'en' ? 'PZPN / Ministry' : 'PZPN / Ministerstwo'}
                     />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
-                    Email
+                    {lang === 'en' ? 'Email' : 'Email'}
                   </label>
                   <input
                     required
@@ -196,20 +237,20 @@ export default function ContactSection() {
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className="w-full bg-brand-dark border border-brand-border text-white px-3 py-2.5 text-sm font-mono focus:border-brand-neon focus:outline-none transition-colors"
-                    placeholder="j.kowalski@pzpn.pl"
+                    placeholder={lang === 'en' ? 'j.kowalski@pzpn.pl' : 'j.kowalski@pzpn.pl'}
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
-                    Rola / Instytucja
+                    {lang === 'en' ? 'Role / institution' : 'Rola / Instytucja'}
                   </label>
                   <select
                     value={form.role}
                     onChange={(e) => setForm({ ...form, role: e.target.value })}
                     className="w-full bg-brand-dark border border-brand-border text-white px-3 py-2.5 text-sm font-mono focus:border-brand-neon focus:outline-none transition-colors"
                   >
-                    <option value="">Wybierz...</option>
+                    <option value="">{lang === 'en' ? 'Select…' : 'Wybierz...'}</option>
                     {ROLES.map((r) => (
                       <option key={r} value={r}>
                         {r}
@@ -220,23 +261,49 @@ export default function ContactSection() {
 
                 <div>
                   <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
-                    Wiadomość
+                    {lang === 'en' ? 'Subject' : 'Temat'}
+                  </label>
+                  <input
+                    required
+                    value={form.subject}
+                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                    className="w-full bg-brand-dark border border-brand-border text-white px-3 py-2.5 text-sm font-mono focus:border-brand-neon focus:outline-none transition-colors"
+                    placeholder={lang === 'en' ? 'e.g. Meritocracy in youth development' : 'np. Merytokracja w szkoleniu młodzieży'}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">
+                    {lang === 'en' ? 'Message' : 'Wiadomość'}
                   </label>
                   <textarea
+                    required
                     rows={4}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     className="w-full bg-brand-dark border border-brand-border text-white px-3 py-2.5 text-sm font-mono focus:border-brand-neon focus:outline-none transition-colors resize-none"
-                    placeholder="Opisz swoje potrzeby lub obszar współpracy..."
+                    placeholder={lang === 'en' ? 'Write your message…' : 'Opisz swój głos / propozycję…'}
                   />
                 </div>
 
+                {error ? (
+                  <div className="border border-brand-red/40 bg-brand-red/5 text-brand-red text-xs font-mono p-3">
+                    {error}
+                  </div>
+                ) : null}
+
                 <button
                   type="submit"
-                  className="w-full py-3 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest hover:bg-red-700 transition-colors"
+                  disabled={busy}
+                  className={`w-full py-3 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest transition-colors ${busy ? 'opacity-60 cursor-not-allowed' : 'hover:bg-red-700'}`}
                 >
-                  Wyślij Zgłoszenie →
+                  {busy ? (lang === 'en' ? 'Sending…' : 'Wysyłanie…') : (lang === 'en' ? 'Send message →' : 'Wyślij Zgłoszenie →')}
                 </button>
+                <div className="text-gray-600 text-[11px] font-mono leading-relaxed">
+                  {lang === 'en'
+                    ? 'Note: your message will be forwarded directly to the Ministry of Sport, the FA (PZPN) and league authorities as a citizen voice on meritocracy in Polish football.'
+                    : 'Uwaga: Twoja wiadomość zostanie przesłana bezpośrednio do Ministerstwa Sportu, PZPN oraz władz Ekstraklasy jako głos w sprawie merytokracji w polskiej piłce.'}
+                </div>
               </form>
             )}
           </motion.div>

@@ -77,3 +77,20 @@ class ScoreHistory(Base):
     recorded_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
     talent: Mapped[Talent] = relationship("Talent", back_populates="score_history")
+
+
+class ContactMessage(Base):
+    __tablename__ = "contact_messages"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    org: Mapped[str] = mapped_column(String(255), nullable=True)
+    email: Mapped[str] = mapped_column(String(255), nullable=False)
+    role: Mapped[str] = mapped_column(String(120), nullable=True)
+    subject: Mapped[str] = mapped_column(String(200), nullable=False)
+    message: Mapped[str] = mapped_column(String(4000), nullable=False)
+    lang: Mapped[str] = mapped_column(String(8), nullable=True)
+    page: Mapped[str] = mapped_column(String(200), nullable=True)
+    ip: Mapped[str] = mapped_column(String(64), nullable=True)
+    user_agent: Mapped[str] = mapped_column(String(400), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, index=True)

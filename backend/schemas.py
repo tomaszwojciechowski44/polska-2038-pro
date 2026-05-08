@@ -87,3 +87,23 @@ class ScoutStatsOut(BaseModel):
     elite_count: int
     avg_score: Optional[float] = None
     voivodeships: int
+
+
+# ── Public contact (manifesto delivery) ───────────────────────────────────────
+
+class ContactMessageIn(BaseModel):
+    name: str
+    org: Optional[str] = None
+    email: EmailStr
+    role: Optional[str] = None
+    subject: str
+    message: str
+    lang: Optional[str] = None
+    page: Optional[str] = None
+
+
+class ContactMessageOut(BaseModel):
+    id: int
+    created_at: datetime
+
+    model_config = {"from_attributes": True}

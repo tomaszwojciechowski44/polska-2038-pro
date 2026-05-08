@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { Users, TrendingUp, MapPin, Activity, RefreshCw } from 'lucide-react';
 import PanelNavbar from '../components/panel/PanelNavbar';
 import TalentTable from '../components/panel/TalentTable';
-import { getTalents, getScoutStats } from '../api/client';
+import VoivodeshipMapCard from '../components/panel/VoivodeshipMapCard';
+import { getTalents, getScoutStats, getVoivodeships } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 
 function StatCard({ label, value, color, icon: Icon, loading }) {
@@ -28,6 +29,7 @@ export default function ScoutPanel() {
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [statsLoading, setStatsLoading] = useState(true);
+  const [voivodeships, setVoivodeships] = useState([]);
   const [error, setError] = useState('');
   const [filters, setFilters] = useState({});
 
@@ -60,6 +62,12 @@ export default function ScoutPanel() {
     fetchTalents(filters);
     fetchStats();
   }, [fetchTalents, fetchStats, filters]);
+
+  useEffect(() => {
+    getVoivodeships()
+      .then((res) => setVoivodeships(res.data || []))
+      .catch(() => setVoivodeships([]));
+  }, []);
 
   const handleFilterChange = (newFilters) => {
     const clean = Object.fromEntries(
@@ -155,6 +163,12 @@ export default function ScoutPanel() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
+          <div className="mb-4">
+            <VoivodeshipMapCard
+              voivodeships={voivodeships}
+              onSelect={(code) => handleFilterChange({ ...filters, voivodeship: code })}
+            />
+          </div>
           <TalentTable
             talents={talents}
             loading={loading}

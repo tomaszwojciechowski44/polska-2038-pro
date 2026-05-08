@@ -299,7 +299,7 @@ export default function ContactSection() {
                 >
                   {busy ? (lang === 'en' ? 'Sending…' : 'Wysyłanie…') : (lang === 'en' ? 'Send message →' : 'Wyślij Zgłoszenie →')}
                 </button>
-                <div className="text-gray-600 text-[11px] font-mono leading-relaxed">
+                <div className="text-gray-400 text-xs font-mono leading-relaxed">
                   {lang === 'en'
                     ? 'Note: your message will be forwarded directly to the Ministry of Sport, the FA (PZPN) and league authorities as a citizen voice on meritocracy in Polish football.'
                     : 'Uwaga: Twoja wiadomość zostanie przesłana bezpośrednio do Ministerstwa Sportu, PZPN oraz władz Ekstraklasy jako głos w sprawie merytokracji w polskiej piłce.'}

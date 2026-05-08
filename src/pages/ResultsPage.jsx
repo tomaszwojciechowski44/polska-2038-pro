@@ -1,6 +1,5 @@
 import PublicLayout from '../components/PublicLayout';
 import ExecutiveSummarySection from '../components/ExecutiveSummarySection';
-import RoadmapSection from '../components/RoadmapSection';
 import KpiChartsSection from '../components/KpiChartsSection';
 import RoiCalculatorSection from '../components/RoiCalculatorSection';
 
@@ -13,7 +12,6 @@ export default function ResultsPage() {
       <ExecutiveSummarySection />
       <KpiChartsSection />
       <RoiCalculatorSection />
-      <RoadmapSection />
     </PublicLayout>
   );
 }

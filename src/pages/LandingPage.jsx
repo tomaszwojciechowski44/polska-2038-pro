@@ -12,7 +12,6 @@ import CountdownSection from '../components/CountdownSection';
 import EndorsementsSection from '../components/EndorsementsSection';
 import { getVoivodeships } from '../api/client';
 import TabbedExplorerSection from '../components/TabbedExplorerSection';
-import RoadmapTimelineSection from '../components/RoadmapTimelineSection';
 import TrustBar from '../components/TrustBar';
 import PersonaRouting from '../components/PersonaRouting';
 import InternationalSection from '../components/InternationalSection';
@@ -372,9 +371,6 @@ export default function LandingPage() {
 
         {/* ─── ENDORSEMENTS ──────────────────────────────────────────────── */}
         <EndorsementsSection />
-
-        {/* ─── ROADMAP TIMELINE ─────────────────────────────────────────── */}
-        <RoadmapTimelineSection />
 
         {/* ─── INTERNATIONAL (EN only) ───────────────────────────────────── */}
         <InternationalSection />

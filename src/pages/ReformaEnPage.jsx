@@ -15,19 +15,6 @@ export default function ReformaEnPage() {
   return (
     <PublicLayout pageTitle="" pageSubtitle="">
 
-      {/* Breadcrumb */}
-      <div className="bg-gray-950 border-b border-gray-800 py-3">
-        <div className="max-w-5xl mx-auto px-4 flex items-center justify-between text-sm font-mono">
-          <Link to="/reforma" className="text-gray-500 hover:text-white flex items-center gap-1 transition-colors">
-            <ArrowLeft className="w-3.5 h-3.5" /> 🇵🇱 Polish version
-          </Link>
-          <div className="flex items-center gap-2 text-brand-neon">
-            <Globe className="w-3.5 h-3.5" />
-            <span className="text-xs uppercase tracking-widest">English Version</span>
-          </div>
-        </div>
-      </div>
-
       {/* HERO — Open Letter */}
       <section className="relative py-20 bg-gradient-to-b from-red-950/30 to-black overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(220,20,60,0.1),transparent_50%)]" />

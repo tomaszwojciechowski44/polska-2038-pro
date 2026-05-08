@@ -87,19 +87,19 @@
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-gray-400 text-sm font-mono">
+        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-between gap-x-6 gap-y-2">
+          <div className="text-gray-500 text-[11px] sm:text-xs font-mono tracking-wide whitespace-nowrap">
             &copy; 2025&ndash;2026 #Polska2038 v2.0. Wszelkie prawa zastrzeżone.
           </div>
-          <div className="flex items-center gap-4">
-            <a href="/kontakt" className="text-gray-400 hover:text-white text-sm font-mono transition-colors">Kontakt z zespołem</a>
-            <a href="https://github.com/Polska-2038/projekt-polska-2038-pro" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm font-mono transition-colors">MIT License</a>
+          <div className="flex items-center gap-4 text-gray-500 text-[11px] sm:text-xs font-mono tracking-wide whitespace-nowrap">
+            <a href="/kontakt" className="hover:text-gray-200 transition-colors">Kontakt z zespołem</a>
+            <a href="https://github.com/Polska-2038/projekt-polska-2038-pro" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">MIT License</a>
           </div>
-          <div className="flex items-center gap-2 text-gray-400 text-sm font-mono">
+          <div className="flex items-center gap-2 text-gray-500 text-[11px] sm:text-xs font-mono tracking-wide whitespace-nowrap">
             <span className="w-1.5 h-1.5 bg-brand-neon rounded-full animate-pulse" />
             System aktywny &mdash; dane demo
           </div>
-          <div className="text-gray-400 text-sm font-mono">
+          <div className="text-gray-500 text-[11px] sm:text-xs font-mono tracking-wide whitespace-nowrap">
             Zbudowany z &hearts; dla polskiego sportu
           </div>
         </div>

@@ -164,23 +164,6 @@ export default function FaqSection() {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-10 text-center bg-gray-900 border border-brand-neon/20 rounded-2xl p-8"
-        >
-          <p className="text-gray-300 font-medium mb-2">Nie znalazłeś odpowiedzi?</p>
-          <p className="text-gray-500 text-sm mb-5">
-            Skontaktuj się z nami bezpośrednio — odpowiadamy w ciągu 24h.
-          </p>
-          <a
-            href="/kontakt"
-            className="inline-flex items-center gap-2 bg-brand-neon text-black font-black px-6 py-3 rounded-full hover:bg-brand-neon/90 transition-colors text-sm"
-          >
-            ✉️ Napisz do nas
-          </a>
-        </motion.div>
       </div>
     </section>
   );

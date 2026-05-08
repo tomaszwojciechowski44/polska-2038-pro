@@ -144,13 +144,13 @@ export default function AboutSection() {
 								initial={{ opacity: 0, scale: 0.8 }}
 								animate={inView ? { opacity: 1, scale: 1 } : {}}
 								transition={{ delay: 0.5 + i * 0.05 }}
-								className="flex flex-col items-center gap-2 p-3 border border-brand-border bg-brand-card hover:border-brand-neon/30 hover:bg-brand-neon/5 transition-all cursor-default"
+								className="flex flex-col items-center gap-2 p-3.5 border border-brand-border bg-brand-card hover:border-brand-neon/30 hover:bg-brand-neon/5 transition-all cursor-default"
 							>
 								<span className="text-2xl">{t.icon}</span>
-								<span className="text-white text-xs font-mono font-bold text-center leading-tight">
+								<span className="text-white text-[11px] font-mono font-bold text-center leading-tight">
 									{t.name}
 								</span>
-								<span className="text-gray-600 text-[10px] font-mono text-center">
+								<span className="text-gray-400 text-[11px] font-mono text-center leading-tight">
 									{t.desc}
 								</span>
 							</motion.div>

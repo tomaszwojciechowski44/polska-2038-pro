@@ -30,6 +30,11 @@ MAX_PER_HOUR = 5
 MIN_GAP_S = 20               # at least 20s between messages per IP
 
 
+def _clean_header_value(v: str) -> str:
+    # Prevent header injection / invalid From/Subject values.
+    return (v or "").replace("\r", " ").replace("\n", " ").strip()
+
+
 def _client_ip(request: Request) -> str:
     # Prefer proxy headers if present (Render / Nginx etc.)
     xff = request.headers.get("x-forwarded-for")
@@ -107,8 +112,8 @@ async def submit_contact(data: ContactMessageIn, request: Request, db: AsyncSess
         raise HTTPException(status_code=503, detail="Database error. Please try again later.")
 
     # Build email
-    from_addr = os.getenv("SMTP_FROM") or "Projekt Polska2038 <onboarding@resend.dev>"
-    subject = f"Projekt #Polska2038 - Głos Obywatelski: {data.subject.strip()}"
+    from_addr = _clean_header_value(os.getenv("SMTP_FROM") or "Projekt Polska2038 <onboarding@resend.dev>")
+    subject = _clean_header_value(f"Projekt #Polska2038 - Głos Obywatelski: {data.subject.strip()}")
 
     body = "\n".join([
         "Nowa wiadomość z formularza publicznego (manifesto delivery).",
@@ -131,7 +136,7 @@ async def submit_contact(data: ContactMessageIn, request: Request, db: AsyncSess
     msg["From"] = from_addr
     msg["To"] = ", ".join(STAKEHOLDERS)
     msg["Subject"] = subject
-    msg["Reply-To"] = str(data.email)
+    msg["Reply-To"] = _clean_header_value(str(data.email))
     msg.set_content(body)
 
     try:

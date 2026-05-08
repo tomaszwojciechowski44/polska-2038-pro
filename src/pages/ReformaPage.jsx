@@ -159,7 +159,7 @@ function HeroSection() {
 
         <motion.div {...fadeUp(0.5)} className="flex flex-wrap justify-center gap-3">
           <a
-            href="#komunikat"
+            href="#filary"
             className="bg-brand-red hover:bg-red-700 text-white font-bold px-8 py-4 rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-red-600/30"
           >
             <Trophy className="w-5 h-5" /> Trzy Filary Reformy
@@ -201,7 +201,7 @@ function LastChanceSection() {
 /* ─── Section: Trzy Filary ─────────────────────────── */
 function TrzyFilarySection() {
   return (
-    <section id="filary" className="py-20 bg-gradient-to-b from-black to-gray-950">
+    <section id="filary" className="py-20 bg-gradient-to-b from-black to-gray-950 scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...fadeUp(0)} className="text-center mb-14">
           <span className="text-brand-neon font-mono text-xs uppercase tracking-widest">Kompleksowy system</span>

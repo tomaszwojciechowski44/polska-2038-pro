@@ -4,24 +4,6 @@ import { ArrowRight, CheckCircle, Users, Brain, MapPin, Shield, Trophy, Zap } fr
 import PublicLayout from '../components/PublicLayout';
 import FaqSection from '../components/FaqSection';
 
-const MILESTONES = [
-  { year: '2024', label: 'Faza koncepcyjna', desc: 'Opracowanie metodologii identyfikacji talentów przez interdyscyplinarny zespół naukowców i trenerów kadry narodowej.' },
-  { year: '2025', label: 'Pilotaż regionalny', desc: 'Program testowany w 4 województwach: Mazowieckim, Małopolskim, Śląskim i Wielkopolskim. Skanowanie 12 000 zawodników.' },
-  { year: '2026', label: 'Wdrożenie ogólnopolskie', desc: 'Rozszerzenie na wszystkie 16 województw. Sieć 847 skautów. 47 388 przeskanowanych profili. Starty w 6 dyscyplinach.' },
-  { year: '2028', label: 'Rozszerzenie o sport paraolimpijski', desc: 'Włączenie kategorii para-sportu. Integracja z systemami europejskich federacji.' },
-  { year: '2032', label: 'System kontynentalny', desc: 'Eksport modelu TalentRadar do 8 krajów UE. Polska jako europejskie centrum kompetencji.' },
-  { year: '2038', label: 'Pełna autonomia AI', desc: 'Cel programowy: samorozwijający się system z 99% precyzją identyfikacji, niezależny od cyklu olimpijskiego.' },
-];
-
-const TEAM = [
-  { name: 'Inicjatywa Obywatelska', role: 'Koncepcja i Architektura', dept: 'Projekt społeczny · Polska', avatar: '🇵🇱' },
-  { name: 'Otwarty Kod', role: 'Platforma technologiczna', dept: 'Open-source · GitHub', avatar: '💻' },
-  { name: 'Sieć Wolontariuszy', role: 'Metodologia AI & Sport', dept: 'Interdyscyplinarny zespół', avatar: '🧠' },
-  { name: 'Eksperci PZPN', role: 'Doradztwo merytoryczne', dept: 'Zaproszeni konsultanci', avatar: '⚽' },
-  { name: 'Rodzice & Trenerzy', role: 'Testy pilotażowe', dept: 'Wolontariusze 4 województw', avatar: '🏃' },
-  { name: 'Ty możesz dołączyć', role: 'Twoja rola TBD', dept: 'Aplikuj przez /kontakt', avatar: '✉️' },
-];
-
 const PRINCIPLES = [
   { icon: Shield, title: 'Bezpieczeństwo danych', desc: 'Pełna zgodność z RODO i ustawą o sporcie. Dane zawodników szyfrowane metodą AES-256. Prawo do zapomnienia.' },
   { icon: Brain, title: 'Transparentność AI', desc: 'Każda decyzja algorytmu jest wyjaśnialna. Skauci widzą, dlaczego system nadał dany wynik, z możliwością odwołania.' },
@@ -135,74 +117,6 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-white font-display font-bold text-sm mb-2">{title}</h3>
                 <p className="text-gray-500 font-mono text-xs leading-relaxed">{desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-16 sm:py-20">
-        <div className="max-w-4xl mx-auto px-4">
-          <motion.div {...fade} className="mb-10">
-            <span className="text-cyan-400 font-mono text-xs uppercase tracking-widest">Roadmapa</span>
-            <h2 className="text-3xl font-display font-bold text-white mt-2">Historia i plan rozwoju</h2>
-          </motion.div>
-          <div className="relative">
-            <div className="absolute left-16 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400/40 via-cyan-400/20 to-transparent" />
-            <div className="space-y-8">
-              {MILESTONES.map(({ year, label, desc }, i) => {
-                const isPast = parseInt(year) <= 2026;
-                return (
-                  <motion.div key={year} {...fade} transition={{ delay: i * 0.06 }} className="flex gap-6">
-                    <div className="flex flex-col items-center flex-shrink-0 w-16">
-                      <div className={`w-4 h-4 rounded-full border-2 z-10 mt-1 flex-shrink-0 ${
-                        isPast ? 'border-cyan-400 bg-cyan-400' : 'border-gray-600 bg-[#080d1a]'
-                      }`} />
-                      <span className={`font-mono text-xs mt-2 ${isPast ? 'text-cyan-400' : 'text-gray-600'}`}>{year}</span>
-                    </div>
-                    <div className="pb-6">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className={`font-display font-bold text-sm ${isPast ? 'text-white' : 'text-gray-500'}`}>{label}</h3>
-                        {isPast && <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 bg-green-400/10 text-green-400 border border-green-400/30 rounded">Zrealizowane</span>}
-                      </div>
-                      <p className={`font-mono text-xs leading-relaxed ${isPast ? 'text-gray-400' : 'text-gray-600'}`}>{desc}</p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-16 sm:py-20 bg-[#0d1325]">
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.div {...fade} className="mb-4">
-            <span className="text-cyan-400 font-mono text-xs uppercase tracking-widest">Zespół</span>
-            <h2 className="text-3xl font-display font-bold text-white mt-2">Kto za tym stoi?</h2>
-          </motion.div>
-          <motion.div {...fade} className="mb-10">
-            <p className="text-gray-400 font-mono text-sm leading-relaxed max-w-3xl">
-              #Polska2038 to inicjatywa obywatelska — projekt przygotowany przez pasjonatów sportu,
-              technologii i danych. Nie jesteśmy urzędnikami. Chcemy, żeby Polska wygrała Mistrzostwa Świata
-              w 2038. Cały kod jest open-source. Szukamy partnerów: Ministerstwa Sportu, PZPN, UEFA i inwestorów.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {TEAM.map(({ name, role, dept, avatar }, i) => (
-              <motion.div key={name} {...fade} transition={{ delay: i * 0.06 }}
-                className="p-5 border border-[#1e2d4a] bg-[#080d1a] rounded-lg flex items-start gap-4">
-                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-cyan-400/20 to-green-400/20 border border-cyan-400/20
-                  flex items-center justify-center font-mono font-bold text-cyan-400 text-xs flex-shrink-0">
-                  {avatar}
-                </div>
-                <div>
-                  <div className="text-white font-display font-bold text-sm">{name}</div>
-                  <div className="text-cyan-400 font-mono text-xs mt-0.5">{role}</div>
-                  <div className="text-gray-600 font-mono text-[10px] mt-0.5">{dept}</div>
-                </div>
               </motion.div>
             ))}
           </div>

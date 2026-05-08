@@ -203,14 +203,6 @@ function PolandSVGMap({ selectedVoiv, onSelect, voivodeships }) {
   );
 }
 
-// ─── World interest ───────────────────────────────────────────────────────────
-const WORLD_INTEREST = [
-  { country: "Niemcy",     flag: "🇩🇪", status: "Obserwuje", statusColor: "text-gray-400 border-gray-600",   note: "DFB zainteresowany współpracą technologiczną" },
-  { country: "Francja",    flag: "🇫🇷", status: "Obserwuje", statusColor: "text-gray-400 border-gray-600",   note: "FFF analizuje model LiDAR" },
-  { country: "Japonia",    flag: "🇯🇵", status: "Kontakt",   statusColor: "text-brand-cyan border-brand-cyan/40", note: "JFA prosiło o demonstrację systemu" },
-  { country: "Korea Pd.",  flag: "🇰🇷", status: "Demo",      statusColor: "text-brand-neon border-brand-neon/40", note: "KFA wysyła delegację Q3 2026" },
-];
-
 // ─── Main section ─────────────────────────────────────────────────────────────
 export default function GlobalMapSection() {
   const [ref, inView] = useInView(0.08);
@@ -408,26 +400,6 @@ export default function GlobalMapSection() {
               </div>
             </div>
 
-            {/* World interest */}
-            <div className="p-4 border border-brand-border bg-brand-card rounded-sm">
-              <div className="text-gray-500 text-[10px] font-mono uppercase tracking-widest mb-3">
-                Zainteresowanie światowe
-              </div>
-              <div className="space-y-2.5">
-                {WORLD_INTEREST.map((w) => (
-                  <div key={w.country} className="flex items-center gap-2.5">
-                    <span className="text-lg flex-shrink-0">{w.flag}</span>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-white text-xs font-mono font-bold leading-tight">{w.country}</div>
-                      <div className="text-gray-500 text-[9px] font-mono leading-tight mt-0.5 truncate">{w.note}</div>
-                    </div>
-                    <span className={`text-[9px] font-mono px-1.5 py-0.5 border rounded-sm flex-shrink-0 ${w.statusColor}`}>
-                      {w.status}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

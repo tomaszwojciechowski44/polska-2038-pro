@@ -113,9 +113,6 @@ export default function StatsSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-12"
         >
-          <span className="text-brand-neon font-mono text-sm tracking-widest uppercase">
-            // system_metrics.json
-          </span>
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-white mt-2">
             Liczby, które mówią same za siebie
           </h2>

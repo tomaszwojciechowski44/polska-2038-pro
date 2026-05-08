@@ -506,23 +506,6 @@ function TeamSection() {
   );
 }
 
-/* ─── Section: Dokumenty CTA ───────────────────────── */
-function DokumentyCTA() {
-  return (
-    <section className="py-14 bg-gradient-to-r from-gray-900 via-gray-950 to-gray-900 border-y border-gray-800">
-      <div className="max-w-4xl mx-auto px-4 text-center">
-        <motion.div {...fadeUp(0)}>
-          <FileText className="w-10 h-10 text-brand-neon mx-auto mb-4" />
-          <h2 className="text-2xl font-black text-white mb-3">Pełna Dokumentacja do Pobrania</h2>
-          <p className="text-gray-400 mb-6">
-            Executive Summary, Briefing dla Mediów, Mapa Drogowa, Budżet Szczegółowy i więcej.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
 /* ─── Page ─────────────────────────────────────────── */
 export default function ReformaPage() {
   return (
@@ -538,7 +521,6 @@ export default function ReformaPage() {
       <SciadaSection />
       <RoiCalculatorSection />
       <EndorsementsSection />
-      <DokumentyCTA />
       <TeamSection />
     </PublicLayout>
   );

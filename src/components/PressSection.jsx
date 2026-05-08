@@ -50,7 +50,7 @@ KLUCZOWE FAKTY:
 - 94% dokładność modelu na zbiorze walidacyjnym
 - Wycena systemu: 1,1 MLD PLN
 CYTAT: "W 2038 Polska wygra mistrzostwa świata. Nie przez szczęście — przez system."
-KONTAKT MEDIALNY: kontakt@polska2038.pl
+KONTAKT MEDIALNY: polska2038@proton.me
 DEMO LIVE: https://polska-2038.github.io/projekt-polska-2038-pro`,
   },
   {
@@ -131,7 +131,7 @@ KEY FACTS:
 - System valuation: 1.1B PLN
 
 QUOTE: “In 2038 Poland will win — not by luck, but by system.”
-MEDIA CONTACT: kontakt@polska2038.pl`,
+MEDIA CONTACT: polska2038@proton.me`,
   },
   {
     id: "investor",

@@ -47,7 +47,16 @@ export default function Footer() {
           <div>
             <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-4">Tech Stack</div>
             <div className="flex flex-wrap gap-2">
-              {['React 18', 'FastAPI', 'PostgreSQL+PostGIS', 'scikit-learn', 'Celery', 'Redis', 'Docker', 'Kubernetes'].map((t) => (
+              {[
+                'React 18',
+                'Vite',
+                'React Router',
+                'Tailwind CSS',
+                'Framer Motion',
+                'FastAPI',
+                'SQLAlchemy',
+                'PostgreSQL + PostGIS',
+              ].map((t) => (
                 <span key={t} className="px-2 py-1 border border-brand-border text-gray-500 text-xs font-mono rounded">
                   {t}
                 </span>

@@ -1,6 +1,6 @@
 ﻿import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
-import { Building2, Shield, ChevronRight } from 'lucide-react';
+import { Building2, Shield } from 'lucide-react';
 
 const AUDIENCES = [
 	{
@@ -16,8 +16,6 @@ const AUDIENCES = [
 			'Zgodność z GDPR Art.25 i normą ISO 27001',
 			'Integracja z KPO i funduszami EU Digital',
 		],
-		cta: 'Umów prezentację dla Ministerstwa',
-		ctaHref: '#kontakt',
 		sectionLabels: ['Executive Summary', 'Kalkulator ROI', 'Roadmap 2038'],
 		sections: ['#executive', '#roi', '#roadmap'],
 	},
@@ -34,8 +32,6 @@ const AUDIENCES = [
 			'Historia treningów i trajektoria kariery od 6 roku życia',
 			'Integracja z systemami FIFA Connect i UEFA Elite',
 		],
-		cta: 'Demo API dla federacji',
-		ctaHref: '#scout-demo',
 		sectionLabels: ['Demo Skauta', 'AI Engine', 'Mapa Talentów'],
 		sections: ['#scout-demo', '#ai-engine', '#mapa'],
 	},
@@ -52,8 +48,6 @@ const AUDIENCES = [
 			'Branding na platformie obsługującej 5M zawodników',
 			'Co-development i dostęp do anonimizowanych danych',
 		],
-		cta: 'Pobierz Investment Memo',
-		ctaHref: '#partnerzy',
 		sectionLabels: ['Kalkulator ROI', 'Pakiety sponsorskie', 'Executive Summary'],
 		sections: ['#roi', '#partnerzy', '#executive'],
 	},
@@ -70,8 +64,6 @@ const AUDIENCES = [
 			'Dostęp do dema i możliwość wywiadu technicznego',
 			'Embargo i premiera medialna — pierwsze media dostają exclusivity',
 		],
-		cta: 'Press Kit i materiały',
-		ctaHref: '#media',
 		sectionLabels: ['Media Buzz', 'Press Releases', 'Demo live'],
 		sections: ['#media-buzz', '#media', '#scout-demo'],
 	},
@@ -160,14 +152,6 @@ export default function AudienceSection() {
 								: a.color === 'gold'
 								? 'text-brand-gold bg-brand-gold/10 border-brand-gold/20'
 								: 'text-brand-red bg-brand-red/10 border-brand-red/20';
-						const colorCta =
-							a.color === 'neon'
-								? 'bg-brand-neon text-black hover:bg-green-400'
-								: a.color === 'cyan'
-								? 'bg-brand-cyan text-black hover:bg-cyan-400'
-								: a.color === 'gold'
-								? 'bg-brand-gold text-black hover:bg-yellow-400'
-								: 'bg-brand-red text-white hover:bg-red-600';
 
 						return (
 							<motion.div
@@ -234,14 +218,6 @@ export default function AudienceSection() {
 											</a>
 										))}
 									</div>
-
-									<a
-										href={a.ctaHref}
-										className={`inline-flex items-center gap-2 px-5 py-2.5 font-mono font-bold text-sm transition-all ${colorCta}`}
-									>
-										{a.cta}
-										<ChevronRight size={14} />
-									</a>
 								</div>
 							</motion.div>
 						);

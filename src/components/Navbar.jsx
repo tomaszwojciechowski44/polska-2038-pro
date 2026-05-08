@@ -119,12 +119,6 @@ export default function Navbar() {
             >
               {t?.nav?.panel ?? 'Panel'} →
             </Link>
-            <Link
-              to="/kontakt"
-              className="px-4 py-2 border border-brand-neon/30 bg-brand-neon/5 text-brand-neon font-display font-bold text-xs uppercase tracking-widest hover:border-brand-neon/60 transition-all whitespace-nowrap"
-            >
-              {t?.nav?.joinCta ?? 'Join'} →
-            </Link>
           </div>
 
           {/* Mobile: lang + hamburger */}

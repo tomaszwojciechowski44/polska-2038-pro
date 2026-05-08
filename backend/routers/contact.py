@@ -141,7 +141,9 @@ async def submit_contact(data: ContactMessageIn, request: Request, db: AsyncSess
 
     try:
         await anyio.to_thread.run_sync(_smtp_send, msg)
-    except Exception:
+    except Exception as e:
+        print("SMTP send failed:", repr(e))
+        print("Traceback:\n", traceback.format_exc())
         # Do not lose stored message; report that delivery failed.
         raise HTTPException(status_code=502, detail="Nie udało się wysłać wiadomości e-mail. Spróbuj później.")
 

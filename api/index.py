@@ -26,7 +26,6 @@ app.add_middleware(
 # ── Demo users ──────────────────────────────────────────────────────────────
 _USERS = {
     "skaut@polska2038.pl":  {"id": 1, "full_name": "Jan Kowalski",       "role": "scout", "voivodeship": "MZ", "pw": "haslo123"},
-    "admin@polska2038.pl":  {"id": 2, "full_name": "Administrator Systemu", "role": "admin", "voivodeship": "MZ", "pw": "admin123"},
 }
 
 # ── Demo voivodeships ────────────────────────────────────────────────────────
@@ -203,32 +202,6 @@ def register_scout(data: ScoutRegisterReq):
         "id": entry["id"],
         "reference": f"P2038-S-{entry['id']:04d}"
     }
-
-@app.get("/api/admin/stats")
-def admin_stats(user=Depends(_require_user)):
-    if user.get("role") != "admin":
-        raise HTTPException(status_code=403, detail="Brak uprawnień administratora.")
-    total = len(_TALENTS)
-    elite = sum(1 for t in _TALENTS if t["ai_tier"] == "ELITE")
-    avg = round(sum(t["ai_score"] for t in _TALENTS) / total, 1) if total else 0
-    return {
-        "total_talents": total, "elite_count": elite, "avg_score": avg,
-        "voivodeships": 16, "registered_users": len(_REG_USERS),
-        "registered_scouts": len(_REG_SCOUTS),
-        "pending_approvals": sum(1 for s in _REG_SCOUTS if s["status"] == "pending_approval"),
-    }
-
-@app.get("/api/admin/registrations/users")
-def admin_reg_users(user=Depends(_require_user)):
-    if user.get("role") != "admin":
-        raise HTTPException(status_code=403, detail="Brak uprawnień administratora.")
-    return _REG_USERS
-
-@app.get("/api/admin/registrations/scouts")
-def admin_reg_scouts(user=Depends(_require_user)):
-    if user.get("role") != "admin":
-        raise HTTPException(status_code=403, detail="Brak uprawnień administratora.")
-    return _REG_SCOUTS
 
 @app.get("/api/voivodeships")
 def voivodeships():

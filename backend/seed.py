@@ -111,7 +111,6 @@ async def seed():
     async with AsyncSessionLocal() as session:
         # ── Users ──────────────────────────────────────────────────────────
         for email, password, role, name in [
-            ("admin@polska2038.pl", "admin123", UserRole.admin, "Administrator Systemu"),
             ("skaut@polska2038.pl", "haslo123", UserRole.scout, "Jan Kowalski"),
         ]:
             from sqlalchemy import select

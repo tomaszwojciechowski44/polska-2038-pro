@@ -1,6 +1,6 @@
 import './index.css';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { AuthProvider, PrivateRoute, AdminRoute } from './context/AuthContext';
+import { AuthProvider, PrivateRoute } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
 
 // Public pages
@@ -23,7 +23,6 @@ import NotFoundPage       from './pages/NotFoundPage';
 
 // Protected pages
 import ScoutPanel from './pages/ScoutPanel';
-import AdminPanel from './pages/AdminPanel';
 
 export default function App() {
   const location = useLocation();
@@ -56,9 +55,6 @@ export default function App() {
 
           {/* ── Protected — scouts ───────────────────── */}
           <Route path="/panel" element={<PrivateRoute><ScoutPanel /></PrivateRoute>} />
-
-          {/* ── Protected — admin only ───────────────── */}
-          <Route path="/admin" element={<AdminRoute><AdminPanel /></AdminRoute>} />
 
           {/* ── 404 ──────────────────────────────────── */}
           <Route path="*" element={<NotFoundPage />} />

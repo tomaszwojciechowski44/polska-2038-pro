@@ -48,7 +48,6 @@ async def _auto_seed():
             return
 
         for email, password, role, name in [
-            ("admin@polska2038.pl","admin123",UserRole.admin,"Administrator"),
             ("skaut@polska2038.pl","haslo123",UserRole.scout,"Jan Kowalski"),
         ]:
             session.add(User(email=email, hashed_password=pwd.hash(password),

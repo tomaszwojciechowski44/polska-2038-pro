@@ -152,16 +152,6 @@ export default function LoginPage() {
                   skaut@polska2038.pl / haslo123
                 </button>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Admin:</span>
-                <button
-                  type="button"
-                  onClick={() => { setEmail('admin@polska2038.pl'); setPassword('admin123'); }}
-                  className="text-brand-gold hover:text-yellow-300 transition-colors underline"
-                >
-                  admin@polska2038.pl / admin123
-                </button>
-              </div>
             </div>
           </div>
 

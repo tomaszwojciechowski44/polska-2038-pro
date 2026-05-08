@@ -29,14 +29,6 @@ export default function PanelNavbar() {
             >
               Dashboard
             </Link>
-            {user?.role === 'admin' && (
-              <Link
-                to="/admin"
-                className="text-gray-400 hover:text-brand-red font-mono text-xs uppercase tracking-widest transition-colors"
-              >
-                Admin
-              </Link>
-            )}
             <div className="flex items-center gap-2 px-3 py-1.5 border border-brand-border rounded-sm">
               <User size={12} className="text-brand-cyan" />
               <span className="text-gray-300 font-mono text-xs">

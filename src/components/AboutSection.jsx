@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
 import { GitBranch, ExternalLink, Heart } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const VALUES = [
 	{
@@ -43,6 +44,7 @@ const TECH_PILLARS = [
 
 export default function AboutSection() {
 	const [ref, inView] = useInView(0.1);
+  const { lang } = useLanguage();
 
 	return (
 		<section
@@ -61,19 +63,18 @@ export default function AboutSection() {
 				>
 					<span className="inline-flex items-center gap-2 text-brand-cyan font-mono text-sm tracking-widest uppercase mb-3">
 						<Heart size={14} />
-						O PROJEKCIE
+						{lang === 'en' ? 'ABOUT' : 'O PROJEKCIE'}
 					</span>
 					<h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
-						Misja:{' '}
+						{lang === 'en' ? 'Mission:' : 'Misja:'}{' '}
 						<span className="text-brand-cyan text-glow-cyan">
-							Żaden Talent Nie Umknie
+							{lang === 'en' ? 'No talent left behind' : 'Żaden Talent Nie Umknie'}
 						</span>
 					</h2>
 					<p className="text-gray-400 mt-4 max-w-3xl mx-auto text-lg leading-relaxed">
-						#Polska2038 to inicjatywa techniczna budująca narodowy system
-						wykrywania talentów sportowych. Łączymy najtańszą technologię skanowania
-						3D ze sztuczną inteligencją, żeby każdy 6-latek na Orliku w Pcimiu
-						miał taką samą szansę jak dziecko w Akademii Legii.
+						{lang === 'en'
+							? '#Polska2038 is a civic tech initiative building a national sports talent identification system. We combine low-cost 3D scanning with AI so every kid has the same chance — regardless of where they live.'
+							: '#Polska2038 to inicjatywa techniczna budująca narodowy system wykrywania talentów sportowych. Łączymy najtańszą technologię skanowania 3D ze sztuczną inteligencją, żeby każdy 6-latek na Orliku w Pcimiu miał taką samą szansę jak dziecko w Akademii Legii.'}
 					</p>
 				</motion.div>
 
@@ -134,7 +135,9 @@ export default function AboutSection() {
 				>
 					<div className="text-center mb-8">
 						<span className="text-gray-500 text-xs font-mono uppercase tracking-widest">
-							// tech_stack.json &mdash; fundament systemu
+							{lang === 'en'
+								? '// tech_stack.json — system foundation'
+								: '// tech_stack.json — fundament systemu'}
 						</span>
 					</div>
 					<div className="grid grid-cols-4 sm:grid-cols-8 gap-3">

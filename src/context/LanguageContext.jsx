@@ -10,19 +10,23 @@ export function LanguageProvider({ children, initialLang = 'pl' }) {
   const [lang, setLang] = useState(initialLang);
 
   useEffect(() => {
-    // Client-only: auto switch to EN if browser language isn't PL (unless explicit initialLang was set).
+    // Keep language strictly in sync with URL-derived initialLang.
+    setLang(initialLang);
+  }, [initialLang]);
+
+  const setLangAndPersist = (next) => {
+    setLang(next);
     try {
-      const browserLang = (navigator.language || 'pl').slice(0, 2).toLowerCase();
-      if (initialLang === 'pl' && browserLang !== 'pl') setLang('en');
+      if (typeof window !== 'undefined') window.localStorage?.setItem('preferredLang', next);
     } catch {
       // ignore
     }
-  }, [initialLang]);
+  };
 
-  const toggle = () => setLang((l) => (l === 'pl' ? 'en' : 'pl'));
+  const toggle = () => setLangAndPersist(lang === 'pl' ? 'en' : 'pl');
   const t = useMemo(() => TRANSLATIONS[lang] ?? TRANSLATIONS.pl, [lang]);
   return (
-    <LanguageContext.Provider value={{ lang, setLang, toggle, t }}>
+    <LanguageContext.Provider value={{ lang, setLang: setLangAndPersist, toggle, t }}>
       {children}
     </LanguageContext.Provider>
   );

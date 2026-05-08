@@ -3,12 +3,14 @@ import EndorsementsSection from '../components/EndorsementsSection';
 import SponsorsSection from '../components/SponsorsSection';
 import PressSection from '../components/PressSection';
 import AboutSection from '../components/AboutSection';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function PartnersPage() {
+  const { t } = useLanguage();
   return (
     <PublicLayout
-      pageTitle="Partnerzy"
-      pageSubtitle="Federacje, sponsorzy, media i ambasadorzy programu #Polska2038. Wśród nich PZPN, UEFA, MSiT i wiodące polskie media sportowe."
+      pageTitle={t?.pages?.partners?.title ?? 'Partnerzy'}
+      pageSubtitle={t?.pages?.partners?.subtitle ?? ''}
     >
       <EndorsementsSection />
       <SponsorsSection />

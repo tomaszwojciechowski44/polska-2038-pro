@@ -2,7 +2,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
 import { Star } from "lucide-react";
-const TIERS = [
+import { useLanguage } from "../context/LanguageContext";
+
+const TIERS_PL = [
   {
     id: "title",
     name: "TITLE SPONSOR",
@@ -83,8 +85,92 @@ const TIERS = [
     ],
   },
 ];
+
+const TIERS_EN = [
+  {
+    id: "title",
+    name: "TITLE SPONSOR",
+    subtitle: "One slot. One brand. A legacy.",
+    price: "5M PLN / year",
+    color: "gold",
+    borderClass: "border-brand-gold",
+    bgClass: "bg-brand-gold/5",
+    textClass: "text-brand-gold",
+    glowClass: "border-glow-gold",
+    slots: 1,
+    benefits: [
+      "Sponsor name in the #Polska2038 logo",
+      "Exclusive naming rights for the system",
+      "Logo across all media materials",
+      "Dedicated data dashboard",
+      "Presentation at the national launch ceremony",
+      "First right of renewal",
+      "Access to aggregated analytics",
+    ],
+  },
+  {
+    id: "gold",
+    name: "GOLD PARTNER",
+    subtitle: "Co-build the future of Polish sport.",
+    price: "1M PLN / year",
+    color: "neon",
+    borderClass: "border-brand-neon",
+    bgClass: "bg-brand-neon/5",
+    textClass: "text-brand-neon",
+    glowClass: "border-glow-neon",
+    slots: 4,
+    benefits: [
+      "Logo on the platform and in press materials",
+      "Access to (anonymized) data API",
+      "Participation in the regional pilot",
+      "Quarterly performance report",
+      "Co-branding of scouting initiatives",
+      "2 seats at the annual talent gala",
+    ],
+  },
+  {
+    id: "tech",
+    name: "TECH PARTNER",
+    subtitle: "Your tech powers the system.",
+    price: "Technology barter",
+    color: "cyan",
+    borderClass: "border-brand-cyan",
+    bgClass: "bg-brand-cyan/5",
+    textClass: "text-brand-cyan",
+    glowClass: "border-glow-cyan",
+    slots: 6,
+    benefits: [
+      "Logo in the Tech Stack section",
+      "Case study + documentation mention",
+      "Priority in technology procurement",
+      "R&D cooperation for scaling",
+      "Access to the core dev team",
+    ],
+  },
+  {
+    id: "institutional",
+    name: "INSTITUTIONAL PARTNER",
+    subtitle: "Ministry, Federation, Local government.",
+    price: "Pilot program",
+    color: "red",
+    borderClass: "border-brand-red",
+    bgClass: "bg-brand-red/5",
+    textClass: "text-brand-red",
+    glowClass: "border-glow-red",
+    slots: 16,
+    benefits: [
+      "Pilot deployment on 5 pitches",
+      "500 players for 6 months",
+      "Full technical docs and procurement-ready spec",
+      "Institutional reporting",
+      "Implementation support & training",
+    ],
+  },
+];
 export default function SponsorsSection() {
+  const { lang } = useLanguage();
   const [ref, inView] = useInView(0.08);
+  const TIERS = lang === "en" ? TIERS_EN : TIERS_PL;
   return (
     <section id="partnerzy" className="py-24 bg-brand-card relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 bg-grid-pattern opacity-20" />
@@ -93,15 +179,25 @@ export default function SponsorsSection() {
         <motion.div initial={{opacity:0,y:20}} animate={inView?{opacity:1,y:0}:{}} className="text-center mb-16">
           <span className="inline-flex items-center gap-2 text-brand-gold font-mono text-sm tracking-widest uppercase mb-3">
             <Star size={14} />
-            PARTNERSTWO STRATEGICZNE
+            {lang === "en" ? "STRATEGIC PARTNERSHIPS" : "PARTNERSTWO STRATEGICZNE"}
           </span>
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
-            Zostań Częścią{" "}
-            <span className="text-brand-gold text-glow-gold">Historii.</span>
+            {lang === "en" ? (
+              <>
+                Become part of{" "}
+                <span className="text-brand-gold text-glow-gold">history.</span>
+              </>
+            ) : (
+              <>
+                Zostań Częścią{" "}
+                <span className="text-brand-gold text-glow-gold">Historii.</span>
+              </>
+            )}
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-lg">
-            W 2038 Polska będzie mistrzem świata. Twoja marka może być przy tym od samego początku.
-            Wybierz poziom partnerstwa.
+            {lang === "en"
+              ? "In 2038 Poland can win the World Cup. Your brand can be there from day one. Choose a partnership tier."
+              : "W 2038 Polska będzie mistrzem świata. Twoja marka może być przy tym od samego początku. Wybierz poziom partnerstwa."}
           </p>
         </motion.div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
@@ -111,14 +207,16 @@ export default function SponsorsSection() {
               className={"relative flex flex-col border-2 "+tier.borderClass+" "+tier.bgClass+" "+tier.glowClass}>
               {tier.id === "title" && (
                 <div className={"absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-[10px] font-mono font-bold uppercase tracking-widest "+tier.textClass+" bg-brand-card border "+tier.borderClass}>
-                  TYLKO 1 MIEJSCE
+                  {lang === "en" ? "ONLY 1 SLOT" : "TYLKO 1 MIEJSCE"}
                 </div>
               )}
               <div className="p-6 flex-1">
                 <div className={"text-xs font-mono tracking-widest uppercase mb-2 "+tier.textClass}>{tier.name}</div>
                 <p className="text-white font-display font-bold text-sm leading-snug mb-3">{tier.subtitle}</p>
                 <div className={"text-xl font-display font-bold "+tier.textClass+" mb-1"}>{tier.price}</div>
-                <div className="text-gray-600 text-[10px] font-mono mb-5">Dostępnych miejsc: {tier.slots}</div>
+                <div className="text-gray-600 text-[10px] font-mono mb-5">
+                  {lang === "en" ? "Slots:" : "Dostępnych miejsc:"} {tier.slots}
+                </div>
                 <ul className="space-y-2">
                   {tier.benefits.map((b) => (
                     <li key={b} className="flex gap-2 text-xs font-mono text-gray-400">
@@ -129,9 +227,9 @@ export default function SponsorsSection() {
                 </ul>
               </div>
               <div className="p-5 pt-0">
-                <Link to="/kontakt"
+                <Link to={lang === "en" ? "/en/kontakt" : "/kontakt"}
                   className={"block text-center py-2.5 border font-display font-bold text-xs uppercase tracking-widest transition-all "+tier.borderClass+" "+tier.textClass+" hover:bg-brand-gold/10"}>
-                  Skontaktuj się &rarr;
+                  {lang === "en" ? "Contact us →" : "Skontaktuj się →"}
                 </Link>
               </div>
             </motion.div>

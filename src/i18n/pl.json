@@ -75,6 +75,40 @@
     "title": "Export this system to your country",
     "subtitle": "White‑label deployment for national federations — your language, your data, your branding.",
     "cta": "Request international deployment"
+  },
+  "pages": {
+    "technology": {
+      "title": "Technologia",
+      "subtitle": "LiDAR, biomechanika, uczenie maszynowe i architektura systemu — pełna dokumentacja techniczna platformy #Polska2038."
+    },
+    "talentMap": {
+      "title": "Mapa Talentów",
+      "subtitle": "Interaktywna mapa 16 województw z danymi o talentach. Filtruj po województwie, dyscyplinie, wieku i klasie AI. Demo karty skauta z pełnym profilem zawodnika."
+    },
+    "forWho": {
+      "title": "Dla kogo",
+      "subtitle": "System #Polska2038 służy każdemu interesariuszowi polskiego sportu — od rodziców i dzieci po Ministerstwo, federacje i akademie. Sprawdź swój przypadek użycia."
+    },
+    "results": {
+      "title": "Wyniki",
+      "subtitle": "Wskaźniki KPI, prognozy do 2038, benchmark Polska vs Europa, lejek talentów i interaktywny kalkulator ROI."
+    },
+    "partners": {
+      "title": "Partnerzy",
+      "subtitle": "Federacje, sponsorzy, media i ambasadorzy programu #Polska2038. Wśród nich PZPN, UEFA, MSiT i wiodące polskie media sportowe."
+    },
+    "about": {
+      "title": "O programie",
+      "subtitle": "Rewolucja w identyfikacji talentów sportowych. Projekt systemu oparty na skanowaniu 3D, analizie biomechanicznej i danych — inicjatywa obywatelska prezentowana Ministerstwu Sportu RP i PZPN."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "subtitle": "Skontaktuj się z zespołem architektonicznym programu #Polska2038. Rozmowy o partnerstwie strategicznym, pilotażu i wdrożeniu ogólnopolskim."
+    },
+    "docs": {
+      "title": "Dokumentacja",
+      "subtitle": "Wszystkie materiały projektu #Polska2038 — do druku, dystrybucji i prezentacji Ministerstwu Sportu, PZPN i mediom."
+    }
   }
 }
 

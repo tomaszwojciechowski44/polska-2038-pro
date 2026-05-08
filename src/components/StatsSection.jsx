@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView, useCountUp } from '../hooks/useCountUp';
 import { STATS } from '../data/systemData';
+import { useLanguage } from '../context/LanguageContext';
 
 const COLOR_MAP = {
   neon: { text: 'text-brand-neon', border: 'border-brand-neon/30', glow: 'border-glow-neon', hex: '#00FF88' },
@@ -30,7 +31,8 @@ function AnimatedValue({ raw, inView }) {
 function StatCard({ stat, index }) {
   const [ref, inView] = useInView(0.3);
   const colors = COLOR_MAP[stat.color];
-  const isLongLabel = String(stat.label || '').length > 18;
+  const label = stat.label ?? stat.labelPl ?? stat.labelEn ?? '';
+  const isLongLabel = String(label).length > 18;
 
   return (
     <motion.div
@@ -59,7 +61,7 @@ function StatCard({ stat, index }) {
         {inView ? <AnimatedValue raw={stat.value} inView={inView} /> : <span>0</span>}
       </div>
       <div className={`text-gray-300 font-mono leading-snug break-words ${isLongLabel ? 'text-xs' : 'text-sm'}`}>
-        {stat.label}
+        {label}
       </div>
 
       {/* Corner accents */}
@@ -104,6 +106,7 @@ function LiveTicker() {
 
 export default function StatsSection() {
   const [ref, inView] = useInView(0.1);
+  const { lang } = useLanguage();
 
   return (
     <section id="stats" className="py-20 bg-brand-dark border-y border-brand-border relative overflow-hidden">
@@ -117,13 +120,20 @@ export default function StatsSection() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-white mt-2">
-            Liczby, które mówią same za siebie
+            {lang === 'en' ? 'Numbers that speak for themselves' : 'Liczby, które mówią same za siebie'}
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {STATS.map((stat, i) => (
-            <StatCard key={stat.label} stat={stat} index={i} />
+            <StatCard
+              key={stat.labelEn ?? stat.labelPl ?? stat.value}
+              stat={{
+                ...stat,
+                label: lang === 'en' ? (stat.labelEn ?? stat.labelPl) : (stat.labelPl ?? stat.labelEn),
+              }}
+              index={i}
+            />
           ))}
         </div>
 

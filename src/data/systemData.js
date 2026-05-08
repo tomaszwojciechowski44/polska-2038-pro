@@ -135,12 +135,12 @@ export const ARCHITECTURE_LAYERS = [
 ];
 
 export const STATS = [
-  { value: '5M', label: 'Zawodników w systemie', icon: '👥', color: 'neon' },
-  { value: '10K', label: 'Zintegrowanych klubów', icon: '🏟️', color: 'cyan' },
-  { value: '22', label: 'Zaw./węzeł/s', icon: '⚡', color: 'gold' },
-  { value: '94%', label: 'Accuracy modelu AI', icon: '🎯', color: 'red' },
-  { value: '1.1 MLD', label: 'PLN – realizowana wartość', icon: '💰', color: 'neon' },
-  { value: '370%', label: 'ROI (model rządowy, 8 lat)', icon: '📈', color: 'gold' },
+  { value: '5M', labelPl: 'Zawodników w systemie', labelEn: 'Players in the system', icon: '👥', color: 'neon' },
+  { value: '10K', labelPl: 'Zintegrowanych klubów', labelEn: 'Integrated clubs', icon: '🏟️', color: 'cyan' },
+  { value: '22', labelPl: 'Zaw./węzeł/s', labelEn: 'Players/node/s', icon: '⚡', color: 'gold' },
+  { value: '94%', labelPl: 'Trafność modelu AI', labelEn: 'AI model accuracy', icon: '🎯', color: 'red' },
+  { value: '1.1 MLD', labelPl: 'PLN – realizowana wartość', labelEn: 'Value realized (PLN)', icon: '💰', color: 'neon' },
+  { value: '370%', labelPl: 'ROI (model rządowy, 8 lat)', labelEn: 'ROI (gov model, 8 years)', icon: '📈', color: 'gold' },
 ];
 
 export const LIDAR_LEVELS = [

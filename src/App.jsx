@@ -1,5 +1,6 @@
 import './index.css';
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { AuthProvider, PrivateRoute } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
 
@@ -25,7 +26,23 @@ import ScoutPanel from './pages/ScoutPanel';
 
 export default function App() {
   const location = useLocation();
+  const navigate = useNavigate();
   const initialLang = location.pathname.startsWith('/en') ? 'en' : 'pl';
+
+  useEffect(() => {
+    // Client-only: redirect to /en based on browser language (unless user explicitly chose).
+    try {
+      const pref = window.localStorage?.getItem('preferredLang');
+      if (pref) return;
+      const browserLang = (navigator.language || 'pl').slice(0, 2).toLowerCase();
+      if (browserLang === 'pl') return;
+      if (location.pathname === '/en' || location.pathname.startsWith('/en/')) return;
+      const target = location.pathname === '/' ? '/en' : `/en${location.pathname}`;
+      navigate(`${target}${location.search}${location.hash}`, { replace: true });
+    } catch {
+      // ignore
+    }
+  }, [location.pathname, location.search, location.hash, navigate]);
 
   return (
     <LanguageProvider initialLang={initialLang}>

@@ -2,8 +2,9 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
 import { Mail, Building2, Globe, CheckCircle } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-const ROLES = [
+const ROLES_PL = [
   'Ministerstwo Sportu',
   'PZPN / Federacja',
   'Akademia / Klub',
@@ -11,8 +12,18 @@ const ROLES = [
   'Inwestor',
   'Media / Dziennikarz',
 ];
+const ROLES_EN = [
+  'Ministry of Sport',
+  'FA / Federation',
+  'Academy / Club',
+  'Local government',
+  'Investor',
+  'Media / Journalist',
+];
 
 export default function ContactSection() {
+  const { lang } = useLanguage();
+  const ROLES = lang === 'en' ? ROLES_EN : ROLES_PL;
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', org: '', email: '', role: '', message: '' });
   const [ref, inView] = useInView(0.1);
@@ -36,15 +47,16 @@ export default function ContactSection() {
         >
           <span className="inline-flex items-center gap-2 text-brand-red font-mono text-sm tracking-widest uppercase mb-3">
             <Mail size={14} />
-            DOŁĄCZ DO INICJATYWY
+            {lang === 'en' ? 'JOIN THE INITIATIVE' : 'DOŁĄCZ DO INICJATYWY'}
           </span>
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-white mb-4">
-            Budujemy Fundament.{' '}
-            <span className="text-brand-red text-glow-red">Dołącz.</span>
+            {lang === 'en' ? 'We’re building the foundation.' : 'Budujemy Fundament.'}{' '}
+            <span className="text-brand-red text-glow-red">{lang === 'en' ? 'Join.' : 'Dołącz.'}</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-xl mx-auto">
-            Szukamy partnerów instytucjonalnych, federacji sportowych i samorządów gotowych
-            wdrożyć infrastrukturę #Polska2038.
+            {lang === 'en'
+              ? 'We’re looking for institutional partners, sports federations and local governments ready to deploy #Polska2038.'
+              : 'Szukamy partnerów instytucjonalnych, federacji sportowych i samorządów gotowych wdrożyć infrastrukturę #Polska2038.'}
           </p>
         </motion.div>
 
@@ -59,18 +71,24 @@ export default function ContactSection() {
             {[
               {
                 icon: <Building2 size={20} className="text-brand-cyan" />,
-                title: 'Dla Ministerstwa i PZPN',
-                desc: 'Pełna dokumentacja techniczna, specyfikacja SIWZ, model finansowy ROI. Gotowe do przetargu.',
+                title: lang === 'en' ? 'For the Ministry & the FA' : 'Dla Ministerstwa i PZPN',
+                desc: lang === 'en'
+                  ? 'Full technical documentation, procurement-ready specification and ROI financial model.'
+                  : 'Pełna dokumentacja techniczna, specyfikacja SIWZ, model finansowy ROI. Gotowe do przetargu.',
               },
               {
                 icon: <Globe size={20} className="text-brand-neon" />,
-                title: 'Dla Samorządów',
-                desc: 'Program pilotażowy: 5 Orlików, 500 zawodników, 6 miesięcy. Dane raportowane do gminy.',
+                title: lang === 'en' ? 'For local governments' : 'Dla Samorządów',
+                desc: lang === 'en'
+                  ? 'Pilot program: 5 pitches, 500 players, 6 months. Data reported to the municipality.'
+                  : 'Program pilotażowy: 5 Orlików, 500 zawodników, 6 miesięcy. Dane raportowane do gminy.',
               },
               {
                 icon: <CheckCircle size={20} className="text-brand-gold" />,
                 title: 'Open Source Core',
-                desc: 'Rdzeń systemu (modele AI, API) dostępny na licencji MIT dla badaczy i uczelni.',
+                desc: lang === 'en'
+                  ? 'The core (AI models, API) is MIT-licensed for researchers and universities.'
+                  : 'Rdzeń systemu (modele AI, API) dostępny na licencji MIT dla badaczy i uczelni.',
               },
             ].map((item) => (
               <div key={item.title} className="flex gap-4 p-5 border border-brand-border bg-brand-card hover:border-gray-600 transition-colors">
@@ -83,7 +101,9 @@ export default function ContactSection() {
             ))}
 
             <div className="pt-4 border-t border-brand-border">
-              <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-3">Dane Kontaktowe</div>
+              <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-3">
+                {lang === 'en' ? 'Contact details' : 'Dane Kontaktowe'}
+              </div>
               <div className="space-y-2 mb-4">
                 {[
                   { label: 'E-mail', val: 'kontakt@polska2038.pl', href: 'mailto:kontakt@polska2038.pl', color: 'text-brand-neon' },
@@ -98,7 +118,9 @@ export default function ContactSection() {
                   </a>
                 ))}
               </div>
-              <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-3 mt-4">Dokumentacja Techniczna</div>
+              <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-3 mt-4">
+                {lang === 'en' ? 'Technical docs' : 'Dokumentacja Techniczna'}
+              </div>
               <div className="flex flex-wrap gap-3">
                 <a
                   href="https://github.com/Polska-2038/projekt-polska-2038-pro"
@@ -114,7 +136,7 @@ export default function ContactSection() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2 border border-brand-border text-gray-300 hover:border-brand-cyan hover:text-brand-cyan transition-colors text-sm font-mono"
                 >
-                  Demo v1 →
+                  {lang === 'en' ? 'Demo v1 →' : 'Demo v1 →'}
                 </a>
               </div>
             </div>
@@ -133,9 +155,13 @@ export default function ContactSection() {
                 className="h-full flex flex-col items-center justify-center p-10 border border-brand-neon/40 bg-brand-neon/5 text-center"
               >
                 <CheckCircle size={48} className="text-brand-neon mb-4" />
-                <div className="text-2xl font-display font-bold text-white mb-2">Zgłoszenie wysłane!</div>
+                <div className="text-2xl font-display font-bold text-white mb-2">
+                  {lang === 'en' ? 'Message sent!' : 'Zgłoszenie wysłane!'}
+                </div>
                 <div className="text-gray-400 font-mono text-sm">
-                  Odpiszemy w ciągu 48h. Budujemy razem #Polska2038.
+                  {lang === 'en'
+                    ? 'We’ll reply within 48 hours. We’re building #Polska2038 together.'
+                    : 'Odpiszemy w ciągu 48h. Budujemy razem #Polska2038.'}
                 </div>
               </motion.div>
             ) : (

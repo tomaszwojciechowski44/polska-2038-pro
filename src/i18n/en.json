@@ -75,6 +75,40 @@
     "title": "Export this system to your country",
     "subtitle": "White-label deployment in 90 days — your language, your data, your branding.",
     "cta": "Request international deployment"
+  },
+  "pages": {
+    "technology": {
+      "title": "Technology",
+      "subtitle": "LiDAR, biomechanics, machine learning and system architecture — full technical documentation of the #Polska2038 platform."
+    },
+    "talentMap": {
+      "title": "Talent map",
+      "subtitle": "Interactive map of 16 regions with talent data. Filter by region, sport, age and AI tier. Scout card demo with a full player profile."
+    },
+    "forWho": {
+      "title": "Who it's for",
+      "subtitle": "#Polska2038 serves every stakeholder in Polish sport — from parents and kids to the Ministry, federations and academies. Pick your use case."
+    },
+    "results": {
+      "title": "Results",
+      "subtitle": "KPI metrics, projections to 2038, Poland vs Europe benchmarks, the talent funnel and an interactive ROI calculator."
+    },
+    "partners": {
+      "title": "Partners",
+      "subtitle": "Federations, sponsors, media and ambassadors of the #Polska2038 program — including the FA, UEFA, the Ministry and leading Polish sports outlets."
+    },
+    "about": {
+      "title": "About",
+      "subtitle": "A new approach to talent identification. A system based on 3D scanning, biomechanics and data — a civic initiative presented to the Ministry and the FA."
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Get in touch with the program architecture team. Partnerships, pilots and national rollout discussions."
+    },
+    "docs": {
+      "title": "Documentation",
+      "subtitle": "All #Polska2038 materials — ready for printing, distribution and presentations to the Ministry, the FA and the media."
+    }
   }
 }
 

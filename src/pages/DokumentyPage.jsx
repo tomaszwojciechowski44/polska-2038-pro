@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FileText, Download, ExternalLink, BookOpen, BarChart3, Map, Building2, Newspaper, Mail } from 'lucide-react';
 import PublicLayout from '../components/PublicLayout';
 import { FILARY } from '../data/filaryData';
+import { useLanguage } from '../context/LanguageContext';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -71,10 +72,11 @@ const DOCS = [
 ];
 
 export default function DokumentyPage() {
+  const { t } = useLanguage();
   return (
     <PublicLayout
-      pageTitle="Dokumentacja"
-      pageSubtitle="Wszystkie materiały projektu #Polska2038 — do druku, dystrybucji i prezentacji Ministerstwu Sportu, PZPN i mediom."
+      pageTitle={t?.pages?.docs?.title ?? 'Dokumentacja'}
+      pageSubtitle={t?.pages?.docs?.subtitle ?? ''}
     >
       {/* Breadcrumb */}
       <div className="bg-gray-950 border-b border-gray-800 py-3">

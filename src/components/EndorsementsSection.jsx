@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-const ENDORSEMENTS = [
+const ENDORSEMENTS_PL = [
   {
     quote: "Polska ma jeden z największych potencjałów demograficznych w Europie i absolutnie go marnuje. Ten system to zmienia — wreszcie ktoś podchodzi do tego jak inżynier, nie jak polityk.",
     author: "Trener akademii — Ekstraklasa",
@@ -47,6 +48,53 @@ const ENDORSEMENTS = [
 ];
 
 export default function EndorsementsSection() {
+  const { lang } = useLanguage();
+  const ENDORSEMENTS_EN = [
+    {
+      quote: "Poland has one of the biggest demographic talent pools in Europe and keeps wasting it. This system changes that — finally an engineering approach, not politics.",
+      author: "Academy coach — top league",
+      role: "UEFA Pro · 18 years in youth development",
+      color: "border-brand-neon/30",
+      textColor: "text-brand-neon",
+    },
+    {
+      quote: "As a parent of two kids playing on local pitches, I see one issue: nobody knows if my child has talent. This project answers that systemically. We need it now.",
+      author: "Player parent",
+      role: "Warsaw · age group 2013",
+      color: "border-brand-cyan/30",
+      textColor: "text-brand-cyan",
+    },
+    {
+      quote: "Belgium built its golden generation in 10 years with one idea: identify every talented child and don’t let them slip away. Poland can do the same — we just need a system.",
+      author: "Sports analyst",
+      role: "EU scouting expert · Belgium/Croatia benchmarks",
+      color: "border-yellow-500/30",
+      textColor: "text-yellow-400",
+    },
+    {
+      quote: "Taking coach evaluation out of the FA’s hands is key. It’s like hospitals evaluating their own doctors. External audits are the only option that can work.",
+      author: "University lecturer",
+      role: "Training theory · youth methodology",
+      color: "border-purple-500/30",
+      textColor: "text-purple-400",
+    },
+    {
+      quote: "A 2300% ROI from coach evaluation alone isn’t fantasy — if good coaching triples development outcomes, the math checks out. I’ve seen it in Germany.",
+      author: "Sports economist",
+      role: "Research: ROI in youth training",
+      color: "border-red-500/30",
+      textColor: "text-red-400",
+    },
+    {
+      quote: "In Poland there are at least five Champions League–level players in every age cohort — and none will enter the system if they live in a village without scouts. LiDAR on local pitches is a game changer.",
+      author: "Former Premier League scout",
+      role: "15 years scouting PL/UA/CZ",
+      color: "border-brand-gold/30",
+      textColor: "text-brand-gold",
+    },
+  ];
+  const ENDORSEMENTS = lang === 'en' ? ENDORSEMENTS_EN : ENDORSEMENTS_PL;
+
   return (
     <section className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,10 +103,16 @@ export default function EndorsementsSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-brand-neon font-mono text-xs uppercase tracking-widest">Co mówią eksperci</span>
-          <h2 className="text-3xl md:text-4xl font-black text-white mt-2">🎤 Głosy ze środowiska</h2>
+          <span className="text-brand-neon font-mono text-xs uppercase tracking-widest">
+            {lang === 'en' ? 'What experts say' : 'Co mówią eksperci'}
+          </span>
+          <h2 className="text-3xl md:text-4xl font-black text-white mt-2">
+            {lang === 'en' ? '🎤 Voices from the field' : '🎤 Głosy ze środowiska'}
+          </h2>
           <p className="text-gray-500 mt-3 max-w-xl mx-auto font-mono text-sm">
-            Trenerzy, rodzice, naukowcy i analitycy o projekcie #Polska2038
+            {lang === 'en'
+              ? 'Coaches, parents, researchers and analysts on #Polska2038'
+              : 'Trenerzy, rodzice, naukowcy i analitycy o projekcie #Polska2038'}
           </p>
         </motion.div>
 
@@ -89,7 +143,9 @@ export default function EndorsementsSection() {
           viewport={{ once: true }} transition={{ delay: 0.5 }}
           className="text-center text-gray-600 text-[11px] sm:text-xs font-mono tracking-wide mt-8"
         >
-          * Cytaty zbrane anonimowo. Projekt obywatelski — tożsamość autorów chroniona.
+          {lang === 'en'
+            ? '* Quotes collected anonymously. Civic project — author identities protected.'
+            : '* Cytaty zbrane anonimowo. Projekt obywatelski — tożsamość autorów chroniona.'}
         </motion.p>
       </div>
     </section>

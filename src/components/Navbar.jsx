@@ -32,7 +32,11 @@ export default function Navbar() {
 
   const handleToggleLang = () => {
     const next = lang === 'pl' ? 'en' : 'pl';
-    setLang(next);
+    try {
+      window.localStorage?.setItem('preferredLang', next);
+    } catch {
+      // ignore
+    }
     const { pathname, search, hash } = window.location;
 
     const isEn = pathname === '/en' || pathname.startsWith('/en/');

@@ -3,12 +3,14 @@ import AudienceSection from '../components/AudienceSection';
 import ProblemSection from '../components/ProblemSection';
 import ComparisonSection from '../components/ComparisonSection';
 import RoiCalculator from '../components/RoiCalculator';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ForWhoPage() {
+  const { t } = useLanguage();
   return (
     <PublicLayout
-      pageTitle="Dla kogo"
-      pageSubtitle="System #Polska2038 służy każdemu interesariuszowi polskiego sportu — od rodziców i dzieci po Ministerstwo, federacje i akademie. Sprawdź swój przypadek użycia."
+      pageTitle={t?.pages?.forWho?.title ?? 'Dla kogo'}
+      pageSubtitle={t?.pages?.forWho?.subtitle ?? ''}
     >
       <AudienceSection />
       <ProblemSection />

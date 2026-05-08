@@ -1,11 +1,13 @@
 import PublicLayout from '../components/PublicLayout';
 import ContactSection from '../components/ContactSection';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ContactPage() {
+  const { t } = useLanguage();
   return (
     <PublicLayout
-      pageTitle="Kontakt"
-      pageSubtitle="Skontaktuj się z zespołem architektonicznym programu #Polska2038. Rozmowy o partnerstwie strategicznym, pilotażu i wdrożeniu ogólnopolskim."
+      pageTitle={t?.pages?.contact?.title ?? 'Kontakt'}
+      pageSubtitle={t?.pages?.contact?.subtitle ?? ''}
     >
       <ContactSection />
     </PublicLayout>

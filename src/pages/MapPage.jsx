@@ -4,12 +4,14 @@ import PolandMapSection from '../components/PolandMapSection';
 import GlobalMapSection from '../components/GlobalMapSection';
 import TalentMapSection from '../components/TalentMapSection';
 import ScoutDemoSection from '../components/ScoutDemoSection';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function MapPage() {
+  const { t } = useLanguage();
   return (
     <PublicLayout
-      pageTitle="Mapa Talentów"
-      pageSubtitle="Interaktywna mapa 16 województw z danymi o talentach. Filtruj po województwie, dyscyplinie, wieku i klasie AI. Demo karty skauta z pełnym profilem zawodnika."
+      pageTitle={t?.pages?.talentMap?.title ?? 'Mapa Talentów'}
+      pageSubtitle={t?.pages?.talentMap?.subtitle ?? ''}
     >
       <StatsSection />
       <PolandMapSection />

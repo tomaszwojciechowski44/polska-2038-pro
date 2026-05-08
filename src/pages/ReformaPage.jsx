@@ -201,7 +201,7 @@ function LastChanceSection() {
 /* ─── Section: Trzy Filary ─────────────────────────── */
 function TrzyFilarySection() {
   return (
-    <section id="filary" className="py-20 bg-gradient-to-b from-black to-gray-950 scroll-mt-28">
+    <section id="filary" className="py-20 bg-gradient-to-b from-black to-gray-950 scroll-mt-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...fadeUp(0)} className="text-center mb-14">
           <span className="text-brand-neon font-mono text-xs uppercase tracking-widest">Kompleksowy system</span>

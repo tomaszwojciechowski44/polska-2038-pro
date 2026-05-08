@@ -37,6 +37,41 @@ function useCounter(end, duration = 2000, start = false) {
   return count;
 }
 
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    try {
+      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const onChange = () => setReduced(Boolean(mq.matches));
+      onChange();
+      mq.addEventListener?.('change', onChange);
+      return () => mq.removeEventListener?.('change', onChange);
+    } catch {
+      return undefined;
+    }
+  }, []);
+  return reduced;
+}
+
+function HeroKpiCard({ idx, metric, visible, reducedMotion }) {
+  const duration = 1500;
+  const count = useCounter(idx === 3 ? 400 : (idx === 1 ? 370 : idx === 2 ? 2500 : 5200000), duration, visible && !reducedMotion);
+
+  const valueStr =
+    idx === 0 ? '5M+' :
+    idx === 1 ? `${reducedMotion ? 370 : count}%` :
+    idx === 2 ? `${reducedMotion ? 2500 : count}+` :
+    `<${((reducedMotion ? 400 : count) / 1000).toFixed(1)}s`;
+
+  return (
+    <div className="border border-brand-border bg-brand-card/30 backdrop-blur-sm p-4">
+      <div className={`font-display font-bold text-2xl sm:text-3xl leading-none ${metric.c}`}>{valueStr}</div>
+      <div className="text-gray-600 font-mono text-[10px] uppercase tracking-widest mt-1">{metric.k}</div>
+      <div className="text-gray-500 font-mono text-[11px] mt-1">{metric.sub}</div>
+    </div>
+  );
+}
+
 function StatNumber({ value, suffix = '', label, color }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -118,6 +153,7 @@ function HeroDashboard() {
 
 export default function LandingPage() {
   const { t } = useLanguage();
+  const reducedMotion = usePrefersReducedMotion();
   const FALLBACK_LIVE = 5239018;
   const [liveTalents, setLiveTalents] = useState(FALLBACK_LIVE);
   const [liveSource, setLiveSource] = useState('DEMO');
@@ -151,6 +187,18 @@ export default function LandingPage() {
       { k: 'Latency', v: '<0.4s', sub: 'scan → alert', c: 'text-brand-red' },
     ]);
   }, [t]);
+
+  const kpiRef = useRef(null);
+  const [kpiVisible, setKpiVisible] = useState(false);
+  useEffect(() => {
+    const el = kpiRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) setKpiVisible(true);
+    }, { threshold: 0.35 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen bg-brand-dark text-white font-display overflow-x-hidden">
@@ -214,13 +262,16 @@ export default function LandingPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.25 }}
                   className="grid grid-cols-2 gap-3 sm:gap-4 mb-8 max-w-xl"
+                  ref={kpiRef}
                 >
-                  {HERO_KPIS.map((m) => (
-                    <div key={m.k} className="border border-brand-border bg-brand-card/30 backdrop-blur-sm p-4">
-                      <div className={`font-display font-bold text-2xl sm:text-3xl leading-none ${m.c}`}>{m.v}</div>
-                      <div className="text-gray-600 font-mono text-[10px] uppercase tracking-widest mt-1">{m.k}</div>
-                      <div className="text-gray-500 font-mono text-[11px] mt-1">{m.sub}</div>
-                    </div>
+                  {HERO_KPIS.map((m, idx) => (
+                    <HeroKpiCard
+                      key={m.k}
+                      idx={idx}
+                      metric={m}
+                      visible={kpiVisible}
+                      reducedMotion={reducedMotion}
+                    />
                   ))}
                 </motion.div>
 

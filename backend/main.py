@@ -2,6 +2,7 @@ import os
 import random
 from contextlib import asynccontextmanager
 from datetime import date, timedelta, datetime
+import traceback
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
@@ -92,8 +93,15 @@ async def _auto_seed():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await init_db()
-    await _auto_seed()
+    try:
+        await init_db()
+        await _auto_seed()
+    except Exception as e:
+        # Make sure serverless logs include the real startup failure reason.
+        print("Application startup failed. Exiting.")
+        print("Startup error:", repr(e))
+        print("Traceback:\n", traceback.format_exc())
+        raise
     yield
 
 

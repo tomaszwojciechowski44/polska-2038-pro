@@ -218,7 +218,7 @@ export default function ContactSection() {
                       value={form.org}
                       onChange={(e) => setForm({ ...form, org: e.target.value })}
                       className="w-full bg-brand-dark border border-brand-border text-white px-3 py-2.5 text-sm font-mono focus:border-brand-neon focus:outline-none transition-colors"
-                      placeholder={lang === 'en' ? 'PZPN / Ministry' : 'PZPN / Ministerstwo'}
+                      placeholder={lang === 'en' ? 'e.g. Academy / Municipality / Club' : 'np. Akademia / Gmina / Klub'}
                     />
                   </div>
                 </div>
@@ -233,7 +233,7 @@ export default function ContactSection() {
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className="w-full bg-brand-dark border border-brand-border text-white px-3 py-2.5 text-sm font-mono focus:border-brand-neon focus:outline-none transition-colors"
-                    placeholder={lang === 'en' ? 'j.kowalski@pzpn.pl' : 'j.kowalski@pzpn.pl'}
+                    placeholder={lang === 'en' ? 'name@organization.org' : 'imie@organizacja.pl'}
                   />
                 </div>
 

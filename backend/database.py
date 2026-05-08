@@ -2,7 +2,12 @@ import os
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.orm import DeclarativeBase
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./polska2038.db")
+_env_db = os.getenv("DATABASE_URL")
+# Vercel serverless filesystem is read-only; avoid file-based SQLite there.
+if not _env_db and os.getenv("VERCEL"):
+    DATABASE_URL = "sqlite+aiosqlite:///:memory:"
+else:
+    DATABASE_URL = _env_db or "sqlite+aiosqlite:///./polska2038.db"
 
 # Render supplies postgres:// — SQLAlchemy needs postgresql+asyncpg://
 if DATABASE_URL.startswith("postgres://"):

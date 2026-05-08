@@ -19,6 +19,7 @@ export default function Navbar() {
   const [open, setOpen]         = useState(false);
   const { lang, toggle }        = useLanguage();
   const location                = useLocation();
+  const onLanding               = location.pathname === '/';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -30,18 +31,27 @@ export default function Navbar() {
   useEffect(() => setOpen(false), [location.pathname]);
 
   const isActive = (to) => location.pathname === to;
+  const LANDING_MODULES = [
+    { href: '#modules', label: 'System' },
+    { href: '#scouting-ai', label: 'Scouting AI' },
+    { href: '#mapa', label: 'Mapa' },
+    { href: '#business', label: 'Business case' },
+    { href: '#tech-stack', label: 'Tech stack' },
+    { href: '#roadmap', label: 'Roadmap' },
+  ];
 
   return (
-    <motion.nav
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || open
-          ? 'bg-brand-dark/98 backdrop-blur-md border-b border-brand-border'
-          : 'bg-transparent'
-      }`}
-    >
+    <div className="fixed top-0 left-0 right-0 z-50">
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className={`transition-all duration-300 ${
+          scrolled || open
+            ? 'bg-brand-dark/98 backdrop-blur-md border-b border-brand-border'
+            : 'bg-transparent'
+        }`}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
@@ -159,6 +169,37 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+      </motion.nav>
+
+      {/* Landing: contextual sticky module bar */}
+      {onLanding && !open && (
+        <div className={`hidden md:block border-b border-brand-border/70 ${
+          scrolled ? 'bg-brand-dark/98 backdrop-blur-md' : 'bg-brand-dark/60 backdrop-blur-sm'
+        }`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center gap-2 overflow-x-auto">
+            <span className="text-gray-600 font-mono text-[10px] uppercase tracking-widest flex-shrink-0">
+              Moduły:
+            </span>
+            {LANDING_MODULES.map((m) => (
+              <a
+                key={m.href}
+                href={m.href}
+                className="px-2.5 py-1 border border-brand-border text-gray-400 hover:text-white hover:border-gray-500 font-mono text-[10px] uppercase tracking-widest rounded-sm transition-colors flex-shrink-0"
+              >
+                {m.label}
+              </a>
+            ))}
+            <div className="ml-auto flex items-center gap-2 flex-shrink-0">
+              <a
+                href="#modules"
+                className="px-3 py-1.5 border border-brand-neon/30 bg-brand-neon/5 text-brand-neon hover:border-brand-neon/60 font-mono text-[10px] uppercase tracking-widest rounded-sm transition-colors"
+              >
+                Start →
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -11,6 +11,9 @@ import Footer from '../components/Footer';
 import { ScrollProgressBar } from '../components/UIUtils';
 import CountdownSection from '../components/CountdownSection';
 import EndorsementsSection from '../components/EndorsementsSection';
+import { getVoivodeships } from '../api/client';
+import TabbedExplorerSection from '../components/TabbedExplorerSection';
+import RoadmapTimelineSection from '../components/RoadmapTimelineSection';
 
 // Animated counter hook
 function useCounter(end, duration = 2000, start = false) {
@@ -51,68 +54,7 @@ function StatNumber({ value, suffix = '', label, color }) {
   );
 }
 
-const FEATURE_CARDS = [
-  {
-    to: '/technologia',
-    icon: Cpu,
-    color: 'text-brand-cyan',
-    borderColor: 'hover:border-brand-cyan/40',
-    glowColor: 'group-hover:bg-brand-cyan/5',
-    tag: 'LiDAR · AI · PostGIS',
-    title: 'Technologia',
-    desc: 'Skanowanie biomechaniczne w czasie rzeczywistym. 127 parametrów, analiza ML, architektura mikrousług.',
-  },
-  {
-    to: '/mapa-talentow',
-    icon: MapPin,
-    color: 'text-brand-neon',
-    borderColor: 'hover:border-brand-neon/40',
-    glowColor: 'group-hover:bg-brand-neon/5',
-    tag: '16 województw · 47K profili',
-    title: 'Mapa Talentów',
-    desc: 'Interaktywna mapa wykrytych talentów. Filtruj po regionie, dyscyplinie, wieku i klasie AI.',
-  },
-  {
-    to: '/dla-kogo',
-    icon: Users,
-    color: 'text-brand-gold',
-    borderColor: 'hover:border-brand-gold/40',
-    glowColor: 'group-hover:bg-brand-gold/5',
-    tag: 'Zawodnicy · Skauci · Kluby',
-    title: 'Dla kogo',
-    desc: 'Od rodziców i dzieci po Ministerstwo Sportu. Każdy interesariusz ma swoje miejsce w systemie.',
-  },
-  {
-    to: '/wyniki',
-    icon: BarChart2,
-    color: 'text-brand-red',
-    borderColor: 'hover:border-brand-red/40',
-    glowColor: 'group-hover:bg-brand-red/5',
-    tag: 'ROI · Roadmapa · KPI',
-    title: 'Wyniki i Roadmapa',
-    desc: 'Kalkulator zwrotu z inwestycji, harmonogram wdrożenia i kamienie milowe programu do 2038.',
-  },
-  {
-    to: '/partnerzy',
-    icon: Trophy,
-    color: 'text-purple-400',
-    borderColor: 'hover:border-purple-400/40',
-    glowColor: 'group-hover:bg-purple-400/5',
-    tag: 'PZPN · UEFA · MSiT',
-    title: 'Partnerzy',
-    desc: 'Wsparcie federacji, sponsorów i mediów. Endorsementy od kluczowych graczy polskiego i europejskiego sportu.',
-  },
-  {
-    to: '/kontakt',
-    icon: Mail,
-    color: 'text-gray-300',
-    borderColor: 'hover:border-gray-400/40',
-    glowColor: 'group-hover:bg-gray-400/5',
-    tag: 'Ministerstwo · Inwestorzy',
-    title: 'Kontakt',
-    desc: 'Skontaktuj się z zespołem architektonicznym. Rozmowy o partnerstwie, pilotażu i wdrożeniu.',
-  },
-];
+// NOTE: Feature cards replaced by TabbedExplorerSection on landing.
 
 const SOCIAL_PROOF = [
   { badge: 'PZPN', label: 'rozmowy o pilotażu', color: 'text-brand-neon' },
@@ -172,6 +114,33 @@ function HeroDashboard() {
 }
 
 export default function LandingPage() {
+  const FALLBACK_LIVE = 5239018;
+  const [liveTalents, setLiveTalents] = useState(FALLBACK_LIVE);
+  const [liveSource, setLiveSource] = useState('DEMO');
+
+  useEffect(() => {
+    let mounted = true;
+    getVoivodeships()
+      .then((res) => {
+        const sum = (res.data || []).reduce((s, v) => s + (v.talent_count ?? 0), 0);
+        if (mounted && sum > 0) {
+          setLiveTalents(sum);
+          setLiveSource('LIVE');
+        }
+      })
+      .catch(() => {
+        // keep fallback
+      });
+    return () => { mounted = false; };
+  }, []);
+
+  const HERO_KPIS = useMemo(() => ([
+    { k: 'Zawodników', v: '5M+', sub: 'w docelowym systemie', c: 'text-brand-neon' },
+    { k: 'ROI', v: '370%', sub: 'prognoza do 2038', c: 'text-yellow-400' },
+    { k: 'Orlików', v: '2500+', sub: 'pilotaż wdrożeniowy', c: 'text-brand-cyan' },
+    { k: 'Latencja', v: '<0.4s', sub: 'od skanu do alertu', c: 'text-brand-red' },
+  ]), []);
+
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-brand-dark text-white font-display overflow-x-hidden">
@@ -200,6 +169,19 @@ export default function LandingPage() {
                   </span>
                 </motion.div>
 
+                {/* Live badge */}
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.05 }}
+                  className="inline-flex items-center gap-2 px-4 py-1.5 mb-5 border border-brand-cyan/30 bg-brand-cyan/5"
+                >
+                  <span className="w-1.5 h-1.5 bg-brand-cyan rounded-full animate-pulse" />
+                  <span className="text-brand-cyan font-mono text-[10px] tracking-widest uppercase">
+                    {liveSource} · {liveTalents.toLocaleString('pl-PL')} talentów w systemie
+                  </span>
+                </motion.div>
+
                 {/* Headline */}
                 <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
                   className="font-display font-bold leading-none mb-6">
@@ -207,18 +189,30 @@ export default function LandingPage() {
                   <span className="block text-6xl sm:text-8xl lg:text-[100px] text-brand-red leading-none" style={{ textShadow: '0 0 60px rgba(220,20,60,0.35)' }}>2038</span>
                 </motion.h1>
 
-                {/* Tagline */}
-                <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25 }}
-                  className="text-xl sm:text-2xl font-display font-medium text-gray-300 mb-4 max-w-lg leading-snug">
-                  Dane.{' '}
-                  <span className="text-brand-neon" style={{ textShadow: '0 0 20px rgba(0,255,136,0.4)' }}>Sztuczna Inteligencja.</span>{' '}
-                  Równe Szanse.
-                </motion.p>
+                {/* Hero KPIs instead of long description */}
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.25 }}
+                  className="grid grid-cols-2 gap-3 sm:gap-4 mb-8 max-w-xl"
+                >
+                  {HERO_KPIS.map((m) => (
+                    <div key={m.k} className="border border-brand-border bg-brand-card/30 backdrop-blur-sm p-4">
+                      <div className={`font-display font-bold text-2xl sm:text-3xl leading-none ${m.c}`}>{m.v}</div>
+                      <div className="text-gray-600 font-mono text-[10px] uppercase tracking-widest mt-1">{m.k}</div>
+                      <div className="text-gray-500 font-mono text-[11px] mt-1">{m.sub}</div>
+                    </div>
+                  ))}
+                </motion.div>
 
-                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.4 }}
-                  className="text-gray-400 font-mono text-sm max-w-md leading-relaxed mb-10">
-                  Narodowy system wykrywania talentów — od 6-latka na Orliku po kadrę narodową.
-                  Żaden talent z małej wsi nie umknie systemowi.
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.7, delay: 0.38 }}
+                  className="text-gray-400 font-mono text-sm max-w-md leading-relaxed mb-10"
+                >
+                  System, który w 2 kliknięcia pokazuje skautowi najlepszych zawodników w promieniu 50 km —
+                  z AI Score, progresją i rekomendacją działania.
                 </motion.p>
 
                 {/* CTA row */}
@@ -263,6 +257,9 @@ export default function LandingPage() {
         {/* ─── COUNTDOWN ─────────────────────────────────────────────────── */}
         <CountdownSection />
 
+        {/* ─── TABBED EXPLORATION (5 modules) ────────────────────────────── */}
+        <TabbedExplorerSection />
+
         {/* ─── STATS BAR ─────────────────────────────────────────────────── */}
         <section className="border-y border-brand-border bg-brand-card/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
@@ -276,83 +273,11 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* ─── FEATURE CARDS ─────────────────────────────────────────────── */}
-        <section className="py-16 sm:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="mb-12">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-6 h-px bg-brand-cyan" />
-                <span className="text-brand-cyan font-mono text-xs uppercase tracking-widest">Explore</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-display font-bold text-white">Odkryj system</h2>
-              <p className="mt-2 text-gray-500 font-mono text-sm max-w-lg">
-                Każda sekcja to oddzielna podstrona. Wejdź w obszar, który Cię interesuje.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {FEATURE_CARDS.map(({ to, icon: Icon, color, borderColor, glowColor, tag, title, desc }, i) => (
-                <motion.div key={to}
-                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
-                  <Link to={to}
-                    className={`group block p-6 border border-brand-border bg-brand-card rounded-lg transition-all duration-200 ${borderColor} ${glowColor} hover:translate-y-[-2px] h-full`}>
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-brand-dark border border-brand-border group-hover:border-current transition-colors ${color}`}>
-                        <Icon size={18} />
-                      </div>
-                      <ArrowRight size={16} className="text-gray-700 group-hover:text-gray-400 group-hover:translate-x-1 transition-all" />
-                    </div>
-                    <div className={`font-mono text-[10px] uppercase tracking-widest mb-1 ${color} opacity-70`}>{tag}</div>
-                    <h3 className="text-white font-display font-bold text-lg mb-2">{title}</h3>
-                    <p className="text-gray-500 font-mono text-xs leading-relaxed">{desc}</p>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ─── HOW IT WORKS ──────────────────────────────────────────────── */}
-        <section className="py-16 sm:py-20 bg-brand-card/20 border-y border-brand-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="mb-12 text-center">
-              <span className="text-brand-neon font-mono text-xs uppercase tracking-widest">Jak to działa</span>
-              <h2 className="mt-2 text-3xl sm:text-4xl font-display font-bold text-white">Od skanowania do akademii</h2>
-            </motion.div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 relative">
-              {/* Connector line */}
-              <div className="hidden sm:block absolute top-8 left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-px bg-gradient-to-r from-brand-neon/20 via-brand-cyan/40 to-brand-neon/20" />
-              {[
-                { step: '01', icon: Zap, color: 'text-brand-neon', border: 'border-brand-neon/30', title: 'Skan LiDAR na Orliku', desc: '8 kamer 3D skanuje zawodników w czasie rzeczywistym podczas standardowego treningu.' },
-                { step: '02', icon: Cpu, color: 'text-brand-cyan', border: 'border-brand-cyan/30', title: 'Analiza AI (127 param.)', desc: 'Model ML porównuje biomechanikę z bazą 2,3M pomiarów olimpijskich. Wynik w <2s.' },
-                { step: '03', icon: Shield, color: 'text-brand-gold', border: 'border-brand-gold/30', title: 'Alert do skauta', desc: 'Certyfikowany skaut otrzymuje powiadomienie z profilem talentu i rekomendacją działania.' },
-              ].map(({ step, icon: Icon, color, border, title, desc }, i) => (
-                <motion.div key={step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="relative text-center">
-                  <div className={`w-16 h-16 rounded-full border-2 ${border} bg-brand-dark flex items-center justify-center mx-auto mb-4 relative z-10`}>
-                    <Icon size={24} className={color} />
-                  </div>
-                  <div className="text-gray-700 font-mono text-xs mb-1">{step}</div>
-                  <h3 className="text-white font-display font-bold text-sm mb-2">{title}</h3>
-                  <p className="text-gray-500 font-mono text-xs leading-relaxed max-w-xs mx-auto">{desc}</p>
-                </motion.div>
-              ))}
-            </div>
-            <div className="mt-10 text-center">
-              <Link to="/technologia"
-                className="inline-flex items-center gap-2 text-brand-cyan font-mono text-sm hover:text-white transition-colors">
-                Pełna dokumentacja technologiczna <ArrowRight size={14} />
-              </Link>
-            </div>
-          </div>
-        </section>
-
         {/* ─── ENDORSEMENTS ──────────────────────────────────────────────── */}
         <EndorsementsSection />
+
+        {/* ─── ROADMAP TIMELINE ─────────────────────────────────────────── */}
+        <RoadmapTimelineSection />
 
         {/* ─── FINAL CTA ─────────────────────────────────────────────────── */}
         <section className="py-16 sm:py-24 relative overflow-hidden">

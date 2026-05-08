@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, MapPin, Layers, DollarSign, Wrench } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 import ArchitectureSection from './ArchitectureSection';
 import AIEngineSection from './AIEngineSection';
@@ -12,18 +13,19 @@ import RoiCalculatorSection from './RoiCalculatorSection';
 import KpiChartsSection from './KpiChartsSection';
 import TechStackSection from './TechStackSection';
 
-const TABS = [
-  { id: 'system', label: 'System', icon: Layers, anchor: 'modules' },
-  { id: 'ai', label: 'Scouting AI', icon: Cpu, anchor: 'scouting-ai' },
-  { id: 'map', label: 'Mapa', icon: MapPin, anchor: 'mapa' },
-  { id: 'biz', label: 'Business case', icon: DollarSign, anchor: 'business' },
-  { id: 'tech', label: 'Tech stack', icon: Wrench, anchor: 'tech-stack' },
-];
-
 export default function TabbedExplorerSection() {
   const [tab, setTab] = useState('system');
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useLanguage();
+
+  const TABS = useMemo(() => ([
+    { id: 'system', label: t?.tabs?.system ?? 'System', icon: Layers, anchor: 'modules' },
+    { id: 'ai', label: t?.tabs?.ai ?? 'Scouting AI', icon: Cpu, anchor: 'scouting-ai' },
+    { id: 'map', label: t?.tabs?.map ?? 'Mapa', icon: MapPin, anchor: 'mapa' },
+    { id: 'biz', label: t?.tabs?.biz ?? 'Business case', icon: DollarSign, anchor: 'business' },
+    { id: 'tech', label: t?.tabs?.tech ?? 'Tech stack', icon: Wrench, anchor: 'tech-stack' },
+  ]), [t]);
 
   const active = useMemo(() => TABS.find((t) => t.id === tab) ?? TABS[0], [tab]);
 
@@ -70,13 +72,13 @@ export default function TabbedExplorerSection() {
 
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 border border-brand-neon/30 bg-brand-neon/5 text-brand-neon font-mono text-xs uppercase tracking-widest">
-            Tabbed exploration · 5 modułów
+            {t?.tabs?.badge ?? 'Tabbed exploration · 5 modułów'}
           </div>
           <h2 className="mt-4 text-3xl sm:text-4xl font-display font-bold text-white">
-            Kliknij swój obszar — bez scroll fatigue
+            {t?.tabs?.title ?? 'Kliknij swój obszar — bez scroll fatigue'}
           </h2>
           <p className="mt-3 text-gray-500 font-mono text-sm max-w-2xl mx-auto">
-            Trener → „Scouting AI”. Prezes akademii → „Business case”. CTO PZPN → „Tech stack”.
+            {t?.tabs?.subtitle ?? 'Trener → „Scouting AI”. Prezes akademii → „Business case”. CTO PZPN → „Tech stack”.'}
           </p>
         </div>
 

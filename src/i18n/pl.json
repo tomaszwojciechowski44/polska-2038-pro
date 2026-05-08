@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "reforma": "🏆 Reforma",
+    "federations": "🌍 Dla federacji",
+    "technology": "Technologia",
+    "talentMap": "Mapa Talentów",
+    "forWho": "Dla kogo",
+    "results": "Wyniki",
+    "contact": "Kontakt",
+    "panel": "Panel",
+    "joinCta": "Dołącz do systemu"
+  },
+  "modulesBar": {
+    "label": "Moduły:",
+    "system": "System",
+    "ai": "Scouting AI",
+    "map": "Mapa",
+    "business": "Business case",
+    "tech": "Tech stack",
+    "roadmap": "Roadmap",
+    "start": "Start →"
+  },
+  "hero": {
+    "live": "LIVE",
+    "liveBadge": "LIVE — {count} talentów w systemie",
+    "headlineA": "Narodowy OS",
+    "headlineB": "polskiego {accent}",
+    "accent": "futbolu",
+    "sub": "LiDAR + AI + PostGIS — jeden system dla każdego talentu w Polsce. Od Orlika do kadry A, w czasie rzeczywistym.",
+    "kpis": [
+      { "k": "Zawodników", "v": "5M+", "sub": "w docelowym systemie" },
+      { "k": "ROI", "v": "370%", "sub": "prognoza do 2038" },
+      { "k": "Boisk", "v": "2500+", "sub": "LiDAR-ready (pilotaż)" },
+      { "k": "Latencja", "v": "<0.4s", "sub": "od skanu do alertu" }
+    ],
+    "ctaPrimary": "Explore system →",
+    "ctaGhost": "Jak to działa?"
+  },
+  "trust": {
+    "items": [
+      "FIFA Data Standards (ready)",
+      "UEFA compatible (ready)",
+      "ISO 27001 ready",
+      "GDPR compliant",
+      "Real-time scouting"
+    ]
+  },
+  "personas": {
+    "title": "Wybierz swoją rolę",
+    "subtitle": "Każdy odbiorca ma inne pytania. Kliknij i przejdź do właściwej części.",
+    "cards": [
+      { "id": "federacja", "title": "Federacja / PZPN", "desc": "Zarządzanie talentami w skali kraju i KPI programu.", "href": "#business" },
+      { "id": "akademia", "title": "Akademia piłkarska", "desc": "Rekrutacja, monitoring i rozwój zawodników U8–U23.", "href": "#scouting-ai" },
+      { "id": "scout", "title": "Scout / Trener", "desc": "AI‑wspomagany scouting w czasie rzeczywistym.", "href": "#scouting-ai" },
+      { "id": "international", "title": "Federacja zagraniczna", "desc": "Benchmark i wdrożenie w Twoim kraju.", "href": "#international" }
+    ]
+  },
+  "tabs": {
+    "badge": "Tabbed exploration · 5 modułów",
+    "title": "Kliknij swój obszar — bez scroll fatigue",
+    "subtitle": "Trener → „Scouting AI”. Prezes akademii → „Business case”. CTO PZPN → „Tech stack”.",
+    "system": "System",
+    "ai": "Scouting AI",
+    "map": "Mapa",
+    "biz": "Business case",
+    "tech": "Tech stack"
+  },
+  "roadmap": {
+    "badge": "Timeline wdrożenia",
+    "title": "Kiedy to wejdzie u nas?",
+    "subtitle": "Konkretne kamienie milowe od pilotażu do celu 2038."
+  },
+  "international": {
+    "title": "Export this system to your country",
+    "subtitle": "White‑label deployment for national federations — your language, your data, your branding.",
+    "cta": "Request international deployment"
+  }
+}
+

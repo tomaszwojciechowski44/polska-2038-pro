@@ -4,22 +4,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
-const NAV_LINKS = [
-  { to: '/reforma',        label: '🏆 Reforma',      highlight: true },
-  { to: '/dla-federacji',  label: '🌍 For Federations', highlight: true, en: true },
-  { to: '/technologia',    label: 'Technologia' },
-  { to: '/mapa-talentow',  label: 'Mapa Talentów' },
-  { to: '/dla-kogo',       label: 'Dla kogo' },
-  { to: '/wyniki',         label: 'Wyniki' },
-  { to: '/kontakt',        label: 'Kontakt' },
-];
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
-  const { lang, toggle }        = useLanguage();
+  const { lang, toggle, t }     = useLanguage();
   const location                = useLocation();
-  const onLanding               = location.pathname === '/';
+  const onLanding               = location.pathname === '/' || location.pathname === '/en';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -32,13 +22,22 @@ export default function Navbar() {
 
   const isActive = (to) => location.pathname === to;
   const activeHash = (location.hash || '#modules').toLowerCase();
+  const NAV_LINKS = [
+    { to: '/reforma',        label: t?.nav?.reforma ?? '🏆 Reforma', highlight: true },
+    { to: '/dla-federacji',  label: t?.nav?.federations ?? '🌍 For federations', highlight: true },
+    { to: '/technologia',    label: t?.nav?.technology ?? 'Technology' },
+    { to: '/mapa-talentow',  label: t?.nav?.talentMap ?? 'Talent map' },
+    { to: '/dla-kogo',       label: t?.nav?.forWho ?? 'Who it’s for' },
+    { to: '/wyniki',         label: t?.nav?.results ?? 'Results' },
+    { to: '/kontakt',        label: t?.nav?.contact ?? 'Contact' },
+  ];
   const LANDING_MODULES = [
-    { href: '#modules', label: 'System' },
-    { href: '#scouting-ai', label: 'Scouting AI' },
-    { href: '#mapa', label: 'Mapa' },
-    { href: '#business', label: 'Business case' },
-    { href: '#tech-stack', label: 'Tech stack' },
-    { href: '#roadmap', label: 'Roadmap' },
+    { href: '#modules', label: t?.modulesBar?.system ?? 'System' },
+    { href: '#scouting-ai', label: t?.modulesBar?.ai ?? 'Scouting AI' },
+    { href: '#mapa', label: t?.modulesBar?.map ?? 'Map' },
+    { href: '#business', label: t?.modulesBar?.business ?? 'Business case' },
+    { href: '#tech-stack', label: t?.modulesBar?.tech ?? 'Tech stack' },
+    { href: '#roadmap', label: t?.modulesBar?.roadmap ?? 'Roadmap' },
   ];
 
   return (
@@ -57,7 +56,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 flex-shrink-0 group">
+          <Link to={lang === 'en' ? '/en' : '/'} className="flex items-center gap-3 flex-shrink-0 group">
             <div className="relative w-9 h-9">
               <div className="absolute inset-0 bg-brand-red rounded-full opacity-20 group-hover:opacity-40 transition-opacity" />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -80,11 +79,9 @@ export default function Navbar() {
                 className={`relative px-3 py-2 font-mono text-xs uppercase tracking-widest transition-colors rounded ${
                   isActive(link.to)
                     ? 'text-brand-neon'
-                    : link.en
-                      ? 'text-brand-cyan hover:text-cyan-300 border border-brand-cyan/30 hover:border-brand-cyan/60'
-                      : link.highlight
-                        ? 'text-red-400 hover:text-red-300 border border-red-500/30 hover:border-red-400/60'
-                        : 'text-gray-400 hover:text-white'
+                    : link.highlight
+                      ? 'text-red-400 hover:text-red-300 border border-red-500/30 hover:border-red-400/60'
+                      : 'text-gray-400 hover:text-white'
                 }`}
               >
                 {link.label}
@@ -112,7 +109,13 @@ export default function Navbar() {
               to="/login"
               className="px-4 py-2 bg-brand-cyan text-brand-dark font-display font-bold text-xs uppercase tracking-widest hover:bg-cyan-300 transition-all whitespace-nowrap"
             >
-              Panel →
+              {t?.nav?.panel ?? 'Panel'} →
+            </Link>
+            <Link
+              to="/kontakt"
+              className="px-4 py-2 border border-brand-neon/30 bg-brand-neon/5 text-brand-neon font-display font-bold text-xs uppercase tracking-widest hover:border-brand-neon/60 transition-all whitespace-nowrap"
+            >
+              {t?.nav?.joinCta ?? 'Join'} →
             </Link>
           </div>
 
@@ -179,7 +182,7 @@ export default function Navbar() {
         }`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center gap-2 overflow-x-auto">
             <span className="text-gray-600 font-mono text-[10px] uppercase tracking-widest flex-shrink-0">
-              Moduły:
+              {t?.modulesBar?.label ?? 'Modules:'}
             </span>
             {LANDING_MODULES.map((m) => (
               <a
@@ -200,7 +203,7 @@ export default function Navbar() {
                 href="#modules"
                 className="px-3 py-1.5 border border-brand-neon/30 bg-brand-neon/5 text-brand-neon hover:border-brand-neon/60 font-mono text-[10px] uppercase tracking-widest rounded-sm transition-colors"
               >
-                Start →
+                {t?.modulesBar?.start ?? 'Start →'}
               </a>
             </div>
           </div>

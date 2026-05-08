@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "reforma": "🏆 Reform",
+    "federations": "🌍 For federations",
+    "technology": "Technology",
+    "talentMap": "Talent map",
+    "forWho": "Who it's for",
+    "results": "Results",
+    "contact": "Contact",
+    "panel": "Panel",
+    "joinCta": "Join the system"
+  },
+  "modulesBar": {
+    "label": "Modules:",
+    "system": "System",
+    "ai": "Scouting AI",
+    "map": "Talent map",
+    "business": "Business case",
+    "tech": "Tech stack",
+    "roadmap": "Roadmap",
+    "start": "Start →"
+  },
+  "hero": {
+    "live": "LIVE",
+    "liveBadge": "LIVE — {count} talents tracked",
+    "headlineA": "National OS",
+    "headlineB": "of Polish {accent}",
+    "accent": "football",
+    "sub": "LiDAR + AI + PostGIS — one unified system for every talent in Poland. From grassroots to the national team, in real time.",
+    "kpis": [
+      { "k": "Players", "v": "5M+", "sub": "tracked nationwide" },
+      { "k": "ROI", "v": "370%", "sub": "projection to 2038" },
+      { "k": "Pitches", "v": "2,500+", "sub": "LiDAR-ready pilot" },
+      { "k": "Latency", "v": "<0.4s", "sub": "scan → scout alert" }
+    ],
+    "ctaPrimary": "Explore the system →",
+    "ctaGhost": "How does it work?"
+  },
+  "trust": {
+    "items": [
+      "FIFA Data Standards (ready)",
+      "UEFA compatible (ready)",
+      "ISO 27001 ready",
+      "GDPR compliant",
+      "Real-time scouting"
+    ]
+  },
+  "personas": {
+    "title": "Choose your role",
+    "subtitle": "Different audiences have different questions. Click to jump to the right part.",
+    "cards": [
+      { "id": "federacja", "title": "Federation / FA", "desc": "National talent governance and program KPIs.", "href": "#business" },
+      { "id": "akademia", "title": "Football Academy", "desc": "Recruitment, monitoring and U8–U23 development.", "href": "#scouting-ai" },
+      { "id": "scout", "title": "Scout / Coach", "desc": "AI-assisted scouting in real time.", "href": "#scouting-ai" },
+      { "id": "international", "title": "International federation", "desc": "Benchmark and deployment in your country.", "href": "#international" }
+    ]
+  },
+  "tabs": {
+    "badge": "Tabbed exploration · 5 modules",
+    "title": "Pick your lane — no scroll fatigue",
+    "subtitle": "Coach → “Scouting AI”. Academy director → “Business case”. CTO → “Tech stack”.",
+    "system": "System",
+    "ai": "Scouting AI",
+    "map": "Talent map",
+    "biz": "Business case",
+    "tech": "Tech stack"
+  },
+  "roadmap": {
+    "badge": "Deployment timeline",
+    "title": "When does it go live?",
+    "subtitle": "Clear milestones from pilot to the 2038 goal."
+  },
+  "international": {
+    "title": "Export this system to your country",
+    "subtitle": "White-label deployment in 90 days — your language, your data, your branding.",
+    "cta": "Request international deployment"
+  }
+}
+

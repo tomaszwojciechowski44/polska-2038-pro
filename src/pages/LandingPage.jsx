@@ -13,6 +13,10 @@ import EndorsementsSection from '../components/EndorsementsSection';
 import { getVoivodeships } from '../api/client';
 import TabbedExplorerSection from '../components/TabbedExplorerSection';
 import RoadmapTimelineSection from '../components/RoadmapTimelineSection';
+import TrustBar from '../components/TrustBar';
+import PersonaRouting from '../components/PersonaRouting';
+import InternationalSection from '../components/InternationalSection';
+import { useLanguage } from '../context/LanguageContext';
 
 // Animated counter hook
 function useCounter(end, duration = 2000, start = false) {
@@ -113,6 +117,7 @@ function HeroDashboard() {
 }
 
 export default function LandingPage() {
+  const { t } = useLanguage();
   const FALLBACK_LIVE = 5239018;
   const [liveTalents, setLiveTalents] = useState(FALLBACK_LIVE);
   const [liveSource, setLiveSource] = useState('DEMO');
@@ -133,12 +138,19 @@ export default function LandingPage() {
     return () => { mounted = false; };
   }, []);
 
-  const HERO_KPIS = useMemo(() => ([
-    { k: 'Zawodników', v: '5M+', sub: 'w docelowym systemie', c: 'text-brand-neon' },
-    { k: 'ROI', v: '370%', sub: 'prognoza do 2038', c: 'text-yellow-400' },
-    { k: 'Orlików', v: '2500+', sub: 'pilotaż wdrożeniowy', c: 'text-brand-cyan' },
-    { k: 'Latencja', v: '<0.4s', sub: 'od skanu do alertu', c: 'text-brand-red' },
-  ]), []);
+  const HERO_KPIS = useMemo(() => {
+    const k = t?.hero?.kpis;
+    if (Array.isArray(k) && k.length === 4) {
+      const colors = ['text-brand-neon', 'text-yellow-400', 'text-brand-cyan', 'text-brand-red'];
+      return k.map((x, i) => ({ ...x, c: colors[i] }));
+    }
+    return ([
+      { k: 'Players', v: '5M+', sub: 'tracked', c: 'text-brand-neon' },
+      { k: 'ROI', v: '370%', sub: 'projection', c: 'text-yellow-400' },
+      { k: 'Pitches', v: '2500+', sub: 'LiDAR pilot', c: 'text-brand-cyan' },
+      { k: 'Latency', v: '<0.4s', sub: 'scan → alert', c: 'text-brand-red' },
+    ]);
+  }, [t]);
 
   return (
     <div className="min-h-screen bg-brand-dark text-white font-display overflow-x-hidden">
@@ -176,15 +188,24 @@ export default function LandingPage() {
                 >
                   <span className="w-1.5 h-1.5 bg-brand-cyan rounded-full animate-pulse" />
                   <span className="text-brand-cyan font-mono text-[10px] tracking-widest uppercase">
-                    {liveSource} · {liveTalents.toLocaleString('pl-PL')} talentów w systemie
+                    {t?.hero?.live ?? 'LIVE'} · {t?.hero?.liveBadge
+                      ? t.hero.liveBadge.replace('{count}', liveTalents.toLocaleString('pl-PL'))
+                      : `${liveTalents.toLocaleString('pl-PL')} talents`}
                   </span>
                 </motion.div>
 
                 {/* Headline */}
                 <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
                   className="font-display font-bold leading-none mb-6">
-                  <span className="block text-6xl sm:text-8xl lg:text-[100px] text-white tracking-tight">#POLSKA</span>
-                  <span className="block text-6xl sm:text-8xl lg:text-[100px] text-brand-red leading-none" style={{ textShadow: '0 0 60px rgba(220,20,60,0.35)' }}>2038</span>
+                  <span className="block text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight">
+                    {t?.hero?.headlineA ?? 'National OS'}
+                  </span>
+                  <span className="block text-5xl sm:text-6xl lg:text-7xl text-gray-200 tracking-tight">
+                    {(t?.hero?.headlineB ?? 'of Polish {accent}').replace('{accent}', '')}
+                    <span className="text-brand-neon text-glow-neon">
+                      {t?.hero?.accent ?? 'football'}
+                    </span>
+                  </span>
                 </motion.h1>
 
                 {/* Hero KPIs instead of long description */}
@@ -209,21 +230,24 @@ export default function LandingPage() {
                   transition={{ duration: 0.7, delay: 0.38 }}
                   className="text-gray-400 font-mono text-sm max-w-md leading-relaxed mb-10"
                 >
-                  System, który w 2 kliknięcia pokazuje skautowi najlepszych zawodników w promieniu 50 km —
-                  z AI Score, progresją i rekomendacją działania.
+                  {t?.hero?.sub ?? 'LiDAR + AI + PostGIS — one unified system for every talent.'}
                 </motion.p>
 
                 {/* CTA row */}
                 <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
                   className="flex flex-wrap gap-3 mb-10">
-                  <Link to="/reforma"
-                    className="flex items-center gap-2 px-6 py-3.5 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest hover:bg-red-700 transition-all">
-                    <Trophy size={16} /> Plan Reformy
-                  </Link>
-                  <Link to="/reforma/dokumenty"
-                    className="flex items-center gap-2 px-6 py-3.5 border-2 border-brand-neon text-brand-neon font-display font-bold text-sm uppercase tracking-widest hover:bg-brand-neon hover:text-brand-dark transition-all">
-                    Dokumentacja <ArrowRight size={16} />
-                  </Link>
+                  <a
+                    href="#modules"
+                    className="flex items-center gap-2 px-6 py-3.5 bg-brand-red text-white font-display font-bold text-sm uppercase tracking-widest hover:bg-red-700 transition-all"
+                  >
+                    <Trophy size={16} /> {t?.hero?.ctaPrimary ?? 'Explore system →'}
+                  </a>
+                  <a
+                    href="#scouting-ai"
+                    className="flex items-center gap-2 px-6 py-3.5 border-2 border-brand-neon text-brand-neon font-display font-bold text-sm uppercase tracking-widest hover:bg-brand-neon hover:text-brand-dark transition-all"
+                  >
+                    {t?.hero?.ctaGhost ?? 'How does it work?'} <ArrowRight size={16} />
+                  </a>
                   <Link to="/login"
                     className="flex items-center gap-2 px-6 py-3.5 border border-brand-border text-gray-400 font-mono text-xs uppercase tracking-widest hover:border-brand-cyan hover:text-brand-cyan transition-all">
                     <LogIn size={14} /> Panel
@@ -255,6 +279,12 @@ export default function LandingPage() {
         {/* ─── COUNTDOWN ─────────────────────────────────────────────────── */}
         <CountdownSection />
 
+        {/* ─── TRUST BAR ─────────────────────────────────────────────────── */}
+        <TrustBar />
+
+        {/* ─── PERSONA ROUTING ───────────────────────────────────────────── */}
+        <PersonaRouting />
+
         {/* ─── TABBED EXPLORATION (5 modules) ────────────────────────────── */}
         <TabbedExplorerSection />
 
@@ -276,6 +306,9 @@ export default function LandingPage() {
 
         {/* ─── ROADMAP TIMELINE ─────────────────────────────────────────── */}
         <RoadmapTimelineSection />
+
+        {/* ─── INTERNATIONAL (EN only) ───────────────────────────────────── */}
+        <InternationalSection />
 
         {/* ─── FINAL CTA ─────────────────────────────────────────────────── */}
         <section className="py-16 sm:py-24 relative overflow-hidden">

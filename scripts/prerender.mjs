@@ -40,6 +40,20 @@ function injectAppHtml(html, appHtml) {
   return html.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
 }
 
+function postProcess(route, html) {
+  const isEn = route === '/en';
+  const lang = isEn ? 'en' : 'pl';
+  const locale = isEn ? 'en_US' : 'pl_PL';
+  const url = isEn ? 'https://polska2038.pl/en' : 'https://polska2038.pl/';
+
+  let out = html;
+  out = out.replace(/<html lang="[^"]*">/i, `<html lang="${lang}">`);
+  out = out.replace(/<meta property="og:locale" content="[^"]*"\s*\/?>/i, `<meta property="og:locale" content="${locale}" />`);
+  out = out.replace(/<meta property="og:url" content="[^"]*"\s*\/?>/i, `<meta property="og:url" content="${url}" />`);
+  out = out.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/i, `<link rel="canonical" href="${url}" />`);
+  return out;
+}
+
 async function main() {
   if (!fs.existsSync(templatePath)) {
     throw new Error(`Missing template: ${templatePath}`);
@@ -62,7 +76,8 @@ async function main() {
     const { appHtml } = await mod.render(r);
     const outPath = routeToOutPath(r);
     ensureDir(path.dirname(outPath));
-    fs.writeFileSync(outPath, injectAppHtml(template, appHtml), 'utf8');
+    const html = postProcess(r, injectAppHtml(template, appHtml));
+    fs.writeFileSync(outPath, html, 'utf8');
   }
 
   // 404 page for static hosts

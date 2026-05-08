@@ -40,14 +40,6 @@ export default function Footer() {
               >
                 X / Twitter
               </a>
-              <a
-                href="https://linkedin.com/company/polska2038"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-1.5 border border-brand-border text-gray-500 hover:border-blue-500 hover:text-blue-400 text-xs font-mono transition-colors"
-              >
-                LinkedIn
-              </a>
             </div>
           </div>
 

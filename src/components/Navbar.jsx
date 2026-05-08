@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -8,9 +8,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
   const [activeLanding, setActiveLanding] = useState('system');
-  const { lang, toggle, t }     = useLanguage();
+  const { lang, setLang, t }    = useLanguage();
   const location                = useLocation();
-  const onLanding               = location.pathname === '/system';
+  const navigate                = useNavigate();
+  const onLanding               = location.pathname === '/system' || location.pathname === '/en/system';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -22,15 +23,38 @@ export default function Navbar() {
   useEffect(() => setOpen(false), [location.pathname]);
 
   const isActive = (to) => location.pathname === to;
+
+  const withLang = (to) => {
+    if (lang !== 'en') return to;
+    if (to === '/') return '/en';
+    return `/en${to}`;
+  };
+
+  const handleToggleLang = () => {
+    const next = lang === 'pl' ? 'en' : 'pl';
+    setLang(next);
+    const { pathname, search, hash } = window.location;
+
+    const isEn = pathname === '/en' || pathname.startsWith('/en/');
+    let nextPath;
+    if (next === 'en') {
+      nextPath = isEn ? pathname : (pathname === '/' ? '/en' : `/en${pathname}`);
+    } else {
+      if (pathname === '/en') nextPath = '/';
+      else if (pathname.startsWith('/en/')) nextPath = pathname.replace('/en', '');
+      else nextPath = pathname;
+    }
+    navigate(`${nextPath}${search}${hash}`);
+  };
   const NAV_LINKS = [
-    { to: '/',               label: t?.nav?.reforma ?? 'Reform' },
-    { to: '/technologia',    label: t?.nav?.technology ?? 'Technology' },
-    { to: '/mapa-talentow',  label: t?.nav?.talentMap ?? 'Talent map' },
-    { to: '/dla-kogo',       label: t?.nav?.forWho ?? 'Who it’s for' },
-    { to: '/wyniki',         label: t?.nav?.results ?? 'Results' },
-    { to: '/partnerzy',      label: t?.nav?.partners ?? 'Partners' },
-    { to: '/o-programie',    label: t?.nav?.about ?? 'About' },
-    { to: '/kontakt',        label: t?.nav?.contact ?? 'Contact' },
+    { to: withLang('/'),               label: t?.nav?.reforma ?? 'Reform' },
+    { to: withLang('/technologia'),    label: t?.nav?.technology ?? 'Technology' },
+    { to: withLang('/mapa-talentow'),  label: t?.nav?.talentMap ?? 'Talent map' },
+    { to: withLang('/dla-kogo'),       label: t?.nav?.forWho ?? 'Who it’s for' },
+    { to: withLang('/wyniki'),         label: t?.nav?.results ?? 'Results' },
+    { to: withLang('/partnerzy'),      label: t?.nav?.partners ?? 'Partners' },
+    { to: withLang('/o-programie'),    label: t?.nav?.about ?? 'About' },
+    { to: withLang('/kontakt'),        label: t?.nav?.contact ?? 'Contact' },
   ];
   const LANDING_MODULES = [
     { id: 'system', targetId: 'modules-start', label: t?.modulesBar?.system ?? 'System' },
@@ -106,7 +130,7 @@ export default function Navbar() {
           {/* Desktop right actions */}
           <div className="hidden lg:flex items-center gap-3">
             <button
-              onClick={toggle}
+              onClick={handleToggleLang}
               className="flex items-center gap-1 px-2.5 py-1.5 border border-white/10 bg-white/[0.02] text-gray-400 hover:text-white hover:border-white/20 font-mono text-xs uppercase tracking-widest transition-all rounded-md"
               title={lang === 'pl' ? 'Switch to English' : 'Przełącz na polski'}
             >
@@ -124,7 +148,7 @@ export default function Navbar() {
           {/* Mobile: lang + hamburger */}
           <div className="lg:hidden flex items-center gap-2">
             <button
-              onClick={toggle}
+              onClick={handleToggleLang}
               className="flex items-center gap-1 px-2 py-1 border border-brand-border text-gray-500 hover:text-brand-cyan font-mono text-xs transition-colors"
             >
               <span>{lang === 'pl' ? '🇬🇧' : '🇵🇱'}</span>

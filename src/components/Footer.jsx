@@ -1,4 +1,9 @@
-﻿export default function Footer() {
+﻿import { useLanguage } from '../context/LanguageContext';
+
+export default function Footer() {
+  const { lang, t } = useLanguage();
+  const prefix = lang === 'en' ? '/en' : '';
+
   return (
     <footer className="bg-black border-t border-brand-border py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,17 +72,17 @@
             <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-4">Nawigacja</div>
             <div className="space-y-2">
               {[
-                { label: 'Technologia', to: '/technologia' },
-                { label: 'Mapa Talentów', to: '/mapa-talentow' },
-                { label: 'Dla kogo', to: '/dla-kogo' },
-                { label: 'Wyniki i Roadmapa', to: '/wyniki' },
-                { label: 'Partnerzy', to: '/partnerzy' },
-                { label: 'O programie', to: '/o-programie' },
-                { label: 'Kontakt', to: '/kontakt' },
+                { label: t?.nav?.technology ?? 'Technologia', to: '/technologia' },
+                { label: t?.nav?.talentMap ?? 'Mapa Talentów', to: '/mapa-talentow' },
+                { label: t?.nav?.forWho ?? 'Dla kogo', to: '/dla-kogo' },
+                { label: (t?.nav?.results ?? 'Wyniki') + ' / Roadmap', to: '/wyniki' },
+                { label: t?.nav?.partners ?? 'Partnerzy', to: '/partnerzy' },
+                { label: t?.nav?.about ?? 'O programie', to: '/o-programie' },
+                { label: t?.nav?.contact ?? 'Kontakt', to: '/kontakt' },
               ].map((link) => (
                 <a
                   key={link.label}
-                  href={link.to}
+                  href={`${prefix}${link.to}`}
                   className="block text-gray-500 hover:text-brand-neon text-sm font-mono transition-colors"
                 >
                   &rarr; {link.label}
@@ -92,7 +97,7 @@
             &copy; 2025&ndash;2026 #Polska2038 v2.0. Wszelkie prawa zastrzeżone.
           </div>
           <div className="flex items-center gap-4 text-gray-500 text-[11px] sm:text-xs font-mono tracking-wide whitespace-nowrap">
-            <a href="/kontakt" className="hover:text-gray-200 transition-colors">Kontakt z zespołem</a>
+            <a href={`${prefix}/kontakt`} className="hover:text-gray-200 transition-colors">Kontakt z zespołem</a>
             <a href="https://github.com/Polska-2038/projekt-polska-2038-pro" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">MIT License</a>
           </div>
           <div className="flex items-center gap-2 text-gray-500 text-[11px] sm:text-xs font-mono tracking-wide whitespace-nowrap">

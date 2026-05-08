@@ -5,6 +5,8 @@ export default function InternationalSection() {
   const { lang, t } = useLanguage();
   if (lang !== 'en') return null;
 
+  const prefix = lang === 'en' ? '/en' : '';
+
   return (
     <section id="international" className="py-20 bg-brand-dark relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-10" />
@@ -26,7 +28,7 @@ export default function InternationalSection() {
           </p>
           <div className="mt-7 flex justify-center">
             <a
-              href="/kontakt"
+              href={`${prefix}/kontakt`}
               className="px-6 py-3 bg-brand-cyan text-brand-dark font-display font-bold text-sm uppercase tracking-widest hover:bg-cyan-300 transition-colors"
             >
               {t?.international?.cta}

@@ -37,18 +37,26 @@ export default function App() {
           <Route path="/en"             element={<ReformaEnPage />} />
           {/* Keep old landing available */}
           <Route path="/system"         element={<LandingPage />} />
+          <Route path="/en/system"      element={<LandingPage />} />
           <Route path="/technologia"    element={<TechnologyPage />} />
+          <Route path="/en/technologia" element={<TechnologyPage />} />
           <Route path="/reforma"              element={<Navigate to="/" replace />} />
           <Route path="/reforma/filar/:id"    element={<FilarDetailPage />} />
           <Route path="/reforma/dokumenty"    element={<DokumentyPage />} />
           <Route path="/reforma/en"            element={<ReformaEnPage />} />
           <Route path="/dla-federacji"         element={<Navigate to="/" replace />} />
           <Route path="/mapa-talentow"  element={<MapPage />} />
+          <Route path="/en/mapa-talentow" element={<MapPage />} />
           <Route path="/dla-kogo"       element={<ForWhoPage />} />
+          <Route path="/en/dla-kogo"    element={<ForWhoPage />} />
           <Route path="/wyniki"         element={<ResultsPage />} />
+          <Route path="/en/wyniki"      element={<ResultsPage />} />
           <Route path="/partnerzy"      element={<PartnersPage />} />
+          <Route path="/en/partnerzy"   element={<PartnersPage />} />
           <Route path="/kontakt"        element={<ContactPage />} />
+          <Route path="/en/kontakt"     element={<ContactPage />} />
           <Route path="/o-programie"    element={<AboutPage />} />
+          <Route path="/en/o-programie" element={<AboutPage />} />
           <Route path="/reforma/materialy/:slug" element={<MaterialDetailPage />} />
           <Route path="/login"          element={<LoginPage />} />
 

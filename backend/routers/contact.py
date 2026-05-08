@@ -1,6 +1,7 @@
 import os
 import time
 import smtplib
+import traceback
 from email.message import EmailMessage
 from typing import Dict, List
 
@@ -84,21 +85,26 @@ async def submit_contact(data: ContactMessageIn, request: Request, db: AsyncSess
     ua = request.headers.get("user-agent")
 
     # Persist
-    row = ContactMessage(
-        name=data.name.strip(),
-        org=(data.org or "").strip() or None,
-        email=str(data.email).strip(),
-        role=(data.role or "").strip() or None,
-        subject=data.subject.strip(),
-        message=data.message.strip(),
-        lang=(data.lang or "").strip() or None,
-        page=(data.page or "").strip() or None,
-        ip=ip,
-        user_agent=(ua[:400] if ua else None),
-    )
-    db.add(row)
-    await db.commit()
-    await db.refresh(row)
+    try:
+        row = ContactMessage(
+            name=data.name.strip(),
+            org=(data.org or "").strip() or None,
+            email=str(data.email).strip(),
+            role=(data.role or "").strip() or None,
+            subject=data.subject.strip(),
+            message=data.message.strip(),
+            lang=(data.lang or "").strip() or None,
+            page=(data.page or "").strip() or None,
+            ip=ip,
+            user_agent=(ua[:400] if ua else None),
+        )
+        db.add(row)
+        await db.commit()
+        await db.refresh(row)
+    except Exception as e:
+        print("Contact DB persist failed:", repr(e))
+        print("Traceback:\n", traceback.format_exc())
+        raise HTTPException(status_code=503, detail="Database error. Please try again later.")
 
     # Build email
     from_addr = os.getenv("SMTP_FROM") or "Projekt Polska2038 <onboarding@resend.dev>"

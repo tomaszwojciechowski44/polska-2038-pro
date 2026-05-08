@@ -34,17 +34,50 @@ function ReformaCallout() {
 }
 
 export default function TechnologyPage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   return (
     <PublicLayout
       pageTitle={t?.pages?.technology?.title ?? 'Technologia'}
       pageSubtitle={t?.pages?.technology?.subtitle ?? ''}
     >
+      {lang === 'en' ? (
+        <section className="py-16">
+          <div className="max-w-3xl mx-auto px-4 text-center">
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-white">English technical docs</h2>
+            <p className="mt-3 text-gray-400 font-mono text-sm leading-relaxed">
+              We’re translating the full technical deep-dive (LiDAR, AI engine, architecture). For now, the reform overview is fully available in English.
+            </p>
+            <div className="mt-8 flex justify-center gap-3 flex-wrap">
+              <Link
+                to="/en"
+                className="px-6 py-3 bg-brand-cyan text-brand-dark font-display font-bold text-sm uppercase tracking-wider hover:bg-cyan-300 transition-colors"
+              >
+                Open the English home →
+              </Link>
+              <Link
+                to="/en/kontakt"
+                className="px-6 py-3 border border-brand-border text-gray-300 font-mono text-sm hover:border-brand-cyan hover:text-brand-cyan transition-colors"
+              >
+                Contact →
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : (
       <LidarSection />
+      )}
+      {lang !== 'en' && (
       <AIEngineSection />
+      )}
+      {lang !== 'en' && (
       <TechStackSection />
+      )}
+      {lang !== 'en' && (
       <ArchitectureSection />
+      )}
+      {lang !== 'en' && (
       <LiveSystemSection />
+      )}
       <ReformaCallout />
     </PublicLayout>
   );

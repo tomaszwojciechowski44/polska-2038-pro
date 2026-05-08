@@ -1,0 +1,3 @@
+This file exists to trigger a Vercel redeploy on main.
+
+If you see this in the repository history, it was intentionally added to force a fresh production build.

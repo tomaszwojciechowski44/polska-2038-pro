@@ -2,6 +2,7 @@ import os
 import time
 import smtplib
 import traceback
+import logging
 from email.message import EmailMessage
 from typing import Dict, List
 
@@ -14,6 +15,7 @@ from models import ContactMessage
 from schemas import ContactMessageIn, ContactMessageOut
 
 router = APIRouter()
+logger = logging.getLogger("polska2038.contact")
 
 # Recipients (stakeholders)
 STAKEHOLDERS: List[str] = [
@@ -142,10 +144,15 @@ async def submit_contact(data: ContactMessageIn, request: Request, db: AsyncSess
     try:
         await anyio.to_thread.run_sync(_smtp_send, msg)
     except Exception as e:
-        print("SMTP send failed:", repr(e))
-        print("Traceback:\n", traceback.format_exc())
+        logger.exception("SMTP send failed")
         # Do not lose stored message; report that delivery failed.
-        raise HTTPException(status_code=502, detail="Nie udało się wysłać wiadomości e-mail. Spróbuj później.")
+        debug = os.getenv("SMTP_DEBUG", "").lower() in ("1", "true", "yes")
+        if debug:
+            # Return a safe, non-secret hint to diagnose relay setup.
+            detail = f"SMTP send failed ({type(e).__name__}): {str(e)[:240]}"
+        else:
+            detail = "Nie udało się wysłać wiadomości e-mail. Spróbuj później."
+        raise HTTPException(status_code=502, detail=detail)
 
     return row
 

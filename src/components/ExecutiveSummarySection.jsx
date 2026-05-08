@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useCountUp';
 import { Target } from 'lucide-react';
@@ -109,35 +108,6 @@ export default function ExecutiveSummarySection() {
                 <div className="text-gray-500 text-xs font-mono leading-relaxed">{item.desc}</div>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
-
-        {/* The Pitch — one killer statement */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ delay: 0.8 }}
-          className="relative p-10 border-2 border-brand-gold/40 bg-brand-gold/5 text-center overflow-hidden"
-        >
-          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-brand-gold to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-brand-gold to-transparent" />
-
-          <div className="text-brand-gold font-mono text-xs uppercase tracking-widest mb-4">// THE PITCH</div>
-          <blockquote className="text-2xl sm:text-4xl font-display font-bold text-white leading-tight mb-6">
-            "W 2038 Polska wygra Mistrzostwa Świata.<br />
-            <span className="text-brand-gold">Nie przez szczęście — przez system."</span>
-          </blockquote>
-          <p className="text-gray-400 font-mono text-sm max-w-2xl mx-auto">
-            #Polska2038 to nie projekt IT. To infrastruktura narodowa — jak autostrady, ale dla sportu.
-            Koszt zaniechania: utrata kolejnego pokolenia talentów z małych miast.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <Link to="/partnerzy" className="px-8 py-3 bg-brand-gold text-black font-display font-bold text-sm uppercase tracking-widest hover:brightness-110 transition-all">
-              Zostań Partnerem
-            </Link>
-            <Link to="/kontakt" className="px-8 py-3 border-2 border-brand-gold text-brand-gold font-display font-bold text-sm uppercase tracking-widest hover:bg-brand-gold/10 transition-all">
-              Umów Demo
-            </Link>
           </div>
         </motion.div>
 

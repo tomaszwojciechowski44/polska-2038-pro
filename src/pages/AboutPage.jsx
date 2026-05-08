@@ -15,33 +15,10 @@ const fade = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }
 
 export default function AboutPage() {
   return (
-    <PublicLayout>
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 sm:pt-36 sm:pb-24 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-400/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-yellow-400/5 rounded-full blur-3xl" />
-        </div>
-        <div className="max-w-4xl mx-auto px-4 relative">
-          <motion.div {...fade}>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-px bg-cyan-400" />
-              <span className="text-cyan-400 font-mono text-xs uppercase tracking-widest">O programie</span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
-              Rewolucja w identyfikacji<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-green-400">
-                talentów sportowych
-              </span>
-            </h1>
-            <p className="text-gray-400 text-lg font-mono leading-relaxed max-w-2xl">
-              #Polska2038 to pierwszy w Europie projekt systemu identyfikacji talentów sportowych
-              oparty na skanowaniu LiDAR, analizie biomechanicznej i uczeniu maszynowym.
-              Inicjatywa obywatelska — prezentowana Ministerstwu Sportu RP i PZPN.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+    <PublicLayout
+      pageTitle="O programie"
+      pageSubtitle="Rewolucja w identyfikacji talentów sportowych. Projekt systemu oparty na skanowaniu 3D, analizie biomechanicznej i danych — inicjatywa obywatelska prezentowana Ministerstwu Sportu RP i PZPN."
+    >
 
       {/* Stats bar */}
       <section className="border-y border-[#1e2d4a] bg-[#0d1325]">

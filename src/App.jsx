@@ -1,5 +1,5 @@
 import './index.css';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AuthProvider, PrivateRoute, AdminRoute } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
 
@@ -34,10 +34,13 @@ export default function App() {
       <AuthProvider>
         <Routes>
           {/* ── Public ───────────────────────────────── */}
-          <Route path="/"               element={<LandingPage />} />
-          <Route path="/en"             element={<LandingPage />} />
+          {/* Homepage = Reform */}
+          <Route path="/"               element={<ReformaPage />} />
+          <Route path="/en"             element={<ReformaEnPage />} />
+          {/* Keep old landing available */}
+          <Route path="/system"         element={<LandingPage />} />
           <Route path="/technologia"    element={<TechnologyPage />} />
-          <Route path="/reforma"              element={<ReformaPage />} />
+          <Route path="/reforma"              element={<Navigate to="/" replace />} />
           <Route path="/reforma/filar/:id"    element={<FilarDetailPage />} />
           <Route path="/reforma/dokumenty"    element={<DokumentyPage />} />
           <Route path="/reforma/en"            element={<ReformaEnPage />} />

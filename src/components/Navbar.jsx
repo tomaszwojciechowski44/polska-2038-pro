@@ -10,7 +10,7 @@ export default function Navbar() {
   const [activeLanding, setActiveLanding] = useState('system');
   const { lang, toggle, t }     = useLanguage();
   const location                = useLocation();
-  const onLanding               = location.pathname === '/' || location.pathname === '/en';
+  const onLanding               = location.pathname === '/system';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -23,7 +23,7 @@ export default function Navbar() {
 
   const isActive = (to) => location.pathname === to;
   const NAV_LINKS = [
-    { to: '/reforma',        label: t?.nav?.reforma ?? '🏆 Reforma', highlight: true },
+    { to: '/',               label: t?.nav?.reforma ?? '🏆 Reforma', highlight: true },
     { to: '/dla-federacji',  label: t?.nav?.federations ?? '🌍 For federations', highlight: true },
     { to: '/technologia',    label: t?.nav?.technology ?? 'Technology' },
     { to: '/mapa-talentow',  label: t?.nav?.talentMap ?? 'Talent map' },

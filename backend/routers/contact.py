@@ -51,10 +51,11 @@ def _rate_limit_or_429(ip: str) -> None:
 
 def _smtp_send(msg: EmailMessage) -> None:
     host = os.getenv("SMTP_HOST")
-    port = int(os.getenv("SMTP_PORT", "587"))
     user = os.getenv("SMTP_USER")
     password = os.getenv("SMTP_PASS")
     use_tls = os.getenv("SMTP_TLS", "true").lower() in ("1", "true", "yes")
+    port_default = "587" if use_tls else "465"
+    port = int(os.getenv("SMTP_PORT", port_default))
 
     if not host or not user or not password:
         raise RuntimeError("SMTP is not configured (SMTP_HOST/SMTP_USER/SMTP_PASS).")
@@ -100,7 +101,7 @@ async def submit_contact(data: ContactMessageIn, request: Request, db: AsyncSess
     await db.refresh(row)
 
     # Build email
-    from_addr = os.getenv("SMTP_FROM") or os.getenv("SMTP_USER") or "no-reply@polska2038.pl"
+    from_addr = os.getenv("SMTP_FROM") or "Projekt Polska2038 <onboarding@resend.dev>"
     subject = f"Projekt #Polska2038 - Głos Obywatelski: {data.subject.strip()}"
 
     body = "\n".join([

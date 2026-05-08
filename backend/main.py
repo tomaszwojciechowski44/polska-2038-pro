@@ -95,7 +95,10 @@ async def _auto_seed():
 async def lifespan(app: FastAPI):
     try:
         await init_db()
-        await _auto_seed()
+        # Vercel serverless can fail during passlib/bcrypt self-tests in `_auto_seed()`.
+        # Auto-seed is not required for public endpoints like /api/contact.
+        if not os.getenv("VERCEL") and os.getenv("DISABLE_AUTO_SEED", "").lower() not in ("1", "true", "yes"):
+            await _auto_seed()
     except Exception as e:
         # Make sure serverless logs include the real startup failure reason.
         print("Application startup failed. Exiting.")

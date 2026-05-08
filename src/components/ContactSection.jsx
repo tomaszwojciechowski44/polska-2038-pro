@@ -6,20 +6,16 @@ import { useLanguage } from '../context/LanguageContext';
 import { submitContact } from '../api/client';
 
 const ROLES_PL = [
-  'Ministerstwo Sportu',
-  'PZPN / Federacja',
-  'Akademia / Klub',
-  'Samorząd',
-  'Inwestor',
-  'Media / Dziennikarz',
+  'Ministerstwo Sportu i Turystyki',
+  'PZPN',
+  'Ekstraklasa SA',
+  '1 liga',
 ];
 const ROLES_EN = [
-  'Ministry of Sport',
-  'FA / Federation',
-  'Academy / Club',
-  'Local government',
-  'Investor',
-  'Media / Journalist',
+  'Ministry of Sport and Tourism',
+  'PZPN (Polish FA)',
+  'Ekstraklasa SA',
+  '1st League',
 ];
 
 export default function ContactSection() {

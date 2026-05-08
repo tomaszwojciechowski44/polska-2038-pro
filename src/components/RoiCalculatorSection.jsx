@@ -1,20 +1,27 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Users, Trophy, DollarSign } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-function fmt(n) {
+function fmt(n, lang = 'pl') {
+  const locale = lang === 'en' ? 'en-US' : 'pl-PL';
+  if (lang === 'en') {
+    if (n >= 1e9) return (n / 1e9).toFixed(1).replace('.0', '') + ' bn PLN';
+    if (n >= 1e6) return Math.round(n / 1e6).toLocaleString(locale) + ' m PLN';
+    return n.toLocaleString(locale) + ' PLN';
+  }
   if (n >= 1e9) return (n / 1e9).toFixed(1).replace('.0', '') + ' mld zł';
-  if (n >= 1e6) return Math.round(n / 1e6) + ' mln zł';
-  return n.toLocaleString('pl-PL') + ' zł';
+  if (n >= 1e6) return Math.round(n / 1e6).toLocaleString(locale) + ' mln zł';
+  return n.toLocaleString(locale) + ' zł';
 }
 
-function Bar({ label, value, max, color, suffix = '' }) {
+function Bar({ label, value, max, color, suffix = '', lang }) {
   const pct = Math.min(100, (value / max) * 100);
   return (
     <div>
       <div className="flex justify-between items-center mb-1">
         <span className="text-gray-400 text-xs font-mono">{label}</span>
-        <span className={`text-sm font-black ${color}`}>{suffix}{fmt(value)}</span>
+        <span className={`text-sm font-black ${color}`}>{suffix}{fmt(value, lang)}</span>
       </div>
       <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
         <motion.div
@@ -29,6 +36,7 @@ function Bar({ label, value, max, color, suffix = '' }) {
 }
 
 export default function RoiCalculatorSection() {
+  const { lang } = useLanguage();
   const [children, setChildren] = useState(500);     // 100–1000
   const [years,    setYears]    = useState(12);       // 5–15
   const [scale,    setScale]    = useState(50);       // 10–100 %
@@ -52,10 +60,16 @@ export default function RoiCalculatorSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-brand-neon font-mono text-xs uppercase tracking-widest">Interaktywny symulator</span>
-          <h2 className="text-3xl md:text-4xl font-black text-white mt-2">💰 Kalkulator ROI Reformy</h2>
+          <span className="text-brand-neon font-mono text-xs uppercase tracking-widest">
+            {lang === 'en' ? 'Interactive simulator' : 'Interaktywny symulator'}
+          </span>
+          <h2 className="text-3xl md:text-4xl font-black text-white mt-2">
+            💰 {lang === 'en' ? 'Reform ROI calculator' : 'Kalkulator ROI Reformy'}
+          </h2>
           <p className="text-gray-400 mt-3 max-w-xl mx-auto">
-            Dostosuj parametry programu i zobacz jak zmienia się zwrot z inwestycji w czasie rzeczywistym.
+            {lang === 'en'
+              ? 'Adjust program parameters and see how the return on investment changes in real time.'
+              : 'Dostosuj parametry programu i zobacz jak zmienia się zwrot z inwestycji w czasie rzeczywistym.'}
           </p>
         </motion.div>
 
@@ -66,13 +80,17 @@ export default function RoiCalculatorSection() {
             viewport={{ once: true }}
             className="bg-gray-900 border border-gray-700 rounded-2xl p-6 space-y-8"
           >
-            <h3 className="text-white font-bold mb-4">⚙️ Parametry Programu</h3>
+            <h3 className="text-white font-bold mb-4">
+              ⚙️ {lang === 'en' ? 'Program parameters' : 'Parametry Programu'}
+            </h3>
 
             {/* Children slider */}
             <div>
               <div className="flex justify-between mb-2">
-                <label className="text-gray-400 font-mono text-sm">Dzieci w programie/rok</label>
-                <span className="text-brand-neon font-black text-lg">{children.toLocaleString('pl-PL')}</span>
+                <label className="text-gray-400 font-mono text-sm">
+                  {lang === 'en' ? 'Kids in program / year' : 'Dzieci w programie/rok'}
+                </label>
+                <span className="text-brand-neon font-black text-lg">{children.toLocaleString(lang === 'en' ? 'en-US' : 'pl-PL')}</span>
               </div>
               <input type="range" min="100" max="1000" step="50"
                 value={children} onChange={e => setChildren(+e.target.value)}
@@ -86,22 +104,24 @@ export default function RoiCalculatorSection() {
             {/* Years slider */}
             <div>
               <div className="flex justify-between mb-2">
-                <label className="text-gray-400 font-mono text-sm">Horyzont programu (lata)</label>
-                <span className="text-brand-cyan font-black text-lg">{years} lat</span>
+                <label className="text-gray-400 font-mono text-sm">
+                  {lang === 'en' ? 'Program horizon (years)' : 'Horyzont programu (lata)'}
+                </label>
+                <span className="text-brand-cyan font-black text-lg">{years} {lang === 'en' ? 'years' : 'lat'}</span>
               </div>
               <input type="range" min="5" max="15" step="1"
                 value={years} onChange={e => setYears(+e.target.value)}
                 className="w-full h-2 bg-gray-700 rounded-full appearance-none cursor-pointer accent-brand-cyan"
               />
               <div className="flex justify-between text-gray-600 text-xs font-mono mt-1">
-                <span>5 lat</span><span>15 lat</span>
+                <span>{lang === 'en' ? '5y' : '5 lat'}</span><span>{lang === 'en' ? '15y' : '15 lat'}</span>
               </div>
             </div>
 
             {/* Scale slider */}
             <div>
               <div className="flex justify-between mb-2">
-                <label className="text-gray-400 font-mono text-sm">Skala wdrożenia</label>
+                <label className="text-gray-400 font-mono text-sm">{lang === 'en' ? 'Deployment scale' : 'Skala wdrożenia'}</label>
                 <span className="text-yellow-400 font-black text-lg">{scale}%</span>
               </div>
               <input type="range" min="10" max="100" step="5"
@@ -109,19 +129,19 @@ export default function RoiCalculatorSection() {
                 className="w-full h-2 bg-gray-700 rounded-full appearance-none cursor-pointer accent-yellow-400"
               />
               <div className="flex justify-between text-gray-600 text-xs font-mono mt-1">
-                <span>10% (pilotaż)</span><span>100% (pełne)</span>
+                <span>{lang === 'en' ? '10% (pilot)' : '10% (pilotaż)'}</span><span>{lang === 'en' ? '100% (full)' : '100% (pełne)'}</span>
               </div>
             </div>
 
             {/* Summary input */}
             <div className="pt-4 border-t border-gray-800 space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400 font-mono">Budżet / rok</span>
-                <span className="text-white font-bold">{fmt(budgetPerYear)}</span>
+                <span className="text-gray-400 font-mono">{lang === 'en' ? 'Budget / year' : 'Budżet / rok'}</span>
+                <span className="text-white font-bold">{fmt(budgetPerYear, lang)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400 font-mono">Łączna inwestycja</span>
-                <span className="text-white font-bold">{fmt(totalInvest)}</span>
+                <span className="text-gray-400 font-mono">{lang === 'en' ? 'Total investment' : 'Łączna inwestycja'}</span>
+                <span className="text-white font-bold">{fmt(totalInvest, lang)}</span>
               </div>
             </div>
           </motion.div>
@@ -132,19 +152,19 @@ export default function RoiCalculatorSection() {
             viewport={{ once: true }}
             className="bg-gray-900 border border-gray-700 rounded-2xl p-6"
           >
-            <h3 className="text-white font-bold mb-6">📈 Prognozowane Zwroty</h3>
+            <h3 className="text-white font-bold mb-6">📈 {lang === 'en' ? 'Projected returns' : 'Prognozowane Zwroty'}</h3>
 
             <div className="space-y-4 mb-6">
-              <Bar label="Transfery piłkarzy (fees)" value={transferFees} max={totalReturn} color="text-brand-neon" />
-              <Bar label="Prawa telewizyjne" value={tvRights}      max={totalReturn} color="text-brand-cyan" />
-              <Bar label="Turystyka meczowa" value={tourismRevenue} max={totalReturn} color="text-yellow-400" />
-              <Bar label="Sponsoring kadry"  value={sponsoring}     max={totalReturn} color="text-purple-400" />
+              <Bar lang={lang} label={lang === 'en' ? 'Player transfers (fees)' : 'Transfery piłkarzy (fees)'} value={transferFees} max={totalReturn} color="text-brand-neon" />
+              <Bar lang={lang} label={lang === 'en' ? 'TV rights' : 'Prawa telewizyjne'} value={tvRights}      max={totalReturn} color="text-brand-cyan" />
+              <Bar lang={lang} label={lang === 'en' ? 'Match tourism' : 'Turystyka meczowa'} value={tourismRevenue} max={totalReturn} color="text-yellow-400" />
+              <Bar lang={lang} label={lang === 'en' ? 'National team sponsorship' : 'Sponsoring kadry'}  value={sponsoring}     max={totalReturn} color="text-purple-400" />
             </div>
 
             <div className="border-t border-gray-700 pt-4 space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-gray-300 font-mono text-sm">Łączny zwrot</span>
-                <span className="text-brand-neon font-black text-xl">{fmt(totalReturn)}</span>
+                <span className="text-gray-300 font-mono text-sm">{lang === 'en' ? 'Total return' : 'Łączny zwrot'}</span>
+                <span className="text-brand-neon font-black text-xl">{fmt(totalReturn, lang)}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-gray-300 font-mono text-sm">ROI</span>
@@ -157,10 +177,10 @@ export default function RoiCalculatorSection() {
             {/* KPI cards */}
             <div className="grid grid-cols-2 gap-3 mt-6">
               {[
-                { icon: Users,     val: children.toLocaleString('pl-PL'), label: 'dzieci/rok',         color: 'text-brand-neon' },
-                { icon: Trophy,    val: playersTop5,                      label: 'zawodników TOP 5',  color: 'text-yellow-400' },
+                { icon: Users,     val: children.toLocaleString(lang === 'en' ? 'en-US' : 'pl-PL'), label: lang === 'en' ? 'kids/year' : 'dzieci/rok',         color: 'text-brand-neon' },
+                { icon: Trophy,    val: playersTop5,                      label: lang === 'en' ? 'top-5 league players' : 'zawodników TOP 5',  color: 'text-yellow-400' },
                 { icon: TrendingUp,val: `${roi}%`,                        label: 'ROI',                color: 'text-brand-cyan' },
-                { icon: DollarSign,val: fmt(budgetPerYear),               label: 'budżet/rok',         color: 'text-brand-red'  },
+                { icon: DollarSign,val: fmt(budgetPerYear, lang),         label: lang === 'en' ? 'budget/year' : 'budżet/rok',         color: 'text-brand-red'  },
               ].map(({ icon: Icon, val, label, color }) => (
                 <div key={label} className="bg-black/40 rounded-xl p-3 text-center border border-white/5">
                   <Icon className={`w-4 h-4 ${color} mx-auto mb-1`} />
@@ -177,7 +197,9 @@ export default function RoiCalculatorSection() {
           viewport={{ once: true }} transition={{ delay: 0.4 }}
           className="text-center text-gray-600 text-xs font-mono mt-6"
         >
-          * Szacunki oparte na danych z Chorwacji, Portugali, Belgii. Model konserwatywny (30% odchylenia możliwe).
+          {lang === 'en'
+            ? '* Estimates based on data from Croatia, Portugal and Belgium. Conservative model (±30% deviation possible).'
+            : '* Szacunki oparte na danych z Chorwacji, Portugali, Belgii. Model konserwatywny (30% odchylenia możliwe).'}
         </motion.p>
       </div>
     </section>

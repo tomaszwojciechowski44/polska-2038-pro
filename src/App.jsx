@@ -1,6 +1,7 @@
 import './index.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider, PrivateRoute, AdminRoute } from './context/AuthContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 // Public pages
 import LandingPage        from './pages/LandingPage';
@@ -25,35 +26,41 @@ import ScoutPanel from './pages/ScoutPanel';
 import AdminPanel from './pages/AdminPanel';
 
 export default function App() {
+  const location = useLocation();
+  const initialLang = location.pathname.startsWith('/en') ? 'en' : 'pl';
+
   return (
-    <AuthProvider>
-      <Routes>
-        {/* ── Public ───────────────────────────────── */}
-        <Route path="/"               element={<LandingPage />} />
-        <Route path="/technologia"    element={<TechnologyPage />} />
-        <Route path="/reforma"              element={<ReformaPage />} />
-        <Route path="/reforma/filar/:id"    element={<FilarDetailPage />} />
-        <Route path="/reforma/dokumenty"    element={<DokumentyPage />} />
-        <Route path="/reforma/en"            element={<ReformaEnPage />} />
-        <Route path="/dla-federacji"         element={<ForFederationsPage />} />
-        <Route path="/mapa-talentow"  element={<MapPage />} />
-        <Route path="/dla-kogo"       element={<ForWhoPage />} />
-        <Route path="/wyniki"         element={<ResultsPage />} />
-        <Route path="/partnerzy"      element={<PartnersPage />} />
-        <Route path="/kontakt"        element={<ContactPage />} />
-        <Route path="/o-programie"    element={<AboutPage />} />
-        <Route path="/reforma/materialy/:slug" element={<MaterialDetailPage />} />
-        <Route path="/login"          element={<LoginPage />} />
+    <LanguageProvider initialLang={initialLang}>
+      <AuthProvider>
+        <Routes>
+          {/* ── Public ───────────────────────────────── */}
+          <Route path="/"               element={<LandingPage />} />
+          <Route path="/en"             element={<LandingPage />} />
+          <Route path="/technologia"    element={<TechnologyPage />} />
+          <Route path="/reforma"              element={<ReformaPage />} />
+          <Route path="/reforma/filar/:id"    element={<FilarDetailPage />} />
+          <Route path="/reforma/dokumenty"    element={<DokumentyPage />} />
+          <Route path="/reforma/en"            element={<ReformaEnPage />} />
+          <Route path="/dla-federacji"         element={<ForFederationsPage />} />
+          <Route path="/mapa-talentow"  element={<MapPage />} />
+          <Route path="/dla-kogo"       element={<ForWhoPage />} />
+          <Route path="/wyniki"         element={<ResultsPage />} />
+          <Route path="/partnerzy"      element={<PartnersPage />} />
+          <Route path="/kontakt"        element={<ContactPage />} />
+          <Route path="/o-programie"    element={<AboutPage />} />
+          <Route path="/reforma/materialy/:slug" element={<MaterialDetailPage />} />
+          <Route path="/login"          element={<LoginPage />} />
 
-        {/* ── Protected — scouts ───────────────────── */}
-        <Route path="/panel" element={<PrivateRoute><ScoutPanel /></PrivateRoute>} />
+          {/* ── Protected — scouts ───────────────────── */}
+          <Route path="/panel" element={<PrivateRoute><ScoutPanel /></PrivateRoute>} />
 
-        {/* ── Protected — admin only ───────────────── */}
-        <Route path="/admin" element={<AdminRoute><AdminPanel /></AdminRoute>} />
+          {/* ── Protected — admin only ───────────────── */}
+          <Route path="/admin" element={<AdminRoute><AdminPanel /></AdminRoute>} />
 
-        {/* ── 404 ──────────────────────────────────── */}
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </AuthProvider>
+          {/* ── 404 ──────────────────────────────────── */}
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </AuthProvider>
+    </LanguageProvider>
   );
 }

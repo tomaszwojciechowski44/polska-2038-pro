@@ -4,6 +4,31 @@ import { login as apiLogin } from '../api/client';
 
 const AuthContext = createContext(null);
 
+function safeStorageGet(key) {
+  try {
+    if (typeof window === 'undefined') return null;
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+function safeStorageSet(key, value) {
+  try {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem(key, value);
+  } catch {
+    // ignore
+  }
+}
+function safeStorageRemove(key) {
+  try {
+    if (typeof window === 'undefined') return;
+    window.localStorage.removeItem(key);
+  } catch {
+    // ignore
+  }
+}
+
 function parseJwt(token) {
   try {
     return JSON.parse(atob(token.split('.')[1]));
@@ -13,9 +38,9 @@ function parseJwt(token) {
 }
 
 export function AuthProvider({ children }) {
-  const [token, setToken] = useState(() => localStorage.getItem('access_token'));
+  const [token, setToken] = useState(() => safeStorageGet('access_token'));
   const [user, setUser] = useState(() => {
-    const t = localStorage.getItem('access_token');
+    const t = safeStorageGet('access_token');
     return t ? parseJwt(t) : null;
   });
   const navigate = useNavigate();
@@ -23,14 +48,14 @@ export function AuthProvider({ children }) {
   const login = useCallback(async (email, password) => {
     const res = await apiLogin(email, password);
     const { access_token } = res.data;
-    localStorage.setItem('access_token', access_token);
+    safeStorageSet('access_token', access_token);
     setToken(access_token);
     setUser(parseJwt(access_token));
     navigate('/panel');
   }, [navigate]);
 
   const logout = useCallback(() => {
-    localStorage.removeItem('access_token');
+    safeStorageRemove('access_token');
     setToken(null);
     setUser(null);
     navigate('/login');

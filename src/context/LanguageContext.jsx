@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 const LanguageContext = createContext(null);
 
@@ -59,12 +59,23 @@ export const TRANSLATIONS = {
   },
 };
 
-export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState('pl');
-  const toggle = () => setLang(l => (l === 'pl' ? 'en' : 'pl'));
-  const t = TRANSLATIONS[lang];
+export function LanguageProvider({ children, initialLang = 'pl' }) {
+  const [lang, setLang] = useState(initialLang);
+
+  useEffect(() => {
+    // Client-only: auto switch to EN if browser language isn't PL (unless explicit initialLang was set).
+    try {
+      const browserLang = (navigator.language || 'pl').slice(0, 2).toLowerCase();
+      if (initialLang === 'pl' && browserLang !== 'pl') setLang('en');
+    } catch {
+      // ignore
+    }
+  }, [initialLang]);
+
+  const toggle = () => setLang((l) => (l === 'pl' ? 'en' : 'pl'));
+  const t = useMemo(() => TRANSLATIONS[lang] ?? TRANSLATIONS.pl, [lang]);
   return (
-    <LanguageContext.Provider value={{ lang, toggle, t }}>
+    <LanguageContext.Provider value={{ lang, setLang, toggle, t }}>
       {children}
     </LanguageContext.Provider>
   );

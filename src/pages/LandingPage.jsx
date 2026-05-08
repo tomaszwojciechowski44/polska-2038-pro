@@ -5,7 +5,6 @@ import {
   Cpu, MapPin, Users, ArrowRight,
   Trophy, Shield, Zap, BarChart2, Mail, LogIn
 } from 'lucide-react';
-import { LanguageProvider } from '../context/LanguageContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { ScrollProgressBar } from '../components/UIUtils';
@@ -142,10 +141,9 @@ export default function LandingPage() {
   ]), []);
 
   return (
-    <LanguageProvider>
-      <div className="min-h-screen bg-brand-dark text-white font-display overflow-x-hidden">
-        <ScrollProgressBar />
-        <Navbar />
+    <div className="min-h-screen bg-brand-dark text-white font-display overflow-x-hidden">
+      <ScrollProgressBar />
+      <Navbar />
 
         {/* ─── HERO ──────────────────────────────────────────────────────── */}
         <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
@@ -302,8 +300,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <Footer />
-      </div>
-    </LanguageProvider>
+      <Footer />
+    </div>
   );
 }

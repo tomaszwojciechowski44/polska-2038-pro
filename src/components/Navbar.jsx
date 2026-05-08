@@ -24,7 +24,6 @@ export default function Navbar() {
   const isActive = (to) => location.pathname === to;
   const NAV_LINKS = [
     { to: '/',               label: t?.nav?.reforma ?? '🏆 Reforma', highlight: true },
-    { to: '/dla-federacji',  label: t?.nav?.federations ?? '🌍 For federations', highlight: true },
     { to: '/technologia',    label: t?.nav?.technology ?? 'Technology' },
     { to: '/mapa-talentow',  label: t?.nav?.talentMap ?? 'Talent map' },
     { to: '/dla-kogo',       label: t?.nav?.forWho ?? 'Who it’s for' },

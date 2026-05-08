@@ -9,7 +9,6 @@ import TechnologyPage     from './pages/TechnologyPage';
 import ReformaPage        from './pages/ReformaPage';
 import FilarDetailPage    from './pages/FilarDetailPage';
 import DokumentyPage      from './pages/DokumentyPage';
-import ForFederationsPage from './pages/ForFederationsPage';
 import ReformaEnPage      from './pages/ReformaEnPage';
 import MapPage            from './pages/MapPage';
 import ForWhoPage         from './pages/ForWhoPage';
@@ -43,7 +42,7 @@ export default function App() {
           <Route path="/reforma/filar/:id"    element={<FilarDetailPage />} />
           <Route path="/reforma/dokumenty"    element={<DokumentyPage />} />
           <Route path="/reforma/en"            element={<ReformaEnPage />} />
-          <Route path="/dla-federacji"         element={<ForFederationsPage />} />
+          <Route path="/dla-federacji"         element={<Navigate to="/" replace />} />
           <Route path="/mapa-talentow"  element={<MapPage />} />
           <Route path="/dla-kogo"       element={<ForWhoPage />} />
           <Route path="/wyniki"         element={<ResultsPage />} />

@@ -67,10 +67,6 @@ export default function ReformaEnPage() {
               >
                 <Download className="w-4 h-4" /> Executive Summary
               </Link>
-              <Link to="/dla-federacji"
-                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-7 py-3.5 rounded-xl border border-white/20 transition-all">
-                For Federations →
-              </Link>
             </div>
           </motion.div>
         </div>

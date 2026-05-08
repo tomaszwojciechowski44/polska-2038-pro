@@ -23,11 +23,13 @@ export default function Navbar() {
 
   const isActive = (to) => location.pathname === to;
   const NAV_LINKS = [
-    { to: '/',               label: t?.nav?.reforma ?? '🏆 Reforma', highlight: true },
+    { to: '/',               label: t?.nav?.reforma ?? 'Reform' },
     { to: '/technologia',    label: t?.nav?.technology ?? 'Technology' },
     { to: '/mapa-talentow',  label: t?.nav?.talentMap ?? 'Talent map' },
     { to: '/dla-kogo',       label: t?.nav?.forWho ?? 'Who it’s for' },
     { to: '/wyniki',         label: t?.nav?.results ?? 'Results' },
+    { to: '/partnerzy',      label: t?.nav?.partners ?? 'Partners' },
+    { to: '/o-programie',    label: t?.nav?.about ?? 'About' },
     { to: '/kontakt',        label: t?.nav?.contact ?? 'Contact' },
   ];
   const LANDING_MODULES = [
@@ -79,24 +81,22 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`relative px-3 py-2 font-mono text-xs uppercase tracking-widest transition-colors rounded ${
-                  isActive(link.to)
-                    ? 'text-brand-neon'
-                    : link.highlight
-                      ? 'text-red-400 hover:text-red-300 border border-red-500/30 hover:border-red-400/60'
-                      : 'text-gray-400 hover:text-white'
-                }`}
+                className={[
+                  'relative px-3 py-2 rounded-md transition-colors',
+                  'text-[11px] font-mono uppercase tracking-widest',
+                  isActive(link.to) ? 'text-white' : 'text-gray-400 hover:text-white',
+                ].join(' ')}
               >
                 {link.label}
                 {isActive(link.to) && (
                   <motion.div
-                    layoutId="nav-pill"
-                    className="absolute inset-0 bg-brand-neon/8 rounded border border-brand-neon/20"
+                    layoutId="nav-underline"
+                    className="absolute left-3 right-3 -bottom-0.5 h-px bg-brand-cyan"
                   />
                 )}
               </Link>
@@ -107,15 +107,15 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={toggle}
-              className="flex items-center gap-1 px-2.5 py-1.5 border border-brand-border text-gray-500 hover:border-brand-cyan/50 hover:text-brand-cyan font-mono text-xs transition-all"
-              title="Switch language"
+              className="flex items-center gap-1 px-2.5 py-1.5 border border-white/10 bg-white/[0.02] text-gray-400 hover:text-white hover:border-white/20 font-mono text-[11px] uppercase tracking-widest transition-all rounded-md"
+              title={lang === 'pl' ? 'Switch to English' : 'Przełącz na polski'}
             >
               <span>{lang === 'pl' ? '🇬🇧' : '🇵🇱'}</span>
               <span>{lang === 'pl' ? 'EN' : 'PL'}</span>
             </button>
             <Link
               to="/login"
-              className="px-4 py-2 bg-brand-cyan text-brand-dark font-display font-bold text-xs uppercase tracking-widest hover:bg-cyan-300 transition-all whitespace-nowrap"
+              className="px-4 py-2 bg-brand-cyan text-brand-dark font-display font-bold text-[11px] uppercase tracking-widest hover:bg-cyan-300 transition-all whitespace-nowrap rounded-md"
             >
               {t?.nav?.panel ?? 'Panel'} →
             </Link>
@@ -154,11 +154,13 @@ export default function Navbar() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`block px-4 py-3 font-mono text-sm uppercase tracking-widest transition-colors rounded ${
+                  className={[
+                    'block px-4 py-3 rounded-md transition-colors',
+                    'font-mono text-[11px] uppercase tracking-widest',
                     isActive(link.to)
-                      ? 'text-brand-neon bg-brand-neon/5 border border-brand-neon/20'
-                      : 'text-gray-400 hover:text-white hover:bg-brand-card'
-                  }`}
+                      ? 'text-white bg-white/[0.03] border border-white/10'
+                      : 'text-gray-400 hover:text-white hover:bg-white/[0.03]',
+                  ].join(' ')}
                 >
                   {link.label}
                 </Link>
@@ -166,7 +168,7 @@ export default function Navbar() {
               <div className="pt-3 mt-3 border-t border-brand-border flex gap-2">
                 <Link
                   to="/login"
-                  className="flex-1 text-center py-3 bg-brand-cyan text-brand-dark font-display font-bold text-xs uppercase tracking-widest hover:bg-cyan-300 transition-all rounded"
+                  className="flex-1 text-center py-3 bg-brand-cyan text-brand-dark font-display font-bold text-[11px] uppercase tracking-widest hover:bg-cyan-300 transition-all rounded-md"
                 >
                   Panel →
                 </Link>

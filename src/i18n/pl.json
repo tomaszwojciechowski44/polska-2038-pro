@@ -1,11 +1,12 @@
 {
   "nav": {
-    "reforma": "🏆 Reforma",
-    "federations": "🌍 Dla federacji",
+    "reforma": "Reforma",
     "technology": "Technologia",
     "talentMap": "Mapa Talentów",
     "forWho": "Dla kogo",
     "results": "Wyniki",
+    "partners": "Partnerzy",
+    "about": "O programie",
     "contact": "Kontakt",
     "panel": "Panel",
     "joinCta": "Dołącz do systemu"

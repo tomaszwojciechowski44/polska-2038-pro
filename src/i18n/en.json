@@ -1,11 +1,12 @@
 {
   "nav": {
-    "reforma": "🏆 Reform",
-    "federations": "🌍 For federations",
+    "reforma": "Reform",
     "technology": "Technology",
     "talentMap": "Talent map",
     "forWho": "Who it's for",
     "results": "Results",
+    "partners": "Partners",
+    "about": "About",
     "contact": "Contact",
     "panel": "Panel",
     "joinCta": "Join the system"

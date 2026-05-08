@@ -477,24 +477,6 @@ function SciadaSection() {
             ))}
           </div>
         </motion.div>
-
-        {/* Download */}
-        <motion.div {...fadeUp(0.5)} className="mt-10 flex flex-wrap justify-center gap-4">
-          <a
-            href="https://polska-2038.github.io/projekt-polska-2038-pro/TRZY-FILARY-KOMUNIKAT.txt"
-            target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-brand-red hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-red-600/20"
-          >
-            <Download className="w-4 h-4" /> Pobierz Komunikat (TXT)
-          </a>
-          <a
-            href="https://polska-2038.github.io/projekt-polska-2038-pro/NAJWAZNIEJSZE-LICZBY-SCIAGA.txt"
-            target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-bold px-6 py-3 rounded-xl transition-all border border-gray-600"
-          >
-            <Download className="w-4 h-4" /> Pobierz Ściągę Liczb (TXT)
-          </a>
-        </motion.div>
       </div>
     </section>
   );

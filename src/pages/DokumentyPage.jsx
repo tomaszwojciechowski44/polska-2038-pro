@@ -70,17 +70,6 @@ const DOCS = [
   },
 ];
 
-const TXT_FILES = [
-  {
-    label: 'Komunikat Publiczny (TXT)',
-    href: 'https://polska-2038.github.io/projekt-polska-2038-pro/TRZY-FILARY-KOMUNIKAT.txt',
-  },
-  {
-    label: 'Ściąga Liczb (TXT)',
-    href: 'https://polska-2038.github.io/projekt-polska-2038-pro/NAJWAZNIEJSZE-LICZBY-SCIAGA.txt',
-  },
-];
-
 export default function DokumentyPage() {
   return (
     <PublicLayout
@@ -196,25 +185,6 @@ export default function DokumentyPage() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* TXT downloads */}
-      <section className="py-10 bg-gray-950 border-t border-gray-800">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div {...fadeUp(0)} className="flex flex-wrap gap-4">
-            {TXT_FILES.map((f) => (
-              <a
-                key={f.label}
-                href={f.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 border border-gray-600 rounded-xl px-5 py-3 text-gray-300 hover:text-white text-sm font-medium transition-all"
-              >
-                <Download className="w-4 h-4 text-brand-neon" /> {f.label}
-              </a>
-            ))}
-          </motion.div>
         </div>
       </section>
 

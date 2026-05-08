@@ -256,10 +256,6 @@ export default function MediaBuzzSection() {
                   <li>• Uczestnictwo w Gali Talentów 2027</li>
                 </ul>
               </div>
-              <Link to="/kontakt" onClick={() => setSponsorModal(null)}
-                className="block w-full text-center py-2.5 bg-brand-cyan text-black font-mono font-bold text-sm hover:bg-cyan-400 transition-colors">
-                Skontaktuj się z nami →
-              </Link>
               <p className="text-center text-gray-700 text-[9px] font-mono mt-2">* Dane poglądowe</p>
             </motion.div>
           </motion.div>

@@ -31,14 +31,14 @@ const VALUES = [
 ];
 
 const TECH_PILLARS = [
-	{ name: 'LiDAR 3D', desc: 'Zbieranie danych', icon: '📡' },
-	{ name: 'FastAPI', desc: 'Backend RT', icon: '⚡' },
-	{ name: 'PostgreSQL + PostGIS', desc: 'Geodane', icon: '🗺️' },
-	{ name: 'scikit-learn', desc: 'EnsembleAI', icon: '🧠' },
-	{ name: 'React 18', desc: 'Dashboard', icon: '🖥️' },
-	{ name: 'Kubernetes', desc: 'Infrastruktura', icon: '⚙️' },
-	{ name: 'Apache Kafka', desc: 'Streaming 1M/s', icon: '🌊' },
-	{ name: 'Docker', desc: 'Deployment', icon: '🐳' },
+	{ name: 'React 18', desc: 'UI', icon: '⚛️' },
+	{ name: 'Vite', desc: 'Build', icon: '⚡' },
+	{ name: 'React Router', desc: 'Routing', icon: '🧭' },
+	{ name: 'Tailwind CSS', desc: 'Styling', icon: '🎨' },
+	{ name: 'Framer Motion', desc: 'Animations', icon: '🎞️' },
+	{ name: 'FastAPI', desc: 'API', icon: '🚀' },
+	{ name: 'SQLAlchemy', desc: 'ORM', icon: '🧩' },
+	{ name: 'PostgreSQL + PostGIS', desc: 'Database', icon: '🗺️' },
 ];
 
 export default function AboutSection() {

@@ -1,6 +1,4 @@
-﻿import { Link } from 'react-router-dom';
-
-export default function Footer() {
+﻿export default function Footer() {
   return (
     <footer className="bg-black border-t border-brand-border py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,13 +75,13 @@ export default function Footer() {
                 { label: 'O programie', to: '/o-programie' },
                 { label: 'Kontakt', to: '/kontakt' },
               ].map((link) => (
-                <Link
+                <a
                   key={link.label}
-                  to={link.to}
+                  href={link.to}
                   className="block text-gray-500 hover:text-brand-neon text-sm font-mono transition-colors"
                 >
                   &rarr; {link.label}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
@@ -94,7 +92,7 @@ export default function Footer() {
             &copy; 2025&ndash;2026 #Polska2038 v2.0. Wszelkie prawa zastrzeżone.
           </div>
           <div className="flex items-center gap-4">
-            <Link to="/kontakt" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">Kontakt z zespołem</Link>
+            <a href="/kontakt" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">Kontakt z zespołem</a>
             <a href="https://github.com/Polska-2038/projekt-polska-2038-pro" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-500 text-xs font-mono transition-colors">MIT License</a>
           </div>
           <div className="flex items-center gap-2 text-gray-700 text-xs font-mono">

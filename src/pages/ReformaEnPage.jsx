@@ -170,10 +170,13 @@ export default function ReformaEnPage() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <motion.div {...fadeUp(0)}>
             <h3 className="text-xl font-black text-white mb-3">About This Initiative</h3>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            <p className="text-gray-400 text-sm leading-relaxed mb-4 text-pretty">
               This is a <strong className="text-white">citizen initiative</strong> produced by a group of anonymous Polish football enthusiasts, analysts,
-              and parents — entirely <strong className="text-white">pro bono, non-profit, and independent</strong> of PZPN, any political party, or commercial interest.
-              All materials may be freely used, modified, and implemented by any institution without crediting us.
+              and parents — entirely{' '}
+              <strong className="text-white">
+                <span className="whitespace-nowrap">pro bono</span>, <span className="whitespace-nowrap">non-profit</span>, and independent
+              </strong>{' '}
+              of PZPN, any political party, or commercial interest. All materials may be freely used, modified, and implemented by any institution without crediting us.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               {['✅ Citizen-led', '✅ Anonymous', '✅ Non-profit', '✅ Pro bono', '✅ Free to use'].map(t => (

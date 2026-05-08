@@ -31,6 +31,7 @@ export default function Navbar() {
   useEffect(() => setOpen(false), [location.pathname]);
 
   const isActive = (to) => location.pathname === to;
+  const activeHash = (location.hash || '#modules').toLowerCase();
   const LANDING_MODULES = [
     { href: '#modules', label: 'System' },
     { href: '#scouting-ai', label: 'Scouting AI' },
@@ -184,7 +185,12 @@ export default function Navbar() {
               <a
                 key={m.href}
                 href={m.href}
-                className="px-2.5 py-1 border border-brand-border text-gray-400 hover:text-white hover:border-gray-500 font-mono text-[10px] uppercase tracking-widest rounded-sm transition-colors flex-shrink-0"
+                className={[
+                  'px-2.5 py-1 border font-mono text-[10px] uppercase tracking-widest rounded-sm transition-colors flex-shrink-0',
+                  activeHash === m.href
+                    ? 'border-brand-neon/60 bg-brand-neon/10 text-brand-neon'
+                    : 'border-brand-border text-gray-400 hover:text-white hover:border-gray-500',
+                ].join(' ')}
               >
                 {m.label}
               </a>

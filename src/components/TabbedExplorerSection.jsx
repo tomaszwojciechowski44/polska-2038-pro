@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, MapPin, Layers, DollarSign, Wrench } from 'lucide-react';
 
@@ -24,11 +24,26 @@ export default function TabbedExplorerSection() {
 
   const active = useMemo(() => TABS.find((t) => t.id === tab) ?? TABS[0], [tab]);
 
+  useEffect(() => {
+    // Keep URL hash in sync with active module so the navbar can highlight it.
+    try {
+      window.history.replaceState(null, '', `#${active.anchor}`);
+    } catch {
+      // ignore
+    }
+  }, [active.anchor]);
+
   return (
-    <section id={active.anchor} className="py-16 sm:py-20 bg-brand-dark relative overflow-hidden">
+    <section id="modules" className="py-16 sm:py-20 bg-brand-dark relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-15" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div id="modules" className="text-center mb-10">
+        {/* Anchor targets for contextual navbar */}
+        <div id="scouting-ai" className="scroll-mt-28" />
+        <div id="mapa" className="scroll-mt-28" />
+        <div id="business" className="scroll-mt-28" />
+        <div id="tech-stack" className="scroll-mt-28" />
+
+        <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 border border-brand-neon/30 bg-brand-neon/5 text-brand-neon font-mono text-xs uppercase tracking-widest">
             Tabbed exploration · 5 modułów
           </div>
@@ -40,7 +55,7 @@ export default function TabbedExplorerSection() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-10 sticky top-[104px] md:top-[120px] z-30">
+        <div className="flex flex-wrap justify-center gap-2 mb-10 sticky top-16 md:top-[104px] z-30">
           {TABS.map((t) => {
             const Icon = t.icon;
             const is = t.id === tab;

@@ -112,7 +112,7 @@ export default function Navbar() {
                 to={link.to}
                 className={[
                   'relative px-3 py-2 rounded-md transition-colors',
-                  'text-xs font-mono uppercase tracking-widest',
+                  'text-sm font-mono uppercase tracking-widest',
                   isActive(link.to) ? 'text-white' : 'text-gray-400 hover:text-white',
                 ].join(' ')}
               >
@@ -131,7 +131,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={handleToggleLang}
-              className="flex items-center gap-1 px-2.5 py-1.5 border border-white/10 bg-white/[0.02] text-gray-400 hover:text-white hover:border-white/20 font-mono text-xs uppercase tracking-widest transition-all rounded-md"
+              className="flex items-center gap-1 px-2.5 py-1.5 border border-white/10 bg-white/[0.02] text-gray-400 hover:text-white hover:border-white/20 font-mono text-sm uppercase tracking-widest transition-all rounded-md"
               title={lang === 'pl' ? 'Switch to English' : 'Przełącz na polski'}
             >
               <span>{lang === 'pl' ? '🇬🇧' : '🇵🇱'}</span>
@@ -139,7 +139,7 @@ export default function Navbar() {
             </button>
             <Link
               to="/login"
-              className="px-4 py-2 bg-brand-cyan text-brand-dark font-display font-bold text-xs uppercase tracking-widest hover:bg-cyan-300 transition-all whitespace-nowrap rounded-md"
+              className="px-4 py-2 bg-brand-cyan text-brand-dark font-display font-bold text-sm uppercase tracking-widest hover:bg-cyan-300 transition-all whitespace-nowrap rounded-md"
             >
               {t?.nav?.panel ?? 'Panel'} →
             </Link>

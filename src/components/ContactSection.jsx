@@ -107,7 +107,6 @@ export default function ContactSection() {
               <div className="space-y-2 mb-4">
                 {[
                   { label: 'E-mail', val: 'polska2038@proton.me', href: 'mailto:polska2038@proton.me', color: 'text-brand-neon' },
-                  { label: 'GitHub', val: 'github.com/Polska-2038', href: 'https://github.com/Polska-2038', color: 'text-gray-300' },
                   { label: 'X / Twitter', val: '@Polska2038', href: 'https://x.com/polska2038', color: 'text-brand-cyan' },
                 ].map(c => (
                   <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer"

@@ -83,16 +83,6 @@ const TIERS = [
     ],
   },
 ];
-const INTERESTED = [
-  { name: "Ministerstwo Sportu", icon: "🏛️" },
-  { name: "PZPN", icon: "⚽" },
-  { name: "PKOl", icon: "🏅" },
-  { name: "Akademia Legii", icon: "🦅" },
-  { name: "Lotto", icon: "🎯" },
-  { name: "Nike Central Europe", icon: "✔️" },
-  { name: "Orange Polska", icon: "📡" },
-  { name: "Politechnika Rzeszowska", icon: "🎓" },
-];
 export default function SponsorsSection() {
   const [ref, inView] = useInView(0.08);
   return (
@@ -147,24 +137,6 @@ export default function SponsorsSection() {
             </motion.div>
           ))}
         </div>
-        <motion.div initial={{opacity:0,y:20}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:0.5}}>
-          <div className="text-center text-gray-600 text-xs font-mono uppercase tracking-widest mb-6">
-            // instytucje_zainteresowane — rozmowy w toku
-          </div>
-          <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
-            {INTERESTED.map((org, i) => (
-              <motion.div key={org.name} initial={{opacity:0,scale:0.8}} animate={inView?{opacity:1,scale:1}:{}}
-                transition={{delay:0.6+i*0.06}}
-                className="flex flex-col items-center gap-2 p-3 border border-brand-border bg-brand-dark hover:border-brand-gold/40 transition-all cursor-default">
-                <span className="text-2xl">{org.icon}</span>
-                <span className="text-gray-500 text-[10px] font-mono text-center leading-tight">{org.name}</span>
-              </motion.div>
-            ))}
-          </div>
-          <p className="text-center text-gray-700 text-[10px] font-mono mt-4">
-            * Logotypy są przykładowe. Współpraca w fazie rozmów i negocjacji.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

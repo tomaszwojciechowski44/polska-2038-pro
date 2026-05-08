@@ -87,7 +87,7 @@ export default function EndorsementsSection() {
         <motion.p
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
           viewport={{ once: true }} transition={{ delay: 0.5 }}
-          className="text-center text-gray-700 text-xs font-mono mt-8"
+          className="text-center text-gray-600 text-[11px] sm:text-xs font-mono tracking-wide mt-8"
         >
           * Cytaty zbrane anonimowo. Projekt obywatelski — tożsamość autorów chroniona.
         </motion.p>

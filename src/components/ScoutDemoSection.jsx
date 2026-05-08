@@ -133,10 +133,18 @@ function TalentCard({ talent, active, onClick }) {
               <p className="text-gray-300 text-xs font-mono leading-relaxed">{talent.note}</p>
             </div>
             <div className="flex gap-2 pt-1">
-              <button className={"flex-1 py-2 border text-xs font-mono font-bold uppercase tracking-wide transition-all "+(talent.tierColor==="neon"?"border-brand-neon/40 text-brand-neon hover:bg-brand-neon hover:text-brand-dark":"border-brand-cyan/40 text-brand-cyan hover:bg-brand-cyan hover:text-brand-dark")}>
+              <Link
+                to="/kontakt"
+                className={"flex-1 py-2 border text-xs font-mono font-bold uppercase tracking-wide transition-all text-center "+(talent.tierColor==="neon"?"border-brand-neon/40 text-brand-neon hover:bg-brand-neon hover:text-brand-dark":"border-brand-cyan/40 text-brand-cyan hover:bg-brand-cyan hover:text-brand-dark")}
+              >
                 Kontakt ze skautem &rarr;
-              </button>
-              <button className="px-3 py-2 border border-brand-border text-gray-500 hover:text-white text-xs font-mono transition-colors">PDF</button>
+              </Link>
+              <Link
+                to="/reforma/dokumenty"
+                className="px-3 py-2 border border-brand-border text-gray-500 hover:text-white text-xs font-mono transition-colors text-center"
+              >
+                PDF
+              </Link>
             </div>
           </motion.div>
         )}

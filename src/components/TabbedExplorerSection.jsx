@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, MapPin, Layers, DollarSign, Wrench } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import ArchitectureSection from './ArchitectureSection';
 import AIEngineSection from './AIEngineSection';
@@ -21,17 +22,41 @@ const TABS = [
 
 export default function TabbedExplorerSection() {
   const [tab, setTab] = useState('system');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const active = useMemo(() => TABS.find((t) => t.id === tab) ?? TABS[0], [tab]);
 
+  const hashToTab = useMemo(() => ({
+    '#modules': 'system',
+    '#scouting-ai': 'ai',
+    '#mapa': 'map',
+    '#business': 'biz',
+    '#tech-stack': 'tech',
+  }), []);
+
   useEffect(() => {
-    // Keep URL hash in sync with active module so the navbar can highlight it.
-    try {
-      window.history.replaceState(null, '', `#${active.anchor}`);
-    } catch {
-      // ignore
+    // If user clicked contextual navbar links (hash), switch to the right tab.
+    const h = (location.hash || '#modules').toLowerCase();
+    const next = hashToTab[h];
+    if (next && next !== tab) setTab(next);
+  }, [location.hash, hashToTab, tab]);
+
+  useEffect(() => {
+    // Keep URL hash in sync with active module (for highlighting + deep links).
+    // Use router navigation so it works consistently in SPA.
+    const targetHash = `#${active.anchor}`;
+    if ((location.hash || '').toLowerCase() !== targetHash.toLowerCase()) {
+      navigate({ hash: targetHash }, { replace: true });
     }
-  }, [active.anchor]);
+  }, [active.anchor, location.hash, navigate]);
+
+  useEffect(() => {
+    // After hash/tab changes, ensure we actually scroll to the anchor target.
+    const h = (location.hash || '#modules').replace('#', '');
+    const el = document.getElementById(h);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [location.hash, tab]);
 
   return (
     <section id="modules" className="py-16 sm:py-20 bg-brand-dark relative overflow-hidden">

@@ -159,6 +159,17 @@ export default function LandingPage() {
   const [liveSource, setLiveSource] = useState('DEMO');
 
   useEffect(() => {
+    // Remove legacy landing hash routes like /#modules (treat as non-existent).
+    try {
+      if (window.location.hash && window.location.hash.toLowerCase() === '#modules') {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  useEffect(() => {
     let mounted = true;
     getVoivodeships()
       .then((res) => {
@@ -335,6 +346,13 @@ export default function LandingPage() {
 
         {/* ─── PERSONA ROUTING ───────────────────────────────────────────── */}
         <PersonaRouting />
+
+        {/* Anchor targets (scroll only; no hash URLs) */}
+        <div id="modules-start" className="scroll-mt-28" />
+        <div id="scouting-ai" className="scroll-mt-28" />
+        <div id="mapa" className="scroll-mt-28" />
+        <div id="business" className="scroll-mt-28" />
+        <div id="tech-stack" className="scroll-mt-28" />
 
         {/* ─── TABBED EXPLORATION (5 modules) ────────────────────────────── */}
         <TabbedExplorerSection />

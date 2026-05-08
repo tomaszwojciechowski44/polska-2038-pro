@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, MapPin, Layers, DollarSign, Wrench } from 'lucide-react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
 import ArchitectureSection from './ArchitectureSection';
@@ -15,61 +14,20 @@ import TechStackSection from './TechStackSection';
 
 export default function TabbedExplorerSection() {
   const [tab, setTab] = useState('system');
-  const location = useLocation();
-  const navigate = useNavigate();
   const { t } = useLanguage();
 
   const TABS = useMemo(() => ([
-    { id: 'system', label: t?.tabs?.system ?? 'System', icon: Layers, anchor: 'modules' },
+    { id: 'system', label: t?.tabs?.system ?? 'System', icon: Layers },
     { id: 'ai', label: t?.tabs?.ai ?? 'Scouting AI', icon: Cpu, anchor: 'scouting-ai' },
     { id: 'map', label: t?.tabs?.map ?? 'Mapa', icon: MapPin, anchor: 'mapa' },
     { id: 'biz', label: t?.tabs?.biz ?? 'Business case', icon: DollarSign, anchor: 'business' },
     { id: 'tech', label: t?.tabs?.tech ?? 'Tech stack', icon: Wrench, anchor: 'tech-stack' },
   ]), [t]);
 
-  const active = useMemo(() => TABS.find((t) => t.id === tab) ?? TABS[0], [tab]);
-
-  const hashToTab = useMemo(() => ({
-    '#modules': 'system',
-    '#scouting-ai': 'ai',
-    '#mapa': 'map',
-    '#business': 'biz',
-    '#tech-stack': 'tech',
-  }), []);
-
-  useEffect(() => {
-    // If user clicked contextual navbar links (hash), switch to the right tab.
-    const h = (location.hash || '#modules').toLowerCase();
-    const next = hashToTab[h];
-    if (next && next !== tab) setTab(next);
-  }, [location.hash, hashToTab, tab]);
-
-  useEffect(() => {
-    // Keep URL hash in sync with active module (for highlighting + deep links).
-    // Use router navigation so it works consistently in SPA.
-    const targetHash = `#${active.anchor}`;
-    if ((location.hash || '').toLowerCase() !== targetHash.toLowerCase()) {
-      navigate({ hash: targetHash }, { replace: true });
-    }
-  }, [active.anchor, location.hash, navigate]);
-
-  useEffect(() => {
-    // After hash/tab changes, ensure we actually scroll to the anchor target.
-    const h = (location.hash || '#modules').replace('#', '');
-    const el = document.getElementById(h);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, [location.hash, tab]);
-
   return (
-    <section id="modules" className="py-16 sm:py-20 bg-brand-dark relative overflow-hidden">
+    <section className="py-16 sm:py-20 bg-brand-dark relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-15" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Anchor targets for contextual navbar */}
-        <div id="scouting-ai" className="scroll-mt-28" />
-        <div id="mapa" className="scroll-mt-28" />
-        <div id="business" className="scroll-mt-28" />
-        <div id="tech-stack" className="scroll-mt-28" />
-
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 border border-brand-neon/30 bg-brand-neon/5 text-brand-neon font-mono text-xs uppercase tracking-widest">
             {t?.tabs?.badge ?? 'Tabbed exploration · 5 modułów'}
@@ -124,7 +82,7 @@ export default function TabbedExplorerSection() {
           )}
 
           {tab === 'ai' && (
-            <div id="scouting-ai">
+            <div>
               <LiveBlock>
                 <AIEngineSection />
                 <ScoutDemoSection />
@@ -133,7 +91,7 @@ export default function TabbedExplorerSection() {
           )}
 
           {tab === 'map' && (
-            <div id="mapa">
+            <div>
               <LiveBlock>
                 <GlobalMapSection />
                 <TalentMapSection />
@@ -142,7 +100,7 @@ export default function TabbedExplorerSection() {
           )}
 
           {tab === 'biz' && (
-            <div id="business">
+            <div>
               <LiveBlock>
                 <RoiCalculatorSection />
                 <KpiChartsSection />
@@ -151,7 +109,7 @@ export default function TabbedExplorerSection() {
           )}
 
           {tab === 'tech' && (
-            <div id="tech-stack">
+            <div>
               <LiveBlock>
                 <TechStackSection />
               </LiveBlock>

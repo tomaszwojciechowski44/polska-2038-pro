@@ -7,6 +7,7 @@ import { useLanguage } from '../context/LanguageContext';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
+  const [activeLanding, setActiveLanding] = useState('system');
   const { lang, toggle, t }     = useLanguage();
   const location                = useLocation();
   const onLanding               = location.pathname === '/' || location.pathname === '/en';
@@ -21,7 +22,6 @@ export default function Navbar() {
   useEffect(() => setOpen(false), [location.pathname]);
 
   const isActive = (to) => location.pathname === to;
-  const activeHash = (location.hash || '#modules').toLowerCase();
   const NAV_LINKS = [
     { to: '/reforma',        label: t?.nav?.reforma ?? '🏆 Reforma', highlight: true },
     { to: '/dla-federacji',  label: t?.nav?.federations ?? '🌍 For federations', highlight: true },
@@ -32,13 +32,22 @@ export default function Navbar() {
     { to: '/kontakt',        label: t?.nav?.contact ?? 'Contact' },
   ];
   const LANDING_MODULES = [
-    { href: '#modules', label: t?.modulesBar?.system ?? 'System' },
-    { href: '#scouting-ai', label: t?.modulesBar?.ai ?? 'Scouting AI' },
-    { href: '#mapa', label: t?.modulesBar?.map ?? 'Map' },
-    { href: '#business', label: t?.modulesBar?.business ?? 'Business case' },
-    { href: '#tech-stack', label: t?.modulesBar?.tech ?? 'Tech stack' },
-    { href: '#roadmap', label: t?.modulesBar?.roadmap ?? 'Roadmap' },
+    { id: 'system', targetId: 'modules-start', label: t?.modulesBar?.system ?? 'System' },
+    { id: 'ai', targetId: 'scouting-ai', label: t?.modulesBar?.ai ?? 'Scouting AI' },
+    { id: 'map', targetId: 'mapa', label: t?.modulesBar?.map ?? 'Map' },
+    { id: 'biz', targetId: 'business', label: t?.modulesBar?.business ?? 'Business case' },
+    { id: 'tech', targetId: 'tech-stack', label: t?.modulesBar?.tech ?? 'Tech stack' },
+    { id: 'roadmap', targetId: 'roadmap', label: t?.modulesBar?.roadmap ?? 'Roadmap' },
   ];
+
+  const scrollTo = (id) => {
+    try {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch {
+      // ignore
+    }
+  };
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -185,26 +194,34 @@ export default function Navbar() {
               {t?.modulesBar?.label ?? 'Modules:'}
             </span>
             {LANDING_MODULES.map((m) => (
-              <a
-                key={m.href}
-                href={m.href}
+              <button
+                key={m.id}
+                type="button"
+                onClick={() => {
+                  setActiveLanding(m.id);
+                  scrollTo(m.targetId);
+                }}
                 className={[
                   'px-2.5 py-1 border font-mono text-[10px] uppercase tracking-widest rounded-sm transition-colors flex-shrink-0',
-                  activeHash === m.href
+                  activeLanding === m.id
                     ? 'border-brand-neon/60 bg-brand-neon/10 text-brand-neon'
                     : 'border-brand-border text-gray-400 hover:text-white hover:border-gray-500',
                 ].join(' ')}
               >
                 {m.label}
-              </a>
+              </button>
             ))}
             <div className="ml-auto flex items-center gap-2 flex-shrink-0">
-              <a
-                href="#modules"
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveLanding('system');
+                  scrollTo('modules-start');
+                }}
                 className="px-3 py-1.5 border border-brand-neon/30 bg-brand-neon/5 text-brand-neon hover:border-brand-neon/60 font-mono text-[10px] uppercase tracking-widest rounded-sm transition-colors"
               >
                 {t?.modulesBar?.start ?? 'Start →'}
-              </a>
+              </button>
             </div>
           </div>
         </div>

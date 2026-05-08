@@ -137,7 +137,7 @@ export const ARCHITECTURE_LAYERS = [
 export const STATS = [
   { value: '5M', label: 'Zawodników w systemie', icon: '👥', color: 'neon' },
   { value: '10K', label: 'Zintegrowanych klubów', icon: '🏟️', color: 'cyan' },
-  { value: '22', label: 'Zawodników/węzeł/sekundy', icon: '⚡', color: 'gold' },
+  { value: '22', label: 'Zaw./węzeł/s', icon: '⚡', color: 'gold' },
   { value: '94%', label: 'Accuracy modelu AI', icon: '🎯', color: 'red' },
   { value: '1.1 MLD', label: 'PLN – realizowana wartość', icon: '💰', color: 'neon' },
   { value: '370%', label: 'ROI (model rządowy, 8 lat)', icon: '📈', color: 'gold' },

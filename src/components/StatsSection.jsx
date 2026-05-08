@@ -30,6 +30,7 @@ function AnimatedValue({ raw, inView }) {
 function StatCard({ stat, index }) {
   const [ref, inView] = useInView(0.3);
   const colors = COLOR_MAP[stat.color];
+  const isLongLabel = String(stat.label || '').length > 18;
 
   return (
     <motion.div
@@ -57,7 +58,9 @@ function StatCard({ stat, index }) {
       <div className={`text-3xl sm:text-4xl font-display font-bold ${colors.text} mb-1`}>
         {inView ? <AnimatedValue raw={stat.value} inView={inView} /> : <span>0</span>}
       </div>
-      <div className="text-gray-400 text-sm font-mono leading-tight">{stat.label}</div>
+      <div className={`text-gray-300 font-mono leading-snug break-words ${isLongLabel ? 'text-xs' : 'text-sm'}`}>
+        {stat.label}
+      </div>
 
       {/* Corner accents */}
       <div className={`absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 ${colors.border.replace('/30', '')}`} />

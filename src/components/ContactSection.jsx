@@ -107,7 +107,6 @@ export default function ContactSection() {
               <div className="space-y-2 mb-4">
                 {[
                   { label: 'E-mail', val: 'kontakt@polska2038.pl', href: 'mailto:kontakt@polska2038.pl', color: 'text-brand-neon' },
-                  { label: 'LinkedIn', val: 'linkedin.com/company/polska2038', href: 'https://linkedin.com/company/polska2038', color: 'text-blue-400' },
                   { label: 'GitHub', val: 'github.com/Polska-2038', href: 'https://github.com/Polska-2038', color: 'text-gray-300' },
                   { label: 'X / Twitter', val: '@Polska2038', href: 'https://x.com/polska2038', color: 'text-brand-cyan' },
                 ].map(c => (

@@ -248,9 +248,6 @@ export default function ScoutDemoSection() {
               <TrendingUp size={24} className="text-brand-red mx-auto mb-3" />
               <div className="text-white font-display font-bold text-sm uppercase tracking-wide mb-2">Twój klub następny?</div>
               <p className="text-gray-400 text-xs font-mono mb-4 leading-relaxed">Program pilotażowy: 5 Orlików, 500 zawodników, 6 miesięcy.</p>
-              <Link to="/kontakt" className="block py-2.5 bg-brand-red text-white font-display font-bold text-xs uppercase tracking-widest hover:bg-red-700 transition-colors">
-                Zgłoś klub &rarr;
-              </Link>
             </div>
           </motion.div>
         </div>

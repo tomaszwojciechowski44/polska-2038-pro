@@ -112,6 +112,7 @@ async def seed():
         # ── Users ──────────────────────────────────────────────────────────
         for email, password, role, name in [
             ("skaut@polska2038.pl", "haslo123", UserRole.scout, "Jan Kowalski"),
+            ("demo@polska2038.pl", "haslo123", UserRole.scout, "Demo Scout"),
         ]:
             from sqlalchemy import select
             existing = await session.execute(select(User).where(User.email == email))

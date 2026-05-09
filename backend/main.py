@@ -12,14 +12,42 @@ load_dotenv()
 from database import init_db, AsyncSessionLocal
 from routers import auth, talents, voivodeships, scouts, contact
 
+# Bcrypt (cost 12) for password "haslo123", generated with `bcrypt.hashpw`.
+# Used instead of hashing at import time so Vercel cold starts avoid heavy passlib/bcrypt init.
+_DEMO_PASSWORD_HASH = (
+    "$2b$12$UCBSCo3h5uvl5eS5bGE4heh/dX5ffpY6k39WepYwz6iJkNRet0oGS"
+)
 
-async def _auto_seed():
-    """Seed demo data on cold start if the database is empty."""
+
+async def _ensure_demo_accounts():
+    """Ensure demo scout logins exist (Vercel-safe: static bcrypt hash, per-email upsert)."""
     from sqlalchemy import select
-    from models import User, UserRole, Voivodeship, Talent, AITier, ScoreHistory
-    from passlib.context import CryptContext
+    from models import User, UserRole
 
-    pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
+    demos = (
+        ("skaut@polska2038.pl", "Jan Kowalski"),
+        ("demo@polska2038.pl", "Demo Scout"),
+    )
+    async with AsyncSessionLocal() as session:
+        for email, name in demos:
+            existing = await session.execute(select(User).where(User.email == email))
+            if existing.scalar_one_or_none() is None:
+                session.add(
+                    User(
+                        email=email,
+                        hashed_password=_DEMO_PASSWORD_HASH,
+                        full_name=name,
+                        role=UserRole.scout,
+                        voivodeship="MZ",
+                    )
+                )
+        await session.commit()
+
+
+async def _seed_voivodeships_and_talents():
+    """Seed map + talent demo data when voivodeships are missing (skipped on Vercel)."""
+    from sqlalchemy import select
+    from models import Voivodeship, Talent, AITier, ScoreHistory
 
     VOIVS = [
         ("MZ","Mazowieckie",0.574,0.382),("MA","Małopolskie",0.547,0.718),
@@ -44,15 +72,9 @@ async def _auto_seed():
     ]
 
     async with AsyncSessionLocal() as session:
-        existing = await session.execute(select(User).limit(1))
-        if existing.scalar_one_or_none() is not None:
+        v0 = await session.execute(select(Voivodeship).limit(1))
+        if v0.scalar_one_or_none() is not None:
             return
-
-        for email, password, role, name in [
-            ("skaut@polska2038.pl","haslo123",UserRole.scout,"Jan Kowalski"),
-        ]:
-            session.add(User(email=email, hashed_password=pwd.hash(password),
-                             full_name=name, role=role, voivodeship="MZ"))
 
         for code, name, x, y in VOIVS:
             session.add(Voivodeship(code=code, name=name, x=x, y=y, talent_count=0))
@@ -95,10 +117,13 @@ async def _auto_seed():
 async def lifespan(app: FastAPI):
     try:
         await init_db()
-        # Vercel serverless can fail during passlib/bcrypt self-tests in `_auto_seed()`.
-        # Auto-seed is not required for public endpoints like /api/contact.
-        if not os.getenv("VERCEL") and os.getenv("DISABLE_AUTO_SEED", "").lower() not in ("1", "true", "yes"):
-            await _auto_seed()
+        if os.getenv("DISABLE_AUTO_SEED", "").lower() not in ("1", "true", "yes"):
+            await _ensure_demo_accounts()
+            # Skip bulk talent seed on Vercel only when using ephemeral in-memory SQLite (no DATABASE_URL).
+            on_vercel = bool(os.getenv("VERCEL"))
+            has_persistent_db = bool(os.getenv("DATABASE_URL"))
+            if (not on_vercel) or has_persistent_db:
+                await _seed_voivodeships_and_talents()
     except Exception as e:
         # Make sure serverless logs include the real startup failure reason.
         print("Application startup failed. Exiting.")

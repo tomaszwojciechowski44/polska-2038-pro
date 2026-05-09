@@ -1,6 +1,6 @@
 """
 Run with:  python seed.py
-Creates 2 test accounts, 16 voivodeships, and ~120 talent records.
+Creates a test scout account, 16 voivodeships, and ~120 talent records.
 """
 import asyncio
 import random
@@ -109,7 +109,6 @@ async def seed():
         # ── Users ──────────────────────────────────────────────────────────
         for email, password, role, name in [
             ("skaut@polska2038.pl", "haslo123", UserRole.scout, "Jan Kowalski"),
-            ("demo@polska2038.pl", "haslo123", UserRole.scout, "Demo Scout"),
         ]:
             from sqlalchemy import select
             existing = await session.execute(select(User).where(User.email == email))

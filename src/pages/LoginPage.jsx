@@ -85,7 +85,7 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 autoComplete="email"
-                placeholder="demo@polska2038.pl"
+                placeholder="skaut@polska2038.pl"
                 className="w-full bg-brand-dark border border-brand-border text-white font-mono text-sm px-4 py-3 rounded-sm
                   placeholder-gray-700 focus:outline-none focus:border-brand-cyan/60 focus:ring-1 focus:ring-brand-cyan/30
                   transition-colors"
@@ -138,31 +138,19 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Demo credentials */}
+          {/* Demo scout — bez rejestracji */}
           <div className="mt-5 bg-brand-neon/5 border border-brand-neon/20 rounded-sm p-4">
-            <p className="text-brand-neon font-mono text-xs uppercase tracking-widest mb-2 text-center">🎮 Demo — bez rejestracji</p>
-            <p className="text-gray-500 font-mono text-[10px] text-center mb-3">Hasło dla obu kont: <span className="text-gray-400">haslo123</span></p>
-            <div className="space-y-2 text-xs font-mono text-gray-400">
-              <div className="flex justify-between gap-2 items-center">
-                <span className="text-gray-600 flex-shrink-0">Demo:</span>
-                <button
-                  type="button"
-                  onClick={() => { setEmail('demo@polska2038.pl'); setPassword('haslo123'); }}
-                  className="text-brand-cyan hover:text-cyan-300 transition-colors underline text-right"
-                >
-                  demo@polska2038.pl
-                </button>
-              </div>
-              <div className="flex justify-between gap-2 items-center">
-                <span className="text-gray-600 flex-shrink-0">Skaut:</span>
-                <button
-                  type="button"
-                  onClick={() => { setEmail('skaut@polska2038.pl'); setPassword('haslo123'); }}
-                  className="text-brand-cyan hover:text-cyan-300 transition-colors underline text-right"
-                >
-                  skaut@polska2038.pl
-                </button>
-              </div>
+            <p className="text-brand-neon font-mono text-xs uppercase tracking-widest mb-2 text-center">Demo — bez rejestracji</p>
+            <p className="text-gray-500 font-mono text-[10px] text-center mb-3">Hasło: <span className="text-gray-400">haslo123</span></p>
+            <div className="flex justify-between gap-2 items-center text-xs font-mono text-gray-400">
+              <span className="text-gray-600 flex-shrink-0">Skaut:</span>
+              <button
+                type="button"
+                onClick={() => { setEmail('skaut@polska2038.pl'); setPassword('haslo123'); }}
+                className="text-brand-cyan hover:text-cyan-300 transition-colors underline text-right"
+              >
+                skaut@polska2038.pl
+              </button>
             </div>
           </div>
 

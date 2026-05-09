@@ -20,14 +20,11 @@ _DEMO_PASSWORD_HASH = (
 
 
 async def _ensure_demo_accounts():
-    """Ensure demo scout logins exist (Vercel-safe: static bcrypt hash, per-email upsert)."""
+    """Ensure demo scout login exists (Vercel-safe: static bcrypt hash, per-email upsert)."""
     from sqlalchemy import select
     from models import User, UserRole
 
-    demos = (
-        ("skaut@polska2038.pl", "Jan Kowalski"),
-        ("demo@polska2038.pl", "Demo Scout"),
-    )
+    demos = (("skaut@polska2038.pl", "Jan Kowalski"),)
     async with AsyncSessionLocal() as session:
         for email, name in demos:
             existing = await session.execute(select(User).where(User.email == email))

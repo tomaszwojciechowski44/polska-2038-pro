@@ -56,6 +56,8 @@ async def _seed_voivodeships_and_talents():
         ("WN","Warmińsko-Mazurskie",0.618,0.158),("PD","Podlaskie",0.750,0.220),
         ("SK","Świętokrzyskie",0.582,0.600),("OP","Opolskie",0.340,0.600),
     ]
+    # Każda wartość inna (kolejność = VOIVS): większe woj. ≈ więcej profili demo.
+    TALENT_COUNTS_PER_VOIV = (18, 16, 17, 15, 14, 12, 11, 10, 13, 9, 8, 6, 7, 5, 4, 3)
     NAMES = ["Adam","Bartosz","Michał","Kamil","Piotr","Jakub","Mateusz","Dawid","Filip","Marcin"]
     CITIES = {"MZ":"Warszawa","MA":"Kraków","SL":"Katowice","WP":"Poznań","DS":"Wrocław",
               "LD":"Łódź","LU":"Lublin","PK":"Rzeszów","PM":"Gdańsk","KP":"Bydgoszcz",
@@ -79,8 +81,8 @@ async def _seed_voivodeships_and_talents():
         await session.flush()
 
         base = date(2026, 1, 1)
-        for code, *_ in VOIVS:
-            for _ in range(7):
+        for (code, *_rest), n_talents in zip(VOIVS, TALENT_COUNTS_PER_VOIV):
+            for _ in range(n_talents):
                 score = random.randint(58, 97)
                 tier = AITier.ELITE if score >= 85 else (AITier.PROSPECT if score >= 70 else AITier.MONITOR)
                 t = Talent(

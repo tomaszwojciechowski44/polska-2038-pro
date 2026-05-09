@@ -146,8 +146,8 @@ async def seed():
             return
 
         voiv_codes = [v["code"] for v in VOIVODESHIPS_DATA]
-        # Weight distribution: bigger voivodeships get more talents
-        weights = [12, 9, 10, 8, 7, 6, 5, 5, 7, 5, 4, 3, 4, 3, 4, 3]  # ~120 total
+        # Każde województwo — inna liczba profili (zgodnie z main.TALENT_COUNTS_PER_VOIV)
+        weights = [18, 16, 17, 15, 14, 12, 11, 10, 13, 9, 8, 6, 7, 5, 4, 3]
 
         base_date = date(2026, 1, 1)
 

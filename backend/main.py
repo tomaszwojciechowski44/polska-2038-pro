@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from database import init_db, AsyncSessionLocal
+from database import init_db, AsyncSessionLocal, resolve_raw_database_url
 from routers import auth, talents, voivodeships, scouts, contact
 
 # Bcrypt (cost 12) for password "haslo123", generated with `bcrypt.hashpw`.
@@ -119,9 +119,9 @@ async def lifespan(app: FastAPI):
         await init_db()
         if os.getenv("DISABLE_AUTO_SEED", "").lower() not in ("1", "true", "yes"):
             await _ensure_demo_accounts()
-            # Skip bulk talent seed on Vercel only when using ephemeral in-memory SQLite (no DATABASE_URL).
+            # Skip bulk talent seed on Vercel only when using ephemeral in-memory SQLite (no hosted Postgres).
             on_vercel = bool(os.getenv("VERCEL"))
-            has_persistent_db = bool(os.getenv("DATABASE_URL"))
+            has_persistent_db = resolve_raw_database_url() is not None
             if (not on_vercel) or has_persistent_db:
                 await _seed_voivodeships_and_talents()
     except Exception as e:

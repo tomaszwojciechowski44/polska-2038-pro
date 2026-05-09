@@ -9,7 +9,7 @@ from datetime import date, timedelta
 from passlib.context import CryptContext
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-from database import Base
+from database import Base, normalize_database_url, resolve_raw_database_url
 from models import User, UserRole, Voivodeship, Talent, AITier, ScoreHistory
 
 import os
@@ -17,11 +17,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./polska2038.db")
-if DATABASE_URL.startswith("postgres://"):
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+asyncpg://", 1)
-elif DATABASE_URL.startswith("postgresql://"):
-    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
+_raw = resolve_raw_database_url()
+DATABASE_URL = normalize_database_url(_raw) if _raw else "sqlite+aiosqlite:///./polska2038.db"
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 AsyncSessionLocal = async_sessionmaker(engine, expire_on_commit=False)

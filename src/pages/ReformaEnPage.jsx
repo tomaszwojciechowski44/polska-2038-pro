@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { CheckCircle, Download, ArrowLeft, Globe } from 'lucide-react';
 import PublicLayout from '../components/PublicLayout';
 import RoiCalculatorSection from '../components/RoiCalculatorSection';
+import { useLanguage } from '../context/LanguageContext';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -12,6 +13,7 @@ const fadeUp = (delay = 0) => ({
 });
 
 export default function ReformaEnPage() {
+  const { localePath } = useLanguage();
   return (
     <PublicLayout pageTitle="" pageSubtitle="">
 
@@ -49,7 +51,7 @@ export default function ReformaEnPage() {
             </div>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
-                to="/reforma/materialy/executive-summary"
+                to={localePath('/reforma/materialy/executive-summary')}
                 className="flex items-center gap-2 bg-brand-red text-white font-bold px-7 py-3.5 rounded-xl hover:bg-red-700 transition-all shadow-lg shadow-red-600/20"
               >
                 <Download className="w-4 h-4" /> Executive Summary
@@ -123,7 +125,7 @@ export default function ReformaEnPage() {
                     <span className="text-xs font-mono text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded">{p.roi}</span>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">{p.summary}</p>
-                  <Link to={`/reforma/filar/${p.n}`}
+                  <Link to={localePath(`/reforma/filar/${p.n}`)}
                     className={`inline-flex items-center gap-1 mt-3 text-xs font-mono ${p.color.split(' ')[0]} hover:opacity-70 transition-opacity`}>
                     Full documentation →
                   </Link>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
 import { MapPin, Star, TrendingUp, ChevronRight, Zap } from "lucide-react";
 import { getTalents } from "../api/client";
+import { useLanguage } from "../context/LanguageContext";
 
 const TALENTS_FALLBACK = [
   { id:1, initials:"D.M.", age:14, location:"Orlik Rzeszów-Południe", region:"Podkarpacie", sport:"Piłka nożna",
@@ -68,6 +69,7 @@ function Sparkline({ data, color }) {
   );
 }
 function TalentCard({ talent, active, onClick }) {
+  const { localePath } = useLanguage();
   const C = {
     neon: { border: active ? "border-brand-neon border-glow-neon" : "border-brand-neon/30 hover:border-brand-neon/60", bg: active ? "bg-brand-neon/5" : "bg-brand-card", text:"text-brand-neon", badge:"bg-brand-neon/20 text-brand-neon border-brand-neon/40", hex:"#00FF88" },
     cyan: { border: active ? "border-brand-cyan border-glow-cyan" : "border-brand-cyan/30 hover:border-brand-cyan/60", bg: active ? "bg-brand-cyan/5" : "bg-brand-card", text:"text-brand-cyan", badge:"bg-brand-cyan/20 text-brand-cyan border-brand-cyan/40", hex:"#00E5FF" },
@@ -134,13 +136,13 @@ function TalentCard({ talent, active, onClick }) {
             </div>
             <div className="flex gap-2 pt-1">
               <Link
-                to="/kontakt"
+                to={localePath("/kontakt")}
                 className={"flex-1 py-2 border text-xs font-mono font-bold uppercase tracking-wide transition-all text-center "+(talent.tierColor==="neon"?"border-brand-neon/40 text-brand-neon hover:bg-brand-neon hover:text-brand-dark":"border-brand-cyan/40 text-brand-cyan hover:bg-brand-cyan hover:text-brand-dark")}
               >
                 Kontakt ze skautem &rarr;
               </Link>
               <Link
-                to="/reforma/dokumenty"
+                to={localePath("/reforma/dokumenty")}
                 className="px-3 py-2 border border-brand-border text-gray-500 hover:text-white text-xs font-mono transition-colors text-center"
               >
                 PDF

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Trophy, Zap } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 function useCountdown(target) {
   const [diff, setDiff] = useState(() => Math.max(0, target - Date.now()));
@@ -36,8 +37,11 @@ function Colon() {
 }
 
 export default function CountdownSection() {
+  const { t, localePath } = useLanguage();
+  const cd = t?.landing?.countdown ?? {};
+  const L = cd.labels ?? {};
   const pilot  = new Date('2026-01-01T00:00:00').getTime();
-  const final  = new Date('2038-07-19T18:00:00').getTime(); // approx World Cup final date
+  const final  = new Date('2038-07-19T18:00:00').getTime();
 
   const c1 = useCountdown(pilot);
   const c2 = useCountdown(final);
@@ -47,7 +51,6 @@ export default function CountdownSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
 
-          {/* Countdown 1 — Pilot 2026 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6 }}
@@ -55,22 +58,21 @@ export default function CountdownSection() {
           >
             <div className="flex items-center gap-2 mb-1">
               <Zap className="w-4 h-4 text-yellow-400" />
-              <span className="text-yellow-400 font-mono text-xs uppercase tracking-widest">Start pilotażu</span>
+              <span className="text-yellow-400 font-mono text-xs uppercase tracking-widest">{cd.pilotEyebrow}</span>
             </div>
-            <p className="text-white font-black text-lg mb-5">1 stycznia 2026 — Oficjalny start programu</p>
+            <p className="text-white font-black text-lg mb-5">{cd.pilotTitle}</p>
             <div className="flex items-start gap-2 sm:gap-3">
-              <Digit value={c1.d} label="dni" />
+              <Digit value={c1.d} label={L.d} />
               <Colon />
-              <Digit value={c1.h} label="godz" />
+              <Digit value={c1.h} label={L.h} />
               <Colon />
-              <Digit value={c1.m} label="min" />
+              <Digit value={c1.m} label={L.m} />
               <Colon />
-              <Digit value={c1.s} label="sek" />
+              <Digit value={c1.s} label={L.s} />
             </div>
-            <p className="text-gray-500 text-xs font-mono mt-4">3 województwa · 50 boisk Orlik · 500 trenerów</p>
+            <p className="text-gray-500 text-xs font-mono mt-4">{cd.pilotFoot}</p>
           </motion.div>
 
-          {/* Countdown 2 — World Cup Final 2038 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.15 }}
@@ -78,35 +80,34 @@ export default function CountdownSection() {
           >
             <div className="flex items-center gap-2 mb-1">
               <Trophy className="w-4 h-4 text-brand-red" />
-              <span className="text-brand-red font-mono text-xs uppercase tracking-widest">Cel finalny</span>
+              <span className="text-brand-red font-mono text-xs uppercase tracking-widest">{cd.finalEyebrow}</span>
             </div>
-            <p className="text-white font-black text-lg mb-5">Finał Mistrzostw Świata 2038 🏆</p>
+            <p className="text-white font-black text-lg mb-5">{cd.finalTitle}</p>
             <div className="flex items-start gap-2 sm:gap-3">
-              <Digit value={c2.d} label="dni" />
+              <Digit value={c2.d} label={L.d} />
               <Colon />
-              <Digit value={c2.h} label="godz" />
+              <Digit value={c2.h} label={L.h} />
               <Colon />
-              <Digit value={c2.m} label="min" />
+              <Digit value={c2.m} label={L.m} />
               <Colon />
-              <Digit value={c2.s} label="sek" />
+              <Digit value={c2.s} label={L.s} />
             </div>
             <p className="text-gray-500 text-xs font-mono mt-4">
-              Okno możliwości 2026–2030 · Roczniki 2010–2016 · 12 lat na budowę mistrzów
+              {cd.finalFoot}
             </p>
           </motion.div>
         </div>
 
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
           viewport={{ once: true }} transition={{ delay: 0.3 }}
           className="mt-8 text-center"
         >
           <Link
-            to="/reforma"
+            to={localePath('/')}
             className="inline-flex items-center gap-2 text-brand-neon hover:text-white font-mono text-sm transition-colors"
           >
-            Zobacz pełny plan reformy →
+            {cd.cta}
           </Link>
         </motion.div>
       </div>

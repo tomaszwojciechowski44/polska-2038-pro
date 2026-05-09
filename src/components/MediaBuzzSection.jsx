@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "../hooks/useCountUp";
 import { Radio, TrendingUp, X, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 const MEDIA_LOGOS = [
   { name: "TVP Sport", emoji: "📺", country: "PL" },
   { name: "Polsat Sport", emoji: "📺", country: "PL" },
@@ -54,6 +55,7 @@ const FILTERS = [
   { key: "media", label: "📰 Media" },
 ];
 export default function MediaBuzzSection() {
+  const { localePath } = useLanguage();
   const [ref, inView] = useInView(0.08);
   const [filter, setFilter] = useState("all");
   const [expandedQuote, setExpandedQuote] = useState(null);
@@ -221,7 +223,7 @@ export default function MediaBuzzSection() {
             <div className="text-gray-400 font-mono text-sm">Pobierz press kit, dane techniczne i one-pager inwestorski.</div>
           </div>
           <div className="flex gap-3 flex-wrap">
-            <Link to="/reforma/dokumenty" className="px-5 py-2 bg-brand-cyan text-black font-mono font-bold text-sm hover:bg-cyan-400 transition-colors">
+            <Link to={localePath("/reforma/dokumenty")} className="px-5 py-2 bg-brand-cyan text-black font-mono font-bold text-sm hover:bg-cyan-400 transition-colors">
               Press Kit
             </Link>
             <a href="#media" className="px-5 py-2 border border-brand-cyan text-brand-cyan font-mono text-sm hover:bg-brand-cyan/10 transition-colors flex items-center gap-2">

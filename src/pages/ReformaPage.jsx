@@ -9,6 +9,7 @@ import {
 import PublicLayout from '../components/PublicLayout';
 import RoiCalculatorSection from '../components/RoiCalculatorSection';
 import EndorsementsSection from '../components/EndorsementsSection';
+import { useLanguage } from '../context/LanguageContext';
 
 /* ─── helpers ─────────────────────────────────────── */
 const fadeUp = (delay = 0) => ({
@@ -200,6 +201,7 @@ function LastChanceSection() {
 
 /* ─── Section: Trzy Filary ─────────────────────────── */
 function TrzyFilarySection() {
+  const { localePath } = useLanguage();
   return (
     <section id="filary" className="py-20 bg-gradient-to-b from-black to-gray-950 scroll-mt-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -233,7 +235,7 @@ function TrzyFilarySection() {
                   🎯 Cel: {p.goal}
                 </div>
                 <Link
-                  to={`/reforma/filar/${p.number.replace('0', '')}`}
+                  to={localePath(`/reforma/filar/${p.number.replace('0', '')}`)}
                   className={`inline-flex items-center gap-1.5 text-xs font-mono font-bold ${p.iconColor} hover:opacity-80 transition-opacity`}
                 >
                   Pełna dokumentacja →

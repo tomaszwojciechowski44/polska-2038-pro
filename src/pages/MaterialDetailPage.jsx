@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Download, Printer, ArrowLeft, FileText } from 'lucide-react';
 import PublicLayout from '../components/PublicLayout';
 import { getMaterial } from '../data/materialsData';
+import { useLanguage } from '../context/LanguageContext';
 
 function downloadText(filename, text) {
   const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
@@ -19,14 +20,17 @@ function downloadText(filename, text) {
 
 export default function MaterialDetailPage() {
   const { slug } = useParams();
+  const { t, localePath } = useLanguage();
+  const mp = t?.materialPage ?? {};
   const material = useMemo(() => getMaterial(slug), [slug]);
+  const docsHref = localePath('/reforma/dokumenty');
 
   if (!material) {
     return (
-      <PublicLayout pageTitle="Materiał nie istnieje" pageSubtitle="Sprawdź link lub wróć do dokumentacji.">
+      <PublicLayout pageTitle={mp.notFoundTitle} pageSubtitle={mp.notFoundSub}>
         <div className="max-w-3xl mx-auto px-4 py-16">
-          <Link to="/reforma/dokumenty" className="text-brand-cyan font-mono text-sm hover:text-white transition-colors">
-            ← Wróć do dokumentacji
+          <Link to={docsHref} className="text-brand-cyan font-mono text-sm hover:text-white transition-colors">
+            {mp.backDocs}
           </Link>
         </div>
       </PublicLayout>
@@ -41,7 +45,7 @@ export default function MaterialDetailPage() {
       {/* Breadcrumb */}
       <div className="bg-gray-950 border-b border-gray-800 py-3">
         <div className="max-w-6xl mx-auto px-4 flex items-center gap-2 text-sm font-mono">
-          <Link to="/reforma/dokumenty" className="text-gray-500 hover:text-white transition-colors">← Dokumentacja</Link>
+          <Link to={docsHref} className="text-gray-500 hover:text-white transition-colors">{mp.breadcrumbDocs}</Link>
           <span className="text-gray-700">/</span>
           <span className="text-brand-neon">{material.title}</span>
         </div>
@@ -64,19 +68,19 @@ export default function MaterialDetailPage() {
                 onClick={() => window.print()}
                 className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-700 text-gray-200 hover:text-white hover:border-gray-500 rounded-xl font-mono text-sm transition-colors"
               >
-                <Printer className="w-4 h-4" /> Drukuj / Zapisz PDF
+                <Printer className="w-4 h-4" /> {mp.printPdf}
               </button>
               <button
                 onClick={() => downloadText(`${material.slug}.txt`, material.txt || '')}
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-neon text-black hover:bg-green-300 rounded-xl font-mono font-bold text-sm transition-colors"
               >
-                <Download className="w-4 h-4" /> Pobierz TXT
+                <Download className="w-4 h-4" /> {mp.downloadTxt}
               </button>
               <Link
-                to="/reforma/dokumenty"
+                to={docsHref}
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 border border-gray-800 text-gray-300 hover:text-white rounded-xl font-mono text-sm transition-colors"
               >
-                <ArrowLeft className="w-4 h-4" /> Dokumentacja
+                <ArrowLeft className="w-4 h-4" /> {mp.docsBtn}
               </Link>
             </div>
           </div>
@@ -104,10 +108,9 @@ export default function MaterialDetailPage() {
           </div>
 
           <div className="mt-10 bg-gray-950 border border-gray-800 rounded-2xl p-6">
-            <div className="text-gray-500 font-mono text-xs uppercase tracking-widest mb-2">Uwaga</div>
+            <div className="text-gray-500 font-mono text-xs uppercase tracking-widest mb-2">{mp.noticeTitle}</div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Ten materiał jest częścią prezentacji demonstracyjnej. Jeśli chcesz, przygotuję wersję „na gotowo”
-              jako PDF (Executive Summary + Roadmap + Budget) pod wydruk dla Ministerstwa i PZPN.
+              {mp.noticeBody}
             </p>
           </div>
         </div>

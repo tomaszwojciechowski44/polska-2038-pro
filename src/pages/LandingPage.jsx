@@ -93,30 +93,21 @@ function StatNumber({ value, suffix = '', label, color }) {
 
 // NOTE: Feature cards replaced by TabbedExplorerSection on landing.
 
-const SOCIAL_PROOF = [
-  { badge: 'PZPN', label: 'rozmowy o pilotażu', color: 'text-brand-neon' },
-  { badge: 'MSiT', label: 'pilotaż 50 Orlików', color: 'text-brand-red' },
-  { badge: 'UEFA', label: 'obserwuje projekt', color: 'text-brand-gold' },
-  { badge: 'FIFA', label: 'kontakt nawiązany', color: 'text-brand-cyan' },
-  { badge: 'Lewandowski', label: 'ambasador projektu', color: 'text-brand-gold' },
-];
-
 // Professional hero dashboard card
 function HeroDashboard() {
-  const metrics = [
-    { label: 'Budżet programu', value: '1,08 mld zł', sub: 'rocznie', color: 'text-brand-red' },
-    { label: 'ROI zwrot', value: '370%', sub: 'z inwestycji', color: 'text-yellow-400' },
-    { label: 'Na Polaka / rok', value: '28,50 zł', sub: 'mniej niż 3 bilety', color: 'text-brand-neon' },
-    { label: 'Cel finałowy', value: '2038', sub: 'Finał MŚ', color: 'text-brand-cyan' },
-  ];
-  const pillars = [
-    { icon: '⚽', name: 'Polska 2038', budget: '1 mld zł', color: 'border-red-500/40 text-red-400' },
-    { icon: '🛡️', name: 'Bezpieczny Stadion', budget: '50 mln zł', color: 'border-blue-500/40 text-blue-400' },
-    { icon: '🎓', name: 'Ocena Trenerów', budget: '30 mln zł', color: 'border-green-500/40 text-green-400' },
-  ];
+  const { t, lang } = useLanguage();
+  const dash = t?.landing?.heroDashboard;
+  const perYear = lang === 'en' ? '/yr' : '/rok';
+  const metrics = (dash?.metrics && dash.metrics.length === 4)
+    ? dash.metrics.map((m, i) => ({
+        ...m,
+        color: ['text-brand-red', 'text-yellow-400', 'text-brand-neon', 'text-brand-cyan'][i],
+        value: m.value,
+      }))
+    : [];
+  const pillars = dash?.pillars && dash.pillars.length === 3 ? dash.pillars : [];
   return (
     <div className="w-full h-full flex flex-col gap-3">
-      {/* Metrics grid */}
       <div className="grid grid-cols-2 gap-2.5">
         {metrics.map((m) => (
           <div key={m.label} className="bg-black/60 border border-white/8 rounded-xl p-3 backdrop-blur-sm">
@@ -126,7 +117,6 @@ function HeroDashboard() {
           </div>
         ))}
       </div>
-      {/* Pillars */}
       <div className="flex flex-col gap-2">
         {pillars.map((p) => (
           <div key={p.name} className={`flex items-center justify-between bg-black/40 border ${p.color.split(' ')[0]} rounded-lg px-3 py-2 backdrop-blur-sm`}>
@@ -134,24 +124,27 @@ function HeroDashboard() {
               <span className="text-sm">{p.icon}</span>
               <span className={`text-xs font-bold ${p.color.split(' ')[1]}`}>{p.name}</span>
             </div>
-            <span className="text-gray-400 text-[10px] font-mono">{p.budget}/rok</span>
+            <span className="text-gray-400 text-[10px] font-mono">{p.budget}{perYear}</span>
           </div>
         ))}
       </div>
-      {/* Status bar */}
       <div className="flex items-center justify-between bg-black/40 border border-white/6 rounded-lg px-3 py-2">
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 bg-brand-neon rounded-full animate-pulse" />
-          <span className="text-brand-neon font-mono text-[10px] uppercase tracking-widest">System aktywny</span>
+          <span className="text-brand-neon font-mono text-[10px] uppercase tracking-widest">{dash?.statusActive}</span>
         </div>
-        <span className="text-gray-600 font-mono text-[10px]">Projekt Obywatelski · Pro bono</span>
+        <span className="text-gray-600 font-mono text-[10px]">{dash?.statusSub}</span>
       </div>
     </div>
   );
 }
 
 export default function LandingPage() {
-  const { t } = useLanguage();
+  const { t, lang, localePath } = useLanguage();
+  const numberLocale = lang === 'en' ? 'en-GB' : 'pl-PL';
+  const socialProof = Array.isArray(t?.landing?.socialProof) ? t.landing.socialProof : [];
+  const statsBar = t?.landing?.statsBar ?? {};
+  const finalCta = t?.landing?.finalCta ?? {};
   const reducedMotion = usePrefersReducedMotion();
   const FALLBACK_LIVE = 5239018;
   const [liveTalents, setLiveTalents] = useState(FALLBACK_LIVE);
@@ -233,7 +226,7 @@ export default function LandingPage() {
                   className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 border border-brand-neon/30 bg-brand-neon/5 rounded-full">
                   <span className="w-1.5 h-1.5 bg-brand-neon rounded-full animate-pulse" />
                   <span className="text-brand-neon font-mono text-xs tracking-widest uppercase">
-                    Projekt Obywatelski · Dla Ministerstwa Sportu · 2026–2038
+                    {t?.landing?.heroTagline}
                   </span>
                 </motion.div>
 
@@ -247,8 +240,8 @@ export default function LandingPage() {
                   <span className="w-1.5 h-1.5 bg-brand-cyan rounded-full animate-pulse" />
                   <span className="text-brand-cyan font-mono text-[10px] tracking-widest uppercase">
                     {t?.hero?.live ?? 'LIVE'} · {t?.hero?.liveBadge
-                      ? t.hero.liveBadge.replace('{count}', liveTalents.toLocaleString('pl-PL'))
-                      : `${liveTalents.toLocaleString('pl-PL')} talents`}
+                      ? t.hero.liveBadge.replace('{count}', liveTalents.toLocaleString(numberLocale))
+                      : `${liveTalents.toLocaleString(numberLocale)} talents`}
                   </span>
                 </motion.div>
 
@@ -309,16 +302,16 @@ export default function LandingPage() {
                   >
                     {t?.hero?.ctaGhost ?? 'How does it work?'} <ArrowRight size={16} />
                   </a>
-                  <Link to="/login"
+                  <Link to={localePath('/login')}
                     className="flex items-center gap-2 px-6 py-3.5 border border-brand-border text-gray-400 font-mono text-xs uppercase tracking-widest hover:border-brand-cyan hover:text-brand-cyan transition-all">
-                    <LogIn size={14} /> Panel
+                    <LogIn size={14} /> {t?.nav?.panel ?? 'Panel'}
                   </Link>
                 </motion.div>
 
                 {/* Social proof */}
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.65 }}
                   className="flex flex-wrap gap-2">
-                  {SOCIAL_PROOF.map((p) => (
+                  {socialProof.map((p) => (
                     <div key={p.badge} className="flex items-center gap-1.5 px-3 py-1.5 border border-brand-border/50 bg-brand-card/30 backdrop-blur-sm">
                       <span className={`font-mono font-bold text-xs ${p.color}`}>{p.badge}</span>
                       <span className="text-gray-600 font-mono text-[10px]">— {p.label}</span>
@@ -359,12 +352,12 @@ export default function LandingPage() {
         {/* ─── STATS BAR ─────────────────────────────────────────────────── */}
         <section className="border-y border-brand-border bg-brand-card/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-            <StatNumber value={47388} label="Przeskanowanych profili" color="text-brand-cyan" />
-            <StatNumber value={16}    suffix="" label="Województw aktywnych" color="text-brand-neon" />
-            <StatNumber value={847}   label="Certyfikowanych skautów" color="text-brand-gold" />
+            <StatNumber value={47388} label={statsBar.scannedProfiles ?? ''} color="text-brand-cyan" />
+            <StatNumber value={16}    suffix="" label={statsBar.voivodeships ?? ''} color="text-brand-neon" />
+            <StatNumber value={847}   label={statsBar.scouts ?? ''} color="text-brand-gold" />
             <div className="text-center">
               <div className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-none text-brand-red">98.7%</div>
-              <div className="mt-2 text-gray-500 font-mono text-xs uppercase tracking-widest">Trafność predykcji AI</div>
+              <div className="mt-2 text-gray-500 font-mono text-xs uppercase tracking-widest">{statsBar.aiAccuracy ?? ''}</div>
             </div>
           </div>
         </section>
@@ -381,17 +374,17 @@ export default function LandingPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-cyan/5 rounded-full blur-3xl pointer-events-none" />
           <div className="max-w-3xl mx-auto px-4 text-center relative">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <span className="text-brand-cyan font-mono text-xs uppercase tracking-widest">Dołącz do programu</span>
+              <span className="text-brand-cyan font-mono text-xs uppercase tracking-widest">{finalCta.eyebrow}</span>
               <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-white leading-tight">
-                Razem budujemy<br />przyszłość polskiego sportu
+                {finalCta.titleLine1}<br />{finalCta.titleLine2}
               </h2>
               <p className="mt-4 text-gray-400 font-mono text-sm leading-relaxed mb-8">
-                Skontaktuj się z zespołem programu w sprawie partnerstwa i pilotażu.
+                {finalCta.body}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link to="/kontakt"
+                <Link to={localePath('/kontakt')}
                   className="flex items-center justify-center gap-2 px-8 py-4 bg-brand-neon text-brand-dark font-display font-bold text-sm uppercase tracking-widest hover:bg-green-300 transition-all">
-                  Kontakt z zespołem <ArrowRight size={16} />
+                  {finalCta.contactBtn} <ArrowRight size={16} />
                 </Link>
               </div>
             </motion.div>

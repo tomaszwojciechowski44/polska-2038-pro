@@ -9,7 +9,7 @@ import LiveSystemSection from '../components/LiveSystemSection';
 import { useLanguage } from '../context/LanguageContext';
 
 function ReformaCallout() {
-  const { lang } = useLanguage();
+  const { lang, localePath } = useLanguage();
   return (
     <section className="py-14 bg-gradient-to-r from-red-950/50 via-black to-red-950/50 border-y border-red-800/30">
       <div className="max-w-3xl mx-auto px-4 text-center">
@@ -23,7 +23,7 @@ function ReformaCallout() {
             : 'Trzy filary reformy piłki nożnej, budżet 1,08 mld zł/rok, timeline 2026–2038 i komunikat dla Ministerstwa Sportu.'}
         </p>
         <Link
-          to={lang === 'en' ? '/en' : '/'}
+          to={localePath('/')}
           className="inline-flex items-center gap-2 bg-brand-red hover:bg-red-700 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-red-600/30"
         >
           <Trophy className="w-5 h-5" /> {lang === 'en' ? 'View the reform plan →' : 'Zobacz Plan Reformy →'}
@@ -34,7 +34,7 @@ function ReformaCallout() {
 }
 
 export default function TechnologyPage() {
-  const { t, lang } = useLanguage();
+  const { t, lang, localePath } = useLanguage();
   return (
     <PublicLayout
       pageTitle={t?.pages?.technology?.title ?? 'Technologia'}
@@ -49,13 +49,13 @@ export default function TechnologyPage() {
             </p>
             <div className="mt-8 flex justify-center gap-3 flex-wrap">
               <Link
-                to="/en"
+                to={localePath('/')}
                 className="px-6 py-3 bg-brand-cyan text-brand-dark font-display font-bold text-sm uppercase tracking-wider hover:bg-cyan-300 transition-colors"
               >
                 Open the English home →
               </Link>
               <Link
-                to="/en/kontakt"
+                to={localePath('/kontakt')}
                 className="px-6 py-3 border border-brand-border text-gray-300 font-mono text-sm hover:border-brand-cyan hover:text-brand-cyan transition-colors"
               >
                 Contact →

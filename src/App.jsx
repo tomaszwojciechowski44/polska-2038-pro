@@ -75,7 +75,11 @@ export default function App() {
           <Route path="/o-programie"    element={<AboutPage />} />
           <Route path="/en/o-programie" element={<AboutPage />} />
           <Route path="/reforma/materialy/:slug" element={<MaterialDetailPage />} />
+          <Route path="/en/reforma/filar/:id" element={<FilarDetailPage />} />
+          <Route path="/en/reforma/dokumenty" element={<DokumentyPage />} />
+          <Route path="/en/reforma/materialy/:slug" element={<MaterialDetailPage />} />
           <Route path="/login"          element={<LoginPage />} />
+          <Route path="/en/login"       element={<LoginPage />} />
 
           {/* ── Protected — scouts ───────────────────── */}
           <Route path="/panel" element={<PrivateRoute><ScoutPanel /></PrivateRoute>} />

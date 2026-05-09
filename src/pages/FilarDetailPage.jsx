@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { CheckCircle, ArrowLeft, ArrowRight, TrendingUp, Clock, Target, Star, HelpCircle } from 'lucide-react';
 import PublicLayout from '../components/PublicLayout';
 import { FILARY } from '../data/filaryData';
+import { useLanguage } from '../context/LanguageContext';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -13,27 +14,35 @@ const fadeUp = (delay = 0) => ({
 
 export default function FilarDetailPage() {
   const { id } = useParams();
+  const { t, localePath } = useLanguage();
+  const ui = t?.filarDetail ?? {};
   const filar = FILARY.find((f) => f.slug === id);
 
-  if (!filar) return <Navigate to="/reforma" replace />;
+  if (!filar) return <Navigate to={localePath('/')} replace />;
 
   const prevFilar = FILARY.find((f) => f.id === filar.id - 1);
   const nextFilar = FILARY.find((f) => f.id === filar.id + 1);
   const c = filar.color;
+  const pillarOv = ui.pillars?.[filar.slug];
+  const displayTitle = pillarOv?.title ?? filar.title;
+  const displaySubtitle = pillarOv?.subtitle ?? filar.subtitle;
+  const displayGoal = pillarOv?.goal ?? filar.goal;
+  const displayWarning = pillarOv?.warning ?? filar.warning;
+  const pillarBadge = (ui.pillarOf ?? 'Filar {n} z 3').replace('{n}', String(filar.id));
 
   return (
     <PublicLayout
-      pageTitle={`Filar ${filar.id}: ${filar.title}`}
-      pageSubtitle={filar.subtitle}
+      pageTitle={`${ui.labelsPillar ?? 'Filar'} ${filar.id}: ${displayTitle}`}
+      pageSubtitle={displaySubtitle}
     >
       {/* Back breadcrumb */}
       <div className="bg-gray-950 border-b border-gray-800 py-3">
         <div className="max-w-5xl mx-auto px-4 flex items-center gap-2 text-sm font-mono">
-          <Link to="/reforma" className="text-gray-500 hover:text-white transition-colors flex items-center gap-1">
-            <ArrowLeft className="w-3.5 h-3.5" /> Reforma
+          <Link to={localePath('/')} className="text-gray-500 hover:text-white transition-colors flex items-center gap-1">
+            <ArrowLeft className="w-3.5 h-3.5" /> {ui.backReform}
           </Link>
           <span className="text-gray-700">/</span>
-          <span className={c.text}>Filar {filar.id}: {filar.title}</span>
+          <span className={c.text}>{ui.labelsPillar ?? 'Filar'} {filar.id}: {displayTitle}</span>
         </div>
       </div>
 
@@ -42,15 +51,15 @@ export default function FilarDetailPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div {...fadeUp(0)} className="text-center mb-10">
             <div className={`inline-flex items-center gap-2 ${c.badge} border ${c.border} rounded-full px-4 py-1.5 mb-4 text-sm font-mono uppercase tracking-widest`}>
-              {filar.icon} Filar {filar.id} z 3
+              {filar.icon} {pillarBadge}
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white mb-4">
-              {filar.icon} {filar.title}
+              {filar.icon} {displayTitle}
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-6">{filar.subtitle}</p>
-            {filar.warning && (
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-6">{displaySubtitle}</p>
+            {displayWarning && (
               <div className="inline-block bg-yellow-900/30 border border-yellow-600/40 rounded-2xl px-6 py-3 text-yellow-300 text-sm font-semibold">
-                {filar.warning}
+                {displayWarning}
               </div>
             )}
           </motion.div>
@@ -58,9 +67,9 @@ export default function FilarDetailPage() {
           {/* Key numbers */}
           <motion.div {...fadeUp(0.1)} className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
             {[
-              { label: 'Budżet', val: filar.budget },
-              { label: 'ROI', val: filar.roi },
-              { label: 'Filar', val: `${filar.id} / 3` },
+              { label: ui.labelsBudget ?? 'Budżet', val: filar.budget },
+              { label: ui.labelsRoi ?? 'ROI', val: filar.roi },
+              { label: ui.labelsPillar ?? 'Filar', val: `${filar.id} / 3` },
             ].map((s) => (
               <div key={s.label} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
                 <div className={`text-xl font-black ${c.text}`}>{s.val}</div>
@@ -77,8 +86,8 @@ export default function FilarDetailPage() {
           <motion.div {...fadeUp(0)} className={`flex items-start gap-4 bg-gradient-to-r ${c.bg} to-transparent border ${c.border} rounded-2xl p-6`}>
             <Target className={`w-7 h-7 ${c.text} flex-shrink-0 mt-1`} />
             <div>
-              <p className="text-gray-400 font-mono text-xs uppercase tracking-widest mb-1">Główny cel</p>
-              <p className="text-white text-lg font-bold">{filar.goal}</p>
+              <p className="text-gray-400 font-mono text-xs uppercase tracking-widest mb-1">{ui.mainGoal}</p>
+              <p className="text-white text-lg font-bold">{displayGoal}</p>
             </div>
           </motion.div>
         </div>
@@ -89,15 +98,15 @@ export default function FilarDetailPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div {...fadeUp(0)}>
             <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-2">
-              <TrendingUp className={`w-6 h-6 ${c.text}`} /> Szczegółowy Budżet
+              <TrendingUp className={`w-6 h-6 ${c.text}`} /> {ui.budgetHeading}
             </h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="border-b border-gray-700">
-                    <th className="text-left text-gray-400 font-mono text-xs uppercase py-3 pr-4">Kategoria</th>
-                    <th className="text-right text-gray-400 font-mono text-xs uppercase py-3 px-4 whitespace-nowrap">Budżet</th>
-                    <th className="text-left text-gray-400 font-mono text-xs uppercase py-3 pl-4 hidden md:table-cell">Opis</th>
+                    <th className="text-left text-gray-400 font-mono text-xs uppercase py-3 pr-4">{ui.tableCategory}</th>
+                    <th className="text-right text-gray-400 font-mono text-xs uppercase py-3 px-4 whitespace-nowrap">{ui.tableBudget}</th>
+                    <th className="text-left text-gray-400 font-mono text-xs uppercase py-3 pl-4 hidden md:table-cell">{ui.tableDesc}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -109,7 +118,7 @@ export default function FilarDetailPage() {
                     </tr>
                   ))}
                   <tr className="border-t-2 border-gray-600">
-                    <td className="py-3 pr-4 text-white font-black">ŁĄCZNIE</td>
+                    <td className="py-3 pr-4 text-white font-black">{ui.total}</td>
                     <td className={`py-3 px-4 text-right font-black text-xl ${c.text}`}>{filar.budget}</td>
                     <td className="py-3 pl-4 hidden md:table-cell" />
                   </tr>
@@ -124,7 +133,7 @@ export default function FilarDetailPage() {
       <section className="py-14 bg-black">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.h2 {...fadeUp(0)} className="text-2xl font-black text-white mb-8">
-            🎯 Szczegółowy Opis Komponentów
+            {ui.componentsHeading}
           </motion.h2>
           <div className="space-y-6">
             {filar.components.map((comp, i) => (
@@ -137,7 +146,7 @@ export default function FilarDetailPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-white font-bold text-lg mb-2">{comp.title}</h3>
-                    <p className={`text-sm ${c.text} mb-4 font-medium`}>🎯 Cel: {comp.goal}</p>
+                    <p className={`text-sm ${c.text} mb-4 font-medium`}>{ui.goalPrefix} {comp.goal}</p>
                     <ul className="space-y-2">
                       {comp.items.map((item) => (
                         <li key={item} className="flex items-start gap-2 text-gray-300 text-sm">
@@ -159,7 +168,7 @@ export default function FilarDetailPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div {...fadeUp(0)}>
             <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-2">
-              <TrendingUp className="w-6 h-6 text-yellow-400" /> ROI — Zwrot z Inwestycji
+              <TrendingUp className="w-6 h-6 text-yellow-400" /> {ui.roiHeading}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               {filar.roi_items.map((r) => (
@@ -181,7 +190,7 @@ export default function FilarDetailPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div {...fadeUp(0)}>
             <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-2">
-              <Star className={`w-6 h-6 ${c.text}`} /> Konkretne Rezultaty
+              <Star className={`w-6 h-6 ${c.text}`} /> {ui.resultsHeading}
             </h2>
             <div className="grid md:grid-cols-2 gap-3">
               {filar.results.map((r) => (
@@ -200,12 +209,12 @@ export default function FilarDetailPage() {
         <section className="py-14 bg-gray-950">
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <motion.div {...fadeUp(0)}>
-              <h2 className="text-2xl font-black text-white mb-6">📊 Porównanie Międzynarodowe</h2>
+              <h2 className="text-2xl font-black text-white mb-6">{ui.comparisonHeading}</h2>
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
                     <tr className="border-b border-gray-700">
-                      {['Kraj', 'Udział rodzin', 'Incydenty/sezon', 'Ocena'].map((h) => (
+                      {(Array.isArray(ui.comparisonCols) ? ui.comparisonCols : ['Kraj', 'Udział rodzin', 'Incydenty/sezon', 'Ocena']).map((h) => (
                         <th key={h} className="text-left text-gray-400 font-mono text-xs uppercase py-3 pr-6">{h}</th>
                       ))}
                     </tr>
@@ -233,7 +242,7 @@ export default function FilarDetailPage() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <motion.div {...fadeUp(0)}>
               <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-2">
-                <HelpCircle className="w-6 h-6 text-green-400" /> FAQ
+                <HelpCircle className="w-6 h-6 text-green-400" /> {ui.faqHeading}
               </h2>
               <div className="space-y-4">
                 {filar.faq.map((item, i) => (
@@ -253,7 +262,7 @@ export default function FilarDetailPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div {...fadeUp(0)}>
             <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-2">
-              <Clock className="w-6 h-6 text-brand-cyan" /> Timeline Wdrożenia
+              <Clock className="w-6 h-6 text-brand-cyan" /> {ui.timelineHeading}
             </h2>
             <div className="space-y-3">
               {filar.timeline.map((t, i) => (
@@ -274,7 +283,7 @@ export default function FilarDetailPage() {
       <section className="py-14 bg-gray-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div {...fadeUp(0)}>
-            <h2 className="text-2xl font-black text-white mb-6">🔑 Kluczowe Zalety</h2>
+            <h2 className="text-2xl font-black text-white mb-6">{ui.advantagesHeading}</h2>
             <div className="grid md:grid-cols-2 gap-3">
               {filar.advantages.map((a) => (
                 <div key={a} className={`flex items-start gap-3 bg-gradient-to-r ${c.bg} to-transparent border ${c.border} rounded-xl p-4`}>
@@ -292,24 +301,24 @@ export default function FilarDetailPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between gap-4">
             {prevFilar ? (
-              <Link to={`/reforma/filar/${prevFilar.slug}`}
+              <Link to={localePath(`/reforma/filar/${prevFilar.slug}`)}
                 className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors bg-gray-900 hover:bg-gray-800 border border-gray-700 rounded-xl px-5 py-3 text-sm font-medium"
               >
-                <ArrowLeft className="w-4 h-4" /> {prevFilar.icon} Filar {prevFilar.id}
+                <ArrowLeft className="w-4 h-4" /> {prevFilar.icon} {(ui.navPillar ?? 'Filar {id}').replace('{id}', String(prevFilar.id))}
               </Link>
             ) : <div />}
 
-            <Link to="/reforma"
+            <Link to={localePath('/')}
               className="text-gray-400 hover:text-white transition-colors font-mono text-sm"
             >
-              ↑ Powrót do Reformy
+              {ui.navBack}
             </Link>
 
             {nextFilar ? (
-              <Link to={`/reforma/filar/${nextFilar.slug}`}
+              <Link to={localePath(`/reforma/filar/${nextFilar.slug}`)}
                 className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors bg-gray-900 hover:bg-gray-800 border border-gray-700 rounded-xl px-5 py-3 text-sm font-medium"
               >
-                Filar {nextFilar.id} {nextFilar.icon} <ArrowRight className="w-4 h-4" />
+                {(ui.navPillar ?? 'Filar {id}').replace('{id}', String(nextFilar.id))} {nextFilar.icon} <ArrowRight className="w-4 h-4" />
               </Link>
             ) : <div />}
           </div>

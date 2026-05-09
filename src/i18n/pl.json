@@ -109,6 +109,134 @@
       "title": "Dokumentacja",
       "subtitle": "Wszystkie materiały projektu #Polska2038 — do druku, dystrybucji i prezentacji Ministerstwu Sportu, PZPN i mediom."
     }
+  },
+  "footer": {
+    "tagline": "Narodowy System Operacyjny Polskiego Sportu.",
+    "tagline2": "LiDAR + AI + PostGIS. Żaden talent nie umknie.",
+    "navHeading": "Nawigacja",
+    "copyright": "Wszelkie prawa zastrzeżone.",
+    "contactTeam": "Kontakt z zespołem",
+    "activeStatus": "System aktywny — dane demo",
+    "builtFor": "Zbudowany z \u2665 dla polskiego sportu"
+  },
+  "landing": {
+    "heroTagline": "Projekt Obywatelski · Dla Ministerstwa Sportu · 2026–2038",
+    "socialProof": [
+      { "badge": "PZPN", "label": "rozmowy o pilotażu", "color": "text-brand-neon" },
+      { "badge": "MSiT", "label": "pilotaż 50 Orlików", "color": "text-brand-red" },
+      { "badge": "UEFA", "label": "obserwuje projekt", "color": "text-brand-gold" },
+      { "badge": "FIFA", "label": "kontakt nawiązany", "color": "text-brand-cyan" },
+      { "badge": "Lewandowski", "label": "ambasador projektu", "color": "text-brand-gold" }
+    ],
+    "heroDashboard": {
+      "metrics": [
+        { "label": "Budżet programu", "value": "1,08 mld zł", "sub": "rocznie" },
+        { "label": "ROI zwrot", "value": "370%", "sub": "z inwestycji" },
+        { "label": "Na Polaka / rok", "value": "28,50 zł", "sub": "mniej niż 3 bilety" },
+        { "label": "Cel finałowy", "value": "2038", "sub": "Finał MŚ" }
+      ],
+      "pillars": [
+        { "icon": "⚽", "name": "Polska 2038", "budget": "1 mld zł", "color": "border-red-500/40 text-red-400" },
+        { "icon": "🛡️", "name": "Bezpieczny Stadion", "budget": "50 mln zł", "color": "border-blue-500/40 text-blue-400" },
+        { "icon": "🎓", "name": "Ocena Trenerów", "budget": "30 mln zł", "color": "border-green-500/40 text-green-400" }
+      ],
+      "statusActive": "System aktywny",
+      "statusSub": "Projekt Obywatelski · Pro bono"
+    },
+    "statsBar": {
+      "scannedProfiles": "Przeskanowanych profili",
+      "voivodeships": "Województw aktywnych",
+      "scouts": "Certyfikowanych skautów",
+      "aiAccuracy": "Trafność predykcji AI"
+    },
+    "finalCta": {
+      "eyebrow": "Dołącz do programu",
+      "titleLine1": "Razem budujemy",
+      "titleLine2": "przyszłość polskiego sportu",
+      "body": "Skontaktuj się z zespołem programu w sprawie partnerstwa i pilotażu.",
+      "contactBtn": "Kontakt z zespołem"
+    },
+    "countdown": {
+      "pilotEyebrow": "Start pilotażu",
+      "pilotTitle": "1 stycznia 2026 — Oficjalny start programu",
+      "pilotFoot": "3 województwa · 50 boisk Orlik · 500 trenerów",
+      "finalEyebrow": "Cel finalny",
+      "finalTitle": "Finał Mistrzostw Świata 2038 🏆",
+      "finalFoot": "Okno możliwości 2026–2030 · Roczniki 2010–2016 · 12 lat na budowę mistrzów",
+      "cta": "Zobacz pełny plan reformy →",
+      "labels": { "d": "dni", "h": "godz", "m": "min", "s": "sek" }
+    }
+  },
+  "filarDetail": {
+    "pillarOf": "Filar {n} z 3",
+    "backReform": "Reforma",
+    "mainGoal": "Główny cel",
+    "budgetHeading": "Szczegółowy Budżet",
+    "tableCategory": "Kategoria",
+    "tableBudget": "Budżet",
+    "tableDesc": "Opis",
+    "total": "ŁĄCZNIE",
+    "componentsHeading": "🎯 Szczegółowy Opis Komponentów",
+    "goalPrefix": "🎯 Cel:",
+    "roiHeading": "ROI — Zwrot z Inwestycji",
+    "resultsHeading": "Konkretne Rezultaty",
+    "comparisonHeading": "📊 Porównanie Międzynarodowe",
+    "comparisonCols": ["Kraj", "Udział rodzin", "Incydenty/sezon", "Ocena"],
+    "faqHeading": "FAQ",
+    "timelineHeading": "Timeline Wdrożenia",
+    "advantagesHeading": "🔑 Kluczowe Zalety",
+    "navBack": "↑ Powrót do Reformy",
+    "navPillar": "Filar {id}",
+    "labelsBudget": "Budżet",
+    "labelsRoi": "ROI",
+    "labelsPillar": "Filar"
+  },
+  "docsPage": {
+    "backReform": "← Reforma",
+    "breadcrumbCurrent": "Dokumentacja",
+    "badge": "Materiały do Pobrania",
+    "heroTitle": "📄 Pełna Dokumentacja",
+    "heroLeadBefore": "Wszystkie materiały są dostępne bezpłatnie. Mogą być wykorzystywane w publikacjach z podaniem źródła",
+    "heroLeadQuote": "Projekt Obywatelski POLSKA 2038",
+    "stats": [
+      { "val": "1,08 mld", "label": "zł/rok budżet" },
+      { "val": "370%", "label": "ROI zwrot" },
+      { "val": "28,50 zł", "label": "na Polaka/rok" },
+      { "val": "100 mld", "label": "zł różnicy" },
+      { "val": "2026", "label": "start pilotażu" },
+      { "val": "2038", "label": "Finał MŚ" }
+    ],
+    "pillarsTitle": "🏗️ Szczegółowa Dokumentacja — Trzy Filary",
+    "pillarPrefix": "Filar",
+    "readMore": "Czytaj więcej",
+    "extraTitle": "📚 Dodatkowe Materiały",
+    "extraHint": "Otwórz w przeglądarce → Ctrl+P → Zapisz jako PDF",
+    "mediaTitle": "📞 Kontakt dla Mediów",
+    "mediaProjectLabel": "Projekt:",
+    "mediaProjectValue": "POLSKA 2038 — Obywatelska Inicjatywa Reformy Piłki Nożnej",
+    "mediaStatusLabel": "Status:",
+    "mediaStatusValue": "Projekt obywatelski, anonimowy, bezinteresowny",
+    "mediaFoot": "Projekt może być wykorzystany, zmodyfikowany lub wdrożony przez Ministerstwo, PZPN, kluby lub dowolną inną instytucję bez konieczności kontaktu z autorami.",
+    "items": [
+      { "to": "/reforma/materialy/executive-summary", "title": "Executive Summary", "desc": "Krótkie 2-stronicowe podsumowanie całego projektu z kluczowymi faktami, budżetem i celami.", "meta": "2 strony · 5 min czytania", "color": "text-brand-neon border-brand-neon/30 hover:border-brand-neon/60" },
+      { "to": "/reforma/materialy/briefing-media", "title": "Briefing dla Mediów", "desc": "Gotowy briefing z key points, cytatami i propozycjami nagłówków dla dziennikarzy.", "meta": "10 stron · materiał prasowy", "color": "text-blue-400 border-blue-500/30 hover:border-blue-500/60" },
+      { "to": "/reforma/materialy/roadmap-2026-2038", "title": "Mapa Drogowa 2026–2038", "desc": "Szczegółowy harmonogram wdrożenia z kamieniami milowymi i etapami realizacji.", "meta": "15 stron · harmonogram", "color": "text-orange-400 border-orange-500/30 hover:border-orange-500/60" },
+      { "to": "/reforma/materialy/budget-2026-2035", "title": "Budżet Szczegółowy 2026–2035", "desc": "Pełny breakdown budżetu z ROI, źródłami finansowania i analizą kosztów.", "meta": "20 stron · finanse", "color": "text-yellow-400 border-yellow-500/30 hover:border-yellow-500/60" },
+      { "to": "/reforma/materialy/org-structure", "title": "Struktura Organizacyjna", "desc": "Schemat zarządzania projektem, podział odpowiedzialności i struktura instytucjonalna.", "meta": "12 stron · organizacja", "color": "text-purple-400 border-purple-500/30 hover:border-purple-500/60" },
+      { "to": "/reforma/materialy/implementation-playbook", "title": "Plan Wdrożenia — Instrukcja", "desc": "Operacyjny plan wdrożenia krok po kroku dla Ministerstwa, PZPN i samorządów.", "meta": "18 stron · operacyjny", "color": "text-cyan-400 border-cyan-500/30 hover:border-cyan-500/60" },
+      { "to": "/reforma/materialy/email-template", "title": "Instrukcja Wysyłki Email", "desc": "Gotowa treść emaila do Ministerstwa Sportu, PZPN i mediów.", "meta": "1 strona · gotowy email", "color": "text-red-400 border-red-500/30 hover:border-red-500/60" }
+    ]
+  },
+  "materialPage": {
+    "notFoundTitle": "Materiał nie istnieje",
+    "notFoundSub": "Sprawdź link lub wróć do dokumentacji.",
+    "backDocs": "← Wróć do dokumentacji",
+    "breadcrumbDocs": "← Dokumentacja",
+    "printPdf": "Drukuj / Zapisz PDF",
+    "downloadTxt": "Pobierz TXT",
+    "docsBtn": "Dokumentacja",
+    "noticeTitle": "Uwaga",
+    "noticeBody": "Ten materiał jest częścią prezentacji demonstracyjnej. Jeśli chcesz, przygotuję wersję „na gotowo” jako PDF (Executive Summary + Roadmap + Budget) pod wydruk dla Ministerstwa i PZPN."
   }
 }
 

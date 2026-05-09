@@ -8,7 +8,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
   const [activeLanding, setActiveLanding] = useState('system');
-  const { lang, setLang, t }    = useLanguage();
+  const { lang, setLang, t, localePath }    = useLanguage();
   const location                = useLocation();
   const navigate                = useNavigate();
   const onLanding               = location.pathname === '/system' || location.pathname === '/en/system';
@@ -23,12 +23,6 @@ export default function Navbar() {
   useEffect(() => setOpen(false), [location.pathname]);
 
   const isActive = (to) => location.pathname === to;
-
-  const withLang = (to) => {
-    if (lang !== 'en') return to;
-    if (to === '/') return '/en';
-    return `/en${to}`;
-  };
 
   const handleToggleLang = () => {
     const next = lang === 'pl' ? 'en' : 'pl';
@@ -51,14 +45,14 @@ export default function Navbar() {
     navigate(`${nextPath}${search}${hash}`);
   };
   const NAV_LINKS = [
-    { to: withLang('/'),               label: t?.nav?.reforma ?? 'Reform' },
-    { to: withLang('/technologia'),    label: t?.nav?.technology ?? 'Technology' },
-    { to: withLang('/mapa-talentow'),  label: t?.nav?.talentMap ?? 'Talent map' },
-    { to: withLang('/dla-kogo'),       label: t?.nav?.forWho ?? 'Who it’s for' },
-    { to: withLang('/wyniki'),         label: t?.nav?.results ?? 'Results' },
-    { to: withLang('/partnerzy'),      label: t?.nav?.partners ?? 'Partners' },
-    { to: withLang('/o-programie'),    label: t?.nav?.about ?? 'About' },
-    { to: withLang('/kontakt'),        label: t?.nav?.contact ?? 'Contact' },
+    { to: localePath('/'),               label: t?.nav?.reforma ?? 'Reform' },
+    { to: localePath('/technologia'),    label: t?.nav?.technology ?? 'Technology' },
+    { to: localePath('/mapa-talentow'),  label: t?.nav?.talentMap ?? 'Talent map' },
+    { to: localePath('/dla-kogo'),       label: t?.nav?.forWho ?? 'Who it’s for' },
+    { to: localePath('/wyniki'),         label: t?.nav?.results ?? 'Results' },
+    { to: localePath('/partnerzy'),      label: t?.nav?.partners ?? 'Partners' },
+    { to: localePath('/o-programie'),    label: t?.nav?.about ?? 'About' },
+    { to: localePath('/kontakt'),        label: t?.nav?.contact ?? 'Contact' },
   ];
   const LANDING_MODULES = [
     { id: 'system', targetId: 'modules-start', label: t?.modulesBar?.system ?? 'System' },
@@ -142,7 +136,7 @@ export default function Navbar() {
               <span>{lang === 'pl' ? 'EN' : 'PL'}</span>
             </button>
             <Link
-              to="/login"
+              to={localePath('/login')}
               className="px-4 py-2 bg-brand-cyan text-brand-dark font-display font-bold text-[12px] uppercase tracking-wider hover:bg-cyan-300 transition-all whitespace-nowrap rounded-md"
             >
               {t?.nav?.panel ?? 'Panel'} →
@@ -195,10 +189,10 @@ export default function Navbar() {
               ))}
               <div className="pt-3 mt-3 border-t border-brand-border flex gap-2">
                 <Link
-                  to="/login"
+                  to={localePath('/login')}
                   className="flex-1 text-center py-3 bg-brand-cyan text-brand-dark font-display font-bold text-xs uppercase tracking-widest hover:bg-cyan-300 transition-all rounded-md"
                 >
-                  Panel →
+                  {t?.nav?.panel ?? 'Panel'} →
                 </Link>
               </div>
             </div>

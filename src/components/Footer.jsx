@@ -1,8 +1,7 @@
 ﻿import { useLanguage } from '../context/LanguageContext';
 
 export default function Footer() {
-  const { lang, t } = useLanguage();
-  const prefix = lang === 'en' ? '/en' : '';
+  const { t, localePath } = useLanguage();
 
   return (
     <footer className="bg-black border-t border-brand-border py-12">
@@ -23,8 +22,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-gray-600 text-sm font-mono leading-relaxed mb-4">
-              Narodowy System Operacyjny Polskiego Sportu.<br />
-              LiDAR + AI + PostGIS. Żaden talent nie umknie.
+              {t?.footer?.tagline}<br />
+              {t?.footer?.tagline2}
             </p>
             <div className="flex flex-wrap gap-2">
               <a
@@ -69,7 +68,7 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-4">Nawigacja</div>
+            <div className="text-gray-600 text-xs font-mono uppercase tracking-widest mb-4">{t?.footer?.navHeading}</div>
             <div className="space-y-2">
               {[
                 { label: t?.nav?.technology ?? 'Technologia', to: '/technologia' },
@@ -82,7 +81,7 @@ export default function Footer() {
               ].map((link) => (
                 <a
                   key={link.label}
-                  href={`${prefix}${link.to}`}
+                  href={localePath(link.to)}
                   className="block text-gray-500 hover:text-brand-neon text-sm font-mono transition-colors"
                 >
                   &rarr; {link.label}
@@ -94,18 +93,18 @@ export default function Footer() {
 
         <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row flex-wrap items-center justify-center sm:justify-between gap-x-6 gap-y-2">
           <div className="text-gray-500 text-[11px] sm:text-xs font-mono tracking-wide whitespace-nowrap">
-            &copy; 2025&ndash;2026 #Polska2038 v2.0. Wszelkie prawa zastrzeżone.
+            &copy; 2025&ndash;2026 #Polska2038 v2.0. {t?.footer?.copyright}
           </div>
           <div className="flex items-center gap-4 text-gray-500 text-[11px] sm:text-xs font-mono tracking-wide whitespace-nowrap">
-            <a href={`${prefix}/kontakt`} className="hover:text-gray-200 transition-colors">Kontakt z zespołem</a>
+            <a href={localePath('/kontakt')} className="hover:text-gray-200 transition-colors">{t?.footer?.contactTeam}</a>
             <a href="https://github.com/Polska-2038/projekt-polska-2038-pro" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">MIT License</a>
           </div>
           <div className="flex items-center gap-2 text-gray-500 text-[11px] sm:text-xs font-mono tracking-wide whitespace-nowrap">
             <span className="w-1.5 h-1.5 bg-brand-neon rounded-full animate-pulse" />
-            System aktywny &mdash; dane demo
+            {t?.footer?.activeStatus}
           </div>
           <div className="text-gray-500 text-[11px] sm:text-xs font-mono tracking-wide whitespace-nowrap">
-            Zbudowany z &hearts; dla polskiego sportu
+            {t?.footer?.builtFor}
           </div>
         </div>
       </div>

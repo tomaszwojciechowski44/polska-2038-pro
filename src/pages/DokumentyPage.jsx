@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FileText, Download, ExternalLink, BookOpen, BarChart3, Map, Building2, Newspaper, Mail } from 'lucide-react';
+import { FileText, ExternalLink, BookOpen, BarChart3, Map, Building2, Newspaper, Mail } from 'lucide-react';
 import PublicLayout from '../components/PublicLayout';
 import { FILARY } from '../data/filaryData';
 import { useLanguage } from '../context/LanguageContext';
@@ -12,67 +12,17 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.55, delay },
 });
 
-const DOCS = [
-  {
-    icon: BookOpen,
-    title: 'Executive Summary',
-    desc: 'Krótkie 2-stronicowe podsumowanie całego projektu z kluczowymi faktami, budżetem i celami.',
-    meta: '2 strony · 5 min czytania',
-    to: '/reforma/materialy/executive-summary',
-    color: 'text-brand-neon border-brand-neon/30 hover:border-brand-neon/60',
-  },
-  {
-    icon: Newspaper,
-    title: 'Briefing dla Mediów',
-    desc: 'Gotowy briefing z key points, cytatami i propozycjami nagłówków dla dziennikarzy.',
-    meta: '10 stron · materiał prasowy',
-    to: '/reforma/materialy/briefing-media',
-    color: 'text-blue-400 border-blue-500/30 hover:border-blue-500/60',
-  },
-  {
-    icon: Map,
-    title: 'Mapa Drogowa 2026–2038',
-    desc: 'Szczegółowy harmonogram wdrożenia z kamieniami milowymi i etapami realizacji.',
-    meta: '15 stron · harmonogram',
-    to: '/reforma/materialy/roadmap-2026-2038',
-    color: 'text-orange-400 border-orange-500/30 hover:border-orange-500/60',
-  },
-  {
-    icon: BarChart3,
-    title: 'Budżet Szczegółowy 2026–2035',
-    desc: 'Pełny breakdown budżetu z ROI, źródłami finansowania i analizą kosztów.',
-    meta: '20 stron · finanse',
-    to: '/reforma/materialy/budget-2026-2035',
-    color: 'text-yellow-400 border-yellow-500/30 hover:border-yellow-500/60',
-  },
-  {
-    icon: Building2,
-    title: 'Struktura Organizacyjna',
-    desc: 'Schemat zarządzania projektem, podział odpowiedzialności i struktura instytucjonalna.',
-    meta: '12 stron · organizacja',
-    to: '/reforma/materialy/org-structure',
-    color: 'text-purple-400 border-purple-500/30 hover:border-purple-500/60',
-  },
-  {
-    icon: FileText,
-    title: 'Plan Wdrożenia — Instrukcja',
-    desc: 'Operacyjny plan wdrożenia krok po kroku dla Ministerstwa, PZPN i samorządów.',
-    meta: '18 stron · operacyjny',
-    to: '/reforma/materialy/implementation-playbook',
-    color: 'text-cyan-400 border-cyan-500/30 hover:border-cyan-500/60',
-  },
-  {
-    icon: Mail,
-    title: 'Instrukcja Wysyłki Email',
-    desc: 'Gotowa treść emaila do Ministerstwa Sportu, PZPN i mediów.',
-    meta: '1 strona · gotowy email',
-    to: '/reforma/materialy/email-template',
-    color: 'text-red-400 border-red-500/30 hover:border-red-500/60',
-  },
-];
+const DOC_ICONS = [BookOpen, Newspaper, Map, BarChart3, Building2, FileText, Mail];
 
 export default function DokumentyPage() {
-  const { t } = useLanguage();
+  const { t, localePath } = useLanguage();
+  const d = t?.docsPage ?? {};
+  const docItems = Array.isArray(d.items) ? d.items : [];
+  const stats = Array.isArray(d.stats) ? d.stats : [];
+
+  const pillarTitle = (f) => t?.filarDetail?.pillars?.[f.slug]?.title ?? f.title;
+  const pillarSubtitle = (f) => t?.filarDetail?.pillars?.[f.slug]?.subtitle ?? f.subtitle;
+
   return (
     <PublicLayout
       pageTitle={t?.pages?.docs?.title ?? 'Dokumentacja'}
@@ -81,9 +31,9 @@ export default function DokumentyPage() {
       {/* Breadcrumb */}
       <div className="bg-gray-950 border-b border-gray-800 py-3">
         <div className="max-w-6xl mx-auto px-4 flex items-center gap-2 text-sm font-mono">
-          <Link to="/reforma" className="text-gray-500 hover:text-white transition-colors">← Reforma</Link>
+          <Link to={localePath('/')} className="text-gray-500 hover:text-white transition-colors">{d.backReform}</Link>
           <span className="text-gray-700">/</span>
-          <span className="text-brand-neon">Dokumentacja</span>
+          <span className="text-brand-neon">{d.breadcrumbCurrent}</span>
         </div>
       </div>
 
@@ -92,12 +42,12 @@ export default function DokumentyPage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div {...fadeUp(0)}>
             <div className="inline-flex items-center gap-2 bg-brand-neon/10 border border-brand-neon/30 rounded-full px-4 py-1.5 mb-4 text-brand-neon font-mono text-xs uppercase tracking-widest">
-              <FileText className="w-4 h-4" /> Materiały do Pobrania
+              <FileText className="w-4 h-4" /> {d.badge}
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-4">📄 Pełna Dokumentacja</h1>
+            <h1 className="text-4xl md:text-5xl font-black text-white mb-4">{d.heroTitle}</h1>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Wszystkie materiały są dostępne bezpłatnie. Mogą być wykorzystywane w publikacjach
-              z podaniem źródła <span className="text-white font-semibold">"Projekt Obywatelski POLSKA 2038"</span>.
+              {d.heroLeadBefore}{' '}
+              <span className="text-white font-semibold">&quot;{d.heroLeadQuote}&quot;</span>.
             </p>
           </motion.div>
         </div>
@@ -107,14 +57,7 @@ export default function DokumentyPage() {
       <section className="py-6 bg-black border-y border-gray-800">
         <div className="max-w-4xl mx-auto px-4">
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3 text-center">
-            {[
-              { val: '1,08 mld', label: 'zł/rok budżet' },
-              { val: '370%', label: 'ROI zwrot' },
-              { val: '28,50 zł', label: 'na Polaka/rok' },
-              { val: '100 mld', label: 'zł różnicy' },
-              { val: '2026', label: 'start pilotażu' },
-              { val: '2038', label: 'Finał MŚ' },
-            ].map((s) => (
+            {stats.map((s) => (
               <div key={s.label} className="bg-gray-900 rounded-xl p-3 border border-gray-800">
                 <div className="text-brand-neon font-black text-sm md:text-base">{s.val}</div>
                 <div className="text-gray-500 text-xs mt-1">{s.label}</div>
@@ -128,23 +71,23 @@ export default function DokumentyPage() {
       <section className="py-14 bg-gray-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.h2 {...fadeUp(0)} className="text-2xl font-black text-white mb-6">
-            🏗️ Szczegółowa Dokumentacja — Trzy Filary
+            {d.pillarsTitle}
           </motion.h2>
           <div className="grid md:grid-cols-3 gap-5 mb-6">
             {FILARY.map((f, i) => (
               <motion.div key={f.id} {...fadeUp(i * 0.1)}>
                   <Link
-                  to={`/reforma/filar/${f.slug}`}
+                  to={localePath(`/reforma/filar/${f.slug}`)}
                   className={`block bg-gray-900 border ${f.color.border} rounded-2xl p-6 hover:bg-gray-800 transition-all group`}
                 >
                   <div className="text-3xl mb-3">{f.icon}</div>
                   <h3 className={`font-black mb-1 transition-colors ${f.color.text}`}>
-                    Filar {f.id}: {f.title}
+                    {d.pillarPrefix} {f.id}: {pillarTitle(f)}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-3">{f.subtitle}</p>
+                  <p className="text-gray-400 text-sm mb-3">{pillarSubtitle(f)}</p>
                   <div className={`text-sm font-mono font-bold ${f.color.text}`}>{f.budget}</div>
                   <div className="mt-3 flex items-center gap-1 text-xs text-gray-500 group-hover:text-gray-300 transition-colors">
-                    Czytaj więcej <ArrowRight className="w-3 h-3" />
+                    {d.readMore} <ArrowRight className="w-3 h-3" />
                   </div>
                 </Link>
               </motion.div>
@@ -157,20 +100,20 @@ export default function DokumentyPage() {
       <section className="py-14 bg-black">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.h2 {...fadeUp(0)} className="text-2xl font-black text-white mb-2">
-            📚 Dodatkowe Materiały
+            {d.extraTitle}
           </motion.h2>
-          <p className="text-gray-400 text-sm mb-8">Otwórz w przeglądarce → Ctrl+P → Zapisz jako PDF</p>
+          <p className="text-gray-400 text-sm mb-8">{d.extraHint}</p>
           <div className="grid md:grid-cols-2 gap-4">
-            {DOCS.map((doc, i) => {
-              const Icon = doc.icon;
+            {docItems.map((doc, i) => {
+              const Icon = DOC_ICONS[i] ?? FileText;
               return (
                 <motion.div
-                  key={doc.title}
+                  key={doc.to}
                   {...fadeUp(i * 0.08)}
                   className="group"
                 >
                   <Link
-                    to={doc.to}
+                    to={localePath(doc.to)}
                     className={`flex items-start gap-4 bg-gray-900 border ${doc.color} rounded-2xl p-5 transition-all`}
                   >
                     <Icon className={`w-6 h-6 flex-shrink-0 mt-0.5 ${doc.color.split(' ')[0]}`} />
@@ -194,12 +137,12 @@ export default function DokumentyPage() {
       <section className="py-14 bg-black">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <motion.div {...fadeUp(0)}>
-            <h2 className="text-xl font-black text-white mb-4">📞 Kontakt dla Mediów</h2>
+            <h2 className="text-xl font-black text-white mb-4">{d.mediaTitle}</h2>
             <div className="bg-gray-900 border border-gray-700 rounded-2xl p-6 text-sm text-gray-300 space-y-2">
-              <p><span className="text-white font-bold">Projekt:</span> POLSKA 2038 — Obywatelska Inicjatywa Reformy Piłki Nożnej</p>
-              <p><span className="text-white font-bold">Status:</span> Projekt obywatelski, anonimowy, bezinteresowny</p>
+              <p><span className="text-white font-bold">{d.mediaProjectLabel}</span> {d.mediaProjectValue}</p>
+              <p><span className="text-white font-bold">{d.mediaStatusLabel}</span> {d.mediaStatusValue}</p>
               <p className="text-gray-500 mt-4">
-                Projekt może być wykorzystany, zmodyfikowany lub wdrożony przez Ministerstwo, PZPN, kluby lub dowolną inną instytucję bez konieczności kontaktu z autorami.
+                {d.mediaFoot}
               </p>
             </div>
           </motion.div>

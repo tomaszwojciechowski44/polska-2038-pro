@@ -109,6 +109,152 @@
       "title": "Documentation",
       "subtitle": "All #Polska2038 materials — ready for printing, distribution and presentations to the Ministry, the FA and the media."
     }
+  },
+  "footer": {
+    "tagline": "National Operating System for Polish sport.",
+    "tagline2": "LiDAR + AI + PostGIS. No talent slips through.",
+    "navHeading": "Navigation",
+    "copyright": "All rights reserved.",
+    "contactTeam": "Contact the team",
+    "activeStatus": "System active — demo data",
+    "builtFor": "Built with \u2665 for Polish sport"
+  },
+  "landing": {
+    "heroTagline": "Citizen initiative · For the Ministry of Sport · 2026–2038",
+    "socialProof": [
+      { "badge": "PZPN", "label": "pilot discussions", "color": "text-brand-neon" },
+      { "badge": "MSiT", "label": "50 Orlik pilot", "color": "text-brand-red" },
+      { "badge": "UEFA", "label": "watching the project", "color": "text-brand-gold" },
+      { "badge": "FIFA", "label": "contact established", "color": "text-brand-cyan" },
+      { "badge": "Lewandowski", "label": "project ambassador", "color": "text-brand-gold" }
+    ],
+    "heroDashboard": {
+      "metrics": [
+        { "label": "Program budget", "value": "PLN 1.08B", "sub": "per year" },
+        { "label": "ROI", "value": "370%", "sub": "on investment" },
+        { "label": "Per citizen / year", "value": "~€6.50", "sub": "less than 3 tickets" },
+        { "label": "North star", "value": "2038", "sub": "World Cup final" }
+      ],
+      "pillars": [
+        { "icon": "⚽", "name": "Poland 2038", "budget": "€235M", "color": "border-red-500/40 text-red-400" },
+        { "icon": "🛡️", "name": "Safe Stadium", "budget": "€11.7M", "color": "border-blue-500/40 text-blue-400" },
+        { "icon": "🎓", "name": "Coach evaluation", "budget": "€7M", "color": "border-green-500/40 text-green-400" }
+      ],
+      "statusActive": "System active",
+      "statusSub": "Citizen project · Pro bono"
+    },
+    "statsBar": {
+      "scannedProfiles": "Profiles scanned",
+      "voivodeships": "Active regions",
+      "scouts": "Certified scouts",
+      "aiAccuracy": "AI prediction accuracy"
+    },
+    "finalCta": {
+      "eyebrow": "Join the program",
+      "titleLine1": "Together we build",
+      "titleLine2": "the future of Polish sport",
+      "body": "Reach the program team about partnerships and pilots.",
+      "contactBtn": "Contact the team"
+    },
+    "countdown": {
+      "pilotEyebrow": "Pilot start",
+      "pilotTitle": "1 January 2026 — official program kick-off",
+      "pilotFoot": "3 regions · 50 Orlik pitches · 500 coaches in the system",
+      "finalEyebrow": "North star",
+      "finalTitle": "FIFA World Cup final 2038 🏆",
+      "finalFoot": "Window 2026–2030 · Cohorts 2010–2016 · 12 years to build champions",
+      "cta": "See the full reform plan →",
+      "labels": { "d": "days", "h": "hrs", "m": "min", "s": "sec" }
+    }
+  },
+  "filarDetail": {
+    "pillarOf": "Pillar {n} of 3",
+    "backReform": "Reform",
+    "mainGoal": "Primary goal",
+    "budgetHeading": "Budget breakdown",
+    "tableCategory": "Category",
+    "tableBudget": "Budget",
+    "tableDesc": "Description",
+    "total": "TOTAL",
+    "componentsHeading": "🎯 Components in detail",
+    "goalPrefix": "🎯 Goal:",
+    "roiHeading": "ROI — return on investment",
+    "resultsHeading": "Concrete outcomes",
+    "comparisonHeading": "📊 International comparison",
+    "comparisonCols": ["Country", "Family share", "Incidents/season", "Rating"],
+    "faqHeading": "FAQ",
+    "timelineHeading": "Deployment timeline",
+    "advantagesHeading": "🔑 Key advantages",
+    "navBack": "↑ Back to reform",
+    "navPillar": "Pillar {id}",
+    "labelsBudget": "Budget",
+    "labelsRoi": "ROI",
+    "labelsPillar": "Pillar",
+    "pillars": {
+      "1": {
+        "title": "POLAND 2038",
+        "subtitle": "Building champions — a training system for 1,000 top talents per year",
+        "goal": "World Cup 2038 final + Ekstraklasa in UEFA top 5 by 2035"
+      },
+      "2": {
+        "title": "SAFE STADIUM",
+        "subtitle": "Building fans — family zones and zero tolerance for violence",
+        "goal": "200 family-certified stadiums by 2030 +30% attendance −80% incidents"
+      },
+      "3": {
+        "title": "COACH EVALUATION",
+        "subtitle": "Building quality — independent audits and removal of underperformers",
+        "goal": "100% of public-system coaches evaluated by 2028 + transparent rankings",
+        "warning": "⚠️ The most important pillar — without it the whole project collapses. Without good coaches, PLN 1B/year from pillar 1 is wasted."
+      }
+    }
+  },
+  "docsPage": {
+    "backReform": "← Reform",
+    "breadcrumbCurrent": "Documentation",
+    "badge": "Downloadable materials",
+    "heroTitle": "📄 Full documentation",
+    "heroLeadBefore": "All materials are free to use in publications with attribution",
+    "heroLeadQuote": "Citizen initiative POLAND 2038",
+    "stats": [
+      { "val": "PLN 1.08B", "label": "budget / year" },
+      { "val": "370%", "label": "ROI" },
+      { "val": "~€6.50", "label": "per citizen / year" },
+      { "val": "PLN 100B", "label": "value at stake" },
+      { "val": "2026", "label": "pilot start" },
+      { "val": "2038", "label": "World Cup final" }
+    ],
+    "pillarsTitle": "🏗️ Deep dive — three pillars",
+    "pillarPrefix": "Pillar",
+    "readMore": "Read more",
+    "extraTitle": "📚 Additional materials",
+    "extraHint": "Open in browser → Ctrl+P → Save as PDF",
+    "mediaTitle": "📞 Media contact",
+    "mediaProjectLabel": "Project:",
+    "mediaProjectValue": "POLAND 2038 — citizen football reform initiative",
+    "mediaStatusLabel": "Status:",
+    "mediaStatusValue": "Citizen-led, anonymous, non-profit",
+    "mediaFoot": "The project may be used, adapted or implemented by the Ministry, the FA, clubs or any institution without contacting the authors.",
+    "items": [
+      { "to": "/reforma/materialy/executive-summary", "title": "Executive Summary", "desc": "A tight two-page overview with facts, budget and goals.", "meta": "2 pages · 5 min read", "color": "text-brand-neon border-brand-neon/30 hover:border-brand-neon/60" },
+      { "to": "/reforma/materialy/briefing-media", "title": "Media briefing", "desc": "Key points, quotes and headline ideas for journalists.", "meta": "10 pages · press pack", "color": "text-blue-400 border-blue-500/30 hover:border-blue-500/60" },
+      { "to": "/reforma/materialy/roadmap-2026-2038", "title": "Roadmap 2026–2038", "desc": "Deployment timeline with milestones and phases.", "meta": "15 pages · schedule", "color": "text-orange-400 border-orange-500/30 hover:border-orange-500/60" },
+      { "to": "/reforma/materialy/budget-2026-2035", "title": "Detailed budget 2026–2035", "desc": "Full budget breakdown, funding sources and cost analysis.", "meta": "20 pages · finance", "color": "text-yellow-400 border-yellow-500/30 hover:border-yellow-500/60" },
+      { "to": "/reforma/materialy/org-structure", "title": "Organizational structure", "desc": "Governance chart, roles and institutional layout.", "meta": "12 pages · org design", "color": "text-purple-400 border-purple-500/30 hover:border-purple-500/60" },
+      { "to": "/reforma/materialy/implementation-playbook", "title": "Implementation playbook", "desc": "Operational rollout steps for the Ministry, FA and local governments.", "meta": "18 pages · operations", "color": "text-cyan-400 border-cyan-500/30 hover:border-cyan-500/60" },
+      { "to": "/reforma/materialy/email-template", "title": "Email outreach template", "desc": "Ready-to-send email for the Ministry, FA and media.", "meta": "1 page · copy/paste", "color": "text-red-400 border-red-500/30 hover:border-red-500/60" }
+    ]
+  },
+  "materialPage": {
+    "notFoundTitle": "Material not found",
+    "notFoundSub": "Check the link or return to documentation.",
+    "backDocs": "← Back to documentation",
+    "breadcrumbDocs": "← Documentation",
+    "printPdf": "Print / Save as PDF",
+    "downloadTxt": "Download TXT",
+    "docsBtn": "Documentation",
+    "noticeTitle": "Note",
+    "noticeBody": "This content is part of a demo presentation. A print-ready PDF pack (Executive Summary + Roadmap + Budget) can be prepared for the Ministry and FA."
   }
 }
 

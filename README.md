@@ -177,6 +177,12 @@ npm run build
 
 ---
 
+## 🗺️ Dane mapy województw (panel)
+
+Uproszczone granice w pliku `public/geo/wojewodztwa-min.geojson` pochodzą z projektu **[polska-geojson](https://github.com/ppatrzyk/polska-geojson)** (© Piotr Patrzyk, licencja **MIT**). Pełny tekst licencji: [`public/geo/LICENSE-polska-geojson.txt`](public/geo/LICENSE-polska-geojson.txt).
+
+---
+
 ## 📄 Licencja
 
 Rdzeń platformy dostępny na licencji **MIT** — transparentność buduje zaufanie federacji i inwestorów.

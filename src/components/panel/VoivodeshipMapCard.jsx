@@ -398,7 +398,33 @@ export default function VoivodeshipMapCard({
               ? 'Nie udało się wczytać granic województw (GeoJSON). Odśwież stronę lub sprawdź sieć.'
               : geoState.status === 'idle' || geoState.status === 'pending'
                 ? 'Ładowanie granic województw…'
-                : 'Tip: klik w obszar województwa ustawia filtr `voivodeship` i odświeża listę talentów.'}
+                : (
+                    <>
+                      Tip: klik w obszar województwa ustawia filtr{' '}
+                      <code className="text-gray-400">voivodeship</code> i odświeża listę talentów.
+                      <span className="block mt-2 text-gray-600 border-t border-brand-border pt-2">
+                        Granice (uproszczone):{' '}
+                        <a
+                          href="https://github.com/ppatrzyk/polska-geojson"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-brand-cyan hover:underline"
+                        >
+                          polska-geojson
+                        </a>
+                        {' '}(© Piotr Patrzyk, MIT —{' '}
+                        <a
+                          href={`${import.meta.env.BASE_URL}geo/LICENSE-polska-geojson.txt`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-brand-cyan hover:underline"
+                        >
+                          treść licencji
+                        </a>
+                        ).
+                      </span>
+                    </>
+                  )}
           </motion.div>
         </div>
       </div>

@@ -8,67 +8,56 @@
       <stop offset="0" stop-color="#DC143C"/>
       <stop offset="1" stop-color="#00FF88"/>
     </linearGradient>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="18" result="b"/>
-      <feMerge>
-        <feMergeNode in="b"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
     <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
       <path d="M48 0H0V48" fill="none" stroke="#1f2937" stroke-width="1" opacity="0.35"/>
     </pattern>
+    <!-- Soft vignette: keeps edges dark for X crop -->
+    <radialGradient id="vignette" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.55"/>
+    </radialGradient>
   </defs>
 
+  <!-- Base -->
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#grid)" opacity="0.55"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.35"/>
+  <rect width="1200" height="630" fill="url(#vignette)"/>
 
-  <circle cx="230" cy="160" r="220" fill="#00FF88" opacity="0.08" filter="url(#glow)"/>
-  <circle cx="980" cy="430" r="260" fill="#22d3ee" opacity="0.08" filter="url(#glow)"/>
-  <circle cx="860" cy="170" r="180" fill="#DC143C" opacity="0.10" filter="url(#glow)"/>
+  <!-- Safe area ~70% × 70% centered: 840 × 441 at (180, 94.5) ? integer (180, 95) -->
+  <rect x="180" y="95" width="840" height="440" rx="28" fill="#050810" fill-opacity="0.88" stroke="#1f2937" stroke-width="1.5"/>
+  <rect x="196" y="111" width="808" height="408" rx="20" fill="#000000" fill-opacity="0.35"/>
 
-  <g transform="translate(88 88)">
-    <text x="0" y="92" font-family="Rajdhani, system-ui, -apple-system, Segoe UI, sans-serif" font-size="96" font-weight="700" fill="#ffffff" letter-spacing="2">
-      #POLSKA
-    </text>
-    <text x="470" y="92" font-family="Rajdhani, system-ui, -apple-system, Segoe UI, sans-serif" font-size="96" font-weight="700" fill="#DC143C" letter-spacing="2">
-      2038
-    </text>
-
-    <rect x="0" y="128" width="520" height="6" rx="3" fill="url(#accent)"/>
-
-    <text x="0" y="190" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
-          font-size="22" font-weight="700" fill="#00FF88" opacity="0.95" letter-spacing="3">
-      LiDAR · AI · PostGIS
+  <!-- Content stack: centered at x=600 -->
+  <g font-family="Rajdhani, system-ui, -apple-system, Segoe UI, sans-serif" text-anchor="middle">
+    <text x="600" y="168" font-size="62" font-weight="700" fill="#ffffff" letter-spacing="3">
+      #POLSKA<tspan fill="#DC143C">2038</tspan>
     </text>
 
-    <text x="0" y="246" font-family="Rajdhani, system-ui, -apple-system, Segoe UI, sans-serif"
-          font-size="38" font-weight="600" fill="#d1d5db">
-      Narodowy system wykrywania talentów sportowych
+    <rect x="360" y="188" width="480" height="5" rx="2.5" fill="url(#accent)" opacity="0.95"/>
+
+    <!-- LiDAR line: extra vertical rhythm for small previews -->
+    <text x="600" y="238" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+          font-size="23" font-weight="700" fill="#00FF88" letter-spacing="5">
+      LiDAR
+    </text>
+    <text x="600" y="276" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+          font-size="23" font-weight="700" fill="#00FF88" letter-spacing="5">
+      AI
+    </text>
+    <text x="600" y="314" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+          font-size="23" font-weight="700" fill="#00FF88" letter-spacing="5">
+      PostGIS
     </text>
 
-    <text x="0" y="300" font-family="JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
-          font-size="18" fill="#9ca3af" opacity="0.95">
-      Demo dla PZPN i Ministerstwa Sportu i Turystyki
+    <text x="600" y="358" font-size="26" font-weight="600" fill="#e5e7eb" opacity="0.95">
+      Narodowy OS sportu · reforma i dane
     </text>
 
-    <g transform="translate(0 356)">
-      <rect x="0" y="0" width="340" height="110" rx="14" fill="#0b1224" stroke="#1f2937"/>
-      <text x="24" y="42" font-family="JetBrains Mono, ui-monospace" font-size="14" fill="#6b7280">ROI</text>
-      <text x="24" y="82" font-family="Rajdhani, system-ui" font-size="44" font-weight="700" fill="#00FF88">×11.6</text>
-    </g>
-
-    <g transform="translate(372 356)">
-      <rect x="0" y="0" width="340" height="110" rx="14" fill="#0b1224" stroke="#1f2937"/>
-      <text x="24" y="42" font-family="JetBrains Mono, ui-monospace" font-size="14" fill="#6b7280">Profile</text>
-      <text x="24" y="82" font-family="Rajdhani, system-ui" font-size="44" font-weight="700" fill="#22d3ee">47 388</text>
-    </g>
-
-    <g transform="translate(744 356)">
-      <rect x="0" y="0" width="340" height="110" rx="14" fill="#0b1224" stroke="#1f2937"/>
-      <text x="24" y="42" font-family="JetBrains Mono, ui-monospace" font-size="14" fill="#6b7280">Województwa</text>
-      <text x="24" y="82" font-family="Rajdhani, system-ui" font-size="44" font-weight="700" fill="#fbbf24">16</text>
+    <!-- ROI block: high contrast, centered -->
+    <g transform="translate(600, 418)">
+      <rect x="-200" y="-52" width="400" height="104" rx="16" fill="#0b1224" fill-opacity="0.95" stroke="#00FF88" stroke-opacity="0.35" stroke-width="1"/>
+      <text x="0" y="-8" font-family="JetBrains Mono, ui-monospace" font-size="15" font-weight="700" fill="#9ca3af" letter-spacing="6">ROI</text>
+      <text x="0" y="38" font-size="52" font-weight="800" fill="#00FF88" letter-spacing="2">370%</text>
     </g>
   </g>
 </svg>
-

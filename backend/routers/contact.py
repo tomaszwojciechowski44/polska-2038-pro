@@ -17,12 +17,9 @@ from schemas import ContactMessageIn, ContactMessageOut
 router = APIRouter()
 logger = logging.getLogger("polska2038.contact")
 
-# Recipients (stakeholders)
+# Recipients (internal admin only; prevents "spam gateway" behavior)
 STAKEHOLDERS: List[str] = [
-    "kontakt@msit.gov.pl",        # Ministerstwo Sportu
-    "sekretariat@pzpn.pl",        # PZPN
-    "biuro@ekstraklasa.org",      # Ekstraklasa SA
-    "biuro@1liga.org",            # Pierwsza Liga
+    "kontakt@polska2038.pl",
 ]
 
 # Simple in-memory rate limit per IP (good enough for single-instance / public demo).

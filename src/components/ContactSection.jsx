@@ -298,7 +298,7 @@ export default function ContactSection() {
                 <div className="text-gray-400 text-xs font-mono leading-relaxed">
                   {lang === 'en'
                     ? 'Note: your message will be forwarded directly to the Ministry of Sport, the FA (PZPN) and league authorities as a citizen voice on meritocracy in Polish football.'
-                    : 'Uwaga: Twoja wiadomość zostanie przesłana bezpośrednio do Ministerstwa Sportu, PZPN oraz władz Ekstraklasy jako głos w sprawie merytokracji w polskiej piłce.'}
+                    : 'Twój głos zostanie zapisany w naszym systemie i dodany do oficjalnego, merytorycznego raportu IT, który jako zorganizowane środowisko przekażemy na ręce Ministerstwa Sportu, PZPN oraz władz Ekstraklasy. Budujemy masę krytyczną opartą na danych.'}
                 </div>
               </form>
             )}

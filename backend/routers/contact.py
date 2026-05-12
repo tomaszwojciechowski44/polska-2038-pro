@@ -19,7 +19,7 @@ logger = logging.getLogger("polska2038.contact")
 
 # Recipients (internal admin only; prevents "spam gateway" behavior)
 STAKEHOLDERS: List[str] = [
-    "kontakt@polska2038.pl",
+    "polska2038@proton.me",
 ]
 
 # Simple in-memory rate limit per IP (good enough for single-instance / public demo).
@@ -111,7 +111,8 @@ async def submit_contact(data: ContactMessageIn, request: Request, db: AsyncSess
         raise HTTPException(status_code=503, detail="Database error. Please try again later.")
 
     # Build email
-    from_addr = _clean_header_value(os.getenv("SMTP_FROM") or "Projekt Polska2038 <onboarding@resend.dev>")
+    # From must be in a domain verified in Resend (avoid proton.me here).
+    from_addr = _clean_header_value(os.getenv("SMTP_FROM") or "Polska2038 Powiadomienia <powiadomienia@polska2038.pl>")
     subject = _clean_header_value(f"Projekt #Polska2038 - Głos Obywatelski: {data.subject.strip()}")
 
     body = "\n".join([

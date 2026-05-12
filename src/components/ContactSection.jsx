@@ -6,16 +6,22 @@ import { useLanguage } from '../context/LanguageContext';
 import { submitContact } from '../api/client';
 
 const ROLES_PL = [
-  'Ministerstwo Sportu i Turystyki',
-  'PZPN',
-  'Ekstraklasa SA',
-  '1 liga',
+  'Inżynier IT / Data Scientist',
+  'Trener / Sztab Szkoleniowy',
+  'Przedstawiciel Klubu / Akademii',
+  'Skaut / Menadżer',
+  'Media / Dziennikarz',
+  'Kibic / Pasjonat',
+  'Inne',
 ];
 const ROLES_EN = [
-  'Ministry of Sport and Tourism',
-  'PZPN (Polish FA)',
-  'Ekstraklasa SA',
-  '1st League',
+  'IT Engineer / Data Scientist',
+  'Coach / Coaching Staff',
+  'Club / Academy Representative',
+  'Scout / Manager',
+  'Media / Journalist',
+  'Fan / Enthusiast',
+  'Other',
 ];
 
 export default function ContactSection() {

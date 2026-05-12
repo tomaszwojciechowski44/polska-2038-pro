@@ -44,7 +44,7 @@ function postProcess(route, html) {
   const isEn = route === '/en';
   const lang = isEn ? 'en' : 'pl';
   const locale = isEn ? 'en_US' : 'pl_PL';
-  const url = isEn ? 'https://polska2038.pl/en' : 'https://polska2038.pl/';
+  const url = isEn ? 'https://polska2038.pl/en' : 'https://polska2038.pl';
 
   let out = html;
   out = out.replace(/<html lang="[^"]*">/i, `<html lang="${lang}">`);

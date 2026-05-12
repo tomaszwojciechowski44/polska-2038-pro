@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://polska2038.pl/sitemap.xml
+

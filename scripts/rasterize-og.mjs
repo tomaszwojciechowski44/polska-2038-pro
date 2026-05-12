@@ -1,5 +1,5 @@
 /**
- * Rasterizes public/og-image.svg → public/og-image.png for Twitter/X and OG crawlers
+ * Rasterizes public/og-image.svg → public/og-image-v2.png for Twitter/X and OG crawlers
  * (many platforms ignore SVG in twitter:image / og:image).
  */
 import fs from 'fs';
@@ -10,7 +10,7 @@ import { Resvg } from '@resvg/resvg-js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 const svgPath = path.join(root, 'public', 'og-image.svg');
-const outPath = path.join(root, 'public', 'og-image.png');
+const outPath = path.join(root, 'public', 'og-image-v2.png');
 
 const svg = fs.readFileSync(svgPath, 'utf8');
 const resvg = new Resvg(svg, {

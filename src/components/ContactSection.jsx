@@ -141,6 +141,12 @@ export default function ContactSection() {
                 {[
                   { label: 'E-mail', val: 'polska2038@proton.me', href: 'mailto:polska2038@proton.me', color: 'text-brand-neon' },
                   { label: 'X / Twitter', val: '@Polska2038', href: 'https://x.com/polska2038', color: 'text-brand-cyan' },
+                  {
+                    label: 'LinkedIn',
+                    val: 'Projekt Polska',
+                    href: 'https://www.linkedin.com/in/projekt-polska-16487440a/',
+                    color: 'text-brand-gold',
+                  },
                 ].map(c => (
                   <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-3 group">
